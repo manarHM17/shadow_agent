@@ -1,0 +1,26 @@
+[
+{
+  "directory": "/home/manar/IoT_shadow/build",
+  "command": "/usr/bin/g++ -DCARES_STATICLIB -I/usr/include/mysql -I/home/manar/IoT_shadow/services/provision/include -I/home/manar/IoT_shadow/build -g -std=gnu++17 -o CMakeFiles/provision_service.dir/src/main.cpp.o -c /home/manar/IoT_shadow/services/provision/src/main.cpp",
+  "file": "/home/manar/IoT_shadow/services/provision/src/main.cpp",
+  "output": "CMakeFiles/provision_service.dir/src/main.cpp.o"
+},
+{
+  "directory": "/home/manar/IoT_shadow/build",
+  "command": "/usr/bin/g++ -DCARES_STATICLIB -I/usr/include/mysql -I/home/manar/IoT_shadow/services/provision/include -I/home/manar/IoT_shadow/build -g -std=gnu++17 -o CMakeFiles/provision_service.dir/src/ProvisionServiceImpl.cpp.o -c /home/manar/IoT_shadow/services/provision/src/ProvisionServiceImpl.cpp",
+  "file": "/home/manar/IoT_shadow/services/provision/src/ProvisionServiceImpl.cpp",
+  "output": "CMakeFiles/provision_service.dir/src/ProvisionServiceImpl.cpp.o"
+},
+{
+  "directory": "/home/manar/IoT_shadow/build",
+  "command": "/usr/bin/g++ -DCARES_STATICLIB -I/usr/include/mysql -I/home/manar/IoT_shadow/services/provision/include -I/home/manar/IoT_shadow/build -g -std=gnu++17 -o CMakeFiles/provision_service.dir/provision.pb.cc.o -c /home/manar/IoT_shadow/build/provision.pb.cc",
+  "file": "/home/manar/IoT_shadow/build/provision.pb.cc",
+  "output": "CMakeFiles/provision_service.dir/provision.pb.cc.o"
+},
+{
+  "directory": "/home/manar/IoT_shadow/build",
+  "command": "/usr/bin/g++ -DCARES_STATICLIB -I/usr/include/mysql -I/home/manar/IoT_shadow/services/provision/include -I/home/manar/IoT_shadow/build -g -std=gnu++17 -o CMakeFiles/provision_service.dir/provision.grpc.pb.cc.o -c /home/manar/IoT_shadow/build/provision.grpc.pb.cc",
+  "file": "/home/manar/IoT_shadow/build/provision.grpc.pb.cc",
+  "output": "CMakeFiles/provision_service.dir/provision.grpc.pb.cc.o"
+}
+]

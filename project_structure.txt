@@ -1,0 +1,19 @@
+IoT_shadow/
+├── proto/
+│   └── provision.proto
+├── services/
+│   └── provision/
+│       ├── CMakeLists.txt
+│       ├── Dockerfile 
+│       ├── src/
+│       │   └── main.cpp
+│       └── include/
+│           └── db_handler.hpp
+│   └── monitoring/
+│       ├── CMakeLists.txt
+│       ├── Dockerfile
+│       ├── src/
+│       │   └── main.cpp
+│       └── include/
+│           └── db_handler.hpp
+└── client/

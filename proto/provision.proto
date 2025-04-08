@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package shadow_agent;
+
+message DeviceInfo {
+    int32 id = 1; // ID unique de l'appareil
+    string hostname = 2;
+    string type = 3;
+    string os_type = 4;
+    string username = 5;
+    string current_time = 6;
+}
+
+
+message DeviceId {
+    int32 id = 1;
+}
+
+message Response {
+    bool success = 1;
+    string message = 2;
+}
+
+message Empty {}
+
+message DeviceList {
+    repeated DeviceInfo devices = 1;
+}
+
+service ProvisionService {
+    rpc RegisterDevice(DeviceInfo) returns (Response);
+    rpc DeleteDevice(DeviceId) returns (Response);
+    rpc UpdateDevice(DeviceInfo) returns (Response);
+    rpc ListDevices(Empty) returns (DeviceList);
+    rpc GetDevice(DeviceId) returns (DeviceInfo);
+}

@@ -1,0 +1,7 @@
+{
+    "cmake.sourceDirectory": "/home/manar/IoT_shadow/services/provision",
+    "files.associations": {
+        "chrono": "cpp",
+        "typeinfo": "cpp"
+    }
+}
