@@ -1,6 +1,8 @@
 #include <iostream>
 #include <memory>
 #include <string>
+#include <fstream>
+#include <stdexcept>
 #include <grpcpp/grpcpp.h>
 #include "provision.grpc.pb.h"
 
@@ -8,9 +10,19 @@ using namespace std;
 using namespace grpc;
 using namespace shadow_agent;
 
+
+std::string LoadFile(const std::string& filepath) {
+    std::ifstream file(filepath, std::ios::in | std::ios::binary);
+    if (!file) {
+        throw std::runtime_error("Failed to open file: " + filepath);
+    }
+    return std::string((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+}
+
 class ProvisionClient {
 private:
     unique_ptr<ProvisionService::Stub> stub_;
+    string jwt_token_; // Ajouter un membre pour stocker le token JWT
 
 public:
     ProvisionClient(shared_ptr<Channel> channel)
@@ -33,12 +45,16 @@ public:
         request.set_os_type(os_type);
         request.set_username(username);
 
-        Response response;
+        RegisterDeviceResponse response;
         ClientContext context;
 
         Status status = stub_->RegisterDevice(&context, request, &response);
         if (status.ok()) {
             cout << "Response: " << response.message() << endl;
+            if (response.success()) {
+                jwt_token_ = response.token(); // Stocker le token JWT
+                cout << "Token received: " << jwt_token_ << endl;
+            }
             return response.success();
         } else {
             cout << "RPC failed: " << status.error_message() << endl;
@@ -54,6 +70,7 @@ public:
 
         DeviceId request;
         request.set_id(id);
+        request.set_token(jwt_token_); // Ajouter le token dans la requête
 
         Response response;
         ClientContext context;
@@ -91,6 +108,7 @@ public:
         request.set_type(type);
         request.set_os_type(os_type);
         request.set_username(username);
+        request.set_token(jwt_token_); // Ajouter le token dans la requête
 
         Response response;
         ClientContext context;
@@ -106,7 +124,9 @@ public:
     }
 
     bool ListDevices() {
-        Empty request;
+        ListDeviceRequest request;
+        request.set_token(jwt_token_); // Ajouter le token dans la requête
+
         DeviceList response;
         ClientContext context;
 
@@ -137,6 +157,7 @@ public:
 
         DeviceId request;
         request.set_id(id);
+        request.set_token(jwt_token_); // Ajouter le token dans la requête
 
         DeviceInfo response;
         ClientContext context;
@@ -171,10 +192,18 @@ void displayMenu() {
 }
 
 int main() {
-    string target_str = "localhost:50051";
-    ProvisionClient client(
-        CreateChannel(target_str, InsecureChannelCredentials())
-    );
+    string server_ip = "localhost:50051";
+    // Charger le certificat du serveur
+    string server_cert = LoadFile("../server.crt"); // Chemin vers le certificat du serveur
+
+    // Configurer les options SSL/TLS
+    grpc::SslCredentialsOptions ssl_opts;
+    ssl_opts.pem_root_certs = server_cert;
+
+    // Créer un canal sécurisé avec les credentials SSL
+    auto channel = grpc::CreateChannel(server_ip, grpc::SslCredentials(ssl_opts));
+    ProvisionClient client(channel);
+
 
     int choice;
     do {

@@ -3,7 +3,7 @@
 #include <memory>
 #include <string>
 #include <grpcpp/grpcpp.h>
-#include "db_handler.hpp"
+#include "/home/manar/IoT_shadow/services/db/db_handler.hpp"
 #include "provision.grpc.pb.h"
 
 using namespace std;
@@ -16,23 +16,24 @@ private:
 
 public:
     ProvisionServiceImpl();
-    
+
+    // Méthodes RPC
     Status RegisterDevice(ServerContext* context, 
                           const shadow_agent::DeviceInfo* request, 
-                          shadow_agent::Response* response) override;
-    
+                          shadow_agent::RegisterDeviceResponse* response) override;
+
     Status DeleteDevice(ServerContext* context, 
                         const shadow_agent::DeviceId* request, 
                         shadow_agent::Response* response) override;
-    
+
     Status UpdateDevice(ServerContext* context, 
                         const shadow_agent::DeviceInfo* request, 
                         shadow_agent::Response* response) override;
-    
+
     Status ListDevices(ServerContext* context, 
-                       const shadow_agent::Empty* request, 
+                       const shadow_agent::ListDeviceRequest* request, 
                        shadow_agent::DeviceList* response) override;
-    
+
     Status GetDevice(ServerContext* context, 
                      const shadow_agent::DeviceId* request, 
                      shadow_agent::DeviceInfo* response) override;

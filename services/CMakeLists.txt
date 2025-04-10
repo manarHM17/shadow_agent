@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
-project(iot_shadow_client)
+project(provision_service)
 
 # C++ Standard
 set(CMAKE_CXX_STANDARD 17)
@@ -19,10 +19,18 @@ message(STATUS "Using gRPC ${gRPC_VERSION}")
 set(_GRPC_GRPCPP gRPC::grpc++)
 set(_GRPC_CPP_PLUGIN_EXECUTABLE $<TARGET_FILE:gRPC::grpc_cpp_plugin>)
 
-# jwt-cpp
-add_library(jwt-cpp INTERFACE) # une bibliothèque d'interface est une bib qui contient que un header
-target_include_directories(jwt-cpp INTERFACE /usr/local/include)
+# MySQL
+find_library(MYSQL_LIB mysqlclient REQUIRED)
+include_directories(/usr/include/mysql)
 
+#openSSL puisque jwt depend d'elle
+find_package(OpenSSL REQUIRED)
+
+# jwt-cpp
+add_library(jwt-cpp INTERFACE) # jwt-cpp est une bibliothèque d'interface (header-only)
+target_include_directories(jwt-cpp INTERFACE /usr/local/include) # Inclure jwt-cpp
+#puisque jwt necessite l utilisation de json file on doit inclure picojson
+target_include_directories(jwt-cpp INTERFACE /usr/local/include)
 # Proto file
 set(PROTO_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../proto")
 set(PROTO_FILE "${PROTO_PATH}/provision.proto")
@@ -49,9 +57,10 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 # Executable
-add_executable(provision_test
-    src/provision_test.cpp
-    src/provision_test_insecure.cpp
+add_executable(provision_service 
+    provision/include/ProvisionServiceImpl.h
+    main.cpp
+    provision/src/ProvisionServiceImpl.cpp
     ${hw_proto_srcs}
     ${hw_grpc_srcs}
     ${hw_proto_hdrs}     # Ajout des headers protobuf
@@ -59,8 +68,12 @@ add_executable(provision_test
 )
 
 # Link libraries
-target_link_libraries(provision_test
+target_link_libraries(provision_service
     ${_GRPC_GRPCPP}
     protobuf::libprotobuf
+    ${MYSQL_LIB}
+    pthread
     jwt-cpp
+    OpenSSL::SSL
+    OpenSSL::Crypto
 )

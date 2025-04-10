@@ -14,6 +14,13 @@ message DeviceInfo {
 
 message DeviceId {
     int32 id = 1;
+    string token = 2 ;
+}
+
+message RegisterDeviceResponse {
+    bool success =1 ;
+    string message = 2 ;
+    string token = 3 ;
 }
 
 message Response {
@@ -21,16 +28,18 @@ message Response {
     string message = 2;
 }
 
-message Empty {}
+message ListDeviceRequest {
+    string token = 1;
+}
 
 message DeviceList {
-    repeated DeviceInfo devices = 1;
+    repeated DeviceInfo devices = 1; 
 }
 
 service ProvisionService {
-    rpc RegisterDevice(DeviceInfo) returns (Response);
+    rpc RegisterDevice(DeviceInfo) returns (RegisterDeviceResponse);
     rpc DeleteDevice(DeviceId) returns (Response);
     rpc UpdateDevice(DeviceInfo) returns (Response);
-    rpc ListDevices(Empty) returns (DeviceList);
+    rpc ListDevices(ListDeviceRequest) returns (DeviceList);
     rpc GetDevice(DeviceId) returns (DeviceInfo);
 }
