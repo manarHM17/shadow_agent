@@ -89,23 +89,23 @@ void ProvisionService::Stub::async::DeleteDevice(::grpc::ClientContext* context,
   return result;
 }
 
-::grpc::Status ProvisionService::Stub::UpdateDevice(::grpc::ClientContext* context, const ::shadow_agent::DeviceInfo& request, ::shadow_agent::Response* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::shadow_agent::DeviceInfo, ::shadow_agent::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_UpdateDevice_, context, request, response);
+::grpc::Status ProvisionService::Stub::UpdateDevice(::grpc::ClientContext* context, const ::shadow_agent::UpdateDeviceRequest& request, ::shadow_agent::Response* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::shadow_agent::UpdateDeviceRequest, ::shadow_agent::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_UpdateDevice_, context, request, response);
 }
 
-void ProvisionService::Stub::async::UpdateDevice(::grpc::ClientContext* context, const ::shadow_agent::DeviceInfo* request, ::shadow_agent::Response* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::shadow_agent::DeviceInfo, ::shadow_agent::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_UpdateDevice_, context, request, response, std::move(f));
+void ProvisionService::Stub::async::UpdateDevice(::grpc::ClientContext* context, const ::shadow_agent::UpdateDeviceRequest* request, ::shadow_agent::Response* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::shadow_agent::UpdateDeviceRequest, ::shadow_agent::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_UpdateDevice_, context, request, response, std::move(f));
 }
 
-void ProvisionService::Stub::async::UpdateDevice(::grpc::ClientContext* context, const ::shadow_agent::DeviceInfo* request, ::shadow_agent::Response* response, ::grpc::ClientUnaryReactor* reactor) {
+void ProvisionService::Stub::async::UpdateDevice(::grpc::ClientContext* context, const ::shadow_agent::UpdateDeviceRequest* request, ::shadow_agent::Response* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_UpdateDevice_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::shadow_agent::Response>* ProvisionService::Stub::PrepareAsyncUpdateDeviceRaw(::grpc::ClientContext* context, const ::shadow_agent::DeviceInfo& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::shadow_agent::Response, ::shadow_agent::DeviceInfo, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_UpdateDevice_, context, request);
+::grpc::ClientAsyncResponseReader< ::shadow_agent::Response>* ProvisionService::Stub::PrepareAsyncUpdateDeviceRaw(::grpc::ClientContext* context, const ::shadow_agent::UpdateDeviceRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::shadow_agent::Response, ::shadow_agent::UpdateDeviceRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_UpdateDevice_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::shadow_agent::Response>* ProvisionService::Stub::AsyncUpdateDeviceRaw(::grpc::ClientContext* context, const ::shadow_agent::DeviceInfo& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::shadow_agent::Response>* ProvisionService::Stub::AsyncUpdateDeviceRaw(::grpc::ClientContext* context, const ::shadow_agent::UpdateDeviceRequest& request, ::grpc::CompletionQueue* cq) {
   auto* result =
     this->PrepareAsyncUpdateDeviceRaw(context, request, cq);
   result->StartCall();
@@ -182,10 +182,10 @@ ProvisionService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       ProvisionService_method_names[2],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< ProvisionService::Service, ::shadow_agent::DeviceInfo, ::shadow_agent::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< ProvisionService::Service, ::shadow_agent::UpdateDeviceRequest, ::shadow_agent::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](ProvisionService::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::shadow_agent::DeviceInfo* req,
+             const ::shadow_agent::UpdateDeviceRequest* req,
              ::shadow_agent::Response* resp) {
                return service->UpdateDevice(ctx, req, resp);
              }, this)));
@@ -228,7 +228,7 @@ ProvisionService::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status ProvisionService::Service::UpdateDevice(::grpc::ServerContext* context, const ::shadow_agent::DeviceInfo* request, ::shadow_agent::Response* response) {
+::grpc::Status ProvisionService::Service::UpdateDevice(::grpc::ServerContext* context, const ::shadow_agent::UpdateDeviceRequest* request, ::shadow_agent::Response* response) {
   (void) context;
   (void) request;
   (void) response;

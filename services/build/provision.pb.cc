@@ -56,13 +56,45 @@ struct DeviceInfoDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DeviceInfoDefaultTypeInternal _DeviceInfo_default_instance_;
 template <typename>
-PROTOBUF_CONSTEXPR DeviceId::DeviceId(
+PROTOBUF_CONSTEXPR UpdateDeviceRequest::UpdateDeviceRequest(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.token_)*/ {
+    /*decltype(_impl_.hostname_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_.type_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_.os_type_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_.username_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_.current_time_)*/ {
     &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
   }
 
   , /*decltype(_impl_.id_)*/ 0
+
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct UpdateDeviceRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UpdateDeviceRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UpdateDeviceRequestDefaultTypeInternal() {}
+  union {
+    UpdateDeviceRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UpdateDeviceRequestDefaultTypeInternal _UpdateDeviceRequest_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DeviceId::DeviceId(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.id_)*/ 0
 
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct DeviceIdDefaultTypeInternal {
@@ -79,10 +111,6 @@ template <typename>
 PROTOBUF_CONSTEXPR RegisterDeviceResponse::RegisterDeviceResponse(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.message_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_.token_)*/ {
     &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
   }
 
@@ -121,12 +149,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ResponseDefaultTypeInternal _Response_default_instance_;
 template <typename>
 PROTOBUF_CONSTEXPR ListDeviceRequest::ListDeviceRequest(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.token_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_._cached_size_)*/{}} {}
+    ::_pbi::ConstantInitialized) {}
 struct ListDeviceRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR ListDeviceRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~ListDeviceRequestDefaultTypeInternal() {}
@@ -153,7 +176,7 @@ struct DeviceListDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DeviceListDefaultTypeInternal _DeviceList_default_instance_;
 }  // namespace shadow_agent
-static ::_pb::Metadata file_level_metadata_provision_2eproto[6];
+static ::_pb::Metadata file_level_metadata_provision_2eproto[7];
 static constexpr const ::_pb::EnumDescriptor**
     file_level_enum_descriptors_provision_2eproto = nullptr;
 static constexpr const ::_pb::ServiceDescriptor**
@@ -175,6 +198,20 @@ const ::uint32_t TableStruct_provision_2eproto::offsets[] PROTOBUF_SECTION_VARIA
     PROTOBUF_FIELD_OFFSET(::shadow_agent::DeviceInfo, _impl_.username_),
     PROTOBUF_FIELD_OFFSET(::shadow_agent::DeviceInfo, _impl_.current_time_),
     ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::shadow_agent::UpdateDeviceRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::shadow_agent::UpdateDeviceRequest, _impl_.id_),
+    PROTOBUF_FIELD_OFFSET(::shadow_agent::UpdateDeviceRequest, _impl_.hostname_),
+    PROTOBUF_FIELD_OFFSET(::shadow_agent::UpdateDeviceRequest, _impl_.type_),
+    PROTOBUF_FIELD_OFFSET(::shadow_agent::UpdateDeviceRequest, _impl_.os_type_),
+    PROTOBUF_FIELD_OFFSET(::shadow_agent::UpdateDeviceRequest, _impl_.username_),
+    PROTOBUF_FIELD_OFFSET(::shadow_agent::UpdateDeviceRequest, _impl_.current_time_),
+    ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::shadow_agent::DeviceId, _internal_metadata_),
     ~0u,  // no _extensions_
     ~0u,  // no _oneof_case_
@@ -183,7 +220,6 @@ const ::uint32_t TableStruct_provision_2eproto::offsets[] PROTOBUF_SECTION_VARIA
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
     PROTOBUF_FIELD_OFFSET(::shadow_agent::DeviceId, _impl_.id_),
-    PROTOBUF_FIELD_OFFSET(::shadow_agent::DeviceId, _impl_.token_),
     ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::shadow_agent::RegisterDeviceResponse, _internal_metadata_),
     ~0u,  // no _extensions_
@@ -194,7 +230,6 @@ const ::uint32_t TableStruct_provision_2eproto::offsets[] PROTOBUF_SECTION_VARIA
     ~0u,  // no sizeof(Split)
     PROTOBUF_FIELD_OFFSET(::shadow_agent::RegisterDeviceResponse, _impl_.success_),
     PROTOBUF_FIELD_OFFSET(::shadow_agent::RegisterDeviceResponse, _impl_.message_),
-    PROTOBUF_FIELD_OFFSET(::shadow_agent::RegisterDeviceResponse, _impl_.token_),
     ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::shadow_agent::Response, _internal_metadata_),
     ~0u,  // no _extensions_
@@ -213,7 +248,6 @@ const ::uint32_t TableStruct_provision_2eproto::offsets[] PROTOBUF_SECTION_VARIA
     ~0u,  // no _inlined_string_donated_
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::shadow_agent::ListDeviceRequest, _impl_.token_),
     ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::shadow_agent::DeviceList, _internal_metadata_),
     ~0u,  // no _extensions_
@@ -228,15 +262,17 @@ const ::uint32_t TableStruct_provision_2eproto::offsets[] PROTOBUF_SECTION_VARIA
 static const ::_pbi::MigrationSchema
     schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
         { 0, -1, -1, sizeof(::shadow_agent::DeviceInfo)},
-        { 14, -1, -1, sizeof(::shadow_agent::DeviceId)},
-        { 24, -1, -1, sizeof(::shadow_agent::RegisterDeviceResponse)},
-        { 35, -1, -1, sizeof(::shadow_agent::Response)},
-        { 45, -1, -1, sizeof(::shadow_agent::ListDeviceRequest)},
-        { 54, -1, -1, sizeof(::shadow_agent::DeviceList)},
+        { 14, -1, -1, sizeof(::shadow_agent::UpdateDeviceRequest)},
+        { 28, -1, -1, sizeof(::shadow_agent::DeviceId)},
+        { 37, -1, -1, sizeof(::shadow_agent::RegisterDeviceResponse)},
+        { 47, -1, -1, sizeof(::shadow_agent::Response)},
+        { 57, -1, -1, sizeof(::shadow_agent::ListDeviceRequest)},
+        { 65, -1, -1, sizeof(::shadow_agent::DeviceList)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
     &::shadow_agent::_DeviceInfo_default_instance_._instance,
+    &::shadow_agent::_UpdateDeviceRequest_default_instance_._instance,
     &::shadow_agent::_DeviceId_default_instance_._instance,
     &::shadow_agent::_RegisterDeviceResponse_default_instance_._instance,
     &::shadow_agent::_Response_default_instance_._instance,
@@ -247,35 +283,37 @@ const char descriptor_table_protodef_provision_2eproto[] PROTOBUF_SECTION_VARIAB
     "\n\017provision.proto\022\014shadow_agent\"q\n\nDevic"
     "eInfo\022\n\n\002id\030\001 \001(\005\022\020\n\010hostname\030\002 \001(\t\022\014\n\004t"
     "ype\030\003 \001(\t\022\017\n\007os_type\030\004 \001(\t\022\020\n\010username\030\005"
-    " \001(\t\022\024\n\014current_time\030\006 \001(\t\"%\n\010DeviceId\022\n"
-    "\n\002id\030\001 \001(\005\022\r\n\005token\030\002 \001(\t\"I\n\026RegisterDev"
-    "iceResponse\022\017\n\007success\030\001 \001(\010\022\017\n\007message\030"
-    "\002 \001(\t\022\r\n\005token\030\003 \001(\t\",\n\010Response\022\017\n\007succ"
-    "ess\030\001 \001(\010\022\017\n\007message\030\002 \001(\t\"\"\n\021ListDevice"
-    "Request\022\r\n\005token\030\001 \001(\t\"7\n\nDeviceList\022)\n\007"
-    "devices\030\001 \003(\0132\030.shadow_agent.DeviceInfo2"
-    "\357\002\n\020ProvisionService\022P\n\016RegisterDevice\022\030"
-    ".shadow_agent.DeviceInfo\032$.shadow_agent."
-    "RegisterDeviceResponse\022>\n\014DeleteDevice\022\026"
-    ".shadow_agent.DeviceId\032\026.shadow_agent.Re"
-    "sponse\022@\n\014UpdateDevice\022\030.shadow_agent.De"
-    "viceInfo\032\026.shadow_agent.Response\022H\n\013List"
-    "Devices\022\037.shadow_agent.ListDeviceRequest"
-    "\032\030.shadow_agent.DeviceList\022=\n\tGetDevice\022"
-    "\026.shadow_agent.DeviceId\032\030.shadow_agent.D"
-    "eviceInfob\006proto3"
+    " \001(\t\022\024\n\014current_time\030\006 \001(\t\"z\n\023UpdateDevi"
+    "ceRequest\022\n\n\002id\030\001 \001(\005\022\020\n\010hostname\030\002 \001(\t\022"
+    "\014\n\004type\030\003 \001(\t\022\017\n\007os_type\030\004 \001(\t\022\020\n\010userna"
+    "me\030\005 \001(\t\022\024\n\014current_time\030\006 \001(\t\"\026\n\010Device"
+    "Id\022\n\n\002id\030\001 \001(\005\":\n\026RegisterDeviceResponse"
+    "\022\017\n\007success\030\001 \001(\010\022\017\n\007message\030\002 \001(\t\",\n\010Re"
+    "sponse\022\017\n\007success\030\001 \001(\010\022\017\n\007message\030\002 \001(\t"
+    "\"\023\n\021ListDeviceRequest\"7\n\nDeviceList\022)\n\007d"
+    "evices\030\001 \003(\0132\030.shadow_agent.DeviceInfo2\370"
+    "\002\n\020ProvisionService\022P\n\016RegisterDevice\022\030."
+    "shadow_agent.DeviceInfo\032$.shadow_agent.R"
+    "egisterDeviceResponse\022>\n\014DeleteDevice\022\026."
+    "shadow_agent.DeviceId\032\026.shadow_agent.Res"
+    "ponse\022I\n\014UpdateDevice\022!.shadow_agent.Upd"
+    "ateDeviceRequest\032\026.shadow_agent.Response"
+    "\022H\n\013ListDevices\022\037.shadow_agent.ListDevic"
+    "eRequest\032\030.shadow_agent.DeviceList\022=\n\tGe"
+    "tDevice\022\026.shadow_agent.DeviceId\032\030.shadow"
+    "_agent.DeviceInfob\006proto3"
 };
 static ::absl::once_flag descriptor_table_provision_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_provision_2eproto = {
     false,
     false,
-    777,
+    865,
     descriptor_table_protodef_provision_2eproto,
     "provision.proto",
     &descriptor_table_provision_2eproto_once,
     nullptr,
     0,
-    6,
+    7,
     schemas,
     file_default_instances,
     TableStruct_provision_2eproto::offsets,
@@ -721,6 +759,423 @@ void DeviceInfo::InternalSwap(DeviceInfo* other) {
 }
 // ===================================================================
 
+class UpdateDeviceRequest::_Internal {
+ public:
+};
+
+UpdateDeviceRequest::UpdateDeviceRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:shadow_agent.UpdateDeviceRequest)
+}
+UpdateDeviceRequest::UpdateDeviceRequest(const UpdateDeviceRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  UpdateDeviceRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.hostname_) {}
+
+    , decltype(_impl_.type_) {}
+
+    , decltype(_impl_.os_type_) {}
+
+    , decltype(_impl_.username_) {}
+
+    , decltype(_impl_.current_time_) {}
+
+    , decltype(_impl_.id_) {}
+
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.hostname_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.hostname_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_hostname().empty()) {
+    _this->_impl_.hostname_.Set(from._internal_hostname(), _this->GetArenaForAllocation());
+  }
+  _impl_.type_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.type_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_type().empty()) {
+    _this->_impl_.type_.Set(from._internal_type(), _this->GetArenaForAllocation());
+  }
+  _impl_.os_type_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.os_type_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_os_type().empty()) {
+    _this->_impl_.os_type_.Set(from._internal_os_type(), _this->GetArenaForAllocation());
+  }
+  _impl_.username_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.username_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_username().empty()) {
+    _this->_impl_.username_.Set(from._internal_username(), _this->GetArenaForAllocation());
+  }
+  _impl_.current_time_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.current_time_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_current_time().empty()) {
+    _this->_impl_.current_time_.Set(from._internal_current_time(), _this->GetArenaForAllocation());
+  }
+  _this->_impl_.id_ = from._impl_.id_;
+  // @@protoc_insertion_point(copy_constructor:shadow_agent.UpdateDeviceRequest)
+}
+
+inline void UpdateDeviceRequest::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.hostname_) {}
+
+    , decltype(_impl_.type_) {}
+
+    , decltype(_impl_.os_type_) {}
+
+    , decltype(_impl_.username_) {}
+
+    , decltype(_impl_.current_time_) {}
+
+    , decltype(_impl_.id_) { 0 }
+
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.hostname_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.hostname_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.type_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.type_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.os_type_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.os_type_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.username_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.username_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.current_time_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.current_time_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+UpdateDeviceRequest::~UpdateDeviceRequest() {
+  // @@protoc_insertion_point(destructor:shadow_agent.UpdateDeviceRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void UpdateDeviceRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.hostname_.Destroy();
+  _impl_.type_.Destroy();
+  _impl_.os_type_.Destroy();
+  _impl_.username_.Destroy();
+  _impl_.current_time_.Destroy();
+}
+
+void UpdateDeviceRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void UpdateDeviceRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:shadow_agent.UpdateDeviceRequest)
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.hostname_.ClearToEmpty();
+  _impl_.type_.ClearToEmpty();
+  _impl_.os_type_.ClearToEmpty();
+  _impl_.username_.ClearToEmpty();
+  _impl_.current_time_.ClearToEmpty();
+  _impl_.id_ = 0;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* UpdateDeviceRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int32 id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 8)) {
+          _impl_.id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // string hostname = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_hostname();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "shadow_agent.UpdateDeviceRequest.hostname"));
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // string type = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_type();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "shadow_agent.UpdateDeviceRequest.type"));
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // string os_type = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 34)) {
+          auto str = _internal_mutable_os_type();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "shadow_agent.UpdateDeviceRequest.os_type"));
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // string username = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 42)) {
+          auto str = _internal_mutable_username();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "shadow_agent.UpdateDeviceRequest.username"));
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // string current_time = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 50)) {
+          auto str = _internal_mutable_current_time();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "shadow_agent.UpdateDeviceRequest.current_time"));
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+::uint8_t* UpdateDeviceRequest::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:shadow_agent.UpdateDeviceRequest)
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 id = 1;
+  if (this->_internal_id() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        1, this->_internal_id(), target);
+  }
+
+  // string hostname = 2;
+  if (!this->_internal_hostname().empty()) {
+    const std::string& _s = this->_internal_hostname();
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "shadow_agent.UpdateDeviceRequest.hostname");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
+  }
+
+  // string type = 3;
+  if (!this->_internal_type().empty()) {
+    const std::string& _s = this->_internal_type();
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "shadow_agent.UpdateDeviceRequest.type");
+    target = stream->WriteStringMaybeAliased(3, _s, target);
+  }
+
+  // string os_type = 4;
+  if (!this->_internal_os_type().empty()) {
+    const std::string& _s = this->_internal_os_type();
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "shadow_agent.UpdateDeviceRequest.os_type");
+    target = stream->WriteStringMaybeAliased(4, _s, target);
+  }
+
+  // string username = 5;
+  if (!this->_internal_username().empty()) {
+    const std::string& _s = this->_internal_username();
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "shadow_agent.UpdateDeviceRequest.username");
+    target = stream->WriteStringMaybeAliased(5, _s, target);
+  }
+
+  // string current_time = 6;
+  if (!this->_internal_current_time().empty()) {
+    const std::string& _s = this->_internal_current_time();
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "shadow_agent.UpdateDeviceRequest.current_time");
+    target = stream->WriteStringMaybeAliased(6, _s, target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:shadow_agent.UpdateDeviceRequest)
+  return target;
+}
+
+::size_t UpdateDeviceRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:shadow_agent.UpdateDeviceRequest)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string hostname = 2;
+  if (!this->_internal_hostname().empty()) {
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                    this->_internal_hostname());
+  }
+
+  // string type = 3;
+  if (!this->_internal_type().empty()) {
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                    this->_internal_type());
+  }
+
+  // string os_type = 4;
+  if (!this->_internal_os_type().empty()) {
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                    this->_internal_os_type());
+  }
+
+  // string username = 5;
+  if (!this->_internal_username().empty()) {
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                    this->_internal_username());
+  }
+
+  // string current_time = 6;
+  if (!this->_internal_current_time().empty()) {
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                    this->_internal_current_time());
+  }
+
+  // int32 id = 1;
+  if (this->_internal_id() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+        this->_internal_id());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UpdateDeviceRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    UpdateDeviceRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UpdateDeviceRequest::GetClassData() const { return &_class_data_; }
+
+
+void UpdateDeviceRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<UpdateDeviceRequest*>(&to_msg);
+  auto& from = static_cast<const UpdateDeviceRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:shadow_agent.UpdateDeviceRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_hostname().empty()) {
+    _this->_internal_set_hostname(from._internal_hostname());
+  }
+  if (!from._internal_type().empty()) {
+    _this->_internal_set_type(from._internal_type());
+  }
+  if (!from._internal_os_type().empty()) {
+    _this->_internal_set_os_type(from._internal_os_type());
+  }
+  if (!from._internal_username().empty()) {
+    _this->_internal_set_username(from._internal_username());
+  }
+  if (!from._internal_current_time().empty()) {
+    _this->_internal_set_current_time(from._internal_current_time());
+  }
+  if (from._internal_id() != 0) {
+    _this->_internal_set_id(from._internal_id());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void UpdateDeviceRequest::CopyFrom(const UpdateDeviceRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:shadow_agent.UpdateDeviceRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool UpdateDeviceRequest::IsInitialized() const {
+  return true;
+}
+
+void UpdateDeviceRequest::InternalSwap(UpdateDeviceRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.hostname_, lhs_arena,
+                                       &other->_impl_.hostname_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.type_, lhs_arena,
+                                       &other->_impl_.type_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.os_type_, lhs_arena,
+                                       &other->_impl_.os_type_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.username_, lhs_arena,
+                                       &other->_impl_.username_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.current_time_, lhs_arena,
+                                       &other->_impl_.current_time_, rhs_arena);
+
+  swap(_impl_.id_, other->_impl_.id_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata UpdateDeviceRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_provision_2eproto_getter, &descriptor_table_provision_2eproto_once,
+      file_level_metadata_provision_2eproto[1]);
+}
+// ===================================================================
+
 class DeviceId::_Internal {
  public:
 };
@@ -731,40 +1186,19 @@ DeviceId::DeviceId(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   // @@protoc_insertion_point(arena_constructor:shadow_agent.DeviceId)
 }
 DeviceId::DeviceId(const DeviceId& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  DeviceId* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.token_) {}
-
-    , decltype(_impl_.id_) {}
-
-    , /*decltype(_impl_._cached_size_)*/{}};
-
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.token_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.token_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_token().empty()) {
-    _this->_impl_.token_.Set(from._internal_token(), _this->GetArenaForAllocation());
-  }
-  _this->_impl_.id_ = from._impl_.id_;
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _impl_(from._impl_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(
+      from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:shadow_agent.DeviceId)
 }
 
 inline void DeviceId::SharedCtor(::_pb::Arena* arena) {
   (void)arena;
   new (&_impl_) Impl_{
-      decltype(_impl_.token_) {}
-
-    , decltype(_impl_.id_) { 0 }
+      decltype(_impl_.id_) { 0 }
 
     , /*decltype(_impl_._cached_size_)*/{}
   };
-  _impl_.token_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.token_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 DeviceId::~DeviceId() {
@@ -778,7 +1212,6 @@ DeviceId::~DeviceId() {
 
 inline void DeviceId::SharedDtor() {
   ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.token_.Destroy();
 }
 
 void DeviceId::SetCachedSize(int size) const {
@@ -791,7 +1224,6 @@ void DeviceId::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.token_.ClearToEmpty();
   _impl_.id_ = 0;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
@@ -807,17 +1239,6 @@ const char* DeviceId::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx)
         if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 8)) {
           _impl_.id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // string token = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_token();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "shadow_agent.DeviceId.token"));
         } else {
           goto handle_unusual;
         }
@@ -858,14 +1279,6 @@ failure:
         1, this->_internal_id(), target);
   }
 
-  // string token = 2;
-  if (!this->_internal_token().empty()) {
-    const std::string& _s = this->_internal_token();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "shadow_agent.DeviceId.token");
-    target = stream->WriteStringMaybeAliased(2, _s, target);
-  }
-
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -881,12 +1294,6 @@ failure:
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
-
-  // string token = 2;
-  if (!this->_internal_token().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-                                    this->_internal_token());
-  }
 
   // int32 id = 1;
   if (this->_internal_id() != 0) {
@@ -912,9 +1319,6 @@ void DeviceId::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTO
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_token().empty()) {
-    _this->_internal_set_token(from._internal_token());
-  }
   if (from._internal_id() != 0) {
     _this->_internal_set_id(from._internal_id());
   }
@@ -934,11 +1338,7 @@ bool DeviceId::IsInitialized() const {
 
 void DeviceId::InternalSwap(DeviceId* other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.token_, lhs_arena,
-                                       &other->_impl_.token_, rhs_arena);
 
   swap(_impl_.id_, other->_impl_.id_);
 }
@@ -946,7 +1346,7 @@ void DeviceId::InternalSwap(DeviceId* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DeviceId::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_provision_2eproto_getter, &descriptor_table_provision_2eproto_once,
-      file_level_metadata_provision_2eproto[1]);
+      file_level_metadata_provision_2eproto[2]);
 }
 // ===================================================================
 
@@ -965,8 +1365,6 @@ RegisterDeviceResponse::RegisterDeviceResponse(const RegisterDeviceResponse& fro
   new (&_impl_) Impl_{
       decltype(_impl_.message_) {}
 
-    , decltype(_impl_.token_) {}
-
     , decltype(_impl_.success_) {}
 
     , /*decltype(_impl_._cached_size_)*/{}};
@@ -979,13 +1377,6 @@ RegisterDeviceResponse::RegisterDeviceResponse(const RegisterDeviceResponse& fro
   if (!from._internal_message().empty()) {
     _this->_impl_.message_.Set(from._internal_message(), _this->GetArenaForAllocation());
   }
-  _impl_.token_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.token_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_token().empty()) {
-    _this->_impl_.token_.Set(from._internal_token(), _this->GetArenaForAllocation());
-  }
   _this->_impl_.success_ = from._impl_.success_;
   // @@protoc_insertion_point(copy_constructor:shadow_agent.RegisterDeviceResponse)
 }
@@ -995,8 +1386,6 @@ inline void RegisterDeviceResponse::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_{
       decltype(_impl_.message_) {}
 
-    , decltype(_impl_.token_) {}
-
     , decltype(_impl_.success_) { false }
 
     , /*decltype(_impl_._cached_size_)*/{}
@@ -1004,10 +1393,6 @@ inline void RegisterDeviceResponse::SharedCtor(::_pb::Arena* arena) {
   _impl_.message_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         _impl_.message_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.token_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.token_.Set("", GetArenaForAllocation());
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
@@ -1023,7 +1408,6 @@ RegisterDeviceResponse::~RegisterDeviceResponse() {
 inline void RegisterDeviceResponse::SharedDtor() {
   ABSL_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.message_.Destroy();
-  _impl_.token_.Destroy();
 }
 
 void RegisterDeviceResponse::SetCachedSize(int size) const {
@@ -1037,7 +1421,6 @@ void RegisterDeviceResponse::Clear() {
   (void) cached_has_bits;
 
   _impl_.message_.ClearToEmpty();
-  _impl_.token_.ClearToEmpty();
   _impl_.success_ = false;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
@@ -1064,17 +1447,6 @@ const char* RegisterDeviceResponse::_InternalParse(const char* ptr, ::_pbi::Pars
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
           CHK_(::_pbi::VerifyUTF8(str, "shadow_agent.RegisterDeviceResponse.message"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // string token = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 26)) {
-          auto str = _internal_mutable_token();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "shadow_agent.RegisterDeviceResponse.token"));
         } else {
           goto handle_unusual;
         }
@@ -1123,14 +1495,6 @@ failure:
     target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
-  // string token = 3;
-  if (!this->_internal_token().empty()) {
-    const std::string& _s = this->_internal_token();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "shadow_agent.RegisterDeviceResponse.token");
-    target = stream->WriteStringMaybeAliased(3, _s, target);
-  }
-
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1151,12 +1515,6 @@ failure:
   if (!this->_internal_message().empty()) {
     total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
                                     this->_internal_message());
-  }
-
-  // string token = 3;
-  if (!this->_internal_token().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-                                    this->_internal_token());
   }
 
   // bool success = 1;
@@ -1185,9 +1543,6 @@ void RegisterDeviceResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg,
   if (!from._internal_message().empty()) {
     _this->_internal_set_message(from._internal_message());
   }
-  if (!from._internal_token().empty()) {
-    _this->_internal_set_token(from._internal_token());
-  }
   if (from._internal_success() != 0) {
     _this->_internal_set_success(from._internal_success());
   }
@@ -1212,8 +1567,6 @@ void RegisterDeviceResponse::InternalSwap(RegisterDeviceResponse* other) {
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.message_, lhs_arena,
                                        &other->_impl_.message_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.token_, lhs_arena,
-                                       &other->_impl_.token_, rhs_arena);
 
   swap(_impl_.success_, other->_impl_.success_);
 }
@@ -1221,7 +1574,7 @@ void RegisterDeviceResponse::InternalSwap(RegisterDeviceResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata RegisterDeviceResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_provision_2eproto_getter, &descriptor_table_provision_2eproto_once,
-      file_level_metadata_provision_2eproto[2]);
+      file_level_metadata_provision_2eproto[3]);
 }
 // ===================================================================
 
@@ -1449,7 +1802,7 @@ void Response::InternalSwap(Response* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata Response::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_provision_2eproto_getter, &descriptor_table_provision_2eproto_once,
-      file_level_metadata_provision_2eproto[3]);
+      file_level_metadata_provision_2eproto[4]);
 }
 // ===================================================================
 
@@ -1458,194 +1811,36 @@ class ListDeviceRequest::_Internal {
 };
 
 ListDeviceRequest::ListDeviceRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor(arena);
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase(arena) {
   // @@protoc_insertion_point(arena_constructor:shadow_agent.ListDeviceRequest)
 }
 ListDeviceRequest::ListDeviceRequest(const ListDeviceRequest& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase() {
   ListDeviceRequest* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.token_) {}
-
-    , /*decltype(_impl_._cached_size_)*/{}};
-
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.token_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.token_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_token().empty()) {
-    _this->_impl_.token_.Set(from._internal_token(), _this->GetArenaForAllocation());
-  }
   // @@protoc_insertion_point(copy_constructor:shadow_agent.ListDeviceRequest)
 }
 
-inline void ListDeviceRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.token_) {}
 
-    , /*decltype(_impl_._cached_size_)*/{}
-  };
-  _impl_.token_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.token_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-}
 
-ListDeviceRequest::~ListDeviceRequest() {
-  // @@protoc_insertion_point(destructor:shadow_agent.ListDeviceRequest)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
-  SharedDtor();
-}
 
-inline void ListDeviceRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.token_.Destroy();
-}
-
-void ListDeviceRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void ListDeviceRequest::Clear() {
-// @@protoc_insertion_point(message_clear_start:shadow_agent.ListDeviceRequest)
-  ::uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  _impl_.token_.ClearToEmpty();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* ListDeviceRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // string token = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          auto str = _internal_mutable_token();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "shadow_agent.ListDeviceRequest.token"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
-}
-
-::uint8_t* ListDeviceRequest::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:shadow_agent.ListDeviceRequest)
-  ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string token = 1;
-  if (!this->_internal_token().empty()) {
-    const std::string& _s = this->_internal_token();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "shadow_agent.ListDeviceRequest.token");
-    target = stream->WriteStringMaybeAliased(1, _s, target);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:shadow_agent.ListDeviceRequest)
-  return target;
-}
-
-::size_t ListDeviceRequest::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:shadow_agent.ListDeviceRequest)
-  ::size_t total_size = 0;
-
-  ::uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // string token = 1;
-  if (!this->_internal_token().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-                                    this->_internal_token());
-  }
-
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
-}
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ListDeviceRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    ListDeviceRequest::MergeImpl
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl,
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl,
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ListDeviceRequest::GetClassData() const { return &_class_data_; }
 
 
-void ListDeviceRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<ListDeviceRequest*>(&to_msg);
-  auto& from = static_cast<const ListDeviceRequest&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:shadow_agent.ListDeviceRequest)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
 
-  if (!from._internal_token().empty()) {
-    _this->_internal_set_token(from._internal_token());
-  }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
 
-void ListDeviceRequest::CopyFrom(const ListDeviceRequest& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:shadow_agent.ListDeviceRequest)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
 
-bool ListDeviceRequest::IsInitialized() const {
-  return true;
-}
 
-void ListDeviceRequest::InternalSwap(ListDeviceRequest* other) {
-  using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.token_, lhs_arena,
-                                       &other->_impl_.token_, rhs_arena);
-}
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ListDeviceRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_provision_2eproto_getter, &descriptor_table_provision_2eproto_once,
-      file_level_metadata_provision_2eproto[4]);
+      file_level_metadata_provision_2eproto[5]);
 }
 // ===================================================================
 
@@ -1827,7 +2022,7 @@ void DeviceList::InternalSwap(DeviceList* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DeviceList::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_provision_2eproto_getter, &descriptor_table_provision_2eproto_once,
-      file_level_metadata_provision_2eproto[5]);
+      file_level_metadata_provision_2eproto[6]);
 }
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace shadow_agent
@@ -1835,6 +2030,10 @@ PROTOBUF_NAMESPACE_OPEN
 template<> PROTOBUF_NOINLINE ::shadow_agent::DeviceInfo*
 Arena::CreateMaybeMessage< ::shadow_agent::DeviceInfo >(Arena* arena) {
   return Arena::CreateMessageInternal< ::shadow_agent::DeviceInfo >(arena);
+}
+template<> PROTOBUF_NOINLINE ::shadow_agent::UpdateDeviceRequest*
+Arena::CreateMaybeMessage< ::shadow_agent::UpdateDeviceRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::shadow_agent::UpdateDeviceRequest >(arena);
 }
 template<> PROTOBUF_NOINLINE ::shadow_agent::DeviceId*
 Arena::CreateMaybeMessage< ::shadow_agent::DeviceId >(Arena* arena) {

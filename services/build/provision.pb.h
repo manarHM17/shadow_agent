@@ -24,6 +24,7 @@
 #include "google/protobuf/io/coded_stream.h"
 #include "google/protobuf/arena.h"
 #include "google/protobuf/arenastring.h"
+#include "google/protobuf/generated_message_bases.h"
 #include "google/protobuf/generated_message_util.h"
 #include "google/protobuf/metadata_lite.h"
 #include "google/protobuf/generated_message_reflection.h"
@@ -69,6 +70,9 @@ extern RegisterDeviceResponseDefaultTypeInternal _RegisterDeviceResponse_default
 class Response;
 struct ResponseDefaultTypeInternal;
 extern ResponseDefaultTypeInternal _Response_default_instance_;
+class UpdateDeviceRequest;
+struct UpdateDeviceRequestDefaultTypeInternal;
+extern UpdateDeviceRequestDefaultTypeInternal _UpdateDeviceRequest_default_instance_;
 }  // namespace shadow_agent
 PROTOBUF_NAMESPACE_OPEN
 template <>
@@ -83,6 +87,8 @@ template <>
 ::shadow_agent::RegisterDeviceResponse* Arena::CreateMaybeMessage<::shadow_agent::RegisterDeviceResponse>(Arena*);
 template <>
 ::shadow_agent::Response* Arena::CreateMaybeMessage<::shadow_agent::Response>(Arena*);
+template <>
+::shadow_agent::UpdateDeviceRequest* Arena::CreateMaybeMessage<::shadow_agent::UpdateDeviceRequest>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 
 namespace shadow_agent {
@@ -357,6 +363,271 @@ class DeviceInfo final :
   friend struct ::TableStruct_provision_2eproto;
 };// -------------------------------------------------------------------
 
+class UpdateDeviceRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:shadow_agent.UpdateDeviceRequest) */ {
+ public:
+  inline UpdateDeviceRequest() : UpdateDeviceRequest(nullptr) {}
+  ~UpdateDeviceRequest() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR UpdateDeviceRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  UpdateDeviceRequest(const UpdateDeviceRequest& from);
+  UpdateDeviceRequest(UpdateDeviceRequest&& from) noexcept
+    : UpdateDeviceRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline UpdateDeviceRequest& operator=(const UpdateDeviceRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline UpdateDeviceRequest& operator=(UpdateDeviceRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const UpdateDeviceRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const UpdateDeviceRequest* internal_default_instance() {
+    return reinterpret_cast<const UpdateDeviceRequest*>(
+               &_UpdateDeviceRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(UpdateDeviceRequest& a, UpdateDeviceRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(UpdateDeviceRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(UpdateDeviceRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  UpdateDeviceRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<UpdateDeviceRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const UpdateDeviceRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const UpdateDeviceRequest& from) {
+    UpdateDeviceRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(UpdateDeviceRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "shadow_agent.UpdateDeviceRequest";
+  }
+  protected:
+  explicit UpdateDeviceRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kHostnameFieldNumber = 2,
+    kTypeFieldNumber = 3,
+    kOsTypeFieldNumber = 4,
+    kUsernameFieldNumber = 5,
+    kCurrentTimeFieldNumber = 6,
+    kIdFieldNumber = 1,
+  };
+  // string hostname = 2;
+  void clear_hostname() ;
+  const std::string& hostname() const;
+
+
+
+
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_hostname(Arg_&& arg, Args_... args);
+  std::string* mutable_hostname();
+  PROTOBUF_NODISCARD std::string* release_hostname();
+  void set_allocated_hostname(std::string* ptr);
+
+  private:
+  const std::string& _internal_hostname() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_hostname(
+      const std::string& value);
+  std::string* _internal_mutable_hostname();
+
+  public:
+  // string type = 3;
+  void clear_type() ;
+  const std::string& type() const;
+
+
+
+
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_type(Arg_&& arg, Args_... args);
+  std::string* mutable_type();
+  PROTOBUF_NODISCARD std::string* release_type();
+  void set_allocated_type(std::string* ptr);
+
+  private:
+  const std::string& _internal_type() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_type(
+      const std::string& value);
+  std::string* _internal_mutable_type();
+
+  public:
+  // string os_type = 4;
+  void clear_os_type() ;
+  const std::string& os_type() const;
+
+
+
+
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_os_type(Arg_&& arg, Args_... args);
+  std::string* mutable_os_type();
+  PROTOBUF_NODISCARD std::string* release_os_type();
+  void set_allocated_os_type(std::string* ptr);
+
+  private:
+  const std::string& _internal_os_type() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_os_type(
+      const std::string& value);
+  std::string* _internal_mutable_os_type();
+
+  public:
+  // string username = 5;
+  void clear_username() ;
+  const std::string& username() const;
+
+
+
+
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_username(Arg_&& arg, Args_... args);
+  std::string* mutable_username();
+  PROTOBUF_NODISCARD std::string* release_username();
+  void set_allocated_username(std::string* ptr);
+
+  private:
+  const std::string& _internal_username() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_username(
+      const std::string& value);
+  std::string* _internal_mutable_username();
+
+  public:
+  // string current_time = 6;
+  void clear_current_time() ;
+  const std::string& current_time() const;
+
+
+
+
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_current_time(Arg_&& arg, Args_... args);
+  std::string* mutable_current_time();
+  PROTOBUF_NODISCARD std::string* release_current_time();
+  void set_allocated_current_time(std::string* ptr);
+
+  private:
+  const std::string& _internal_current_time() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_current_time(
+      const std::string& value);
+  std::string* _internal_mutable_current_time();
+
+  public:
+  // int32 id = 1;
+  void clear_id() ;
+  ::int32_t id() const;
+  void set_id(::int32_t value);
+
+  private:
+  ::int32_t _internal_id() const;
+  void _internal_set_id(::int32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:shadow_agent.UpdateDeviceRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr hostname_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr type_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr os_type_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr username_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr current_time_;
+    ::int32_t id_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_provision_2eproto;
+};// -------------------------------------------------------------------
+
 class DeviceId final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:shadow_agent.DeviceId) */ {
  public:
@@ -413,7 +684,7 @@ class DeviceId final :
                &_DeviceId_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    2;
 
   friend void swap(DeviceId& a, DeviceId& b) {
     a.Swap(&b);
@@ -485,29 +756,8 @@ class DeviceId final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kTokenFieldNumber = 2,
     kIdFieldNumber = 1,
   };
-  // string token = 2;
-  void clear_token() ;
-  const std::string& token() const;
-
-
-
-
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_token(Arg_&& arg, Args_... args);
-  std::string* mutable_token();
-  PROTOBUF_NODISCARD std::string* release_token();
-  void set_allocated_token(std::string* ptr);
-
-  private:
-  const std::string& _internal_token() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_token(
-      const std::string& value);
-  std::string* _internal_mutable_token();
-
-  public:
   // int32 id = 1;
   void clear_id() ;
   ::int32_t id() const;
@@ -526,7 +776,6 @@ class DeviceId final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr token_;
     ::int32_t id_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
@@ -590,7 +839,7 @@ class RegisterDeviceResponse final :
                &_RegisterDeviceResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    3;
 
   friend void swap(RegisterDeviceResponse& a, RegisterDeviceResponse& b) {
     a.Swap(&b);
@@ -663,7 +912,6 @@ class RegisterDeviceResponse final :
 
   enum : int {
     kMessageFieldNumber = 2,
-    kTokenFieldNumber = 3,
     kSuccessFieldNumber = 1,
   };
   // string message = 2;
@@ -686,26 +934,6 @@ class RegisterDeviceResponse final :
   std::string* _internal_mutable_message();
 
   public:
-  // string token = 3;
-  void clear_token() ;
-  const std::string& token() const;
-
-
-
-
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_token(Arg_&& arg, Args_... args);
-  std::string* mutable_token();
-  PROTOBUF_NODISCARD std::string* release_token();
-  void set_allocated_token(std::string* ptr);
-
-  private:
-  const std::string& _internal_token() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_token(
-      const std::string& value);
-  std::string* _internal_mutable_token();
-
-  public:
   // bool success = 1;
   void clear_success() ;
   bool success() const;
@@ -725,7 +953,6 @@ class RegisterDeviceResponse final :
   typedef void DestructorSkippable_;
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr token_;
     bool success_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
@@ -789,7 +1016,7 @@ class Response final :
                &_Response_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    4;
 
   friend void swap(Response& a, Response& b) {
     a.Swap(&b);
@@ -911,10 +1138,9 @@ class Response final :
 };// -------------------------------------------------------------------
 
 class ListDeviceRequest final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:shadow_agent.ListDeviceRequest) */ {
+    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:shadow_agent.ListDeviceRequest) */ {
  public:
   inline ListDeviceRequest() : ListDeviceRequest(nullptr) {}
-  ~ListDeviceRequest() override;
   template<typename = void>
   explicit PROTOBUF_CONSTEXPR ListDeviceRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
@@ -966,7 +1192,7 @@ class ListDeviceRequest final :
                &_ListDeviceRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    5;
 
   friend void swap(ListDeviceRequest& a, ListDeviceRequest& b) {
     a.Swap(&b);
@@ -995,29 +1221,15 @@ class ListDeviceRequest final :
   ListDeviceRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<ListDeviceRequest>(arena);
   }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const ListDeviceRequest& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom( const ListDeviceRequest& from) {
-    ListDeviceRequest::MergeImpl(*this, from);
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const ListDeviceRequest& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(*this, from);
   }
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const ListDeviceRequest& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(*this, from);
+  }
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  ::size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
-
-  private:
-  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(ListDeviceRequest* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
@@ -1037,29 +1249,6 @@ class ListDeviceRequest final :
 
   // accessors -------------------------------------------------------
 
-  enum : int {
-    kTokenFieldNumber = 1,
-  };
-  // string token = 1;
-  void clear_token() ;
-  const std::string& token() const;
-
-
-
-
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_token(Arg_&& arg, Args_... args);
-  std::string* mutable_token();
-  PROTOBUF_NODISCARD std::string* release_token();
-  void set_allocated_token(std::string* ptr);
-
-  private:
-  const std::string& _internal_token() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_token(
-      const std::string& value);
-  std::string* _internal_mutable_token();
-
-  public:
   // @@protoc_insertion_point(class_scope:shadow_agent.ListDeviceRequest)
  private:
   class _Internal;
@@ -1068,10 +1257,7 @@ class ListDeviceRequest final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr token_;
-    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
-  union { Impl_ _impl_; };
   friend struct ::TableStruct_provision_2eproto;
 };// -------------------------------------------------------------------
 
@@ -1131,7 +1317,7 @@ class DeviceList final :
                &_DeviceList_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    6;
 
   friend void swap(DeviceList& a, DeviceList& b) {
     a.Swap(&b);
@@ -1513,6 +1699,265 @@ inline void DeviceInfo::set_allocated_current_time(std::string* value) {
 
 // -------------------------------------------------------------------
 
+// UpdateDeviceRequest
+
+// int32 id = 1;
+inline void UpdateDeviceRequest::clear_id() {
+  _impl_.id_ = 0;
+}
+inline ::int32_t UpdateDeviceRequest::id() const {
+  // @@protoc_insertion_point(field_get:shadow_agent.UpdateDeviceRequest.id)
+  return _internal_id();
+}
+inline void UpdateDeviceRequest::set_id(::int32_t value) {
+  _internal_set_id(value);
+  // @@protoc_insertion_point(field_set:shadow_agent.UpdateDeviceRequest.id)
+}
+inline ::int32_t UpdateDeviceRequest::_internal_id() const {
+  return _impl_.id_;
+}
+inline void UpdateDeviceRequest::_internal_set_id(::int32_t value) {
+  ;
+  _impl_.id_ = value;
+}
+
+// string hostname = 2;
+inline void UpdateDeviceRequest::clear_hostname() {
+  _impl_.hostname_.ClearToEmpty();
+}
+inline const std::string& UpdateDeviceRequest::hostname() const {
+  // @@protoc_insertion_point(field_get:shadow_agent.UpdateDeviceRequest.hostname)
+  return _internal_hostname();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void UpdateDeviceRequest::set_hostname(Arg_&& arg,
+                                                     Args_... args) {
+  ;
+  _impl_.hostname_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:shadow_agent.UpdateDeviceRequest.hostname)
+}
+inline std::string* UpdateDeviceRequest::mutable_hostname() {
+  std::string* _s = _internal_mutable_hostname();
+  // @@protoc_insertion_point(field_mutable:shadow_agent.UpdateDeviceRequest.hostname)
+  return _s;
+}
+inline const std::string& UpdateDeviceRequest::_internal_hostname() const {
+  return _impl_.hostname_.Get();
+}
+inline void UpdateDeviceRequest::_internal_set_hostname(const std::string& value) {
+  ;
+
+
+  _impl_.hostname_.Set(value, GetArenaForAllocation());
+}
+inline std::string* UpdateDeviceRequest::_internal_mutable_hostname() {
+  ;
+  return _impl_.hostname_.Mutable( GetArenaForAllocation());
+}
+inline std::string* UpdateDeviceRequest::release_hostname() {
+  // @@protoc_insertion_point(field_release:shadow_agent.UpdateDeviceRequest.hostname)
+  return _impl_.hostname_.Release();
+}
+inline void UpdateDeviceRequest::set_allocated_hostname(std::string* value) {
+  _impl_.hostname_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.hostname_.IsDefault()) {
+          _impl_.hostname_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:shadow_agent.UpdateDeviceRequest.hostname)
+}
+
+// string type = 3;
+inline void UpdateDeviceRequest::clear_type() {
+  _impl_.type_.ClearToEmpty();
+}
+inline const std::string& UpdateDeviceRequest::type() const {
+  // @@protoc_insertion_point(field_get:shadow_agent.UpdateDeviceRequest.type)
+  return _internal_type();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void UpdateDeviceRequest::set_type(Arg_&& arg,
+                                                     Args_... args) {
+  ;
+  _impl_.type_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:shadow_agent.UpdateDeviceRequest.type)
+}
+inline std::string* UpdateDeviceRequest::mutable_type() {
+  std::string* _s = _internal_mutable_type();
+  // @@protoc_insertion_point(field_mutable:shadow_agent.UpdateDeviceRequest.type)
+  return _s;
+}
+inline const std::string& UpdateDeviceRequest::_internal_type() const {
+  return _impl_.type_.Get();
+}
+inline void UpdateDeviceRequest::_internal_set_type(const std::string& value) {
+  ;
+
+
+  _impl_.type_.Set(value, GetArenaForAllocation());
+}
+inline std::string* UpdateDeviceRequest::_internal_mutable_type() {
+  ;
+  return _impl_.type_.Mutable( GetArenaForAllocation());
+}
+inline std::string* UpdateDeviceRequest::release_type() {
+  // @@protoc_insertion_point(field_release:shadow_agent.UpdateDeviceRequest.type)
+  return _impl_.type_.Release();
+}
+inline void UpdateDeviceRequest::set_allocated_type(std::string* value) {
+  _impl_.type_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.type_.IsDefault()) {
+          _impl_.type_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:shadow_agent.UpdateDeviceRequest.type)
+}
+
+// string os_type = 4;
+inline void UpdateDeviceRequest::clear_os_type() {
+  _impl_.os_type_.ClearToEmpty();
+}
+inline const std::string& UpdateDeviceRequest::os_type() const {
+  // @@protoc_insertion_point(field_get:shadow_agent.UpdateDeviceRequest.os_type)
+  return _internal_os_type();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void UpdateDeviceRequest::set_os_type(Arg_&& arg,
+                                                     Args_... args) {
+  ;
+  _impl_.os_type_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:shadow_agent.UpdateDeviceRequest.os_type)
+}
+inline std::string* UpdateDeviceRequest::mutable_os_type() {
+  std::string* _s = _internal_mutable_os_type();
+  // @@protoc_insertion_point(field_mutable:shadow_agent.UpdateDeviceRequest.os_type)
+  return _s;
+}
+inline const std::string& UpdateDeviceRequest::_internal_os_type() const {
+  return _impl_.os_type_.Get();
+}
+inline void UpdateDeviceRequest::_internal_set_os_type(const std::string& value) {
+  ;
+
+
+  _impl_.os_type_.Set(value, GetArenaForAllocation());
+}
+inline std::string* UpdateDeviceRequest::_internal_mutable_os_type() {
+  ;
+  return _impl_.os_type_.Mutable( GetArenaForAllocation());
+}
+inline std::string* UpdateDeviceRequest::release_os_type() {
+  // @@protoc_insertion_point(field_release:shadow_agent.UpdateDeviceRequest.os_type)
+  return _impl_.os_type_.Release();
+}
+inline void UpdateDeviceRequest::set_allocated_os_type(std::string* value) {
+  _impl_.os_type_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.os_type_.IsDefault()) {
+          _impl_.os_type_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:shadow_agent.UpdateDeviceRequest.os_type)
+}
+
+// string username = 5;
+inline void UpdateDeviceRequest::clear_username() {
+  _impl_.username_.ClearToEmpty();
+}
+inline const std::string& UpdateDeviceRequest::username() const {
+  // @@protoc_insertion_point(field_get:shadow_agent.UpdateDeviceRequest.username)
+  return _internal_username();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void UpdateDeviceRequest::set_username(Arg_&& arg,
+                                                     Args_... args) {
+  ;
+  _impl_.username_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:shadow_agent.UpdateDeviceRequest.username)
+}
+inline std::string* UpdateDeviceRequest::mutable_username() {
+  std::string* _s = _internal_mutable_username();
+  // @@protoc_insertion_point(field_mutable:shadow_agent.UpdateDeviceRequest.username)
+  return _s;
+}
+inline const std::string& UpdateDeviceRequest::_internal_username() const {
+  return _impl_.username_.Get();
+}
+inline void UpdateDeviceRequest::_internal_set_username(const std::string& value) {
+  ;
+
+
+  _impl_.username_.Set(value, GetArenaForAllocation());
+}
+inline std::string* UpdateDeviceRequest::_internal_mutable_username() {
+  ;
+  return _impl_.username_.Mutable( GetArenaForAllocation());
+}
+inline std::string* UpdateDeviceRequest::release_username() {
+  // @@protoc_insertion_point(field_release:shadow_agent.UpdateDeviceRequest.username)
+  return _impl_.username_.Release();
+}
+inline void UpdateDeviceRequest::set_allocated_username(std::string* value) {
+  _impl_.username_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.username_.IsDefault()) {
+          _impl_.username_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:shadow_agent.UpdateDeviceRequest.username)
+}
+
+// string current_time = 6;
+inline void UpdateDeviceRequest::clear_current_time() {
+  _impl_.current_time_.ClearToEmpty();
+}
+inline const std::string& UpdateDeviceRequest::current_time() const {
+  // @@protoc_insertion_point(field_get:shadow_agent.UpdateDeviceRequest.current_time)
+  return _internal_current_time();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void UpdateDeviceRequest::set_current_time(Arg_&& arg,
+                                                     Args_... args) {
+  ;
+  _impl_.current_time_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:shadow_agent.UpdateDeviceRequest.current_time)
+}
+inline std::string* UpdateDeviceRequest::mutable_current_time() {
+  std::string* _s = _internal_mutable_current_time();
+  // @@protoc_insertion_point(field_mutable:shadow_agent.UpdateDeviceRequest.current_time)
+  return _s;
+}
+inline const std::string& UpdateDeviceRequest::_internal_current_time() const {
+  return _impl_.current_time_.Get();
+}
+inline void UpdateDeviceRequest::_internal_set_current_time(const std::string& value) {
+  ;
+
+
+  _impl_.current_time_.Set(value, GetArenaForAllocation());
+}
+inline std::string* UpdateDeviceRequest::_internal_mutable_current_time() {
+  ;
+  return _impl_.current_time_.Mutable( GetArenaForAllocation());
+}
+inline std::string* UpdateDeviceRequest::release_current_time() {
+  // @@protoc_insertion_point(field_release:shadow_agent.UpdateDeviceRequest.current_time)
+  return _impl_.current_time_.Release();
+}
+inline void UpdateDeviceRequest::set_allocated_current_time(std::string* value) {
+  _impl_.current_time_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.current_time_.IsDefault()) {
+          _impl_.current_time_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:shadow_agent.UpdateDeviceRequest.current_time)
+}
+
+// -------------------------------------------------------------------
+
 // DeviceId
 
 // int32 id = 1;
@@ -1533,53 +1978,6 @@ inline ::int32_t DeviceId::_internal_id() const {
 inline void DeviceId::_internal_set_id(::int32_t value) {
   ;
   _impl_.id_ = value;
-}
-
-// string token = 2;
-inline void DeviceId::clear_token() {
-  _impl_.token_.ClearToEmpty();
-}
-inline const std::string& DeviceId::token() const {
-  // @@protoc_insertion_point(field_get:shadow_agent.DeviceId.token)
-  return _internal_token();
-}
-template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void DeviceId::set_token(Arg_&& arg,
-                                                     Args_... args) {
-  ;
-  _impl_.token_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:shadow_agent.DeviceId.token)
-}
-inline std::string* DeviceId::mutable_token() {
-  std::string* _s = _internal_mutable_token();
-  // @@protoc_insertion_point(field_mutable:shadow_agent.DeviceId.token)
-  return _s;
-}
-inline const std::string& DeviceId::_internal_token() const {
-  return _impl_.token_.Get();
-}
-inline void DeviceId::_internal_set_token(const std::string& value) {
-  ;
-
-
-  _impl_.token_.Set(value, GetArenaForAllocation());
-}
-inline std::string* DeviceId::_internal_mutable_token() {
-  ;
-  return _impl_.token_.Mutable( GetArenaForAllocation());
-}
-inline std::string* DeviceId::release_token() {
-  // @@protoc_insertion_point(field_release:shadow_agent.DeviceId.token)
-  return _impl_.token_.Release();
-}
-inline void DeviceId::set_allocated_token(std::string* value) {
-  _impl_.token_.SetAllocated(value, GetArenaForAllocation());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        if (_impl_.token_.IsDefault()) {
-          _impl_.token_.Set("", GetArenaForAllocation());
-        }
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:shadow_agent.DeviceId.token)
 }
 
 // -------------------------------------------------------------------
@@ -1651,53 +2049,6 @@ inline void RegisterDeviceResponse::set_allocated_message(std::string* value) {
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:shadow_agent.RegisterDeviceResponse.message)
-}
-
-// string token = 3;
-inline void RegisterDeviceResponse::clear_token() {
-  _impl_.token_.ClearToEmpty();
-}
-inline const std::string& RegisterDeviceResponse::token() const {
-  // @@protoc_insertion_point(field_get:shadow_agent.RegisterDeviceResponse.token)
-  return _internal_token();
-}
-template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void RegisterDeviceResponse::set_token(Arg_&& arg,
-                                                     Args_... args) {
-  ;
-  _impl_.token_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:shadow_agent.RegisterDeviceResponse.token)
-}
-inline std::string* RegisterDeviceResponse::mutable_token() {
-  std::string* _s = _internal_mutable_token();
-  // @@protoc_insertion_point(field_mutable:shadow_agent.RegisterDeviceResponse.token)
-  return _s;
-}
-inline const std::string& RegisterDeviceResponse::_internal_token() const {
-  return _impl_.token_.Get();
-}
-inline void RegisterDeviceResponse::_internal_set_token(const std::string& value) {
-  ;
-
-
-  _impl_.token_.Set(value, GetArenaForAllocation());
-}
-inline std::string* RegisterDeviceResponse::_internal_mutable_token() {
-  ;
-  return _impl_.token_.Mutable( GetArenaForAllocation());
-}
-inline std::string* RegisterDeviceResponse::release_token() {
-  // @@protoc_insertion_point(field_release:shadow_agent.RegisterDeviceResponse.token)
-  return _impl_.token_.Release();
-}
-inline void RegisterDeviceResponse::set_allocated_token(std::string* value) {
-  _impl_.token_.SetAllocated(value, GetArenaForAllocation());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        if (_impl_.token_.IsDefault()) {
-          _impl_.token_.Set("", GetArenaForAllocation());
-        }
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:shadow_agent.RegisterDeviceResponse.token)
 }
 
 // -------------------------------------------------------------------
@@ -1774,53 +2125,6 @@ inline void Response::set_allocated_message(std::string* value) {
 // -------------------------------------------------------------------
 
 // ListDeviceRequest
-
-// string token = 1;
-inline void ListDeviceRequest::clear_token() {
-  _impl_.token_.ClearToEmpty();
-}
-inline const std::string& ListDeviceRequest::token() const {
-  // @@protoc_insertion_point(field_get:shadow_agent.ListDeviceRequest.token)
-  return _internal_token();
-}
-template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void ListDeviceRequest::set_token(Arg_&& arg,
-                                                     Args_... args) {
-  ;
-  _impl_.token_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:shadow_agent.ListDeviceRequest.token)
-}
-inline std::string* ListDeviceRequest::mutable_token() {
-  std::string* _s = _internal_mutable_token();
-  // @@protoc_insertion_point(field_mutable:shadow_agent.ListDeviceRequest.token)
-  return _s;
-}
-inline const std::string& ListDeviceRequest::_internal_token() const {
-  return _impl_.token_.Get();
-}
-inline void ListDeviceRequest::_internal_set_token(const std::string& value) {
-  ;
-
-
-  _impl_.token_.Set(value, GetArenaForAllocation());
-}
-inline std::string* ListDeviceRequest::_internal_mutable_token() {
-  ;
-  return _impl_.token_.Mutable( GetArenaForAllocation());
-}
-inline std::string* ListDeviceRequest::release_token() {
-  // @@protoc_insertion_point(field_release:shadow_agent.ListDeviceRequest.token)
-  return _impl_.token_.Release();
-}
-inline void ListDeviceRequest::set_allocated_token(std::string* value) {
-  _impl_.token_.SetAllocated(value, GetArenaForAllocation());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        if (_impl_.token_.IsDefault()) {
-          _impl_.token_.Set("", GetArenaForAllocation());
-        }
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:shadow_agent.ListDeviceRequest.token)
-}
 
 // -------------------------------------------------------------------
 

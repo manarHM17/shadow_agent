@@ -22,7 +22,6 @@ std::string LoadFile(const std::string& filepath) {
 class ProvisionClient {
 private:
     unique_ptr<ProvisionService::Stub> stub_;
-    string jwt_token_; // Ajouter un membre pour stocker le token JWT
 
 public:
     ProvisionClient(shared_ptr<Channel> channel)
@@ -52,8 +51,7 @@ public:
         if (status.ok()) {
             cout << "Response: " << response.message() << endl;
             if (response.success()) {
-                jwt_token_ = response.token(); // Stocker le token JWT
-                cout << "Token received: " << jwt_token_ << endl;
+                cout << "Device registered successfully!" << endl;
             }
             return response.success();
         } else {
@@ -70,7 +68,6 @@ public:
 
         DeviceId request;
         request.set_id(id);
-        request.set_token(jwt_token_); // Ajouter le token dans la requête
 
         Response response;
         ClientContext context;
@@ -102,13 +99,12 @@ public:
         cout << "Enter new username: ";
         getline(cin, username);
 
-        DeviceInfo request;
+        UpdateDeviceRequest request; // Utiliser UpdateDeviceRequest au lieu de DeviceInfo
         request.set_id(id);
         request.set_hostname(hostname);
         request.set_type(type);
         request.set_os_type(os_type);
         request.set_username(username);
-        request.set_token(jwt_token_); // Ajouter le token dans la requête
 
         Response response;
         ClientContext context;
@@ -125,8 +121,6 @@ public:
 
     bool ListDevices() {
         ListDeviceRequest request;
-        request.set_token(jwt_token_); // Ajouter le token dans la requête
-
         DeviceList response;
         ClientContext context;
 
@@ -157,8 +151,6 @@ public:
 
         DeviceId request;
         request.set_id(id);
-        request.set_token(jwt_token_); // Ajouter le token dans la requête
-
         DeviceInfo response;
         ClientContext context;
 

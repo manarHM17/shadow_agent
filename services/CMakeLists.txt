@@ -26,11 +26,7 @@ include_directories(/usr/include/mysql)
 #openSSL puisque jwt depend d'elle
 find_package(OpenSSL REQUIRED)
 
-# jwt-cpp
-add_library(jwt-cpp INTERFACE) # jwt-cpp est une bibliothèque d'interface (header-only)
-target_include_directories(jwt-cpp INTERFACE /usr/local/include) # Inclure jwt-cpp
-#puisque jwt necessite l utilisation de json file on doit inclure picojson
-target_include_directories(jwt-cpp INTERFACE /usr/local/include)
+
 # Proto file
 set(PROTO_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../proto")
 set(PROTO_FILE "${PROTO_PATH}/provision.proto")
@@ -73,7 +69,6 @@ target_link_libraries(provision_service
     protobuf::libprotobuf
     ${MYSQL_LIB}
     pthread
-    jwt-cpp
     OpenSSL::SSL
     OpenSSL::Crypto
 )

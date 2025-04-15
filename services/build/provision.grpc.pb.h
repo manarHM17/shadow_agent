@@ -49,11 +49,11 @@ class ProvisionService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::shadow_agent::Response>> PrepareAsyncDeleteDevice(::grpc::ClientContext* context, const ::shadow_agent::DeviceId& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::shadow_agent::Response>>(PrepareAsyncDeleteDeviceRaw(context, request, cq));
     }
-    virtual ::grpc::Status UpdateDevice(::grpc::ClientContext* context, const ::shadow_agent::DeviceInfo& request, ::shadow_agent::Response* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::shadow_agent::Response>> AsyncUpdateDevice(::grpc::ClientContext* context, const ::shadow_agent::DeviceInfo& request, ::grpc::CompletionQueue* cq) {
+    virtual ::grpc::Status UpdateDevice(::grpc::ClientContext* context, const ::shadow_agent::UpdateDeviceRequest& request, ::shadow_agent::Response* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::shadow_agent::Response>> AsyncUpdateDevice(::grpc::ClientContext* context, const ::shadow_agent::UpdateDeviceRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::shadow_agent::Response>>(AsyncUpdateDeviceRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::shadow_agent::Response>> PrepareAsyncUpdateDevice(::grpc::ClientContext* context, const ::shadow_agent::DeviceInfo& request, ::grpc::CompletionQueue* cq) {
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::shadow_agent::Response>> PrepareAsyncUpdateDevice(::grpc::ClientContext* context, const ::shadow_agent::UpdateDeviceRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::shadow_agent::Response>>(PrepareAsyncUpdateDeviceRaw(context, request, cq));
     }
     virtual ::grpc::Status ListDevices(::grpc::ClientContext* context, const ::shadow_agent::ListDeviceRequest& request, ::shadow_agent::DeviceList* response) = 0;
@@ -77,8 +77,8 @@ class ProvisionService final {
       virtual void RegisterDevice(::grpc::ClientContext* context, const ::shadow_agent::DeviceInfo* request, ::shadow_agent::RegisterDeviceResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void DeleteDevice(::grpc::ClientContext* context, const ::shadow_agent::DeviceId* request, ::shadow_agent::Response* response, std::function<void(::grpc::Status)>) = 0;
       virtual void DeleteDevice(::grpc::ClientContext* context, const ::shadow_agent::DeviceId* request, ::shadow_agent::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      virtual void UpdateDevice(::grpc::ClientContext* context, const ::shadow_agent::DeviceInfo* request, ::shadow_agent::Response* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void UpdateDevice(::grpc::ClientContext* context, const ::shadow_agent::DeviceInfo* request, ::shadow_agent::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void UpdateDevice(::grpc::ClientContext* context, const ::shadow_agent::UpdateDeviceRequest* request, ::shadow_agent::Response* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void UpdateDevice(::grpc::ClientContext* context, const ::shadow_agent::UpdateDeviceRequest* request, ::shadow_agent::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void ListDevices(::grpc::ClientContext* context, const ::shadow_agent::ListDeviceRequest* request, ::shadow_agent::DeviceList* response, std::function<void(::grpc::Status)>) = 0;
       virtual void ListDevices(::grpc::ClientContext* context, const ::shadow_agent::ListDeviceRequest* request, ::shadow_agent::DeviceList* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void GetDevice(::grpc::ClientContext* context, const ::shadow_agent::DeviceId* request, ::shadow_agent::DeviceInfo* response, std::function<void(::grpc::Status)>) = 0;
@@ -92,8 +92,8 @@ class ProvisionService final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::shadow_agent::RegisterDeviceResponse>* PrepareAsyncRegisterDeviceRaw(::grpc::ClientContext* context, const ::shadow_agent::DeviceInfo& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::shadow_agent::Response>* AsyncDeleteDeviceRaw(::grpc::ClientContext* context, const ::shadow_agent::DeviceId& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::shadow_agent::Response>* PrepareAsyncDeleteDeviceRaw(::grpc::ClientContext* context, const ::shadow_agent::DeviceId& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::shadow_agent::Response>* AsyncUpdateDeviceRaw(::grpc::ClientContext* context, const ::shadow_agent::DeviceInfo& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::shadow_agent::Response>* PrepareAsyncUpdateDeviceRaw(::grpc::ClientContext* context, const ::shadow_agent::DeviceInfo& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::shadow_agent::Response>* AsyncUpdateDeviceRaw(::grpc::ClientContext* context, const ::shadow_agent::UpdateDeviceRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::shadow_agent::Response>* PrepareAsyncUpdateDeviceRaw(::grpc::ClientContext* context, const ::shadow_agent::UpdateDeviceRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::shadow_agent::DeviceList>* AsyncListDevicesRaw(::grpc::ClientContext* context, const ::shadow_agent::ListDeviceRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::shadow_agent::DeviceList>* PrepareAsyncListDevicesRaw(::grpc::ClientContext* context, const ::shadow_agent::ListDeviceRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::shadow_agent::DeviceInfo>* AsyncGetDeviceRaw(::grpc::ClientContext* context, const ::shadow_agent::DeviceId& request, ::grpc::CompletionQueue* cq) = 0;
@@ -116,11 +116,11 @@ class ProvisionService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::shadow_agent::Response>> PrepareAsyncDeleteDevice(::grpc::ClientContext* context, const ::shadow_agent::DeviceId& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::shadow_agent::Response>>(PrepareAsyncDeleteDeviceRaw(context, request, cq));
     }
-    ::grpc::Status UpdateDevice(::grpc::ClientContext* context, const ::shadow_agent::DeviceInfo& request, ::shadow_agent::Response* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::shadow_agent::Response>> AsyncUpdateDevice(::grpc::ClientContext* context, const ::shadow_agent::DeviceInfo& request, ::grpc::CompletionQueue* cq) {
+    ::grpc::Status UpdateDevice(::grpc::ClientContext* context, const ::shadow_agent::UpdateDeviceRequest& request, ::shadow_agent::Response* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::shadow_agent::Response>> AsyncUpdateDevice(::grpc::ClientContext* context, const ::shadow_agent::UpdateDeviceRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::shadow_agent::Response>>(AsyncUpdateDeviceRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::shadow_agent::Response>> PrepareAsyncUpdateDevice(::grpc::ClientContext* context, const ::shadow_agent::DeviceInfo& request, ::grpc::CompletionQueue* cq) {
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::shadow_agent::Response>> PrepareAsyncUpdateDevice(::grpc::ClientContext* context, const ::shadow_agent::UpdateDeviceRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::shadow_agent::Response>>(PrepareAsyncUpdateDeviceRaw(context, request, cq));
     }
     ::grpc::Status ListDevices(::grpc::ClientContext* context, const ::shadow_agent::ListDeviceRequest& request, ::shadow_agent::DeviceList* response) override;
@@ -144,8 +144,8 @@ class ProvisionService final {
       void RegisterDevice(::grpc::ClientContext* context, const ::shadow_agent::DeviceInfo* request, ::shadow_agent::RegisterDeviceResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void DeleteDevice(::grpc::ClientContext* context, const ::shadow_agent::DeviceId* request, ::shadow_agent::Response* response, std::function<void(::grpc::Status)>) override;
       void DeleteDevice(::grpc::ClientContext* context, const ::shadow_agent::DeviceId* request, ::shadow_agent::Response* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void UpdateDevice(::grpc::ClientContext* context, const ::shadow_agent::DeviceInfo* request, ::shadow_agent::Response* response, std::function<void(::grpc::Status)>) override;
-      void UpdateDevice(::grpc::ClientContext* context, const ::shadow_agent::DeviceInfo* request, ::shadow_agent::Response* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void UpdateDevice(::grpc::ClientContext* context, const ::shadow_agent::UpdateDeviceRequest* request, ::shadow_agent::Response* response, std::function<void(::grpc::Status)>) override;
+      void UpdateDevice(::grpc::ClientContext* context, const ::shadow_agent::UpdateDeviceRequest* request, ::shadow_agent::Response* response, ::grpc::ClientUnaryReactor* reactor) override;
       void ListDevices(::grpc::ClientContext* context, const ::shadow_agent::ListDeviceRequest* request, ::shadow_agent::DeviceList* response, std::function<void(::grpc::Status)>) override;
       void ListDevices(::grpc::ClientContext* context, const ::shadow_agent::ListDeviceRequest* request, ::shadow_agent::DeviceList* response, ::grpc::ClientUnaryReactor* reactor) override;
       void GetDevice(::grpc::ClientContext* context, const ::shadow_agent::DeviceId* request, ::shadow_agent::DeviceInfo* response, std::function<void(::grpc::Status)>) override;
@@ -165,8 +165,8 @@ class ProvisionService final {
     ::grpc::ClientAsyncResponseReader< ::shadow_agent::RegisterDeviceResponse>* PrepareAsyncRegisterDeviceRaw(::grpc::ClientContext* context, const ::shadow_agent::DeviceInfo& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::shadow_agent::Response>* AsyncDeleteDeviceRaw(::grpc::ClientContext* context, const ::shadow_agent::DeviceId& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::shadow_agent::Response>* PrepareAsyncDeleteDeviceRaw(::grpc::ClientContext* context, const ::shadow_agent::DeviceId& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::shadow_agent::Response>* AsyncUpdateDeviceRaw(::grpc::ClientContext* context, const ::shadow_agent::DeviceInfo& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::shadow_agent::Response>* PrepareAsyncUpdateDeviceRaw(::grpc::ClientContext* context, const ::shadow_agent::DeviceInfo& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::shadow_agent::Response>* AsyncUpdateDeviceRaw(::grpc::ClientContext* context, const ::shadow_agent::UpdateDeviceRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::shadow_agent::Response>* PrepareAsyncUpdateDeviceRaw(::grpc::ClientContext* context, const ::shadow_agent::UpdateDeviceRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::shadow_agent::DeviceList>* AsyncListDevicesRaw(::grpc::ClientContext* context, const ::shadow_agent::ListDeviceRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::shadow_agent::DeviceList>* PrepareAsyncListDevicesRaw(::grpc::ClientContext* context, const ::shadow_agent::ListDeviceRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::shadow_agent::DeviceInfo>* AsyncGetDeviceRaw(::grpc::ClientContext* context, const ::shadow_agent::DeviceId& request, ::grpc::CompletionQueue* cq) override;
@@ -185,7 +185,7 @@ class ProvisionService final {
     virtual ~Service();
     virtual ::grpc::Status RegisterDevice(::grpc::ServerContext* context, const ::shadow_agent::DeviceInfo* request, ::shadow_agent::RegisterDeviceResponse* response);
     virtual ::grpc::Status DeleteDevice(::grpc::ServerContext* context, const ::shadow_agent::DeviceId* request, ::shadow_agent::Response* response);
-    virtual ::grpc::Status UpdateDevice(::grpc::ServerContext* context, const ::shadow_agent::DeviceInfo* request, ::shadow_agent::Response* response);
+    virtual ::grpc::Status UpdateDevice(::grpc::ServerContext* context, const ::shadow_agent::UpdateDeviceRequest* request, ::shadow_agent::Response* response);
     virtual ::grpc::Status ListDevices(::grpc::ServerContext* context, const ::shadow_agent::ListDeviceRequest* request, ::shadow_agent::DeviceList* response);
     virtual ::grpc::Status GetDevice(::grpc::ServerContext* context, const ::shadow_agent::DeviceId* request, ::shadow_agent::DeviceInfo* response);
   };
@@ -241,11 +241,11 @@ class ProvisionService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status UpdateDevice(::grpc::ServerContext* /*context*/, const ::shadow_agent::DeviceInfo* /*request*/, ::shadow_agent::Response* /*response*/) override {
+    ::grpc::Status UpdateDevice(::grpc::ServerContext* /*context*/, const ::shadow_agent::UpdateDeviceRequest* /*request*/, ::shadow_agent::Response* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestUpdateDevice(::grpc::ServerContext* context, ::shadow_agent::DeviceInfo* request, ::grpc::ServerAsyncResponseWriter< ::shadow_agent::Response>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestUpdateDevice(::grpc::ServerContext* context, ::shadow_agent::UpdateDeviceRequest* request, ::grpc::ServerAsyncResponseWriter< ::shadow_agent::Response>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -351,25 +351,25 @@ class ProvisionService final {
    public:
     WithCallbackMethod_UpdateDevice() {
       ::grpc::Service::MarkMethodCallback(2,
-          new ::grpc::internal::CallbackUnaryHandler< ::shadow_agent::DeviceInfo, ::shadow_agent::Response>(
+          new ::grpc::internal::CallbackUnaryHandler< ::shadow_agent::UpdateDeviceRequest, ::shadow_agent::Response>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::shadow_agent::DeviceInfo* request, ::shadow_agent::Response* response) { return this->UpdateDevice(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::shadow_agent::UpdateDeviceRequest* request, ::shadow_agent::Response* response) { return this->UpdateDevice(context, request, response); }));}
     void SetMessageAllocatorFor_UpdateDevice(
-        ::grpc::MessageAllocator< ::shadow_agent::DeviceInfo, ::shadow_agent::Response>* allocator) {
+        ::grpc::MessageAllocator< ::shadow_agent::UpdateDeviceRequest, ::shadow_agent::Response>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::shadow_agent::DeviceInfo, ::shadow_agent::Response>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::shadow_agent::UpdateDeviceRequest, ::shadow_agent::Response>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~WithCallbackMethod_UpdateDevice() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status UpdateDevice(::grpc::ServerContext* /*context*/, const ::shadow_agent::DeviceInfo* /*request*/, ::shadow_agent::Response* /*response*/) override {
+    ::grpc::Status UpdateDevice(::grpc::ServerContext* /*context*/, const ::shadow_agent::UpdateDeviceRequest* /*request*/, ::shadow_agent::Response* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* UpdateDevice(
-      ::grpc::CallbackServerContext* /*context*/, const ::shadow_agent::DeviceInfo* /*request*/, ::shadow_agent::Response* /*response*/)  { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::shadow_agent::UpdateDeviceRequest* /*request*/, ::shadow_agent::Response* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
   class WithCallbackMethod_ListDevices : public BaseClass {
@@ -473,7 +473,7 @@ class ProvisionService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status UpdateDevice(::grpc::ServerContext* /*context*/, const ::shadow_agent::DeviceInfo* /*request*/, ::shadow_agent::Response* /*response*/) override {
+    ::grpc::Status UpdateDevice(::grpc::ServerContext* /*context*/, const ::shadow_agent::UpdateDeviceRequest* /*request*/, ::shadow_agent::Response* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -564,7 +564,7 @@ class ProvisionService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status UpdateDevice(::grpc::ServerContext* /*context*/, const ::shadow_agent::DeviceInfo* /*request*/, ::shadow_agent::Response* /*response*/) override {
+    ::grpc::Status UpdateDevice(::grpc::ServerContext* /*context*/, const ::shadow_agent::UpdateDeviceRequest* /*request*/, ::shadow_agent::Response* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -671,7 +671,7 @@ class ProvisionService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status UpdateDevice(::grpc::ServerContext* /*context*/, const ::shadow_agent::DeviceInfo* /*request*/, ::shadow_agent::Response* /*response*/) override {
+    ::grpc::Status UpdateDevice(::grpc::ServerContext* /*context*/, const ::shadow_agent::UpdateDeviceRequest* /*request*/, ::shadow_agent::Response* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -784,10 +784,10 @@ class ProvisionService final {
     WithStreamedUnaryMethod_UpdateDevice() {
       ::grpc::Service::MarkMethodStreamed(2,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::shadow_agent::DeviceInfo, ::shadow_agent::Response>(
+          ::shadow_agent::UpdateDeviceRequest, ::shadow_agent::Response>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::shadow_agent::DeviceInfo, ::shadow_agent::Response>* streamer) {
+                     ::shadow_agent::UpdateDeviceRequest, ::shadow_agent::Response>* streamer) {
                        return this->StreamedUpdateDevice(context,
                          streamer);
                   }));
@@ -796,12 +796,12 @@ class ProvisionService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status UpdateDevice(::grpc::ServerContext* /*context*/, const ::shadow_agent::DeviceInfo* /*request*/, ::shadow_agent::Response* /*response*/) override {
+    ::grpc::Status UpdateDevice(::grpc::ServerContext* /*context*/, const ::shadow_agent::UpdateDeviceRequest* /*request*/, ::shadow_agent::Response* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedUpdateDevice(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::shadow_agent::DeviceInfo,::shadow_agent::Response>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedUpdateDevice(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::shadow_agent::UpdateDeviceRequest,::shadow_agent::Response>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_ListDevices : public BaseClass {

@@ -27,7 +27,7 @@ public:
                         shadow_agent::Response* response) override;
 
     Status UpdateDevice(ServerContext* context, 
-                        const shadow_agent::DeviceInfo* request, 
+                        const shadow_agent::UpdateDeviceRequest* request, 
                         shadow_agent::Response* response) override;
 
     Status ListDevices(ServerContext* context, 

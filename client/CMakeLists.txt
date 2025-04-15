@@ -19,9 +19,6 @@ message(STATUS "Using gRPC ${gRPC_VERSION}")
 set(_GRPC_GRPCPP gRPC::grpc++)
 set(_GRPC_CPP_PLUGIN_EXECUTABLE $<TARGET_FILE:gRPC::grpc_cpp_plugin>)
 
-# jwt-cpp
-add_library(jwt-cpp INTERFACE) # une bibliothèque d'interface est une bib qui contient que un header
-target_include_directories(jwt-cpp INTERFACE /usr/local/include)
 
 # Proto file
 set(PROTO_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../proto")
@@ -51,7 +48,7 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 # Executable
 add_executable(provision_test
     src/provision_test.cpp
-    src/provision_test_insecure.cpp
+    #src/provision_test_insecure.cpp
     ${hw_proto_srcs}
     ${hw_grpc_srcs}
     ${hw_proto_hdrs}     # Ajout des headers protobuf
@@ -62,5 +59,4 @@ add_executable(provision_test
 target_link_libraries(provision_test
     ${_GRPC_GRPCPP}
     protobuf::libprotobuf
-    jwt-cpp
 )
