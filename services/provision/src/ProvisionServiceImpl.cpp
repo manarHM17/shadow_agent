@@ -2,7 +2,7 @@
 #include <memory>
 #include <string>
 #include <grpcpp/grpcpp.h>
-#include "/home/manar/IoT_shadow/services/db/db_handler.hpp"
+#include "../../db/db_handler.h"
 #include "provision.grpc.pb.h"
 #include "../include/ProvisionServiceImpl.h"
 #include <ctime>
@@ -13,9 +13,10 @@ using namespace grpc;
 using namespace shadow_agent;
 
 
-
+//constructeur de la classe qui initialise le pointeur db Cela permet de gérer automatiquement la connexion à la base de données
 ProvisionServiceImpl::ProvisionServiceImpl() : db(make_unique<DBHandler>()) {}
 
+// Fonction privee pour obtenir l'heure actuelle au format "YYYY-MM-DD HH:MM:SS"
 string ProvisionServiceImpl::getCurrentTimestamp() {
     time_t now = time(nullptr);
     char buf[100];
@@ -24,7 +25,7 @@ string ProvisionServiceImpl::getCurrentTimestamp() {
 }
 
 Status ProvisionServiceImpl::RegisterDevice(ServerContext* context, const DeviceInfo* request, RegisterDeviceResponse* response) {
-    string currentTime = getCurrentTimestamp();  // Obtenir l'heure actuelle
+    string currentTime = getCurrentTimestamp();  
     string query = "INSERT INTO devices (hostname, type, os_type, username, `current_time`) VALUES ('" +
                    request->hostname() + "', '" + request->type() + "', '" +
                    request->os_type() + "', '" + request->username() + "', '" +
@@ -43,7 +44,6 @@ Status ProvisionServiceImpl::RegisterDevice(ServerContext* context, const Device
 }
 
 Status ProvisionServiceImpl::DeleteDevice(ServerContext* context, const DeviceId* request, Response* response) {
-    std::string device_id;
 
     string query = "DELETE FROM devices WHERE id = " + to_string(request->id());
     if (!db->executeQuery(query)) {
@@ -92,7 +92,6 @@ Status ProvisionServiceImpl::UpdateDevice(ServerContext* context, const UpdateDe
 }
 
 Status ProvisionServiceImpl::ListDevices(ServerContext* context, const ListDeviceRequest* request, DeviceList* response) {
-    // Vérifier le token
 
     string query = "SELECT id, hostname, type, os_type, username, `current_time` FROM devices";
     MYSQL_RES* result = db->executeSelect(query);

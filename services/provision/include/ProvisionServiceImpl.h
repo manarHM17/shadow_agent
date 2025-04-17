@@ -3,7 +3,7 @@
 #include <memory>
 #include <string>
 #include <grpcpp/grpcpp.h>
-#include "/home/manar/IoT_shadow/services/db/db_handler.hpp"
+#include "../../db/db_handler.h"
 #include "provision.grpc.pb.h"
 
 using namespace std;

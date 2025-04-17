@@ -1,19 +1,24 @@
 IoT_shadow/
 ├── proto/
-│   └── provision.proto
+│   └── provision.proto (shared between client and server)
 ├── services/
-│   └── provision/
-│       ├── CMakeLists.txt
-│       ├── Dockerfile 
-│       ├── src/
-│       │   └── main.cpp
-│       └── include/
-│           └── db_handler.hpp
-│   └── monitoring/
-│       ├── CMakeLists.txt
-│       ├── Dockerfile
-│       ├── src/
-│       │   └── main.cpp
-│       └── include/
-│           └── db_handler.hpp
-└── client/
+│   ├── CMakeLists.txt
+│   ├── main.cpp (run server services)
+│   ├── provision/
+│   │   ├── include/
+│   │   │   └── ProvisionServiceImpl.h
+│   │   ├── src/
+│   │   │   └── ProvisionServiceImpl.cpp
+│   │   ├── proto/
+│   │   │   └── provision.proto
+│   ├── db/
+│   │   └── db_handler.hpp
+│   ├── server.crt
+│   ├── server.key
+├── client/
+│   ├── CMakeLists.txt
+│   ├── src/
+│   │   ├── provision_test.cpp
+│   │   └── provision_test_insecure.cpp ( commented out in CMakeLists.txt)
+
+

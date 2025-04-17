@@ -11,12 +11,12 @@ using namespace grpc;
 using namespace shadow_agent;
 
 
-std::string LoadFile(const std::string& filepath) {
-    std::ifstream file(filepath, std::ios::in | std::ios::binary);
+string LoadFile(const string& filepath) {
+    ifstream file(filepath, ios::in | ios::binary);
     if (!file) {
-        throw std::runtime_error("Failed to open file: " + filepath);
+        throw runtime_error("Failed to open file: " + filepath);
     }
-    return std::string((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+    return string((istreambuf_iterator<char>(file)), istreambuf_iterator<char>());
 }
 
 class ProvisionClient {
@@ -99,7 +99,7 @@ public:
         cout << "Enter new username: ";
         getline(cin, username);
 
-        UpdateDeviceRequest request; // Utiliser UpdateDeviceRequest au lieu de DeviceInfo
+        UpdateDeviceRequest request; 
         request.set_id(id);
         request.set_hostname(hostname);
         request.set_type(type);

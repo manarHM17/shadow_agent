@@ -3,7 +3,7 @@ syntax = "proto3";
 package shadow_agent;
 
 message DeviceInfo {
-    int32 id = 1; // ID unique de l'appareil
+    int32 id = 1; // ID unique de l'appareil auto incremente
     string hostname = 2;
     string type = 3;
     string os_type = 4;

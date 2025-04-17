@@ -1,3 +1,0 @@
-/home/manar/IoT_shadow/build/CMakeFiles/provision_service.dir
-/home/manar/IoT_shadow/build/CMakeFiles/edit_cache.dir
-/home/manar/IoT_shadow/build/CMakeFiles/rebuild_cache.dir

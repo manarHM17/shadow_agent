@@ -46,9 +46,10 @@ public:
         const char* create_table_query = 
             "CREATE TABLE IF NOT EXISTS devices ("
             "id BIGINT AUTO_INCREMENT PRIMARY KEY,"
-            "name VARCHAR(255) NOT NULL,"
+            "hostname VARCHAR(255) NOT NULL,"
             "type VARCHAR(255) NOT NULL,"
-            "auth_key VARCHAR(255) NOT NULL,"
+            "os_type VARCHAR(255) NOT NULL,"
+            "username VARCHAR(255) NOT NULL,"
             "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
             ") ENGINE=InnoDB";
 
