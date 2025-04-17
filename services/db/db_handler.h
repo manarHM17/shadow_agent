@@ -42,8 +42,8 @@ public:
             throw std::runtime_error("Failed to select database: " + error);
         }
 
-        // Création de la table avec vérification détaillée
-        const char* create_table_query = 
+        // Création de la table `devices`
+        const char* create_devices_table_query = 
             "CREATE TABLE IF NOT EXISTS devices ("
             "id BIGINT AUTO_INCREMENT PRIMARY KEY,"
             "hostname VARCHAR(255) NOT NULL,"
@@ -53,14 +53,38 @@ public:
             "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
             ") ENGINE=InnoDB";
 
-        if (mysql_query(conn, create_table_query)) {
+        if (mysql_query(conn, create_devices_table_query)) {
             std::string error = mysql_error(conn);
             mysql_close(conn);
-            throw std::runtime_error("Failed to create table: " + error);
+            throw std::runtime_error("Failed to create devices table: " + error);
         }
 
-        // Vérifier que la table existe
-        if (mysql_query(conn, "DESCRIBE devices")) {
+        // Création de la table `monitoring`
+        const char* create_monitoring_table_query = 
+            "CREATE TABLE IF NOT EXISTS monitoring ("
+            "id BIGINT AUTO_INCREMENT PRIMARY KEY,"
+            "device_id VARCHAR(255) NOT NULL,"
+            "timestamp BIGINT NOT NULL,"
+            "cpu_usage FLOAT NOT NULL,"
+            "memory_total_mb INT NOT NULL,"
+            "memory_used_mb INT NOT NULL,"
+            "disk_usage_root VARCHAR(10) NOT NULL,"
+            "uptime VARCHAR(255) NOT NULL,"
+            "usb_devices TEXT NOT NULL,"
+            "ip_address VARCHAR(45) NOT NULL,"
+            "network_status VARCHAR(20) NOT NULL,"
+            "services_status JSON NOT NULL,"
+            "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
+            ") ENGINE=InnoDB";
+
+        if (mysql_query(conn, create_monitoring_table_query)) {
+            std::string error = mysql_error(conn);
+            mysql_close(conn);
+            throw std::runtime_error("Failed to create monitoring table: " + error);
+        }
+
+        // Vérifier que les tables existent
+        if (mysql_query(conn, "DESCRIBE devices") || mysql_query(conn, "DESCRIBE monitoring")) {
             std::string error = mysql_error(conn);
             mysql_close(conn);
             throw std::runtime_error("Table verification failed: " + error);
@@ -101,6 +125,20 @@ public:
 
     std::string getLastError() {
         return mysql_error(conn);
+    }
+
+    // Méthode pour insérer des données dans la table `monitoring`
+    bool insertMonitoringData(const std::string& device_id, long timestamp, float cpu_usage, int memory_total_mb,
+                              int memory_used_mb, const std::string& disk_usage_root, const std::string& uptime,
+                              const std::string& usb_devices, const std::string& ip_address,
+                              const std::string& network_status, const std::string& services_status_json) {
+        std::string query = "INSERT INTO monitoring (device_id, timestamp, cpu_usage, memory_total_mb, memory_used_mb, "
+                            "disk_usage_root, uptime, usb_devices, ip_address, network_status, services_status) VALUES ('" +
+                            device_id + "', " + std::to_string(timestamp) + ", " + std::to_string(cpu_usage) + ", " +
+                            std::to_string(memory_total_mb) + ", " + std::to_string(memory_used_mb) + ", '" +
+                            disk_usage_root + "', '" + uptime + "', '" + usb_devices + "', '" + ip_address + "', '" +
+                            network_status + "', '" + services_status_json + "')";
+        return executeQuery(query);
     }
 
 private:

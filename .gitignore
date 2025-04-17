@@ -1,0 +1,4 @@
+# Ignorer les répertoires build
+client/build/
+client insecure/build/
+services/build/
