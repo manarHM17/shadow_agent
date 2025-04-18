@@ -129,6 +129,30 @@ provision_service/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/build
 .PHONY : provision_service/fast
 
+jwt-handler/jwt-handler.o: jwt-handler/jwt-handler.cpp.o
+.PHONY : jwt-handler/jwt-handler.o
+
+# target to build an object file
+jwt-handler/jwt-handler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/jwt-handler/jwt-handler.cpp.o
+.PHONY : jwt-handler/jwt-handler.cpp.o
+
+jwt-handler/jwt-handler.i: jwt-handler/jwt-handler.cpp.i
+.PHONY : jwt-handler/jwt-handler.i
+
+# target to preprocess a source file
+jwt-handler/jwt-handler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/jwt-handler/jwt-handler.cpp.i
+.PHONY : jwt-handler/jwt-handler.cpp.i
+
+jwt-handler/jwt-handler.s: jwt-handler/jwt-handler.cpp.s
+.PHONY : jwt-handler/jwt-handler.s
+
+# target to generate assembly for a file
+jwt-handler/jwt-handler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/jwt-handler/jwt-handler.cpp.s
+.PHONY : jwt-handler/jwt-handler.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -234,6 +258,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... provision_service"
+	@echo "... jwt-handler/jwt-handler.o"
+	@echo "... jwt-handler/jwt-handler.i"
+	@echo "... jwt-handler/jwt-handler.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

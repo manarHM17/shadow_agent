@@ -4,6 +4,7 @@
 #include <string>
 #include <grpcpp/grpcpp.h>
 #include "../../db/db_handler.h"
+#include "../../jwt-handler/jwt-handler.hpp"
 #include "provision.grpc.pb.h"
 
 using namespace std;

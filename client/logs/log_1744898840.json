@@ -1,0 +1,16 @@
+{
+  "timestamp": "1744898840",
+  "readable_date": "2025-04-17 15:07:20",
+  "cpu_usage": "88.8%",
+  "memory_usage": "61.85%",
+  "disk_usage_root": "50%",
+  "uptime": "up 4 hours, 23 minutes",
+  "usb_devices": "["1d6b:0002 Linux Foundation 2.0 root hub","1d6b:0001 Linux Foundation 1.1 root hub","0e0f:0003 VMware, Inc. Virtual Mouse","0e0f:0002 VMware, Inc. Virtual USB Hub"]",
+  "ip_address": "192.168.68.130",
+  "network_status": "reachable",
+  "services": {
+    "mosquitto": "inactive",
+    "cron": "active",
+    "ssh": "inactive"
+  }
+}

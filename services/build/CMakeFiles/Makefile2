@@ -81,12 +81,12 @@ clean: CMakeFiles/provision_service.dir/clean
 CMakeFiles/provision_service.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/manar/IoT_shadow/services/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target provision_service"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/manar/IoT_shadow/services/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target provision_service"
 .PHONY : CMakeFiles/provision_service.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/provision_service.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/manar/IoT_shadow/services/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/manar/IoT_shadow/services/build/CMakeFiles 7
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/provision_service.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/manar/IoT_shadow/services/build/CMakeFiles 0
 .PHONY : CMakeFiles/provision_service.dir/rule

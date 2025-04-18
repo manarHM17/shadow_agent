@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DCARES_STATICLIB
 
-CXX_INCLUDES = -I/usr/include/mysql -I/home/manar/IoT_shadow/services/include -I/home/manar/IoT_shadow/services/build
+CXX_INCLUDES = -I/usr/include/mysql -I/usr/local/include/jwt-cpp -I/home/manar/IoT_shadow/services/include -I/home/manar/IoT_shadow/services/build
 
 CXX_FLAGS = -std=gnu++17
 

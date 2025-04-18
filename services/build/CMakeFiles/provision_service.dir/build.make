@@ -110,10 +110,24 @@ CMakeFiles/provision_service.dir/provision/src/ProvisionServiceImpl.cpp.s: cmake
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/provision_service.dir/provision/src/ProvisionServiceImpl.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manar/IoT_shadow/services/provision/src/ProvisionServiceImpl.cpp -o CMakeFiles/provision_service.dir/provision/src/ProvisionServiceImpl.cpp.s
 
+CMakeFiles/provision_service.dir/jwt-handler/jwt-handler.cpp.o: CMakeFiles/provision_service.dir/flags.make
+CMakeFiles/provision_service.dir/jwt-handler/jwt-handler.cpp.o: /home/manar/IoT_shadow/services/jwt-handler/jwt-handler.cpp
+CMakeFiles/provision_service.dir/jwt-handler/jwt-handler.cpp.o: CMakeFiles/provision_service.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/manar/IoT_shadow/services/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/provision_service.dir/jwt-handler/jwt-handler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/provision_service.dir/jwt-handler/jwt-handler.cpp.o -MF CMakeFiles/provision_service.dir/jwt-handler/jwt-handler.cpp.o.d -o CMakeFiles/provision_service.dir/jwt-handler/jwt-handler.cpp.o -c /home/manar/IoT_shadow/services/jwt-handler/jwt-handler.cpp
+
+CMakeFiles/provision_service.dir/jwt-handler/jwt-handler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/provision_service.dir/jwt-handler/jwt-handler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manar/IoT_shadow/services/jwt-handler/jwt-handler.cpp > CMakeFiles/provision_service.dir/jwt-handler/jwt-handler.cpp.i
+
+CMakeFiles/provision_service.dir/jwt-handler/jwt-handler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/provision_service.dir/jwt-handler/jwt-handler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manar/IoT_shadow/services/jwt-handler/jwt-handler.cpp -o CMakeFiles/provision_service.dir/jwt-handler/jwt-handler.cpp.s
+
 CMakeFiles/provision_service.dir/provision.pb.cc.o: CMakeFiles/provision_service.dir/flags.make
 CMakeFiles/provision_service.dir/provision.pb.cc.o: provision.pb.cc
 CMakeFiles/provision_service.dir/provision.pb.cc.o: CMakeFiles/provision_service.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/manar/IoT_shadow/services/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/provision_service.dir/provision.pb.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/manar/IoT_shadow/services/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/provision_service.dir/provision.pb.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/provision_service.dir/provision.pb.cc.o -MF CMakeFiles/provision_service.dir/provision.pb.cc.o.d -o CMakeFiles/provision_service.dir/provision.pb.cc.o -c /home/manar/IoT_shadow/services/build/provision.pb.cc
 
 CMakeFiles/provision_service.dir/provision.pb.cc.i: cmake_force
@@ -127,7 +141,7 @@ CMakeFiles/provision_service.dir/provision.pb.cc.s: cmake_force
 CMakeFiles/provision_service.dir/provision.grpc.pb.cc.o: CMakeFiles/provision_service.dir/flags.make
 CMakeFiles/provision_service.dir/provision.grpc.pb.cc.o: provision.grpc.pb.cc
 CMakeFiles/provision_service.dir/provision.grpc.pb.cc.o: CMakeFiles/provision_service.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/manar/IoT_shadow/services/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/provision_service.dir/provision.grpc.pb.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/manar/IoT_shadow/services/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/provision_service.dir/provision.grpc.pb.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/provision_service.dir/provision.grpc.pb.cc.o -MF CMakeFiles/provision_service.dir/provision.grpc.pb.cc.o.d -o CMakeFiles/provision_service.dir/provision.grpc.pb.cc.o -c /home/manar/IoT_shadow/services/build/provision.grpc.pb.cc
 
 CMakeFiles/provision_service.dir/provision.grpc.pb.cc.i: cmake_force
@@ -142,6 +156,7 @@ CMakeFiles/provision_service.dir/provision.grpc.pb.cc.s: cmake_force
 provision_service_OBJECTS = \
 "CMakeFiles/provision_service.dir/main.cpp.o" \
 "CMakeFiles/provision_service.dir/provision/src/ProvisionServiceImpl.cpp.o" \
+"CMakeFiles/provision_service.dir/jwt-handler/jwt-handler.cpp.o" \
 "CMakeFiles/provision_service.dir/provision.pb.cc.o" \
 "CMakeFiles/provision_service.dir/provision.grpc.pb.cc.o"
 
@@ -150,6 +165,7 @@ provision_service_EXTERNAL_OBJECTS =
 
 provision_service: CMakeFiles/provision_service.dir/main.cpp.o
 provision_service: CMakeFiles/provision_service.dir/provision/src/ProvisionServiceImpl.cpp.o
+provision_service: CMakeFiles/provision_service.dir/jwt-handler/jwt-handler.cpp.o
 provision_service: CMakeFiles/provision_service.dir/provision.pb.cc.o
 provision_service: CMakeFiles/provision_service.dir/provision.grpc.pb.cc.o
 provision_service: CMakeFiles/provision_service.dir/build.make
@@ -242,7 +258,7 @@ provision_service: /usr/local/lib/libabsl_random_seed_gen_exception.a
 provision_service: /usr/local/lib/libssl.a
 provision_service: /usr/local/lib/libcrypto.a
 provision_service: CMakeFiles/provision_service.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/manar/IoT_shadow/services/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable provision_service"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/manar/IoT_shadow/services/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable provision_service"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/provision_service.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

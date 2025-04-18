@@ -22,7 +22,8 @@ set(_GRPC_CPP_PLUGIN_EXECUTABLE $<TARGET_FILE:gRPC::grpc_cpp_plugin>)
 # MySQL
 find_library(MYSQL_LIB mysqlclient REQUIRED)
 include_directories(/usr/include/mysql)
-
+#jwt 
+include_directories(/usr/local/include/jwt-cpp)
 #openSSL puisque jwt depend d'elle
 find_package(OpenSSL REQUIRED)
 
@@ -54,16 +55,15 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 # Executable
 add_executable(provision_service 
-    provision/include/ProvisionServiceImpl.h
     main.cpp
+    provision/include/ProvisionServiceImpl.h
     provision/src/ProvisionServiceImpl.cpp
+    jwt-handler/jwt-handler.cpp  
     ${hw_proto_srcs}
     ${hw_grpc_srcs}
     ${hw_proto_hdrs}     # Ajout des headers protobuf
-    ${hw_grpc_hdrs}      # Ajout des headers gRPC
-)
+    ${hw_grpc_hdrs}    )  # Ajout des headers gRPC
 
-# Link libraries
 target_link_libraries(provision_service
     ${_GRPC_GRPCPP}
     protobuf::libprotobuf

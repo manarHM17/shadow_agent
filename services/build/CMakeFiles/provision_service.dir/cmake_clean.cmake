@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/provision_service.dir/jwt-handler/jwt-handler.cpp.o"
+  "CMakeFiles/provision_service.dir/jwt-handler/jwt-handler.cpp.o.d"
   "CMakeFiles/provision_service.dir/main.cpp.o"
   "CMakeFiles/provision_service.dir/main.cpp.o.d"
   "CMakeFiles/provision_service.dir/provision.grpc.pb.cc.o"

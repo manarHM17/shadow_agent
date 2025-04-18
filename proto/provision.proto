@@ -10,6 +10,11 @@ message DeviceInfo {
     string username = 5;
     string current_time = 6;
 }
+message RegisterDeviceResponse {
+    bool success =1 ;
+    string message = 2 ;
+    string token = 3 ;
+}
 message UpdateDeviceRequest {
     int32 id = 1; // ID unique de l'appareil
     string hostname = 2;
@@ -17,16 +22,15 @@ message UpdateDeviceRequest {
     string os_type = 4;
     string username = 5;
     string current_time = 6;
+    string token = 7;
 }
 
 message DeviceId {
     int32 id = 1;
+    string token = 2;
 }
 
-message RegisterDeviceResponse {
-    bool success =1 ;
-    string message = 2 ;
-}
+
 
 message Response {
     bool success = 1;
@@ -34,6 +38,7 @@ message Response {
 }
 
 message ListDeviceRequest {
+    string token = 1;
 }
 
 message DeviceList {
@@ -42,8 +47,8 @@ message DeviceList {
 
 service ProvisionService {
     rpc RegisterDevice(DeviceInfo) returns (RegisterDeviceResponse);
-    rpc DeleteDevice(DeviceId) returns (Response);
     rpc UpdateDevice(UpdateDeviceRequest) returns (Response);
+    rpc DeleteDevice(DeviceId) returns (Response);
     rpc ListDevices(ListDeviceRequest) returns (DeviceList);
     rpc GetDevice(DeviceId) returns (DeviceInfo);
 }

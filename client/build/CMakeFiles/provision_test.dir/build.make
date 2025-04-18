@@ -139,6 +139,11 @@ provision_test: CMakeFiles/provision_test.dir/provision.grpc.pb.cc.o
 provision_test: CMakeFiles/provision_test.dir/build.make
 provision_test: /usr/local/lib/libgrpc++.a
 provision_test: /usr/local/lib/libprotobuf.a
+provision_test: /usr/lib/x86_64-linux-gnu/libboost_system.so.1.83.0
+provision_test: /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.83.0
+provision_test: /usr/local/lib/libSimpleAmqpClient.so
+provision_test: /usr/lib/x86_64-linux-gnu/libssl.so
+provision_test: /usr/lib/x86_64-linux-gnu/libcrypto.so
 provision_test: /usr/local/lib/libabsl_log_internal_check_op.a
 provision_test: /usr/local/lib/libabsl_leak_check.a
 provision_test: /usr/local/lib/libabsl_die_if_null.a
@@ -222,6 +227,7 @@ provision_test: /usr/local/lib/libabsl_log_severity.a
 provision_test: /usr/local/lib/libabsl_random_seed_gen_exception.a
 provision_test: /usr/local/lib/libssl.a
 provision_test: /usr/local/lib/libcrypto.a
+provision_test: /usr/lib/x86_64-linux-gnu/libboost_atomic.so.1.83.0
 provision_test: CMakeFiles/provision_test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/manar/IoT_shadow/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable provision_test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/provision_test.dir/link.txt --verbose=$(VERBOSE)

@@ -3,7 +3,7 @@
 #include <string>
 #include <grpcpp/grpcpp.h>
 #include <grpcpp/security/server_credentials.h>
-#include "/home/manar/IoT_shadow/services/provision/include/ProvisionServiceImpl.h"
+#include "provision/include/ProvisionServiceImpl.h"
 #include <fstream>
 using namespace std;
 using grpc::Server;
@@ -24,27 +24,28 @@ std::string LoadFile(const std::string& filepath) {
 int main() {
     string server_address("0.0.0.0:50051");
 
-    // Charger les certificats et la clé privée
+    // Commenter la partie SSL pour tester une connexion insecure
+    /*
     string server_cert = LoadFile("/home/manar/IoT_shadow/services/server.crt"); // Chemin vers le certificat
     string server_key = LoadFile("/home/manar/IoT_shadow/services/server.key");  // Chemin vers la clé privée
 
-    // Configurer les options SSL/TLS
     SslServerCredentialsOptions::PemKeyCertPair key_cert_pair = {server_key, server_cert};
     SslServerCredentialsOptions ssl_opts;
     ssl_opts.pem_key_cert_pairs.push_back(key_cert_pair);
 
-    // Créer les credentials SSL/TLS
     auto server_credentials = grpc::SslServerCredentials(ssl_opts);
+    */
 
-    // Configurer le serveur gRPC
+    // Utiliser une connexion insecure pour tester
+    auto server_credentials = grpc::InsecureServerCredentials();
+
     ProvisionServiceImpl serviceProvision;
     ServerBuilder builder;
-    builder.AddListeningPort(server_address, server_credentials); // Utiliser les credentials SSL
+    builder.AddListeningPort(server_address, server_credentials); // Utiliser les credentials insecure
     builder.RegisterService(&serviceProvision);
 
-    // Démarrer le serveur
     unique_ptr<Server> server(builder.BuildAndStart());
-    cout << "Server listening on " << server_address << " with SSL/TLS" << endl;
+    cout << "Server listening on " << server_address << " with insecure connection" << endl;
 
     server->Wait();
     return 0;

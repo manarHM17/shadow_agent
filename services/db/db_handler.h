@@ -3,46 +3,35 @@
 #include <string>
 #include <memory>
 #include <stdexcept>
+#include <iostream>
 
 class DBHandler {
 public:
-    // Constructeur : initialise automatiquement la connexion
+    // Constructor: Initializes the MySQL connection and creates necessary tables
     DBHandler() {
-        // Initialisation de MySQL
         conn = mysql_init(nullptr);
         if (!conn) {
-            throw std::runtime_error("MySQL init failed");
-        }
-    
-        // Établissement de la connexion initiale sans sélectionner de base de données
-        if (!mysql_real_connect(conn, 
-            "localhost",     // host
-            "iotuser",      // username
-            "iot2025",      // password
-            nullptr,        // pas de base de données sélectionnée
-            3306,          // port
-            nullptr,       // unix socket
-            0             // client flag
-        )) {
-            mysql_close(conn);  // Nettoyage en cas d'échec
-            throw std::runtime_error(mysql_error(conn));
+            throw std::runtime_error("MySQL initialization failed");
         }
 
-        // Création de la base de données si elle n'existe pas
+        if (!mysql_real_connect(conn, "localhost", "iotuser", "iot2025", nullptr, 3306, nullptr, 0)) {
+            std::string error = mysql_error(conn);
+            mysql_close(conn);
+            throw std::runtime_error("MySQL connection failed: " + error);
+        }
+
         if (mysql_query(conn, "CREATE DATABASE IF NOT EXISTS shadow_agent")) {
             std::string error = mysql_error(conn);
             mysql_close(conn);
             throw std::runtime_error("Failed to create database: " + error);
         }
 
-        // Sélection de la base de données
         if (mysql_select_db(conn, "shadow_agent")) {
             std::string error = mysql_error(conn);
             mysql_close(conn);
             throw std::runtime_error("Failed to select database: " + error);
         }
 
-        // Création de la table `devices`
         const char* create_devices_table_query = 
             "CREATE TABLE IF NOT EXISTS devices ("
             "id BIGINT AUTO_INCREMENT PRIMARY KEY,"
@@ -50,7 +39,8 @@ public:
             "type VARCHAR(255) NOT NULL,"
             "os_type VARCHAR(255) NOT NULL,"
             "username VARCHAR(255) NOT NULL,"
-            "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
+            "`current_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,"
+            "token VARCHAR(512)"
             ") ENGINE=InnoDB";
 
         if (mysql_query(conn, create_devices_table_query)) {
@@ -59,7 +49,6 @@ public:
             throw std::runtime_error("Failed to create devices table: " + error);
         }
 
-        // Création de la table `monitoring`
         const char* create_monitoring_table_query = 
             "CREATE TABLE IF NOT EXISTS monitoring ("
             "id BIGINT AUTO_INCREMENT PRIMARY KEY,"
@@ -82,52 +71,54 @@ public:
             mysql_close(conn);
             throw std::runtime_error("Failed to create monitoring table: " + error);
         }
-
-        // Vérifier que les tables existent
-        if (mysql_query(conn, "DESCRIBE devices") || mysql_query(conn, "DESCRIBE monitoring")) {
-            std::string error = mysql_error(conn);
-            mysql_close(conn);
-            throw std::runtime_error("Table verification failed: " + error);
-        }
     }
 
-    // Destructeur : ferme automatiquement la connexion
+    // Destructor: Closes the MySQL connection
     ~DBHandler() {
         if (conn) {
             mysql_close(conn);
         }
     }
 
-    // Empêcher la copie de l'objet
+    // Prevent copying of the object
     DBHandler(const DBHandler&) = delete;
     DBHandler& operator=(const DBHandler&) = delete;
 
-    // Méthodes d'accès
+    // Get the MySQL connection
     MYSQL* getConnection() { 
-        clearPreviousResults();  // Nettoie seulement les buffers de résultats
+        if (!conn) {
+            throw std::runtime_error("MySQL connection is not initialized");
+        }
+        clearPreviousResults();
         return conn; 
     }
 
-    // Méthodes utilitaires avec gestion sécurisée des résultats
+    // Execute a query that does not return results (e.g., INSERT, UPDATE, DELETE)
     bool executeQuery(const std::string& query) {
-        clearPreviousResults();  // Nettoie les anciens résultats en mémoire
-        return mysql_query(conn, query.c_str()) == 0;
+        clearPreviousResults();
+        if (mysql_query(conn, query.c_str()) != 0) {
+            std::cerr << "MySQL query error: " << mysql_error(conn) << std::endl;
+            return false;
+        }
+        return true;
     }
 
-    // Méthode sécurisée pour les requêtes SELECT
+    // Execute a SELECT query and return the result
     MYSQL_RES* executeSelect(const std::string& query) {
-        clearPreviousResults();  // Nettoie les anciens résultats
+        clearPreviousResults();
         if (mysql_query(conn, query.c_str()) != 0) {
+            std::cerr << "MySQL query error: " << mysql_error(conn) << std::endl;
             return nullptr;
         }
         return mysql_store_result(conn);
     }
 
+    // Get the last MySQL error message
     std::string getLastError() {
         return mysql_error(conn);
     }
 
-    // Méthode pour insérer des données dans la table `monitoring`
+    // Insert monitoring data into the monitoring table
     bool insertMonitoringData(const std::string& device_id, long timestamp, float cpu_usage, int memory_total_mb,
                               int memory_used_mb, const std::string& disk_usage_root, const std::string& uptime,
                               const std::string& usb_devices, const std::string& ip_address,
@@ -144,12 +135,18 @@ public:
 private:
     MYSQL* conn;
 
-    // Nettoie uniquement les buffers de résultats en mémoire
-    // N'affecte PAS les données dans la base MySQL
+    // Clear any previous results from the MySQL connection
     void clearPreviousResults() {
         MYSQL_RES* result;
         while ((result = mysql_store_result(conn)) != nullptr) {
-            mysql_free_result(result);  // Libère seulement la mémoire
+            mysql_free_result(result);
+        }
+        while (mysql_next_result(conn) == 0) {
+            result = mysql_store_result(conn);
+            if (result) {
+                mysql_free_result(result);
+            }
         }
     }
 };
+

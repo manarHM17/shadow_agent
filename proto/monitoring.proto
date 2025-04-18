@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package monitoring;
+
+service MonitoringService {
+  // Stream des données de monitoring du client vers le serveur
+  rpc StreamMonitoringData(stream MonitoringRequest) returns (stream MonitoringResponse);
+}
+
+message MonitoringRequest {
+  string device_id = 1;
+  string timestamp = 2;
+  string readable_date = 3;
+  string cpu_usage = 4;
+  string memory_usage = 5;
+  string disk_usage_root = 6;
+  string uptime = 7;
+  repeated string usb_devices = 8;
+  string ip_address = 9;
+  string network_status = 10;
+  map<string, string> services = 11; // nom -> statut
+}
+
+message MonitoringResponse {
+  string alert_message = 1;
+  string alert_level = 2; // e.g., "INFO", "WARNING", "CRITICAL"
+  string recommended_action = 3;
+  string timestamp = 4;
+
+}
