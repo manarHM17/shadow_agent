@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
-project(provision_service)
+project(iot_shadow_client)
 
 # C++ Standard
 set(CMAKE_CXX_STANDARD 17)
@@ -18,14 +18,12 @@ find_package(gRPC CONFIG REQUIRED)
 message(STATUS "Using gRPC ${gRPC_VERSION}")
 set(_GRPC_GRPCPP gRPC::grpc++)
 set(_GRPC_CPP_PLUGIN_EXECUTABLE $<TARGET_FILE:gRPC::grpc_cpp_plugin>)
-
-# MySQL
-find_library(MYSQL_LIB mysqlclient REQUIRED)
-include_directories(/usr/include/mysql)
 #jwt 
 include_directories(/usr/local/include/jwt-cpp)
 #openSSL puisque jwt depend d'elle
 find_package(OpenSSL REQUIRED)
+# RabbitMQ
+# Boost (for RabbitMQ wrapper)
 find_package(Boost REQUIRED)
 
 # RabbitMQ C library
@@ -44,7 +42,12 @@ include_directories(
     ${RABBITMQ_INCLUDE_DIRS}
 )
 
-# Proto file
+find_library(RABBITMQ_LIB SimpleAmqpClient REQUIRED)
+include_directories(/usr/include) 
+#json
+find_package(nlohmann_json REQUIRED)
+
+# Proto files path
 set(PROTO_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../proto")
 
 # === Provisioning Service ===
@@ -86,43 +89,48 @@ add_custom_command(
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-# # Executable
-# add_executable(provision_service 
-#     main.cpp
-#     provision/include/ProvisionServiceImpl.h
-#     provision/src/ProvisionServiceImpl.cpp
-#     jwt-handler/jwt-handler.cpp  
+# Executable
+# add_executable(provision_test
+#     #src/monitoring_test.cpp
+#     src/provision_test.cpp
 #     ${provision_proto_srcs}
 #     ${provision_grpc_srcs}
 
 #     ${provision_proto_hdrs}
-#     ${provision_grpc_hdrs}   )  
+#     ${provision_grpc_hdrs}
 
-# target_link_libraries(provision_service
+# )
+
+
+# # Link libraries
+# target_link_libraries(provision_test
 #     ${_GRPC_GRPCPP}
 #     protobuf::libprotobuf
-#     ${MYSQL_LIB}
-#     pthread
+#     ${Boost_LIBRARIES}
+#     ${RABBITMQ_LIB}
+#     nlohmann_json::nlohmann_json
 #     OpenSSL::SSL
 #     OpenSSL::Crypto
-    
 # )
 # Executable
-add_executable(monitoring_service 
-    main.cpp
-    provision/include/MonitoringServiceImpl.h
-    provision/src/MonitoringServiceImpl.cpp
+add_executable(monitoring_test
+    src/monitoring_test.cpp
     ${monitoring_proto_srcs}
     ${monitoring_grpc_srcs}
 
     ${monitoring_proto_hdrs}
-    ${monitoring_grpc_hdrs}  )  
+    ${monitoring_grpc_hdrs}
 
-target_link_libraries(monitoring_service
+)
+
+
+# Link libraries
+target_link_libraries(monitoring_test
     ${_GRPC_GRPCPP}
     protobuf::libprotobuf
-    ${MYSQL_LIB}
-    pthread
+    ${Boost_LIBRARIES}
+    ${RABBITMQ_LIB}
+    nlohmann_json::nlohmann_json
     OpenSSL::SSL
     OpenSSL::Crypto
     ${RABBITMQ_LIB} 
@@ -130,4 +138,5 @@ target_link_libraries(monitoring_service
     boost_system 
     pthread 
     ${RABBITMQ_LIBRARIES}
-    )
+)
+
