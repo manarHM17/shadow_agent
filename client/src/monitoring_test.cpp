@@ -1,113 +1,99 @@
 #include <iostream>
-#include <filesystem>
-#include <string>
-#include <chrono>
 #include <thread>
-#include <ctime>
-#include <amqp.h>
-#include <amqp_tcp_socket.h>
-#include <iomanip>
+#include <random>
+#include <chrono>
+#include <nlohmann/json.hpp>
 #include <grpcpp/grpcpp.h>
-#include "monitoring.pb.h"
-#include "monitoring.grpc.pb.h"
 #include <SimpleAmqpClient/SimpleAmqpClient.h>
+#include "monitoring.grpc.pb.h"
 
 using grpc::Channel;
 using grpc::ClientContext;
 using grpc::Status;
+using grpc::ClientReader;
 using monitoring::MonitoringService;
-using monitoring::Empty;
+using monitoring::DeviceID;
 using monitoring::MonitoringResponse;
-namespace fs = std::filesystem;
 
-# obtenir le dernier fichier json 
-std::string getLatestJsonFile(const std::string& directory) {
-    std::string latestFile;
-    std::chrono::system_clock::time_point latestTime;
+void sendMetricsToRabbitMQ(int32_t device_id) {
+    try {
+        auto channel = AmqpClient::Channel::Create("localhost");
+        std::string queue_name = "metrics_" + std::to_string(device_id);
+        channel->DeclareQueue(queue_name, false, true, false, false);
 
-    for (const auto& entry : fs::directory_iterator(directory)) {
-        if (entry.path().extension() == ".json") {
-            auto ftime = fs::last_write_time(entry);
-            if (latestFile.empty() || ftime > latestTime) {
-                latestTime = ftime;
-                latestFile = entry.path().string();
-            }
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_int_distribution<> cpu_dist(20, 100);
+        std::uniform_int_distribution<> mem_dist(30, 100);
+        std::uniform_int_distribution<> disk_dist(50, 95);
+        std::uniform_int_distribution<> net_dist(0, 1);
+        std::uniform_int_distribution<> svc_dist(0, 1);
+
+        while (true) {
+            nlohmann::json metrics;
+            metrics["cpu_usage"] = std::to_string(cpu_dist(gen)) + "%";
+            metrics["memory_usage"] = std::to_string(mem_dist(gen)) + "%";
+            metrics["disk_usage_root"] = std::to_string(disk_dist(gen)) + "%";
+            metrics["network_status"] = (net_dist(gen) == 0) ? "ok" : "unreachable";
+
+            nlohmann::json services;
+            services["mosquitto"] = (svc_dist(gen) == 0) ? "active" : "inactive";
+            services["ssh"] = (svc_dist(gen) == 0) ? "active" : "inactive";
+            metrics["services"] = services;
+
+            std::string message = metrics.dump();
+            channel->BasicPublish("", queue_name, AmqpClient::BasicMessage::Create(message));
+
+            //std::cout << "[RabbitMQ] ➤ Message envoyé à la file : " << queue_name << std::endl;
+            //std::cout << "[RabbitMQ] ➤ Contenu : " << message << std::endl;
+
+            std::this_thread::sleep_for(std::chrono::seconds(10));
         }
-    }
 
-    return latestFile;
-}
-
-
-void sendToRabbitMQ(const std::string& message) {
-    amqp_connection_state_t conn = amqp_new_connection();
-    amqp_socket_t* socket = amqp_tcp_socket_new(conn);
-    if (!socket) {
-        std::cerr << "Erreur lors de la création du socket RabbitMQ" << std::endl;
-        return;
-    }
-
-    if (amqp_socket_open(socket, "localhost", 5672)) {
-        std::cerr << "Erreur de connexion au broker RabbitMQ" << std::endl;
-        return;
-    }
-
-    amqp_rpc_reply_t login_reply = amqp_login(conn, "/", 0, 131072, 0, AMQP_SASL_METHOD_PLAIN, "guest", "guest");
-    if (login_reply.reply_type != AMQP_RESPONSE_NORMAL) {
-        std::cerr << "Erreur de connexion RabbitMQ : " << amqp_error_string(login_reply.reply_type) << std::endl;
-        return;
-    }
-    
-
-    amqp_channel_open(conn, 1);
-    amqp_get_rpc_reply(conn);
-
-    amqp_basic_publish(conn, 1, amqp_cstring_bytes(""), amqp_cstring_bytes("time_queue"), 0, 0, NULL, amqp_cstring_bytes(message.c_str()));
-
-    amqp_channel_close(conn, 1, AMQP_REPLY_SUCCESS);
-    amqp_connection_close(conn, AMQP_REPLY_SUCCESS);
-    amqp_destroy_connection(conn);
-}
-
-void periodicSender() {
-    while (true) {
-        std::time_t now = std::time(nullptr);
-        std::string time_str = std::ctime(&now);
-        time_str.pop_back();  // Enlever le saut de ligne de la fin de la chaîne
-        sendToRabbitMQ(time_str);
-        std::cout << "[Client] Heure envoyée : " << time_str << std::endl;
-        std::this_thread::sleep_for(std::chrono::minutes(1));  // Envoi toutes les minutes
+    } catch (std::exception& e) {
+        std::cerr << "❌ Erreur envoi RabbitMQ : " << e.what() << std::endl;
     }
 }
 
-void startGrpcStream(std::shared_ptr<Channel> channel) {
-    std::unique_ptr<TimeService::Stub> stub = TimeService::NewStub(channel);
-    Empty request;
+void receiveAlertsFromServer(std::shared_ptr<Channel> channel, int32_t device_id) {
+    auto stub = MonitoringService::NewStub(channel);
+    DeviceID request;
+    request.set_device_id(device_id);
+
     ClientContext context;
-    std::unique_ptr<grpc::ClientReader<DayStateResponse>> reader(stub->StreamDayState(&context, request));
-    
-    DayStateResponse response;
+    MonitoringResponse response;
+    std::unique_ptr<ClientReader<MonitoringResponse>> reader = stub->StreamMonitoringData(&context, request);
+
     while (reader->Read(&response)) {
-        std::cout << "[Client] 🔔 État de la journée changé : " << response.state() << std::endl;
+        std::cout << "\n📢 Alerte reçue:\n";
+        std::cout << "  ➤ Message   : " << response.alert_message() << std::endl;
+        std::cout << "  ➤ Niveau    : " << response.alert_level() << std::endl;
+        std::cout << "  ➤ Action    : " << response.recommended_action() << std::endl;
+        std::cout << "  ➤ Timestamp : " << response.timestamp() << std::endl;
     }
+
     Status status = reader->Finish();
     if (!status.ok()) {
-        std::cerr << "Stream terminé avec erreur : " << status.error_message() << std::endl;
+        std::cerr << "❌ Stream terminé avec erreur : " << status.error_message() << std::endl;
     }
 }
 
 int main() {
-    // Démarrer un thread pour l'envoi périodique des données à RabbitMQ
-    std::thread senderThread(periodicSender);
-    
-    // Connexion et démarrage du stream gRPC
-    string server_ip = "localhost:50051";
+    int32_t device_id;
+    std::cout << "🖥️ Entrez l'ID de l'appareil : ";
+    std::cin >> device_id;
 
-    // Utiliser une connexion insecure pour tester
-    auto channel = grpc::CreateChannel(server_ip, grpc::InsecureChannelCredentials());
-    ProvisionClient client(channel);
+    std::string server_address = "localhost:50051";
+    auto channel = grpc::CreateChannel(server_address, grpc::InsecureChannelCredentials());
 
-    // Joindre le thread d'envoi
-    senderThread.join();
+    // Thread pour l’envoi des métriques
+    std::thread metricsThread(sendMetricsToRabbitMQ, device_id);
+
+    // Thread pour recevoir les alertes du serveur
+    std::thread grpcThread(receiveAlertsFromServer, channel, device_id);
+
+    metricsThread.join();
+    grpcThread.join();
+
     return 0;
 }

@@ -14,6 +14,12 @@
 # EXTERNAL cache entries
 ########################
 
+//The directory containing a CMake configuration file for Boost.
+Boost_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/Boost-1.83.0
+
+//Path to a file.
+Boost_INCLUDE_DIR:PATH=/usr/include
+
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=/usr/bin/addr2line
 
@@ -236,11 +242,23 @@ PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
 //The directory containing a CMake configuration file for Protobuf.
 Protobuf_DIR:PATH=/usr/local/lib/cmake/protobuf
 
+//Path to a library.
+SIMPLE_AMQP_CLIENT:FILEPATH=/usr/local/lib/libSimpleAmqpClient.so
+
 //The directory containing a CMake configuration file for absl.
 absl_DIR:PATH=/usr/local/lib/cmake/absl
 
+//The directory containing a CMake configuration file for boost_headers.
+boost_headers_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/boost_headers-1.83.0
+
 //The directory containing a CMake configuration file for gRPC.
 gRPC_DIR:PATH=/usr/local/lib/cmake/grpc
+
+//The directory containing a CMake configuration file for jsoncpp.
+jsoncpp_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/jsoncpp
+
+//Path to a library.
+pkgcfg_lib_RABBITMQ_rabbitmq:FILEPATH=/usr/lib/x86_64-linux-gnu/librabbitmq.so
 
 //Path to a library.
 pkgcfg_lib__OPENSSL_crypto:FILEPATH=/usr/lib/x86_64-linux-gnu/libcrypto.so
@@ -268,6 +286,8 @@ utf8_range_DIR:PATH=/usr/local/lib/cmake/utf8_range
 # INTERNAL cache entries
 ########################
 
+//ADVANCED property for variable: Boost_DIR
+Boost_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_ADDR2LINE
 CMAKE_ADDR2LINE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_AR
@@ -415,8 +435,12 @@ CMAKE_TAPI-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding Boost
+FIND_PACKAGE_MESSAGE_DETAILS_Boost:INTERNAL=[/usr/lib/x86_64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake][c ][v1.83.0()]
 //Details about finding OpenSSL
 FIND_PACKAGE_MESSAGE_DETAILS_OpenSSL:INTERNAL=[/usr/lib/x86_64-linux-gnu/libcrypto.so][/usr/include][c ][v3.0.13()]
+//Details about finding PkgConfig
+FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v1.8.1()]
 //Details about finding Protobuf
 FIND_PACKAGE_MESSAGE_DETAILS_Protobuf:INTERNAL=[/usr/local/bin/protoc-23.1.0][/usr/local/lib/libprotobuf.a][/usr/local/include][v23.1.0()]
 //Details about finding Threads
@@ -431,6 +455,41 @@ OPENSSL_SSL_LIBRARY-ADVANCED:INTERNAL=1
 PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
 PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
+RABBITMQ_CFLAGS:INTERNAL=-I/usr/include
+RABBITMQ_CFLAGS_I:INTERNAL=
+RABBITMQ_CFLAGS_OTHER:INTERNAL=
+RABBITMQ_FOUND:INTERNAL=1
+RABBITMQ_INCLUDEDIR:INTERNAL=/usr/include
+RABBITMQ_INCLUDE_DIRS:INTERNAL=/usr/include
+RABBITMQ_LDFLAGS:INTERNAL=-L/usr/lib/x86_64-linux-gnu;-lrabbitmq
+RABBITMQ_LDFLAGS_OTHER:INTERNAL=
+RABBITMQ_LIBDIR:INTERNAL=/usr/lib/x86_64-linux-gnu
+RABBITMQ_LIBRARIES:INTERNAL=rabbitmq
+RABBITMQ_LIBRARY_DIRS:INTERNAL=/usr/lib/x86_64-linux-gnu
+RABBITMQ_LIBS:INTERNAL=
+RABBITMQ_LIBS_L:INTERNAL=
+RABBITMQ_LIBS_OTHER:INTERNAL=
+RABBITMQ_LIBS_PATHS:INTERNAL=
+RABBITMQ_MODULE_NAME:INTERNAL=librabbitmq
+RABBITMQ_PREFIX:INTERNAL=/usr
+RABBITMQ_STATIC_CFLAGS:INTERNAL=-I/usr/include
+RABBITMQ_STATIC_CFLAGS_I:INTERNAL=
+RABBITMQ_STATIC_CFLAGS_OTHER:INTERNAL=
+RABBITMQ_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include
+RABBITMQ_STATIC_LDFLAGS:INTERNAL=-L/usr/lib/x86_64-linux-gnu;-lrabbitmq;-lrt;-L/usr/lib/x86_64-linux-gnu;-lssl;-L/usr/lib/x86_64-linux-gnu;-ldl;-pthread;-lcrypto;-ldl;-pthread
+RABBITMQ_STATIC_LDFLAGS_OTHER:INTERNAL=-pthread;-pthread
+RABBITMQ_STATIC_LIBDIR:INTERNAL=
+RABBITMQ_STATIC_LIBRARIES:INTERNAL=rabbitmq;rt;ssl;dl;crypto;dl
+RABBITMQ_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu
+RABBITMQ_STATIC_LIBS:INTERNAL=
+RABBITMQ_STATIC_LIBS_L:INTERNAL=
+RABBITMQ_STATIC_LIBS_OTHER:INTERNAL=
+RABBITMQ_STATIC_LIBS_PATHS:INTERNAL=
+RABBITMQ_VERSION:INTERNAL=0.11.0
+RABBITMQ_librabbitmq_INCLUDEDIR:INTERNAL=
+RABBITMQ_librabbitmq_LIBDIR:INTERNAL=
+RABBITMQ_librabbitmq_PREFIX:INTERNAL=
+RABBITMQ_librabbitmq_VERSION:INTERNAL=
 //linker supports push/pop state
 _CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED:INTERNAL=TRUE
 _OPENSSL_CFLAGS:INTERNAL=-I/usr/include
@@ -468,8 +527,14 @@ _OPENSSL_openssl_INCLUDEDIR:INTERNAL=
 _OPENSSL_openssl_LIBDIR:INTERNAL=
 _OPENSSL_openssl_PREFIX:INTERNAL=
 _OPENSSL_openssl_VERSION:INTERNAL=
+__pkg_config_arguments_RABBITMQ:INTERNAL=REQUIRED;librabbitmq
 __pkg_config_arguments__OPENSSL:INTERNAL=QUIET;openssl
+__pkg_config_checked_RABBITMQ:INTERNAL=1
 __pkg_config_checked__OPENSSL:INTERNAL=1
+//ADVANCED property for variable: boost_headers_DIR
+boost_headers_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_RABBITMQ_rabbitmq
+pkgcfg_lib_RABBITMQ_rabbitmq-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib__OPENSSL_crypto
 pkgcfg_lib__OPENSSL_crypto-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib__OPENSSL_ssl

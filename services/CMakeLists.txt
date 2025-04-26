@@ -27,6 +27,11 @@ include_directories(/usr/local/include/jwt-cpp)
 #openSSL puisque jwt depend d'elle
 find_package(OpenSSL REQUIRED)
 find_package(Boost REQUIRED)
+# json-cpp
+find_package(jsoncpp REQUIRED)
+include_directories(/usr/include/jsoncpp)
+
+
 
 # RabbitMQ C library
 find_package(PkgConfig REQUIRED)
@@ -47,23 +52,23 @@ include_directories(
 # Proto file
 set(PROTO_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../proto")
 
-# === Provisioning Service ===
-set(PROVISION_PROTO "${PROTO_PATH}/provision.proto")
-set(provision_proto_srcs "${CMAKE_CURRENT_BINARY_DIR}/provision.pb.cc")
-set(provision_proto_hdrs "${CMAKE_CURRENT_BINARY_DIR}/provision.pb.h")
-set(provision_grpc_srcs "${CMAKE_CURRENT_BINARY_DIR}/provision.grpc.pb.cc")
-set(provision_grpc_hdrs "${CMAKE_CURRENT_BINARY_DIR}/provision.grpc.pb.h")
+# # === Provisioning Service ===
+# set(PROVISION_PROTO "${PROTO_PATH}/provision.proto")
+# set(provision_proto_srcs "${CMAKE_CURRENT_BINARY_DIR}/provision.pb.cc")
+# set(provision_proto_hdrs "${CMAKE_CURRENT_BINARY_DIR}/provision.pb.h")
+# set(provision_grpc_srcs "${CMAKE_CURRENT_BINARY_DIR}/provision.grpc.pb.cc")
+# set(provision_grpc_hdrs "${CMAKE_CURRENT_BINARY_DIR}/provision.grpc.pb.h")
 
-add_custom_command(
-    OUTPUT ${provision_proto_srcs} ${provision_proto_hdrs} ${provision_grpc_srcs} ${provision_grpc_hdrs}
-    COMMAND ${_PROTOBUF_PROTOC}
-    ARGS --grpc_out "${CMAKE_CURRENT_BINARY_DIR}"
-         --cpp_out "${CMAKE_CURRENT_BINARY_DIR}"
-         -I "${PROTO_PATH}"
-         --plugin=protoc-gen-grpc="${_GRPC_CPP_PLUGIN_EXECUTABLE}"
-         "${PROVISION_PROTO}"
-    DEPENDS "${PROVISION_PROTO}"
-)
+# add_custom_command(
+#     OUTPUT ${provision_proto_srcs} ${provision_proto_hdrs} ${provision_grpc_srcs} ${provision_grpc_hdrs}
+#     COMMAND ${_PROTOBUF_PROTOC}
+#     ARGS --grpc_out "${CMAKE_CURRENT_BINARY_DIR}"
+#          --cpp_out "${CMAKE_CURRENT_BINARY_DIR}"
+#          -I "${PROTO_PATH}"
+#          --plugin=protoc-gen-grpc="${_GRPC_CPP_PLUGIN_EXECUTABLE}"
+#          "${PROVISION_PROTO}"
+#     DEPENDS "${PROVISION_PROTO}"
+# )
 
 #=== Monitoring Service ===
 set(MONITORING_PROTO "${PROTO_PATH}/monitoring.proto")
@@ -109,9 +114,7 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 # )
 # Executable
 add_executable(monitoring_service 
-    main.cpp
-    provision/include/MonitoringServiceImpl.h
-    provision/src/MonitoringServiceImpl.cpp
+    monitoring/src/MonitoringServiceImpl.cpp
     ${monitoring_proto_srcs}
     ${monitoring_grpc_srcs}
 
@@ -130,4 +133,5 @@ target_link_libraries(monitoring_service
     boost_system 
     pthread 
     ${RABBITMQ_LIBRARIES}
+    jsoncpp
     )

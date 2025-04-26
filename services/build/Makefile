@@ -117,137 +117,89 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named provision_service
+# Target rules for targets named monitoring_service
 
 # Build rule for target.
-provision_service: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 provision_service
-.PHONY : provision_service
+monitoring_service: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 monitoring_service
+.PHONY : monitoring_service
 
 # fast build rule for target.
-provision_service/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/build
-.PHONY : provision_service/fast
+monitoring_service/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_service.dir/build.make CMakeFiles/monitoring_service.dir/build
+.PHONY : monitoring_service/fast
 
-jwt-handler/jwt-handler.o: jwt-handler/jwt-handler.cpp.o
-.PHONY : jwt-handler/jwt-handler.o
-
-# target to build an object file
-jwt-handler/jwt-handler.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/jwt-handler/jwt-handler.cpp.o
-.PHONY : jwt-handler/jwt-handler.cpp.o
-
-jwt-handler/jwt-handler.i: jwt-handler/jwt-handler.cpp.i
-.PHONY : jwt-handler/jwt-handler.i
-
-# target to preprocess a source file
-jwt-handler/jwt-handler.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/jwt-handler/jwt-handler.cpp.i
-.PHONY : jwt-handler/jwt-handler.cpp.i
-
-jwt-handler/jwt-handler.s: jwt-handler/jwt-handler.cpp.s
-.PHONY : jwt-handler/jwt-handler.s
-
-# target to generate assembly for a file
-jwt-handler/jwt-handler.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/jwt-handler/jwt-handler.cpp.s
-.PHONY : jwt-handler/jwt-handler.cpp.s
-
-main.o: main.cpp.o
-.PHONY : main.o
+monitoring.grpc.pb.o: monitoring.grpc.pb.cc.o
+.PHONY : monitoring.grpc.pb.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/main.cpp.o
-.PHONY : main.cpp.o
+monitoring.grpc.pb.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_service.dir/build.make CMakeFiles/monitoring_service.dir/monitoring.grpc.pb.cc.o
+.PHONY : monitoring.grpc.pb.cc.o
 
-main.i: main.cpp.i
-.PHONY : main.i
+monitoring.grpc.pb.i: monitoring.grpc.pb.cc.i
+.PHONY : monitoring.grpc.pb.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/main.cpp.i
-.PHONY : main.cpp.i
+monitoring.grpc.pb.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_service.dir/build.make CMakeFiles/monitoring_service.dir/monitoring.grpc.pb.cc.i
+.PHONY : monitoring.grpc.pb.cc.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+monitoring.grpc.pb.s: monitoring.grpc.pb.cc.s
+.PHONY : monitoring.grpc.pb.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/main.cpp.s
-.PHONY : main.cpp.s
+monitoring.grpc.pb.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_service.dir/build.make CMakeFiles/monitoring_service.dir/monitoring.grpc.pb.cc.s
+.PHONY : monitoring.grpc.pb.cc.s
 
-provision.grpc.pb.o: provision.grpc.pb.cc.o
-.PHONY : provision.grpc.pb.o
+monitoring.pb.o: monitoring.pb.cc.o
+.PHONY : monitoring.pb.o
 
 # target to build an object file
-provision.grpc.pb.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/provision.grpc.pb.cc.o
-.PHONY : provision.grpc.pb.cc.o
+monitoring.pb.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_service.dir/build.make CMakeFiles/monitoring_service.dir/monitoring.pb.cc.o
+.PHONY : monitoring.pb.cc.o
 
-provision.grpc.pb.i: provision.grpc.pb.cc.i
-.PHONY : provision.grpc.pb.i
+monitoring.pb.i: monitoring.pb.cc.i
+.PHONY : monitoring.pb.i
 
 # target to preprocess a source file
-provision.grpc.pb.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/provision.grpc.pb.cc.i
-.PHONY : provision.grpc.pb.cc.i
+monitoring.pb.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_service.dir/build.make CMakeFiles/monitoring_service.dir/monitoring.pb.cc.i
+.PHONY : monitoring.pb.cc.i
 
-provision.grpc.pb.s: provision.grpc.pb.cc.s
-.PHONY : provision.grpc.pb.s
+monitoring.pb.s: monitoring.pb.cc.s
+.PHONY : monitoring.pb.s
 
 # target to generate assembly for a file
-provision.grpc.pb.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/provision.grpc.pb.cc.s
-.PHONY : provision.grpc.pb.cc.s
+monitoring.pb.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_service.dir/build.make CMakeFiles/monitoring_service.dir/monitoring.pb.cc.s
+.PHONY : monitoring.pb.cc.s
 
-provision.pb.o: provision.pb.cc.o
-.PHONY : provision.pb.o
+monitoring/src/MonitoringServiceImpl.o: monitoring/src/MonitoringServiceImpl.cpp.o
+.PHONY : monitoring/src/MonitoringServiceImpl.o
 
 # target to build an object file
-provision.pb.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/provision.pb.cc.o
-.PHONY : provision.pb.cc.o
+monitoring/src/MonitoringServiceImpl.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_service.dir/build.make CMakeFiles/monitoring_service.dir/monitoring/src/MonitoringServiceImpl.cpp.o
+.PHONY : monitoring/src/MonitoringServiceImpl.cpp.o
 
-provision.pb.i: provision.pb.cc.i
-.PHONY : provision.pb.i
-
-# target to preprocess a source file
-provision.pb.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/provision.pb.cc.i
-.PHONY : provision.pb.cc.i
-
-provision.pb.s: provision.pb.cc.s
-.PHONY : provision.pb.s
-
-# target to generate assembly for a file
-provision.pb.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/provision.pb.cc.s
-.PHONY : provision.pb.cc.s
-
-provision/src/ProvisionServiceImpl.o: provision/src/ProvisionServiceImpl.cpp.o
-.PHONY : provision/src/ProvisionServiceImpl.o
-
-# target to build an object file
-provision/src/ProvisionServiceImpl.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/provision/src/ProvisionServiceImpl.cpp.o
-.PHONY : provision/src/ProvisionServiceImpl.cpp.o
-
-provision/src/ProvisionServiceImpl.i: provision/src/ProvisionServiceImpl.cpp.i
-.PHONY : provision/src/ProvisionServiceImpl.i
+monitoring/src/MonitoringServiceImpl.i: monitoring/src/MonitoringServiceImpl.cpp.i
+.PHONY : monitoring/src/MonitoringServiceImpl.i
 
 # target to preprocess a source file
-provision/src/ProvisionServiceImpl.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/provision/src/ProvisionServiceImpl.cpp.i
-.PHONY : provision/src/ProvisionServiceImpl.cpp.i
+monitoring/src/MonitoringServiceImpl.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_service.dir/build.make CMakeFiles/monitoring_service.dir/monitoring/src/MonitoringServiceImpl.cpp.i
+.PHONY : monitoring/src/MonitoringServiceImpl.cpp.i
 
-provision/src/ProvisionServiceImpl.s: provision/src/ProvisionServiceImpl.cpp.s
-.PHONY : provision/src/ProvisionServiceImpl.s
+monitoring/src/MonitoringServiceImpl.s: monitoring/src/MonitoringServiceImpl.cpp.s
+.PHONY : monitoring/src/MonitoringServiceImpl.s
 
 # target to generate assembly for a file
-provision/src/ProvisionServiceImpl.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/provision/src/ProvisionServiceImpl.cpp.s
-.PHONY : provision/src/ProvisionServiceImpl.cpp.s
+monitoring/src/MonitoringServiceImpl.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_service.dir/build.make CMakeFiles/monitoring_service.dir/monitoring/src/MonitoringServiceImpl.cpp.s
+.PHONY : monitoring/src/MonitoringServiceImpl.cpp.s
 
 # Help Target
 help:
@@ -257,22 +209,16 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... provision_service"
-	@echo "... jwt-handler/jwt-handler.o"
-	@echo "... jwt-handler/jwt-handler.i"
-	@echo "... jwt-handler/jwt-handler.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
-	@echo "... provision.grpc.pb.o"
-	@echo "... provision.grpc.pb.i"
-	@echo "... provision.grpc.pb.s"
-	@echo "... provision.pb.o"
-	@echo "... provision.pb.i"
-	@echo "... provision.pb.s"
-	@echo "... provision/src/ProvisionServiceImpl.o"
-	@echo "... provision/src/ProvisionServiceImpl.i"
-	@echo "... provision/src/ProvisionServiceImpl.s"
+	@echo "... monitoring_service"
+	@echo "... monitoring.grpc.pb.o"
+	@echo "... monitoring.grpc.pb.i"
+	@echo "... monitoring.grpc.pb.s"
+	@echo "... monitoring.pb.o"
+	@echo "... monitoring.pb.i"
+	@echo "... monitoring.pb.s"
+	@echo "... monitoring/src/MonitoringServiceImpl.o"
+	@echo "... monitoring/src/MonitoringServiceImpl.i"
+	@echo "... monitoring/src/MonitoringServiceImpl.s"
 .PHONY : help
 
 

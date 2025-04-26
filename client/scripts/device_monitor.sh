@@ -24,6 +24,7 @@ UPTIME=$(uptime -p)                                          # Temps de fonction
 
 DISK_USAGE=$(df -h / | awk 'NR==2 {print $5}')               # Utilisation du disque racine
 # === Récupération des périphériques USB ===
+
 USB_DEVICES=$(lsusb | awk -F 'ID ' '{print $2}' | jq -R -s -c 'split("\n")[:-1]')
 IP_ADDRESS=$(hostname -I | awk '{print $1}')                 # Adresse IP
 
@@ -44,7 +45,7 @@ done
   echo "  \"memory_usage\": \"$MEMORY_USAGE_PERCENT\","
   echo "  \"disk_usage_root\": \"$DISK_USAGE\","
   echo "  \"uptime\": \"$UPTIME\","
-  echo "  \"usb_devices\": \"$USB_DEVICES\","
+  echo "  \"usb_devices\": $USB_DEVICES,"
   echo "  \"ip_address\": \"$IP_ADDRESS\","
   echo "  \"network_status\": \"$PING_STATUS\","
   echo "  \"services\": {"

@@ -4,11 +4,12 @@ package monitoring;
 
 service MonitoringService {
   // Stream des données de monitoring du client vers le serveur
-  rpc StreamMonitoringData(Empty) returns (stream MonitoringResponse);
+  rpc StreamMonitoringData(DeviceID) returns (stream MonitoringResponse);
 }
 
 
-message Empty{
+message DeviceID{
+  int32 device_id =1 ;
 
 }
 
