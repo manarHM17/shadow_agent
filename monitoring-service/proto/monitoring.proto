@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package monitoring;
+
+service MonitoringService {
+  // Stream des données de monitoring du client vers le serveur
+  rpc StreamMonitoringData(DeviceID) returns (stream MonitoringResponse);
+}
+
+
+message DeviceID{
+  int32 device_id =1 ;
+
+}
+
+message MonitoringResponse {
+  string alert_message = 1;
+  string alert_level = 2; // e.g., "INFO", "WARNING", "CRITICAL"
+  string recommended_action = 3;
+  string timestamp = 4;
+
+}

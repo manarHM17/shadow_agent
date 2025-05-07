@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: FreeP@lest!ne2025
+      MYSQL_DATABASE: IOTSHADOW
+      MYSQL_USER: iot_user
+      MYSQL_PASSWORD: FreeP@lest!ne2025
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pFreeP@lest!ne2025"]
+      interval: 5s
+      retries: 5
+    networks:
+      backend:
+        aliases:
+          - db
+
+  provision-service:
+    build:
+      context: ./provision-service
+      dockerfile: Dockerfile
+    container_name: provision-service
+    depends_on:
+      mysql:
+        condition: service_healthy
+    ports:
+      - "50051:50051"
+    environment:
+      DB_HOST: db
+      DB_USER: iot_user
+      DB_PASSWORD: FreeP@lest!ne2025
+      DB_NAME: IOTSHADOW
+    command: ["./build/provision_service"]
+    networks:
+      - backend
+
+  provision-client:
+    image: provision-service:latest
+    container_name: provision-client
+    depends_on:
+      - provision-service
+    environment:
+      SERVER_ADDR: provision-service:50051
+    entrypoint: ["/app/build/provision_test"]
+    networks:
+      - backend
+    stdin_open: true
+    tty: true
+
+volumes:
+  mysql_data:
+
+networks:
+  backend:
+    driver: bridge

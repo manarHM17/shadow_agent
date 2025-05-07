@@ -1,0 +1,3 @@
+/home/manar/monitoring-service/client/build/CMakeFiles/monitoring_service.dir
+/home/manar/monitoring-service/client/build/CMakeFiles/edit_cache.dir
+/home/manar/monitoring-service/client/build/CMakeFiles/rebuild_cache.dir
