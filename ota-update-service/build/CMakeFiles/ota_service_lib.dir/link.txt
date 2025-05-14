@@ -1,0 +1,2 @@
+/usr/bin/ar qc libota_service_lib.a CMakeFiles/ota_service_lib.dir/src/mender_client.cpp.o CMakeFiles/ota_service_lib.dir/src/ota_service_impl.cpp.o CMakeFiles/ota_service_lib.dir/src/ota_service.pb.cc.o CMakeFiles/ota_service_lib.dir/src/ota_service.grpc.pb.cc.o
+/usr/bin/ranlib libota_service_lib.a

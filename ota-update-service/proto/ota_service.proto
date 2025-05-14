@@ -1,0 +1,77 @@
+// proto/ota_service.proto
+syntax = "proto3";
+
+package ota;
+
+service OTAService {
+  // Vérifier si une mise à jour est disponible
+  rpc CheckForUpdate(CheckUpdateRequest) returns (CheckUpdateResponse);
+
+  // Télécharger une mise à jour
+  rpc DownloadUpdate(DownloadRequest) returns (stream DownloadChunk);
+
+  // Installer une mise à jour
+  rpc InstallUpdate(InstallRequest) returns (InstallResponse);
+
+  // Obtenir l'état de la mise à jour
+  rpc GetUpdateStatus(StatusRequest) returns (StatusResponse);
+}
+
+message CheckUpdateRequest {
+  int32 device_id = 1;
+  string current_version = 2;
+  string hardware_type = 3;
+}
+
+message CheckUpdateResponse {
+  bool update_available = 1;
+  string new_version = 2;
+  int64 update_size = 3;
+  string update_id = 4;
+  string changelog = 5;
+}
+
+message DownloadRequest {
+  int32 device_id = 1;
+  string update_id = 2;
+  string jwt_token = 3;
+}
+
+message DownloadChunk {
+  bytes data = 1;
+  int32 chunk_id = 2;
+  bool last_chunk = 3;
+}
+
+message InstallRequest {
+  int32 device_id = 1;
+  string update_id = 2;
+  bool allow_rollback = 3;
+}
+
+message InstallResponse {
+  bool success = 1;
+  string message = 2;
+  string installation_id = 3;
+}
+
+message StatusRequest {
+  int32 device_id = 1;
+  string installation_id = 2;
+}
+
+message StatusResponse {
+  enum Status {
+    UNKNOWN = 0;
+    DOWNLOADING = 1;
+    VERIFYING = 2;
+    INSTALLING = 3;
+    REBOOTING = 4;
+    COMPLETED = 5;
+    FAILED = 6;
+    ROLLED_BACK = 7;
+  }
+  Status status = 1;
+  int32 progress = 2;
+  string message = 3;
+}

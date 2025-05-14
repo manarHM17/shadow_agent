@@ -22,116 +22,341 @@ namespace _pbi = ::google::protobuf::internal;
 namespace _fl = ::google::protobuf::internal::field_layout;
 namespace monitoring {
 
-inline constexpr MonitoringResponse::Impl_::Impl_(
+inline constexpr StatusUpdate::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
-      : alert_message_(
+      : device_id_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
-        alert_level_(
+        message_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
-        recommended_action_(
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR StatusUpdate::StatusUpdate(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct StatusUpdateDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR StatusUpdateDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~StatusUpdateDefaultTypeInternal() {}
+  union {
+    StatusUpdate _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 StatusUpdateDefaultTypeInternal _StatusUpdate_default_instance_;
+
+inline constexpr StatusResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : message_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        success_{false},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR StatusResponse::StatusResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct StatusResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR StatusResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~StatusResponseDefaultTypeInternal() {}
+  union {
+    StatusResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 StatusResponseDefaultTypeInternal _StatusResponse_default_instance_;
+      template <typename>
+PROTOBUF_CONSTEXPR SoftwareMetrics_ServicesEntry_DoNotUse::SoftwareMetrics_ServicesEntry_DoNotUse(::_pbi::ConstantInitialized) {}
+struct SoftwareMetrics_ServicesEntry_DoNotUseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SoftwareMetrics_ServicesEntry_DoNotUseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SoftwareMetrics_ServicesEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    SoftwareMetrics_ServicesEntry_DoNotUse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SoftwareMetrics_ServicesEntry_DoNotUseDefaultTypeInternal _SoftwareMetrics_ServicesEntry_DoNotUse_default_instance_;
+
+inline constexpr HardwareMetrics::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : device_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        readable_date_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        cpu_usage_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        memory_usage_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        disk_usage_root_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        gpio_state_{0},
+        usb_info_{},
+        _cached_size_{0},
+        _oneof_case_{} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR HardwareMetrics::HardwareMetrics(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct HardwareMetricsDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR HardwareMetricsDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~HardwareMetricsDefaultTypeInternal() {}
+  union {
+    HardwareMetrics _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 HardwareMetricsDefaultTypeInternal _HardwareMetrics_default_instance_;
+
+inline constexpr DeviceInfo::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : device_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR DeviceInfo::DeviceInfo(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct DeviceInfoDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DeviceInfoDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DeviceInfoDefaultTypeInternal() {}
+  union {
+    DeviceInfo _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DeviceInfoDefaultTypeInternal _DeviceInfo_default_instance_;
+
+inline constexpr Alert::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : device_id_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
         timestamp_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
+        alert_type_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        description_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        recommended_action_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        severity_{static_cast< ::monitoring::Alert_Severity >(0)},
         _cached_size_{0} {}
 
 template <typename>
-PROTOBUF_CONSTEXPR MonitoringResponse::MonitoringResponse(::_pbi::ConstantInitialized)
+PROTOBUF_CONSTEXPR Alert::Alert(::_pbi::ConstantInitialized)
     : _impl_(::_pbi::ConstantInitialized()) {}
-struct MonitoringResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR MonitoringResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~MonitoringResponseDefaultTypeInternal() {}
+struct AlertDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR AlertDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~AlertDefaultTypeInternal() {}
   union {
-    MonitoringResponse _instance;
+    Alert _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MonitoringResponseDefaultTypeInternal _MonitoringResponse_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 AlertDefaultTypeInternal _Alert_default_instance_;
 
-inline constexpr DeviceID::Impl_::Impl_(
+inline constexpr SoftwareMetrics::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
-      : device_id_{0},
+      : services_{},
+        device_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        readable_date_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        ip_address_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        uptime_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        network_status_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
         _cached_size_{0} {}
 
 template <typename>
-PROTOBUF_CONSTEXPR DeviceID::DeviceID(::_pbi::ConstantInitialized)
+PROTOBUF_CONSTEXPR SoftwareMetrics::SoftwareMetrics(::_pbi::ConstantInitialized)
     : _impl_(::_pbi::ConstantInitialized()) {}
-struct DeviceIDDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR DeviceIDDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~DeviceIDDefaultTypeInternal() {}
+struct SoftwareMetricsDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SoftwareMetricsDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SoftwareMetricsDefaultTypeInternal() {}
   union {
-    DeviceID _instance;
+    SoftwareMetrics _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DeviceIDDefaultTypeInternal _DeviceID_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SoftwareMetricsDefaultTypeInternal _SoftwareMetrics_default_instance_;
 }  // namespace monitoring
-static ::_pb::Metadata file_level_metadata_monitoring_2eproto[2];
-static constexpr const ::_pb::EnumDescriptor**
-    file_level_enum_descriptors_monitoring_2eproto = nullptr;
+static ::_pb::Metadata file_level_metadata_monitoring_2eproto[7];
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_monitoring_2eproto[1];
 static constexpr const ::_pb::ServiceDescriptor**
     file_level_service_descriptors_monitoring_2eproto = nullptr;
 const ::uint32_t TableStruct_monitoring_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
     protodesc_cold) = {
     ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::monitoring::DeviceID, _internal_metadata_),
+    PROTOBUF_FIELD_OFFSET(::monitoring::DeviceInfo, _internal_metadata_),
     ~0u,  // no _extensions_
     ~0u,  // no _oneof_case_
     ~0u,  // no _weak_field_map_
     ~0u,  // no _inlined_string_donated_
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::monitoring::DeviceID, _impl_.device_id_),
+    PROTOBUF_FIELD_OFFSET(::monitoring::DeviceInfo, _impl_.device_id_),
     ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::monitoring::MonitoringResponse, _internal_metadata_),
+    PROTOBUF_FIELD_OFFSET(::monitoring::StatusUpdate, _internal_metadata_),
     ~0u,  // no _extensions_
     ~0u,  // no _oneof_case_
     ~0u,  // no _weak_field_map_
     ~0u,  // no _inlined_string_donated_
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::monitoring::MonitoringResponse, _impl_.alert_message_),
-    PROTOBUF_FIELD_OFFSET(::monitoring::MonitoringResponse, _impl_.alert_level_),
-    PROTOBUF_FIELD_OFFSET(::monitoring::MonitoringResponse, _impl_.recommended_action_),
-    PROTOBUF_FIELD_OFFSET(::monitoring::MonitoringResponse, _impl_.timestamp_),
+    PROTOBUF_FIELD_OFFSET(::monitoring::StatusUpdate, _impl_.device_id_),
+    PROTOBUF_FIELD_OFFSET(::monitoring::StatusUpdate, _impl_.message_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::monitoring::StatusResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::monitoring::StatusResponse, _impl_.success_),
+    PROTOBUF_FIELD_OFFSET(::monitoring::StatusResponse, _impl_.message_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::monitoring::Alert, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::monitoring::Alert, _impl_.device_id_),
+    PROTOBUF_FIELD_OFFSET(::monitoring::Alert, _impl_.severity_),
+    PROTOBUF_FIELD_OFFSET(::monitoring::Alert, _impl_.timestamp_),
+    PROTOBUF_FIELD_OFFSET(::monitoring::Alert, _impl_.alert_type_),
+    PROTOBUF_FIELD_OFFSET(::monitoring::Alert, _impl_.description_),
+    PROTOBUF_FIELD_OFFSET(::monitoring::Alert, _impl_.recommended_action_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::monitoring::HardwareMetrics, _internal_metadata_),
+    ~0u,  // no _extensions_
+    PROTOBUF_FIELD_OFFSET(::monitoring::HardwareMetrics, _impl_._oneof_case_[0]),
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::monitoring::HardwareMetrics, _impl_.device_id_),
+    PROTOBUF_FIELD_OFFSET(::monitoring::HardwareMetrics, _impl_.readable_date_),
+    PROTOBUF_FIELD_OFFSET(::monitoring::HardwareMetrics, _impl_.cpu_usage_),
+    PROTOBUF_FIELD_OFFSET(::monitoring::HardwareMetrics, _impl_.memory_usage_),
+    PROTOBUF_FIELD_OFFSET(::monitoring::HardwareMetrics, _impl_.disk_usage_root_),
+    ::_pbi::kInvalidFieldOffsetTag,
+    ::_pbi::kInvalidFieldOffsetTag,
+    PROTOBUF_FIELD_OFFSET(::monitoring::HardwareMetrics, _impl_.gpio_state_),
+    PROTOBUF_FIELD_OFFSET(::monitoring::HardwareMetrics, _impl_.usb_info_),
+    PROTOBUF_FIELD_OFFSET(::monitoring::SoftwareMetrics_ServicesEntry_DoNotUse, _has_bits_),
+    PROTOBUF_FIELD_OFFSET(::monitoring::SoftwareMetrics_ServicesEntry_DoNotUse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::monitoring::SoftwareMetrics_ServicesEntry_DoNotUse, key_),
+    PROTOBUF_FIELD_OFFSET(::monitoring::SoftwareMetrics_ServicesEntry_DoNotUse, value_),
+    0,
+    1,
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::monitoring::SoftwareMetrics, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::monitoring::SoftwareMetrics, _impl_.device_id_),
+    PROTOBUF_FIELD_OFFSET(::monitoring::SoftwareMetrics, _impl_.readable_date_),
+    PROTOBUF_FIELD_OFFSET(::monitoring::SoftwareMetrics, _impl_.ip_address_),
+    PROTOBUF_FIELD_OFFSET(::monitoring::SoftwareMetrics, _impl_.uptime_),
+    PROTOBUF_FIELD_OFFSET(::monitoring::SoftwareMetrics, _impl_.network_status_),
+    PROTOBUF_FIELD_OFFSET(::monitoring::SoftwareMetrics, _impl_.services_),
 };
 
 static const ::_pbi::MigrationSchema
     schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-        {0, -1, -1, sizeof(::monitoring::DeviceID)},
-        {9, -1, -1, sizeof(::monitoring::MonitoringResponse)},
+        {0, -1, -1, sizeof(::monitoring::DeviceInfo)},
+        {9, -1, -1, sizeof(::monitoring::StatusUpdate)},
+        {19, -1, -1, sizeof(::monitoring::StatusResponse)},
+        {29, -1, -1, sizeof(::monitoring::Alert)},
+        {43, -1, -1, sizeof(::monitoring::HardwareMetrics)},
+        {60, 70, -1, sizeof(::monitoring::SoftwareMetrics_ServicesEntry_DoNotUse)},
+        {72, -1, -1, sizeof(::monitoring::SoftwareMetrics)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
-    &::monitoring::_DeviceID_default_instance_._instance,
-    &::monitoring::_MonitoringResponse_default_instance_._instance,
+    &::monitoring::_DeviceInfo_default_instance_._instance,
+    &::monitoring::_StatusUpdate_default_instance_._instance,
+    &::monitoring::_StatusResponse_default_instance_._instance,
+    &::monitoring::_Alert_default_instance_._instance,
+    &::monitoring::_HardwareMetrics_default_instance_._instance,
+    &::monitoring::_SoftwareMetrics_ServicesEntry_DoNotUse_default_instance_._instance,
+    &::monitoring::_SoftwareMetrics_default_instance_._instance,
 };
 const char descriptor_table_protodef_monitoring_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-    "\n\020monitoring.proto\022\nmonitoring\"\035\n\010Device"
-    "ID\022\021\n\tdevice_id\030\001 \001(\005\"o\n\022MonitoringRespo"
-    "nse\022\025\n\ralert_message\030\001 \001(\t\022\023\n\013alert_leve"
-    "l\030\002 \001(\t\022\032\n\022recommended_action\030\003 \001(\t\022\021\n\tt"
-    "imestamp\030\004 \001(\t2c\n\021MonitoringService\022N\n\024S"
-    "treamMonitoringData\022\024.monitoring.DeviceI"
-    "D\032\036.monitoring.MonitoringResponse0\001b\006pro"
-    "to3"
+    "\n\020monitoring.proto\022\nmonitoring\"\037\n\nDevice"
+    "Info\022\021\n\tdevice_id\030\001 \001(\t\"2\n\014StatusUpdate\022"
+    "\021\n\tdevice_id\030\001 \001(\t\022\017\n\007message\030\002 \001(\t\"2\n\016S"
+    "tatusResponse\022\017\n\007success\030\001 \001(\010\022\017\n\007messag"
+    "e\030\002 \001(\t\"\321\001\n\005Alert\022\021\n\tdevice_id\030\001 \001(\t\022,\n\010"
+    "severity\030\002 \001(\0162\032.monitoring.Alert.Severi"
+    "ty\022\021\n\ttimestamp\030\003 \001(\t\022\022\n\nalert_type\030\004 \001("
+    "\t\022\023\n\013description\030\005 \001(\t\022\032\n\022recommended_ac"
+    "tion\030\006 \001(\t\"/\n\010Severity\022\010\n\004INFO\020\000\022\013\n\007WARN"
+    "ING\020\001\022\014\n\010CRITICAL\020\002\"\320\001\n\017HardwareMetrics\022"
+    "\021\n\tdevice_id\030\001 \001(\t\022\025\n\rreadable_date\030\002 \001("
+    "\t\022\021\n\tcpu_usage\030\003 \001(\t\022\024\n\014memory_usage\030\004 \001"
+    "(\t\022\027\n\017disk_usage_root\030\005 \001(\t\022\032\n\020last_inse"
+    "rt_time\030\006 \001(\tH\000\022\025\n\013usb_devices\030\007 \001(\tH\000\022\022"
+    "\n\ngpio_state\030\010 \001(\005B\n\n\010usb_info\"\345\001\n\017Softw"
+    "areMetrics\022\021\n\tdevice_id\030\001 \001(\t\022\025\n\rreadabl"
+    "e_date\030\002 \001(\t\022\022\n\nip_address\030\003 \001(\t\022\016\n\006upti"
+    "me\030\004 \001(\t\022\026\n\016network_status\030\005 \001(\t\022;\n\010serv"
+    "ices\030\006 \003(\0132).monitoring.SoftwareMetrics."
+    "ServicesEntry\032/\n\rServicesEntry\022\013\n\003key\030\001 "
+    "\001(\t\022\r\n\005value\030\002 \001(\t:\0028\0012\240\001\n\021MonitoringSer"
+    "vice\022\?\n\016RegisterDevice\022\026.monitoring.Devi"
+    "ceInfo\032\021.monitoring.Alert\"\0000\001\022J\n\020SendSta"
+    "tusUpdate\022\030.monitoring.StatusUpdate\032\032.mo"
+    "nitoring.StatusResponse\"\000b\006proto3"
 };
 static ::absl::once_flag descriptor_table_monitoring_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_monitoring_2eproto = {
     false,
     false,
-    283,
+    993,
     descriptor_table_protodef_monitoring_2eproto,
     "monitoring.proto",
     &descriptor_table_monitoring_2eproto_once,
     nullptr,
     0,
-    2,
+    7,
     schemas,
     file_default_instances,
     TableStruct_monitoring_2eproto::offsets,
@@ -158,53 +383,88 @@ PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_monitori
 PROTOBUF_ATTRIBUTE_INIT_PRIORITY2
 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_monitoring_2eproto(&descriptor_table_monitoring_2eproto);
 namespace monitoring {
+const ::google::protobuf::EnumDescriptor* Alert_Severity_descriptor() {
+  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_monitoring_2eproto);
+  return file_level_enum_descriptors_monitoring_2eproto[0];
+}
+PROTOBUF_CONSTINIT const uint32_t Alert_Severity_internal_data_[] = {
+    196608u, 0u, };
+bool Alert_Severity_IsValid(int value) {
+  return 0 <= value && value <= 2;
+}
+#if (__cplusplus < 201703) && \
+  (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+
+constexpr Alert_Severity Alert::INFO;
+constexpr Alert_Severity Alert::WARNING;
+constexpr Alert_Severity Alert::CRITICAL;
+constexpr Alert_Severity Alert::Severity_MIN;
+constexpr Alert_Severity Alert::Severity_MAX;
+constexpr int Alert::Severity_ARRAYSIZE;
+
+#endif  // (__cplusplus < 201703) &&
+        // (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 // ===================================================================
 
-class DeviceID::_Internal {
+class DeviceInfo::_Internal {
  public:
 };
 
-DeviceID::DeviceID(::google::protobuf::Arena* arena)
+DeviceInfo::DeviceInfo(::google::protobuf::Arena* arena)
     : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:monitoring.DeviceID)
+  // @@protoc_insertion_point(arena_constructor:monitoring.DeviceInfo)
 }
-DeviceID::DeviceID(
-    ::google::protobuf::Arena* arena, const DeviceID& from)
-    : DeviceID(arena) {
-  MergeFrom(from);
+inline PROTOBUF_NDEBUG_INLINE DeviceInfo::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : device_id_(arena, from.device_id_),
+        _cached_size_{0} {}
+
+DeviceInfo::DeviceInfo(
+    ::google::protobuf::Arena* arena,
+    const DeviceInfo& from)
+    : ::google::protobuf::Message(arena) {
+  DeviceInfo* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+
+  // @@protoc_insertion_point(copy_constructor:monitoring.DeviceInfo)
 }
-inline PROTOBUF_NDEBUG_INLINE DeviceID::Impl_::Impl_(
+inline PROTOBUF_NDEBUG_INLINE DeviceInfo::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
-      : _cached_size_{0} {}
+      : device_id_(arena),
+        _cached_size_{0} {}
 
-inline void DeviceID::SharedCtor(::_pb::Arena* arena) {
+inline void DeviceInfo::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.device_id_ = {};
 }
-DeviceID::~DeviceID() {
-  // @@protoc_insertion_point(destructor:monitoring.DeviceID)
+DeviceInfo::~DeviceInfo() {
+  // @@protoc_insertion_point(destructor:monitoring.DeviceInfo)
   _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-inline void DeviceID::SharedDtor() {
+inline void DeviceInfo::SharedDtor() {
   ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.device_id_.Destroy();
   _impl_.~Impl_();
 }
 
-PROTOBUF_NOINLINE void DeviceID::Clear() {
-// @@protoc_insertion_point(message_clear_start:monitoring.DeviceID)
+PROTOBUF_NOINLINE void DeviceInfo::Clear() {
+// @@protoc_insertion_point(message_clear_start:monitoring.DeviceInfo)
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.device_id_ = 0;
+  _impl_.device_id_.ClearToEmpty();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* DeviceID::_InternalParse(
+const char* DeviceInfo::_InternalParse(
     const char* ptr, ::_pbi::ParseContext* ctx) {
   ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
@@ -212,7 +472,7 @@ const char* DeviceID::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 0, 0, 2> DeviceID::_table_ = {
+const ::_pbi::TcParseTable<0, 1, 0, 39, 2> DeviceInfo::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
@@ -223,36 +483,40 @@ const ::_pbi::TcParseTable<0, 1, 0, 0, 2> DeviceID::_table_ = {
     1,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_DeviceID_default_instance_._instance,
+    &_DeviceInfo_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
   }, {{
-    // int32 device_id = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(DeviceID, _impl_.device_id_), 63>(),
-     {8, 63, 0, PROTOBUF_FIELD_OFFSET(DeviceID, _impl_.device_id_)}},
+    // string device_id = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(DeviceInfo, _impl_.device_id_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // int32 device_id = 1;
-    {PROTOBUF_FIELD_OFFSET(DeviceID, _impl_.device_id_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
+    // string device_id = 1;
+    {PROTOBUF_FIELD_OFFSET(DeviceInfo, _impl_.device_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
   }},
   // no aux_entries
   {{
+    "\25\11\0\0\0\0\0\0"
+    "monitoring.DeviceInfo"
+    "device_id"
   }},
 };
 
-::uint8_t* DeviceID::_InternalSerialize(
+::uint8_t* DeviceInfo::_InternalSerialize(
     ::uint8_t* target,
     ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:monitoring.DeviceID)
+  // @@protoc_insertion_point(serialize_to_array_start:monitoring.DeviceInfo)
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
-  // int32 device_id = 1;
-  if (this->_internal_device_id() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::
-        WriteInt32ToArrayWithField<1>(
-            stream, this->_internal_device_id(), target);
+  // string device_id = 1;
+  if (!this->_internal_device_id().empty()) {
+    const std::string& _s = this->_internal_device_id();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "monitoring.DeviceInfo.device_id");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -260,147 +524,141 @@ const ::_pbi::TcParseTable<0, 1, 0, 0, 2> DeviceID::_table_ = {
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
             _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:monitoring.DeviceID)
+  // @@protoc_insertion_point(serialize_to_array_end:monitoring.DeviceInfo)
   return target;
 }
 
-::size_t DeviceID::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:monitoring.DeviceID)
+::size_t DeviceInfo::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:monitoring.DeviceInfo)
   ::size_t total_size = 0;
 
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // int32 device_id = 1;
-  if (this->_internal_device_id() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
-        this->_internal_device_id());
+  // string device_id = 1;
+  if (!this->_internal_device_id().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_device_id());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData DeviceID::_class_data_ = {
-    DeviceID::MergeImpl,
+const ::google::protobuf::Message::ClassData DeviceInfo::_class_data_ = {
+    DeviceInfo::MergeImpl,
     nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData* DeviceID::GetClassData() const {
+const ::google::protobuf::Message::ClassData* DeviceInfo::GetClassData() const {
   return &_class_data_;
 }
 
-void DeviceID::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
-  auto* const _this = static_cast<DeviceID*>(&to_msg);
-  auto& from = static_cast<const DeviceID&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:monitoring.DeviceID)
+void DeviceInfo::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<DeviceInfo*>(&to_msg);
+  auto& from = static_cast<const DeviceInfo&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:monitoring.DeviceInfo)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_device_id() != 0) {
+  if (!from._internal_device_id().empty()) {
     _this->_internal_set_device_id(from._internal_device_id());
   }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void DeviceID::CopyFrom(const DeviceID& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:monitoring.DeviceID)
+void DeviceInfo::CopyFrom(const DeviceInfo& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:monitoring.DeviceInfo)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool DeviceID::IsInitialized() const {
+PROTOBUF_NOINLINE bool DeviceInfo::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* DeviceID::AccessCachedSize() const {
+::_pbi::CachedSize* DeviceInfo::AccessCachedSize() const {
   return &_impl_._cached_size_;
 }
-void DeviceID::InternalSwap(DeviceID* PROTOBUF_RESTRICT other) {
+void DeviceInfo::InternalSwap(DeviceInfo* PROTOBUF_RESTRICT other) {
   using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-        swap(_impl_.device_id_, other->_impl_.device_id_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_id_, &other->_impl_.device_id_, arena);
 }
 
-::google::protobuf::Metadata DeviceID::GetMetadata() const {
+::google::protobuf::Metadata DeviceInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_monitoring_2eproto_getter, &descriptor_table_monitoring_2eproto_once,
       file_level_metadata_monitoring_2eproto[0]);
 }
 // ===================================================================
 
-class MonitoringResponse::_Internal {
+class StatusUpdate::_Internal {
  public:
 };
 
-MonitoringResponse::MonitoringResponse(::google::protobuf::Arena* arena)
+StatusUpdate::StatusUpdate(::google::protobuf::Arena* arena)
     : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:monitoring.MonitoringResponse)
+  // @@protoc_insertion_point(arena_constructor:monitoring.StatusUpdate)
 }
-inline PROTOBUF_NDEBUG_INLINE MonitoringResponse::Impl_::Impl_(
+inline PROTOBUF_NDEBUG_INLINE StatusUpdate::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
     const Impl_& from)
-      : alert_message_(arena, from.alert_message_),
-        alert_level_(arena, from.alert_level_),
-        recommended_action_(arena, from.recommended_action_),
-        timestamp_(arena, from.timestamp_),
+      : device_id_(arena, from.device_id_),
+        message_(arena, from.message_),
         _cached_size_{0} {}
 
-MonitoringResponse::MonitoringResponse(
+StatusUpdate::StatusUpdate(
     ::google::protobuf::Arena* arena,
-    const MonitoringResponse& from)
+    const StatusUpdate& from)
     : ::google::protobuf::Message(arena) {
-  MonitoringResponse* const _this = this;
+  StatusUpdate* const _this = this;
   (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
-  // @@protoc_insertion_point(copy_constructor:monitoring.MonitoringResponse)
+  // @@protoc_insertion_point(copy_constructor:monitoring.StatusUpdate)
 }
-inline PROTOBUF_NDEBUG_INLINE MonitoringResponse::Impl_::Impl_(
+inline PROTOBUF_NDEBUG_INLINE StatusUpdate::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
-      : alert_message_(arena),
-        alert_level_(arena),
-        recommended_action_(arena),
-        timestamp_(arena),
+      : device_id_(arena),
+        message_(arena),
         _cached_size_{0} {}
 
-inline void MonitoringResponse::SharedCtor(::_pb::Arena* arena) {
+inline void StatusUpdate::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
 }
-MonitoringResponse::~MonitoringResponse() {
-  // @@protoc_insertion_point(destructor:monitoring.MonitoringResponse)
+StatusUpdate::~StatusUpdate() {
+  // @@protoc_insertion_point(destructor:monitoring.StatusUpdate)
   _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-inline void MonitoringResponse::SharedDtor() {
+inline void StatusUpdate::SharedDtor() {
   ABSL_DCHECK(GetArena() == nullptr);
-  _impl_.alert_message_.Destroy();
-  _impl_.alert_level_.Destroy();
-  _impl_.recommended_action_.Destroy();
-  _impl_.timestamp_.Destroy();
+  _impl_.device_id_.Destroy();
+  _impl_.message_.Destroy();
   _impl_.~Impl_();
 }
 
-PROTOBUF_NOINLINE void MonitoringResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:monitoring.MonitoringResponse)
+PROTOBUF_NOINLINE void StatusUpdate::Clear() {
+// @@protoc_insertion_point(message_clear_start:monitoring.StatusUpdate)
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.alert_message_.ClearToEmpty();
-  _impl_.alert_level_.ClearToEmpty();
-  _impl_.recommended_action_.ClearToEmpty();
-  _impl_.timestamp_.ClearToEmpty();
+  _impl_.device_id_.ClearToEmpty();
+  _impl_.message_.ClearToEmpty();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* MonitoringResponse::_InternalParse(
+const char* StatusUpdate::_InternalParse(
     const char* ptr, ::_pbi::ParseContext* ctx) {
   ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
@@ -408,96 +666,66 @@ const char* MonitoringResponse::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 4, 0, 89, 2> MonitoringResponse::_table_ = {
+const ::_pbi::TcParseTable<1, 2, 0, 48, 2> StatusUpdate::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    4, 24,  // max_field_number, fast_idx_mask
+    2, 8,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967280,  // skipmap
+    4294967292,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    4,  // num_field_entries
+    2,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_MonitoringResponse_default_instance_._instance,
+    &_StatusUpdate_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
   }, {{
-    // string timestamp = 4;
+    // string message = 2;
     {::_pbi::TcParser::FastUS1,
-     {34, 63, 0, PROTOBUF_FIELD_OFFSET(MonitoringResponse, _impl_.timestamp_)}},
-    // string alert_message = 1;
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(StatusUpdate, _impl_.message_)}},
+    // string device_id = 1;
     {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(MonitoringResponse, _impl_.alert_message_)}},
-    // string alert_level = 2;
-    {::_pbi::TcParser::FastUS1,
-     {18, 63, 0, PROTOBUF_FIELD_OFFSET(MonitoringResponse, _impl_.alert_level_)}},
-    // string recommended_action = 3;
-    {::_pbi::TcParser::FastUS1,
-     {26, 63, 0, PROTOBUF_FIELD_OFFSET(MonitoringResponse, _impl_.recommended_action_)}},
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(StatusUpdate, _impl_.device_id_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // string alert_message = 1;
-    {PROTOBUF_FIELD_OFFSET(MonitoringResponse, _impl_.alert_message_), 0, 0,
+    // string device_id = 1;
+    {PROTOBUF_FIELD_OFFSET(StatusUpdate, _impl_.device_id_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string alert_level = 2;
-    {PROTOBUF_FIELD_OFFSET(MonitoringResponse, _impl_.alert_level_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string recommended_action = 3;
-    {PROTOBUF_FIELD_OFFSET(MonitoringResponse, _impl_.recommended_action_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string timestamp = 4;
-    {PROTOBUF_FIELD_OFFSET(MonitoringResponse, _impl_.timestamp_), 0, 0,
+    // string message = 2;
+    {PROTOBUF_FIELD_OFFSET(StatusUpdate, _impl_.message_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
   }},
   // no aux_entries
   {{
-    "\35\15\13\22\11\0\0\0"
-    "monitoring.MonitoringResponse"
-    "alert_message"
-    "alert_level"
-    "recommended_action"
-    "timestamp"
+    "\27\11\7\0\0\0\0\0"
+    "monitoring.StatusUpdate"
+    "device_id"
+    "message"
   }},
 };
 
-::uint8_t* MonitoringResponse::_InternalSerialize(
+::uint8_t* StatusUpdate::_InternalSerialize(
     ::uint8_t* target,
     ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:monitoring.MonitoringResponse)
+  // @@protoc_insertion_point(serialize_to_array_start:monitoring.StatusUpdate)
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
-  // string alert_message = 1;
-  if (!this->_internal_alert_message().empty()) {
-    const std::string& _s = this->_internal_alert_message();
+  // string device_id = 1;
+  if (!this->_internal_device_id().empty()) {
+    const std::string& _s = this->_internal_device_id();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "monitoring.MonitoringResponse.alert_message");
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "monitoring.StatusUpdate.device_id");
     target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
-  // string alert_level = 2;
-  if (!this->_internal_alert_level().empty()) {
-    const std::string& _s = this->_internal_alert_level();
+  // string message = 2;
+  if (!this->_internal_message().empty()) {
+    const std::string& _s = this->_internal_message();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "monitoring.MonitoringResponse.alert_level");
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "monitoring.StatusUpdate.message");
     target = stream->WriteStringMaybeAliased(2, _s, target);
-  }
-
-  // string recommended_action = 3;
-  if (!this->_internal_recommended_action().empty()) {
-    const std::string& _s = this->_internal_recommended_action();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "monitoring.MonitoringResponse.recommended_action");
-    target = stream->WriteStringMaybeAliased(3, _s, target);
-  }
-
-  // string timestamp = 4;
-  if (!this->_internal_timestamp().empty()) {
-    const std::string& _s = this->_internal_timestamp();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "monitoring.MonitoringResponse.timestamp");
-    target = stream->WriteStringMaybeAliased(4, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -505,105 +733,1437 @@ const ::_pbi::TcParseTable<2, 4, 0, 89, 2> MonitoringResponse::_table_ = {
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
             _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:monitoring.MonitoringResponse)
+  // @@protoc_insertion_point(serialize_to_array_end:monitoring.StatusUpdate)
   return target;
 }
 
-::size_t MonitoringResponse::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:monitoring.MonitoringResponse)
+::size_t StatusUpdate::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:monitoring.StatusUpdate)
   ::size_t total_size = 0;
 
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string alert_message = 1;
-  if (!this->_internal_alert_message().empty()) {
+  // string device_id = 1;
+  if (!this->_internal_device_id().empty()) {
     total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_alert_message());
+                                    this->_internal_device_id());
   }
 
-  // string alert_level = 2;
-  if (!this->_internal_alert_level().empty()) {
+  // string message = 2;
+  if (!this->_internal_message().empty()) {
     total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_alert_level());
-  }
-
-  // string recommended_action = 3;
-  if (!this->_internal_recommended_action().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_recommended_action());
-  }
-
-  // string timestamp = 4;
-  if (!this->_internal_timestamp().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_timestamp());
+                                    this->_internal_message());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData MonitoringResponse::_class_data_ = {
-    MonitoringResponse::MergeImpl,
+const ::google::protobuf::Message::ClassData StatusUpdate::_class_data_ = {
+    StatusUpdate::MergeImpl,
     nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData* MonitoringResponse::GetClassData() const {
+const ::google::protobuf::Message::ClassData* StatusUpdate::GetClassData() const {
   return &_class_data_;
 }
 
-void MonitoringResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
-  auto* const _this = static_cast<MonitoringResponse*>(&to_msg);
-  auto& from = static_cast<const MonitoringResponse&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:monitoring.MonitoringResponse)
+void StatusUpdate::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<StatusUpdate*>(&to_msg);
+  auto& from = static_cast<const StatusUpdate&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:monitoring.StatusUpdate)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_alert_message().empty()) {
-    _this->_internal_set_alert_message(from._internal_alert_message());
+  if (!from._internal_device_id().empty()) {
+    _this->_internal_set_device_id(from._internal_device_id());
   }
-  if (!from._internal_alert_level().empty()) {
-    _this->_internal_set_alert_level(from._internal_alert_level());
-  }
-  if (!from._internal_recommended_action().empty()) {
-    _this->_internal_set_recommended_action(from._internal_recommended_action());
-  }
-  if (!from._internal_timestamp().empty()) {
-    _this->_internal_set_timestamp(from._internal_timestamp());
+  if (!from._internal_message().empty()) {
+    _this->_internal_set_message(from._internal_message());
   }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void MonitoringResponse::CopyFrom(const MonitoringResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:monitoring.MonitoringResponse)
+void StatusUpdate::CopyFrom(const StatusUpdate& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:monitoring.StatusUpdate)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool MonitoringResponse::IsInitialized() const {
+PROTOBUF_NOINLINE bool StatusUpdate::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* MonitoringResponse::AccessCachedSize() const {
+::_pbi::CachedSize* StatusUpdate::AccessCachedSize() const {
   return &_impl_._cached_size_;
 }
-void MonitoringResponse::InternalSwap(MonitoringResponse* PROTOBUF_RESTRICT other) {
+void StatusUpdate::InternalSwap(StatusUpdate* PROTOBUF_RESTRICT other) {
   using std::swap;
   auto* arena = GetArena();
   ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.alert_message_, &other->_impl_.alert_message_, arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.alert_level_, &other->_impl_.alert_level_, arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.recommended_action_, &other->_impl_.recommended_action_, arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.timestamp_, &other->_impl_.timestamp_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_id_, &other->_impl_.device_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.message_, &other->_impl_.message_, arena);
 }
 
-::google::protobuf::Metadata MonitoringResponse::GetMetadata() const {
+::google::protobuf::Metadata StatusUpdate::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_monitoring_2eproto_getter, &descriptor_table_monitoring_2eproto_once,
       file_level_metadata_monitoring_2eproto[1]);
+}
+// ===================================================================
+
+class StatusResponse::_Internal {
+ public:
+};
+
+StatusResponse::StatusResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:monitoring.StatusResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE StatusResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : message_(arena, from.message_),
+        _cached_size_{0} {}
+
+StatusResponse::StatusResponse(
+    ::google::protobuf::Arena* arena,
+    const StatusResponse& from)
+    : ::google::protobuf::Message(arena) {
+  StatusResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  _impl_.success_ = from._impl_.success_;
+
+  // @@protoc_insertion_point(copy_constructor:monitoring.StatusResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE StatusResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : message_(arena),
+        _cached_size_{0} {}
+
+inline void StatusResponse::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.success_ = {};
+}
+StatusResponse::~StatusResponse() {
+  // @@protoc_insertion_point(destructor:monitoring.StatusResponse)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void StatusResponse::SharedDtor() {
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.message_.Destroy();
+  _impl_.~Impl_();
+}
+
+PROTOBUF_NOINLINE void StatusResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:monitoring.StatusResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.message_.ClearToEmpty();
+  _impl_.success_ = false;
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* StatusResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 41, 2> StatusResponse::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_StatusResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // string message = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(StatusResponse, _impl_.message_)}},
+    // bool success = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(StatusResponse, _impl_.success_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(StatusResponse, _impl_.success_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // bool success = 1;
+    {PROTOBUF_FIELD_OFFSET(StatusResponse, _impl_.success_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
+    // string message = 2;
+    {PROTOBUF_FIELD_OFFSET(StatusResponse, _impl_.message_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\31\0\7\0\0\0\0\0"
+    "monitoring.StatusResponse"
+    "message"
+  }},
+};
+
+::uint8_t* StatusResponse::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:monitoring.StatusResponse)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // bool success = 1;
+  if (this->_internal_success() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(
+        1, this->_internal_success(), target);
+  }
+
+  // string message = 2;
+  if (!this->_internal_message().empty()) {
+    const std::string& _s = this->_internal_message();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "monitoring.StatusResponse.message");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:monitoring.StatusResponse)
+  return target;
+}
+
+::size_t StatusResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:monitoring.StatusResponse)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string message = 2;
+  if (!this->_internal_message().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_message());
+  }
+
+  // bool success = 1;
+  if (this->_internal_success() != 0) {
+    total_size += 2;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData StatusResponse::_class_data_ = {
+    StatusResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
+};
+const ::google::protobuf::Message::ClassData* StatusResponse::GetClassData() const {
+  return &_class_data_;
+}
+
+void StatusResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<StatusResponse*>(&to_msg);
+  auto& from = static_cast<const StatusResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:monitoring.StatusResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_message().empty()) {
+    _this->_internal_set_message(from._internal_message());
+  }
+  if (from._internal_success() != 0) {
+    _this->_internal_set_success(from._internal_success());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void StatusResponse::CopyFrom(const StatusResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:monitoring.StatusResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool StatusResponse::IsInitialized() const {
+  return true;
+}
+
+::_pbi::CachedSize* StatusResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void StatusResponse::InternalSwap(StatusResponse* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.message_, &other->_impl_.message_, arena);
+        swap(_impl_.success_, other->_impl_.success_);
+}
+
+::google::protobuf::Metadata StatusResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_monitoring_2eproto_getter, &descriptor_table_monitoring_2eproto_once,
+      file_level_metadata_monitoring_2eproto[2]);
+}
+// ===================================================================
+
+class Alert::_Internal {
+ public:
+};
+
+Alert::Alert(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:monitoring.Alert)
+}
+inline PROTOBUF_NDEBUG_INLINE Alert::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : device_id_(arena, from.device_id_),
+        timestamp_(arena, from.timestamp_),
+        alert_type_(arena, from.alert_type_),
+        description_(arena, from.description_),
+        recommended_action_(arena, from.recommended_action_),
+        _cached_size_{0} {}
+
+Alert::Alert(
+    ::google::protobuf::Arena* arena,
+    const Alert& from)
+    : ::google::protobuf::Message(arena) {
+  Alert* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  _impl_.severity_ = from._impl_.severity_;
+
+  // @@protoc_insertion_point(copy_constructor:monitoring.Alert)
+}
+inline PROTOBUF_NDEBUG_INLINE Alert::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : device_id_(arena),
+        timestamp_(arena),
+        alert_type_(arena),
+        description_(arena),
+        recommended_action_(arena),
+        _cached_size_{0} {}
+
+inline void Alert::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.severity_ = {};
+}
+Alert::~Alert() {
+  // @@protoc_insertion_point(destructor:monitoring.Alert)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void Alert::SharedDtor() {
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.device_id_.Destroy();
+  _impl_.timestamp_.Destroy();
+  _impl_.alert_type_.Destroy();
+  _impl_.description_.Destroy();
+  _impl_.recommended_action_.Destroy();
+  _impl_.~Impl_();
+}
+
+PROTOBUF_NOINLINE void Alert::Clear() {
+// @@protoc_insertion_point(message_clear_start:monitoring.Alert)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.device_id_.ClearToEmpty();
+  _impl_.timestamp_.ClearToEmpty();
+  _impl_.alert_type_.ClearToEmpty();
+  _impl_.description_.ClearToEmpty();
+  _impl_.recommended_action_.ClearToEmpty();
+  _impl_.severity_ = 0;
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* Alert::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 6, 0, 82, 2> Alert::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    6, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967232,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    6,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_Alert_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // string device_id = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(Alert, _impl_.device_id_)}},
+    // .monitoring.Alert.Severity severity = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(Alert, _impl_.severity_), 63>(),
+     {16, 63, 0, PROTOBUF_FIELD_OFFSET(Alert, _impl_.severity_)}},
+    // string timestamp = 3;
+    {::_pbi::TcParser::FastUS1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(Alert, _impl_.timestamp_)}},
+    // string alert_type = 4;
+    {::_pbi::TcParser::FastUS1,
+     {34, 63, 0, PROTOBUF_FIELD_OFFSET(Alert, _impl_.alert_type_)}},
+    // string description = 5;
+    {::_pbi::TcParser::FastUS1,
+     {42, 63, 0, PROTOBUF_FIELD_OFFSET(Alert, _impl_.description_)}},
+    // string recommended_action = 6;
+    {::_pbi::TcParser::FastUS1,
+     {50, 63, 0, PROTOBUF_FIELD_OFFSET(Alert, _impl_.recommended_action_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string device_id = 1;
+    {PROTOBUF_FIELD_OFFSET(Alert, _impl_.device_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // .monitoring.Alert.Severity severity = 2;
+    {PROTOBUF_FIELD_OFFSET(Alert, _impl_.severity_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
+    // string timestamp = 3;
+    {PROTOBUF_FIELD_OFFSET(Alert, _impl_.timestamp_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string alert_type = 4;
+    {PROTOBUF_FIELD_OFFSET(Alert, _impl_.alert_type_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string description = 5;
+    {PROTOBUF_FIELD_OFFSET(Alert, _impl_.description_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string recommended_action = 6;
+    {PROTOBUF_FIELD_OFFSET(Alert, _impl_.recommended_action_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\20\11\0\11\12\13\22\0"
+    "monitoring.Alert"
+    "device_id"
+    "timestamp"
+    "alert_type"
+    "description"
+    "recommended_action"
+  }},
+};
+
+::uint8_t* Alert::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:monitoring.Alert)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // string device_id = 1;
+  if (!this->_internal_device_id().empty()) {
+    const std::string& _s = this->_internal_device_id();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "monitoring.Alert.device_id");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
+  }
+
+  // .monitoring.Alert.Severity severity = 2;
+  if (this->_internal_severity() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
+        2, this->_internal_severity(), target);
+  }
+
+  // string timestamp = 3;
+  if (!this->_internal_timestamp().empty()) {
+    const std::string& _s = this->_internal_timestamp();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "monitoring.Alert.timestamp");
+    target = stream->WriteStringMaybeAliased(3, _s, target);
+  }
+
+  // string alert_type = 4;
+  if (!this->_internal_alert_type().empty()) {
+    const std::string& _s = this->_internal_alert_type();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "monitoring.Alert.alert_type");
+    target = stream->WriteStringMaybeAliased(4, _s, target);
+  }
+
+  // string description = 5;
+  if (!this->_internal_description().empty()) {
+    const std::string& _s = this->_internal_description();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "monitoring.Alert.description");
+    target = stream->WriteStringMaybeAliased(5, _s, target);
+  }
+
+  // string recommended_action = 6;
+  if (!this->_internal_recommended_action().empty()) {
+    const std::string& _s = this->_internal_recommended_action();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "monitoring.Alert.recommended_action");
+    target = stream->WriteStringMaybeAliased(6, _s, target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:monitoring.Alert)
+  return target;
+}
+
+::size_t Alert::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:monitoring.Alert)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string device_id = 1;
+  if (!this->_internal_device_id().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_device_id());
+  }
+
+  // string timestamp = 3;
+  if (!this->_internal_timestamp().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_timestamp());
+  }
+
+  // string alert_type = 4;
+  if (!this->_internal_alert_type().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_alert_type());
+  }
+
+  // string description = 5;
+  if (!this->_internal_description().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_description());
+  }
+
+  // string recommended_action = 6;
+  if (!this->_internal_recommended_action().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_recommended_action());
+  }
+
+  // .monitoring.Alert.Severity severity = 2;
+  if (this->_internal_severity() != 0) {
+    total_size += 1 +
+                  ::_pbi::WireFormatLite::EnumSize(this->_internal_severity());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData Alert::_class_data_ = {
+    Alert::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
+};
+const ::google::protobuf::Message::ClassData* Alert::GetClassData() const {
+  return &_class_data_;
+}
+
+void Alert::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<Alert*>(&to_msg);
+  auto& from = static_cast<const Alert&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:monitoring.Alert)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_device_id().empty()) {
+    _this->_internal_set_device_id(from._internal_device_id());
+  }
+  if (!from._internal_timestamp().empty()) {
+    _this->_internal_set_timestamp(from._internal_timestamp());
+  }
+  if (!from._internal_alert_type().empty()) {
+    _this->_internal_set_alert_type(from._internal_alert_type());
+  }
+  if (!from._internal_description().empty()) {
+    _this->_internal_set_description(from._internal_description());
+  }
+  if (!from._internal_recommended_action().empty()) {
+    _this->_internal_set_recommended_action(from._internal_recommended_action());
+  }
+  if (from._internal_severity() != 0) {
+    _this->_internal_set_severity(from._internal_severity());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Alert::CopyFrom(const Alert& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:monitoring.Alert)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool Alert::IsInitialized() const {
+  return true;
+}
+
+::_pbi::CachedSize* Alert::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Alert::InternalSwap(Alert* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_id_, &other->_impl_.device_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.timestamp_, &other->_impl_.timestamp_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.alert_type_, &other->_impl_.alert_type_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.description_, &other->_impl_.description_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.recommended_action_, &other->_impl_.recommended_action_, arena);
+  swap(_impl_.severity_, other->_impl_.severity_);
+}
+
+::google::protobuf::Metadata Alert::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_monitoring_2eproto_getter, &descriptor_table_monitoring_2eproto_once,
+      file_level_metadata_monitoring_2eproto[3]);
+}
+// ===================================================================
+
+class HardwareMetrics::_Internal {
+ public:
+  static constexpr ::int32_t kOneofCaseOffset =
+    PROTOBUF_FIELD_OFFSET(::monitoring::HardwareMetrics, _impl_._oneof_case_);
+};
+
+HardwareMetrics::HardwareMetrics(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:monitoring.HardwareMetrics)
+}
+inline PROTOBUF_NDEBUG_INLINE HardwareMetrics::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : device_id_(arena, from.device_id_),
+        readable_date_(arena, from.readable_date_),
+        cpu_usage_(arena, from.cpu_usage_),
+        memory_usage_(arena, from.memory_usage_),
+        disk_usage_root_(arena, from.disk_usage_root_),
+        usb_info_{},
+        _cached_size_{0},
+        _oneof_case_{from._oneof_case_[0]} {}
+
+HardwareMetrics::HardwareMetrics(
+    ::google::protobuf::Arena* arena,
+    const HardwareMetrics& from)
+    : ::google::protobuf::Message(arena) {
+  HardwareMetrics* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  _impl_.gpio_state_ = from._impl_.gpio_state_;
+  switch (usb_info_case()) {
+    case USB_INFO_NOT_SET:
+      break;
+      case kLastInsertTime:
+        new (&_impl_.usb_info_.last_insert_time_) decltype(_impl_.usb_info_.last_insert_time_){arena, from._impl_.usb_info_.last_insert_time_};
+        break;
+      case kUsbDevices:
+        new (&_impl_.usb_info_.usb_devices_) decltype(_impl_.usb_info_.usb_devices_){arena, from._impl_.usb_info_.usb_devices_};
+        break;
+  }
+
+  // @@protoc_insertion_point(copy_constructor:monitoring.HardwareMetrics)
+}
+inline PROTOBUF_NDEBUG_INLINE HardwareMetrics::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : device_id_(arena),
+        readable_date_(arena),
+        cpu_usage_(arena),
+        memory_usage_(arena),
+        disk_usage_root_(arena),
+        usb_info_{},
+        _cached_size_{0},
+        _oneof_case_{} {}
+
+inline void HardwareMetrics::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.gpio_state_ = {};
+}
+HardwareMetrics::~HardwareMetrics() {
+  // @@protoc_insertion_point(destructor:monitoring.HardwareMetrics)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void HardwareMetrics::SharedDtor() {
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.device_id_.Destroy();
+  _impl_.readable_date_.Destroy();
+  _impl_.cpu_usage_.Destroy();
+  _impl_.memory_usage_.Destroy();
+  _impl_.disk_usage_root_.Destroy();
+  if (has_usb_info()) {
+    clear_usb_info();
+  }
+  _impl_.~Impl_();
+}
+
+void HardwareMetrics::clear_usb_info() {
+// @@protoc_insertion_point(one_of_clear_start:monitoring.HardwareMetrics)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  switch (usb_info_case()) {
+    case kLastInsertTime: {
+      _impl_.usb_info_.last_insert_time_.Destroy();
+      break;
+    }
+    case kUsbDevices: {
+      _impl_.usb_info_.usb_devices_.Destroy();
+      break;
+    }
+    case USB_INFO_NOT_SET: {
+      break;
+    }
+  }
+  _impl_._oneof_case_[0] = USB_INFO_NOT_SET;
+}
+
+
+PROTOBUF_NOINLINE void HardwareMetrics::Clear() {
+// @@protoc_insertion_point(message_clear_start:monitoring.HardwareMetrics)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.device_id_.ClearToEmpty();
+  _impl_.readable_date_.ClearToEmpty();
+  _impl_.cpu_usage_.ClearToEmpty();
+  _impl_.memory_usage_.ClearToEmpty();
+  _impl_.disk_usage_root_.ClearToEmpty();
+  _impl_.gpio_state_ = 0;
+  clear_usb_info();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* HardwareMetrics::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 8, 0, 128, 2> HardwareMetrics::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    8, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967040,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    8,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_HardwareMetrics_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // int32 gpio_state = 8;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(HardwareMetrics, _impl_.gpio_state_), 63>(),
+     {64, 63, 0, PROTOBUF_FIELD_OFFSET(HardwareMetrics, _impl_.gpio_state_)}},
+    // string device_id = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(HardwareMetrics, _impl_.device_id_)}},
+    // string readable_date = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(HardwareMetrics, _impl_.readable_date_)}},
+    // string cpu_usage = 3;
+    {::_pbi::TcParser::FastUS1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(HardwareMetrics, _impl_.cpu_usage_)}},
+    // string memory_usage = 4;
+    {::_pbi::TcParser::FastUS1,
+     {34, 63, 0, PROTOBUF_FIELD_OFFSET(HardwareMetrics, _impl_.memory_usage_)}},
+    // string disk_usage_root = 5;
+    {::_pbi::TcParser::FastUS1,
+     {42, 63, 0, PROTOBUF_FIELD_OFFSET(HardwareMetrics, _impl_.disk_usage_root_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string device_id = 1;
+    {PROTOBUF_FIELD_OFFSET(HardwareMetrics, _impl_.device_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string readable_date = 2;
+    {PROTOBUF_FIELD_OFFSET(HardwareMetrics, _impl_.readable_date_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string cpu_usage = 3;
+    {PROTOBUF_FIELD_OFFSET(HardwareMetrics, _impl_.cpu_usage_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string memory_usage = 4;
+    {PROTOBUF_FIELD_OFFSET(HardwareMetrics, _impl_.memory_usage_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string disk_usage_root = 5;
+    {PROTOBUF_FIELD_OFFSET(HardwareMetrics, _impl_.disk_usage_root_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string last_insert_time = 6;
+    {PROTOBUF_FIELD_OFFSET(HardwareMetrics, _impl_.usb_info_.last_insert_time_), _Internal::kOneofCaseOffset + 0, 0,
+    (0 | ::_fl::kFcOneof | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string usb_devices = 7;
+    {PROTOBUF_FIELD_OFFSET(HardwareMetrics, _impl_.usb_info_.usb_devices_), _Internal::kOneofCaseOffset + 0, 0,
+    (0 | ::_fl::kFcOneof | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // int32 gpio_state = 8;
+    {PROTOBUF_FIELD_OFFSET(HardwareMetrics, _impl_.gpio_state_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
+  }},
+  // no aux_entries
+  {{
+    "\32\11\15\11\14\17\20\13\0\0\0\0\0\0\0\0"
+    "monitoring.HardwareMetrics"
+    "device_id"
+    "readable_date"
+    "cpu_usage"
+    "memory_usage"
+    "disk_usage_root"
+    "last_insert_time"
+    "usb_devices"
+  }},
+};
+
+::uint8_t* HardwareMetrics::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:monitoring.HardwareMetrics)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // string device_id = 1;
+  if (!this->_internal_device_id().empty()) {
+    const std::string& _s = this->_internal_device_id();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "monitoring.HardwareMetrics.device_id");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
+  }
+
+  // string readable_date = 2;
+  if (!this->_internal_readable_date().empty()) {
+    const std::string& _s = this->_internal_readable_date();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "monitoring.HardwareMetrics.readable_date");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
+  }
+
+  // string cpu_usage = 3;
+  if (!this->_internal_cpu_usage().empty()) {
+    const std::string& _s = this->_internal_cpu_usage();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "monitoring.HardwareMetrics.cpu_usage");
+    target = stream->WriteStringMaybeAliased(3, _s, target);
+  }
+
+  // string memory_usage = 4;
+  if (!this->_internal_memory_usage().empty()) {
+    const std::string& _s = this->_internal_memory_usage();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "monitoring.HardwareMetrics.memory_usage");
+    target = stream->WriteStringMaybeAliased(4, _s, target);
+  }
+
+  // string disk_usage_root = 5;
+  if (!this->_internal_disk_usage_root().empty()) {
+    const std::string& _s = this->_internal_disk_usage_root();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "monitoring.HardwareMetrics.disk_usage_root");
+    target = stream->WriteStringMaybeAliased(5, _s, target);
+  }
+
+  switch (usb_info_case()) {
+    case kLastInsertTime: {
+      const std::string& _s = this->_internal_last_insert_time();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "monitoring.HardwareMetrics.last_insert_time");
+      target = stream->WriteStringMaybeAliased(6, _s, target);
+      break;
+    }
+    case kUsbDevices: {
+      const std::string& _s = this->_internal_usb_devices();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "monitoring.HardwareMetrics.usb_devices");
+      target = stream->WriteStringMaybeAliased(7, _s, target);
+      break;
+    }
+    default:
+      break;
+  }
+  // int32 gpio_state = 8;
+  if (this->_internal_gpio_state() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::
+        WriteInt32ToArrayWithField<8>(
+            stream, this->_internal_gpio_state(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:monitoring.HardwareMetrics)
+  return target;
+}
+
+::size_t HardwareMetrics::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:monitoring.HardwareMetrics)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string device_id = 1;
+  if (!this->_internal_device_id().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_device_id());
+  }
+
+  // string readable_date = 2;
+  if (!this->_internal_readable_date().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_readable_date());
+  }
+
+  // string cpu_usage = 3;
+  if (!this->_internal_cpu_usage().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_cpu_usage());
+  }
+
+  // string memory_usage = 4;
+  if (!this->_internal_memory_usage().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_memory_usage());
+  }
+
+  // string disk_usage_root = 5;
+  if (!this->_internal_disk_usage_root().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_disk_usage_root());
+  }
+
+  // int32 gpio_state = 8;
+  if (this->_internal_gpio_state() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+        this->_internal_gpio_state());
+  }
+
+  switch (usb_info_case()) {
+    // string last_insert_time = 6;
+    case kLastInsertTime: {
+      total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                      this->_internal_last_insert_time());
+      break;
+    }
+    // string usb_devices = 7;
+    case kUsbDevices: {
+      total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                      this->_internal_usb_devices());
+      break;
+    }
+    case USB_INFO_NOT_SET: {
+      break;
+    }
+  }
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData HardwareMetrics::_class_data_ = {
+    HardwareMetrics::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
+};
+const ::google::protobuf::Message::ClassData* HardwareMetrics::GetClassData() const {
+  return &_class_data_;
+}
+
+void HardwareMetrics::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<HardwareMetrics*>(&to_msg);
+  auto& from = static_cast<const HardwareMetrics&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:monitoring.HardwareMetrics)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_device_id().empty()) {
+    _this->_internal_set_device_id(from._internal_device_id());
+  }
+  if (!from._internal_readable_date().empty()) {
+    _this->_internal_set_readable_date(from._internal_readable_date());
+  }
+  if (!from._internal_cpu_usage().empty()) {
+    _this->_internal_set_cpu_usage(from._internal_cpu_usage());
+  }
+  if (!from._internal_memory_usage().empty()) {
+    _this->_internal_set_memory_usage(from._internal_memory_usage());
+  }
+  if (!from._internal_disk_usage_root().empty()) {
+    _this->_internal_set_disk_usage_root(from._internal_disk_usage_root());
+  }
+  if (from._internal_gpio_state() != 0) {
+    _this->_internal_set_gpio_state(from._internal_gpio_state());
+  }
+  switch (from.usb_info_case()) {
+    case kLastInsertTime: {
+      _this->_internal_set_last_insert_time(from._internal_last_insert_time());
+      break;
+    }
+    case kUsbDevices: {
+      _this->_internal_set_usb_devices(from._internal_usb_devices());
+      break;
+    }
+    case USB_INFO_NOT_SET: {
+      break;
+    }
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void HardwareMetrics::CopyFrom(const HardwareMetrics& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:monitoring.HardwareMetrics)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool HardwareMetrics::IsInitialized() const {
+  return true;
+}
+
+::_pbi::CachedSize* HardwareMetrics::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void HardwareMetrics::InternalSwap(HardwareMetrics* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_id_, &other->_impl_.device_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.readable_date_, &other->_impl_.readable_date_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.cpu_usage_, &other->_impl_.cpu_usage_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.memory_usage_, &other->_impl_.memory_usage_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.disk_usage_root_, &other->_impl_.disk_usage_root_, arena);
+        swap(_impl_.gpio_state_, other->_impl_.gpio_state_);
+  swap(_impl_.usb_info_, other->_impl_.usb_info_);
+  swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
+}
+
+::google::protobuf::Metadata HardwareMetrics::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_monitoring_2eproto_getter, &descriptor_table_monitoring_2eproto_once,
+      file_level_metadata_monitoring_2eproto[4]);
+}
+// ===================================================================
+
+SoftwareMetrics_ServicesEntry_DoNotUse::SoftwareMetrics_ServicesEntry_DoNotUse() {}
+SoftwareMetrics_ServicesEntry_DoNotUse::SoftwareMetrics_ServicesEntry_DoNotUse(::google::protobuf::Arena* arena)
+    : SuperType(arena) {}
+::google::protobuf::Metadata SoftwareMetrics_ServicesEntry_DoNotUse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_monitoring_2eproto_getter, &descriptor_table_monitoring_2eproto_once,
+      file_level_metadata_monitoring_2eproto[5]);
+}
+// ===================================================================
+
+class SoftwareMetrics::_Internal {
+ public:
+};
+
+SoftwareMetrics::SoftwareMetrics(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:monitoring.SoftwareMetrics)
+}
+inline PROTOBUF_NDEBUG_INLINE SoftwareMetrics::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : services_{visibility, arena, from.services_},
+        device_id_(arena, from.device_id_),
+        readable_date_(arena, from.readable_date_),
+        ip_address_(arena, from.ip_address_),
+        uptime_(arena, from.uptime_),
+        network_status_(arena, from.network_status_),
+        _cached_size_{0} {}
+
+SoftwareMetrics::SoftwareMetrics(
+    ::google::protobuf::Arena* arena,
+    const SoftwareMetrics& from)
+    : ::google::protobuf::Message(arena) {
+  SoftwareMetrics* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+
+  // @@protoc_insertion_point(copy_constructor:monitoring.SoftwareMetrics)
+}
+inline PROTOBUF_NDEBUG_INLINE SoftwareMetrics::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : services_{visibility, arena},
+        device_id_(arena),
+        readable_date_(arena),
+        ip_address_(arena),
+        uptime_(arena),
+        network_status_(arena),
+        _cached_size_{0} {}
+
+inline void SoftwareMetrics::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+}
+SoftwareMetrics::~SoftwareMetrics() {
+  // @@protoc_insertion_point(destructor:monitoring.SoftwareMetrics)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void SoftwareMetrics::SharedDtor() {
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.device_id_.Destroy();
+  _impl_.readable_date_.Destroy();
+  _impl_.ip_address_.Destroy();
+  _impl_.uptime_.Destroy();
+  _impl_.network_status_.Destroy();
+  _impl_.~Impl_();
+}
+
+PROTOBUF_NOINLINE void SoftwareMetrics::Clear() {
+// @@protoc_insertion_point(message_clear_start:monitoring.SoftwareMetrics)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.services_.Clear();
+  _impl_.device_id_.ClearToEmpty();
+  _impl_.readable_date_.ClearToEmpty();
+  _impl_.ip_address_.ClearToEmpty();
+  _impl_.uptime_.ClearToEmpty();
+  _impl_.network_status_.ClearToEmpty();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* SoftwareMetrics::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 6, 1, 95, 2> SoftwareMetrics::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    6, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967232,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    6,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_SoftwareMetrics_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // string device_id = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(SoftwareMetrics, _impl_.device_id_)}},
+    // string readable_date = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(SoftwareMetrics, _impl_.readable_date_)}},
+    // string ip_address = 3;
+    {::_pbi::TcParser::FastUS1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(SoftwareMetrics, _impl_.ip_address_)}},
+    // string uptime = 4;
+    {::_pbi::TcParser::FastUS1,
+     {34, 63, 0, PROTOBUF_FIELD_OFFSET(SoftwareMetrics, _impl_.uptime_)}},
+    // string network_status = 5;
+    {::_pbi::TcParser::FastUS1,
+     {42, 63, 0, PROTOBUF_FIELD_OFFSET(SoftwareMetrics, _impl_.network_status_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string device_id = 1;
+    {PROTOBUF_FIELD_OFFSET(SoftwareMetrics, _impl_.device_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string readable_date = 2;
+    {PROTOBUF_FIELD_OFFSET(SoftwareMetrics, _impl_.readable_date_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string ip_address = 3;
+    {PROTOBUF_FIELD_OFFSET(SoftwareMetrics, _impl_.ip_address_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string uptime = 4;
+    {PROTOBUF_FIELD_OFFSET(SoftwareMetrics, _impl_.uptime_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string network_status = 5;
+    {PROTOBUF_FIELD_OFFSET(SoftwareMetrics, _impl_.network_status_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // map<string, string> services = 6;
+    {PROTOBUF_FIELD_OFFSET(SoftwareMetrics, _impl_.services_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMap)},
+  }}, {{
+    {::_pbi::TcParser::GetMapAuxInfo<
+        decltype(SoftwareMetrics()._impl_.services_)>(
+        1, 0, 0, 9,
+        9)},
+  }}, {{
+    "\32\11\15\12\6\16\10\0"
+    "monitoring.SoftwareMetrics"
+    "device_id"
+    "readable_date"
+    "ip_address"
+    "uptime"
+    "network_status"
+    "services"
+  }},
+};
+
+::uint8_t* SoftwareMetrics::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:monitoring.SoftwareMetrics)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // string device_id = 1;
+  if (!this->_internal_device_id().empty()) {
+    const std::string& _s = this->_internal_device_id();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "monitoring.SoftwareMetrics.device_id");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
+  }
+
+  // string readable_date = 2;
+  if (!this->_internal_readable_date().empty()) {
+    const std::string& _s = this->_internal_readable_date();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "monitoring.SoftwareMetrics.readable_date");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
+  }
+
+  // string ip_address = 3;
+  if (!this->_internal_ip_address().empty()) {
+    const std::string& _s = this->_internal_ip_address();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "monitoring.SoftwareMetrics.ip_address");
+    target = stream->WriteStringMaybeAliased(3, _s, target);
+  }
+
+  // string uptime = 4;
+  if (!this->_internal_uptime().empty()) {
+    const std::string& _s = this->_internal_uptime();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "monitoring.SoftwareMetrics.uptime");
+    target = stream->WriteStringMaybeAliased(4, _s, target);
+  }
+
+  // string network_status = 5;
+  if (!this->_internal_network_status().empty()) {
+    const std::string& _s = this->_internal_network_status();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "monitoring.SoftwareMetrics.network_status");
+    target = stream->WriteStringMaybeAliased(5, _s, target);
+  }
+
+  // map<string, string> services = 6;
+  if (!_internal_services().empty()) {
+    using MapType = ::google::protobuf::Map<std::string, std::string>;
+    using WireHelper = _pbi::MapEntryFuncs<std::string, std::string,
+                                   _pbi::WireFormatLite::TYPE_STRING,
+                                   _pbi::WireFormatLite::TYPE_STRING>;
+    const auto& field = _internal_services();
+
+    if (stream->IsSerializationDeterministic() && field.size() > 1) {
+      for (const auto& entry : ::google::protobuf::internal::MapSorterPtr<MapType>(field)) {
+        target = WireHelper::InternalSerialize(
+            6, entry.first, entry.second, target, stream);
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "monitoring.SoftwareMetrics.services");
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            entry.second.data(), static_cast<int>(entry.second.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "monitoring.SoftwareMetrics.services");
+      }
+    } else {
+      for (const auto& entry : field) {
+        target = WireHelper::InternalSerialize(
+            6, entry.first, entry.second, target, stream);
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "monitoring.SoftwareMetrics.services");
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            entry.second.data(), static_cast<int>(entry.second.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "monitoring.SoftwareMetrics.services");
+      }
+    }
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:monitoring.SoftwareMetrics)
+  return target;
+}
+
+::size_t SoftwareMetrics::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:monitoring.SoftwareMetrics)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // map<string, string> services = 6;
+  total_size += 1 * ::google::protobuf::internal::FromIntSize(_internal_services_size());
+  for (const auto& entry : _internal_services()) {
+    total_size += _pbi::MapEntryFuncs<std::string, std::string,
+                                   _pbi::WireFormatLite::TYPE_STRING,
+                                   _pbi::WireFormatLite::TYPE_STRING>::ByteSizeLong(entry.first, entry.second);
+  }
+  // string device_id = 1;
+  if (!this->_internal_device_id().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_device_id());
+  }
+
+  // string readable_date = 2;
+  if (!this->_internal_readable_date().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_readable_date());
+  }
+
+  // string ip_address = 3;
+  if (!this->_internal_ip_address().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_ip_address());
+  }
+
+  // string uptime = 4;
+  if (!this->_internal_uptime().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_uptime());
+  }
+
+  // string network_status = 5;
+  if (!this->_internal_network_status().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_network_status());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData SoftwareMetrics::_class_data_ = {
+    SoftwareMetrics::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
+};
+const ::google::protobuf::Message::ClassData* SoftwareMetrics::GetClassData() const {
+  return &_class_data_;
+}
+
+void SoftwareMetrics::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<SoftwareMetrics*>(&to_msg);
+  auto& from = static_cast<const SoftwareMetrics&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:monitoring.SoftwareMetrics)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_impl_.services_.MergeFrom(from._impl_.services_);
+  if (!from._internal_device_id().empty()) {
+    _this->_internal_set_device_id(from._internal_device_id());
+  }
+  if (!from._internal_readable_date().empty()) {
+    _this->_internal_set_readable_date(from._internal_readable_date());
+  }
+  if (!from._internal_ip_address().empty()) {
+    _this->_internal_set_ip_address(from._internal_ip_address());
+  }
+  if (!from._internal_uptime().empty()) {
+    _this->_internal_set_uptime(from._internal_uptime());
+  }
+  if (!from._internal_network_status().empty()) {
+    _this->_internal_set_network_status(from._internal_network_status());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SoftwareMetrics::CopyFrom(const SoftwareMetrics& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:monitoring.SoftwareMetrics)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool SoftwareMetrics::IsInitialized() const {
+  return true;
+}
+
+::_pbi::CachedSize* SoftwareMetrics::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SoftwareMetrics::InternalSwap(SoftwareMetrics* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.services_.InternalSwap(&other->_impl_.services_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_id_, &other->_impl_.device_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.readable_date_, &other->_impl_.readable_date_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.ip_address_, &other->_impl_.ip_address_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.uptime_, &other->_impl_.uptime_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.network_status_, &other->_impl_.network_status_, arena);
+}
+
+::google::protobuf::Metadata SoftwareMetrics::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_monitoring_2eproto_getter, &descriptor_table_monitoring_2eproto_once,
+      file_level_metadata_monitoring_2eproto[6]);
 }
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace monitoring

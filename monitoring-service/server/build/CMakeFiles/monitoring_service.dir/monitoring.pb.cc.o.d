@@ -1,7 +1,7 @@
 CMakeFiles/monitoring_service.dir/monitoring.pb.cc.o: \
- /home/manar/monitoring-service/server/build/monitoring.pb.cc \
+ /home/manar/IOTSHADOW/monitoring-service/monitoring-system/server/build/monitoring.pb.cc \
  /usr/include/stdc-predef.h \
- /home/manar/monitoring-service/server/build/monitoring.pb.h \
+ /home/manar/IOTSHADOW/monitoring-service/monitoring-system/server/build/monitoring.pb.h \
  /usr/include/c++/13/limits \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -445,6 +445,10 @@ CMakeFiles/monitoring_service.dir/monitoring.pb.cc.o: \
  /usr/local/include/google/protobuf/map.h \
  /usr/local/include/google/protobuf/map_type_handler.h \
  /usr/local/include/google/protobuf/reflection.h \
+ /usr/local/include/google/protobuf/map_entry.h \
+ /usr/local/include/google/protobuf/map_field_inl.h \
+ /usr/local/include/google/protobuf/map_field.h \
+ /usr/local/include/google/protobuf/map_field_lite.h \
  /usr/local/include/google/protobuf/reflection_ops.h \
  /usr/local/include/google/protobuf/wire_format.h \
  /usr/local/include/google/protobuf/generated_message_tctable_impl.h \

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
-project(monitorin_service)
+project(monitoring_service)
 
 # C++ Standard
 set(CMAKE_CXX_STANDARD 17)
@@ -73,7 +73,10 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 add_executable(monitoring_service 
-    grpc-server.cpp
+    src/server.cpp
+    src/rabbitmq_consumer.cpp
+    src/metrics_analyzer.cpp
+    src/alert_manager.cpp
     ${monitoring_proto_srcs}
     ${monitoring_grpc_srcs}
 
@@ -81,29 +84,6 @@ add_executable(monitoring_service
     ${monitoring_grpc_hdrs}  )  
 
 target_link_libraries(monitoring_service
-    ${_GRPC_GRPCPP}
-    protobuf::libprotobuf
-    ${MYSQL_LIB}
-    pthread
-    OpenSSL::SSL
-    OpenSSL::Crypto
-    ${RABBITMQ_LIB} 
-    SimpleAmqpClient 
-    boost_system 
-    pthread 
-    ${RABBITMQ_LIBRARIES}
-    jsoncpp
-    )
-
-add_executable(monitoring_test 
-    ../client/grpc-client.cpp
-    ${monitoring_proto_srcs}
-    ${monitoring_grpc_srcs}
-
-    ${monitoring_proto_hdrs}
-    ${monitoring_grpc_hdrs}  )  
-
-target_link_libraries(monitoring_test
     ${_GRPC_GRPCPP}
     protobuf::libprotobuf
     ${MYSQL_LIB}

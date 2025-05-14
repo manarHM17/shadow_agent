@@ -22,7 +22,8 @@
 namespace monitoring {
 
 static const char* MonitoringService_method_names[] = {
-  "/monitoring.MonitoringService/StreamMonitoringData",
+  "/monitoring.MonitoringService/RegisterDevice",
+  "/monitoring.MonitoringService/SendStatusUpdate",
 };
 
 std::unique_ptr< MonitoringService::Stub> MonitoringService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -32,45 +33,86 @@ std::unique_ptr< MonitoringService::Stub> MonitoringService::NewStub(const std::
 }
 
 MonitoringService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
-  : channel_(channel), rpcmethod_StreamMonitoringData_(MonitoringService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  : channel_(channel), rpcmethod_RegisterDevice_(MonitoringService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_SendStatusUpdate_(MonitoringService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
-::grpc::ClientReader< ::monitoring::MonitoringResponse>* MonitoringService::Stub::StreamMonitoringDataRaw(::grpc::ClientContext* context, const ::monitoring::DeviceID& request) {
-  return ::grpc::internal::ClientReaderFactory< ::monitoring::MonitoringResponse>::Create(channel_.get(), rpcmethod_StreamMonitoringData_, context, request);
+::grpc::ClientReader< ::monitoring::Alert>* MonitoringService::Stub::RegisterDeviceRaw(::grpc::ClientContext* context, const ::monitoring::DeviceInfo& request) {
+  return ::grpc::internal::ClientReaderFactory< ::monitoring::Alert>::Create(channel_.get(), rpcmethod_RegisterDevice_, context, request);
 }
 
-void MonitoringService::Stub::async::StreamMonitoringData(::grpc::ClientContext* context, const ::monitoring::DeviceID* request, ::grpc::ClientReadReactor< ::monitoring::MonitoringResponse>* reactor) {
-  ::grpc::internal::ClientCallbackReaderFactory< ::monitoring::MonitoringResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_StreamMonitoringData_, context, request, reactor);
+void MonitoringService::Stub::async::RegisterDevice(::grpc::ClientContext* context, const ::monitoring::DeviceInfo* request, ::grpc::ClientReadReactor< ::monitoring::Alert>* reactor) {
+  ::grpc::internal::ClientCallbackReaderFactory< ::monitoring::Alert>::Create(stub_->channel_.get(), stub_->rpcmethod_RegisterDevice_, context, request, reactor);
 }
 
-::grpc::ClientAsyncReader< ::monitoring::MonitoringResponse>* MonitoringService::Stub::AsyncStreamMonitoringDataRaw(::grpc::ClientContext* context, const ::monitoring::DeviceID& request, ::grpc::CompletionQueue* cq, void* tag) {
-  return ::grpc::internal::ClientAsyncReaderFactory< ::monitoring::MonitoringResponse>::Create(channel_.get(), cq, rpcmethod_StreamMonitoringData_, context, request, true, tag);
+::grpc::ClientAsyncReader< ::monitoring::Alert>* MonitoringService::Stub::AsyncRegisterDeviceRaw(::grpc::ClientContext* context, const ::monitoring::DeviceInfo& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::monitoring::Alert>::Create(channel_.get(), cq, rpcmethod_RegisterDevice_, context, request, true, tag);
 }
 
-::grpc::ClientAsyncReader< ::monitoring::MonitoringResponse>* MonitoringService::Stub::PrepareAsyncStreamMonitoringDataRaw(::grpc::ClientContext* context, const ::monitoring::DeviceID& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncReaderFactory< ::monitoring::MonitoringResponse>::Create(channel_.get(), cq, rpcmethod_StreamMonitoringData_, context, request, false, nullptr);
+::grpc::ClientAsyncReader< ::monitoring::Alert>* MonitoringService::Stub::PrepareAsyncRegisterDeviceRaw(::grpc::ClientContext* context, const ::monitoring::DeviceInfo& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::monitoring::Alert>::Create(channel_.get(), cq, rpcmethod_RegisterDevice_, context, request, false, nullptr);
+}
+
+::grpc::Status MonitoringService::Stub::SendStatusUpdate(::grpc::ClientContext* context, const ::monitoring::StatusUpdate& request, ::monitoring::StatusResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::monitoring::StatusUpdate, ::monitoring::StatusResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_SendStatusUpdate_, context, request, response);
+}
+
+void MonitoringService::Stub::async::SendStatusUpdate(::grpc::ClientContext* context, const ::monitoring::StatusUpdate* request, ::monitoring::StatusResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::monitoring::StatusUpdate, ::monitoring::StatusResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SendStatusUpdate_, context, request, response, std::move(f));
+}
+
+void MonitoringService::Stub::async::SendStatusUpdate(::grpc::ClientContext* context, const ::monitoring::StatusUpdate* request, ::monitoring::StatusResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SendStatusUpdate_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::monitoring::StatusResponse>* MonitoringService::Stub::PrepareAsyncSendStatusUpdateRaw(::grpc::ClientContext* context, const ::monitoring::StatusUpdate& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::monitoring::StatusResponse, ::monitoring::StatusUpdate, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_SendStatusUpdate_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::monitoring::StatusResponse>* MonitoringService::Stub::AsyncSendStatusUpdateRaw(::grpc::ClientContext* context, const ::monitoring::StatusUpdate& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncSendStatusUpdateRaw(context, request, cq);
+  result->StartCall();
+  return result;
 }
 
 MonitoringService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       MonitoringService_method_names[0],
       ::grpc::internal::RpcMethod::SERVER_STREAMING,
-      new ::grpc::internal::ServerStreamingHandler< MonitoringService::Service, ::monitoring::DeviceID, ::monitoring::MonitoringResponse>(
+      new ::grpc::internal::ServerStreamingHandler< MonitoringService::Service, ::monitoring::DeviceInfo, ::monitoring::Alert>(
           [](MonitoringService::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::monitoring::DeviceID* req,
-             ::grpc::ServerWriter<::monitoring::MonitoringResponse>* writer) {
-               return service->StreamMonitoringData(ctx, req, writer);
+             const ::monitoring::DeviceInfo* req,
+             ::grpc::ServerWriter<::monitoring::Alert>* writer) {
+               return service->RegisterDevice(ctx, req, writer);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      MonitoringService_method_names[1],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< MonitoringService::Service, ::monitoring::StatusUpdate, ::monitoring::StatusResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](MonitoringService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::monitoring::StatusUpdate* req,
+             ::monitoring::StatusResponse* resp) {
+               return service->SendStatusUpdate(ctx, req, resp);
              }, this)));
 }
 
 MonitoringService::Service::~Service() {
 }
 
-::grpc::Status MonitoringService::Service::StreamMonitoringData(::grpc::ServerContext* context, const ::monitoring::DeviceID* request, ::grpc::ServerWriter< ::monitoring::MonitoringResponse>* writer) {
+::grpc::Status MonitoringService::Service::RegisterDevice(::grpc::ServerContext* context, const ::monitoring::DeviceInfo* request, ::grpc::ServerWriter< ::monitoring::Alert>* writer) {
   (void) context;
   (void) request;
   (void) writer;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status MonitoringService::Service::SendStatusUpdate(::grpc::ServerContext* context, const ::monitoring::StatusUpdate* request, ::monitoring::StatusResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 

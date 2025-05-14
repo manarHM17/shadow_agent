@@ -35,46 +35,68 @@ class MonitoringService final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
-    // Stream des données de monitoring du client vers le serveur
-    std::unique_ptr< ::grpc::ClientReaderInterface< ::monitoring::MonitoringResponse>> StreamMonitoringData(::grpc::ClientContext* context, const ::monitoring::DeviceID& request) {
-      return std::unique_ptr< ::grpc::ClientReaderInterface< ::monitoring::MonitoringResponse>>(StreamMonitoringDataRaw(context, request));
+    // Client registers with server and receives a stream of alerts
+    std::unique_ptr< ::grpc::ClientReaderInterface< ::monitoring::Alert>> RegisterDevice(::grpc::ClientContext* context, const ::monitoring::DeviceInfo& request) {
+      return std::unique_ptr< ::grpc::ClientReaderInterface< ::monitoring::Alert>>(RegisterDeviceRaw(context, request));
     }
-    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::monitoring::MonitoringResponse>> AsyncStreamMonitoringData(::grpc::ClientContext* context, const ::monitoring::DeviceID& request, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::monitoring::MonitoringResponse>>(AsyncStreamMonitoringDataRaw(context, request, cq, tag));
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::monitoring::Alert>> AsyncRegisterDevice(::grpc::ClientContext* context, const ::monitoring::DeviceInfo& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::monitoring::Alert>>(AsyncRegisterDeviceRaw(context, request, cq, tag));
     }
-    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::monitoring::MonitoringResponse>> PrepareAsyncStreamMonitoringData(::grpc::ClientContext* context, const ::monitoring::DeviceID& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::monitoring::MonitoringResponse>>(PrepareAsyncStreamMonitoringDataRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::monitoring::Alert>> PrepareAsyncRegisterDevice(::grpc::ClientContext* context, const ::monitoring::DeviceInfo& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::monitoring::Alert>>(PrepareAsyncRegisterDeviceRaw(context, request, cq));
+    }
+    // Client can send status update
+    virtual ::grpc::Status SendStatusUpdate(::grpc::ClientContext* context, const ::monitoring::StatusUpdate& request, ::monitoring::StatusResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::monitoring::StatusResponse>> AsyncSendStatusUpdate(::grpc::ClientContext* context, const ::monitoring::StatusUpdate& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::monitoring::StatusResponse>>(AsyncSendStatusUpdateRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::monitoring::StatusResponse>> PrepareAsyncSendStatusUpdate(::grpc::ClientContext* context, const ::monitoring::StatusUpdate& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::monitoring::StatusResponse>>(PrepareAsyncSendStatusUpdateRaw(context, request, cq));
     }
     class async_interface {
      public:
       virtual ~async_interface() {}
-      // Stream des données de monitoring du client vers le serveur
-      virtual void StreamMonitoringData(::grpc::ClientContext* context, const ::monitoring::DeviceID* request, ::grpc::ClientReadReactor< ::monitoring::MonitoringResponse>* reactor) = 0;
+      // Client registers with server and receives a stream of alerts
+      virtual void RegisterDevice(::grpc::ClientContext* context, const ::monitoring::DeviceInfo* request, ::grpc::ClientReadReactor< ::monitoring::Alert>* reactor) = 0;
+      // Client can send status update
+      virtual void SendStatusUpdate(::grpc::ClientContext* context, const ::monitoring::StatusUpdate* request, ::monitoring::StatusResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void SendStatusUpdate(::grpc::ClientContext* context, const ::monitoring::StatusUpdate* request, ::monitoring::StatusResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
     class async_interface* experimental_async() { return async(); }
    private:
-    virtual ::grpc::ClientReaderInterface< ::monitoring::MonitoringResponse>* StreamMonitoringDataRaw(::grpc::ClientContext* context, const ::monitoring::DeviceID& request) = 0;
-    virtual ::grpc::ClientAsyncReaderInterface< ::monitoring::MonitoringResponse>* AsyncStreamMonitoringDataRaw(::grpc::ClientContext* context, const ::monitoring::DeviceID& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
-    virtual ::grpc::ClientAsyncReaderInterface< ::monitoring::MonitoringResponse>* PrepareAsyncStreamMonitoringDataRaw(::grpc::ClientContext* context, const ::monitoring::DeviceID& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderInterface< ::monitoring::Alert>* RegisterDeviceRaw(::grpc::ClientContext* context, const ::monitoring::DeviceInfo& request) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::monitoring::Alert>* AsyncRegisterDeviceRaw(::grpc::ClientContext* context, const ::monitoring::DeviceInfo& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::monitoring::Alert>* PrepareAsyncRegisterDeviceRaw(::grpc::ClientContext* context, const ::monitoring::DeviceInfo& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::monitoring::StatusResponse>* AsyncSendStatusUpdateRaw(::grpc::ClientContext* context, const ::monitoring::StatusUpdate& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::monitoring::StatusResponse>* PrepareAsyncSendStatusUpdateRaw(::grpc::ClientContext* context, const ::monitoring::StatusUpdate& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
     Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
-    std::unique_ptr< ::grpc::ClientReader< ::monitoring::MonitoringResponse>> StreamMonitoringData(::grpc::ClientContext* context, const ::monitoring::DeviceID& request) {
-      return std::unique_ptr< ::grpc::ClientReader< ::monitoring::MonitoringResponse>>(StreamMonitoringDataRaw(context, request));
+    std::unique_ptr< ::grpc::ClientReader< ::monitoring::Alert>> RegisterDevice(::grpc::ClientContext* context, const ::monitoring::DeviceInfo& request) {
+      return std::unique_ptr< ::grpc::ClientReader< ::monitoring::Alert>>(RegisterDeviceRaw(context, request));
     }
-    std::unique_ptr< ::grpc::ClientAsyncReader< ::monitoring::MonitoringResponse>> AsyncStreamMonitoringData(::grpc::ClientContext* context, const ::monitoring::DeviceID& request, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReader< ::monitoring::MonitoringResponse>>(AsyncStreamMonitoringDataRaw(context, request, cq, tag));
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::monitoring::Alert>> AsyncRegisterDevice(::grpc::ClientContext* context, const ::monitoring::DeviceInfo& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::monitoring::Alert>>(AsyncRegisterDeviceRaw(context, request, cq, tag));
     }
-    std::unique_ptr< ::grpc::ClientAsyncReader< ::monitoring::MonitoringResponse>> PrepareAsyncStreamMonitoringData(::grpc::ClientContext* context, const ::monitoring::DeviceID& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncReader< ::monitoring::MonitoringResponse>>(PrepareAsyncStreamMonitoringDataRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::monitoring::Alert>> PrepareAsyncRegisterDevice(::grpc::ClientContext* context, const ::monitoring::DeviceInfo& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::monitoring::Alert>>(PrepareAsyncRegisterDeviceRaw(context, request, cq));
+    }
+    ::grpc::Status SendStatusUpdate(::grpc::ClientContext* context, const ::monitoring::StatusUpdate& request, ::monitoring::StatusResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::monitoring::StatusResponse>> AsyncSendStatusUpdate(::grpc::ClientContext* context, const ::monitoring::StatusUpdate& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::monitoring::StatusResponse>>(AsyncSendStatusUpdateRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::monitoring::StatusResponse>> PrepareAsyncSendStatusUpdate(::grpc::ClientContext* context, const ::monitoring::StatusUpdate& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::monitoring::StatusResponse>>(PrepareAsyncSendStatusUpdateRaw(context, request, cq));
     }
     class async final :
       public StubInterface::async_interface {
      public:
-      void StreamMonitoringData(::grpc::ClientContext* context, const ::monitoring::DeviceID* request, ::grpc::ClientReadReactor< ::monitoring::MonitoringResponse>* reactor) override;
+      void RegisterDevice(::grpc::ClientContext* context, const ::monitoring::DeviceInfo* request, ::grpc::ClientReadReactor< ::monitoring::Alert>* reactor) override;
+      void SendStatusUpdate(::grpc::ClientContext* context, const ::monitoring::StatusUpdate* request, ::monitoring::StatusResponse* response, std::function<void(::grpc::Status)>) override;
+      void SendStatusUpdate(::grpc::ClientContext* context, const ::monitoring::StatusUpdate* request, ::monitoring::StatusResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -86,10 +108,13 @@ class MonitoringService final {
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
     class async async_stub_{this};
-    ::grpc::ClientReader< ::monitoring::MonitoringResponse>* StreamMonitoringDataRaw(::grpc::ClientContext* context, const ::monitoring::DeviceID& request) override;
-    ::grpc::ClientAsyncReader< ::monitoring::MonitoringResponse>* AsyncStreamMonitoringDataRaw(::grpc::ClientContext* context, const ::monitoring::DeviceID& request, ::grpc::CompletionQueue* cq, void* tag) override;
-    ::grpc::ClientAsyncReader< ::monitoring::MonitoringResponse>* PrepareAsyncStreamMonitoringDataRaw(::grpc::ClientContext* context, const ::monitoring::DeviceID& request, ::grpc::CompletionQueue* cq) override;
-    const ::grpc::internal::RpcMethod rpcmethod_StreamMonitoringData_;
+    ::grpc::ClientReader< ::monitoring::Alert>* RegisterDeviceRaw(::grpc::ClientContext* context, const ::monitoring::DeviceInfo& request) override;
+    ::grpc::ClientAsyncReader< ::monitoring::Alert>* AsyncRegisterDeviceRaw(::grpc::ClientContext* context, const ::monitoring::DeviceInfo& request, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncReader< ::monitoring::Alert>* PrepareAsyncRegisterDeviceRaw(::grpc::ClientContext* context, const ::monitoring::DeviceInfo& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::monitoring::StatusResponse>* AsyncSendStatusUpdateRaw(::grpc::ClientContext* context, const ::monitoring::StatusUpdate& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::monitoring::StatusResponse>* PrepareAsyncSendStatusUpdateRaw(::grpc::ClientContext* context, const ::monitoring::StatusUpdate& request, ::grpc::CompletionQueue* cq) override;
+    const ::grpc::internal::RpcMethod rpcmethod_RegisterDevice_;
+    const ::grpc::internal::RpcMethod rpcmethod_SendStatusUpdate_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -97,143 +122,278 @@ class MonitoringService final {
    public:
     Service();
     virtual ~Service();
-    // Stream des données de monitoring du client vers le serveur
-    virtual ::grpc::Status StreamMonitoringData(::grpc::ServerContext* context, const ::monitoring::DeviceID* request, ::grpc::ServerWriter< ::monitoring::MonitoringResponse>* writer);
+    // Client registers with server and receives a stream of alerts
+    virtual ::grpc::Status RegisterDevice(::grpc::ServerContext* context, const ::monitoring::DeviceInfo* request, ::grpc::ServerWriter< ::monitoring::Alert>* writer);
+    // Client can send status update
+    virtual ::grpc::Status SendStatusUpdate(::grpc::ServerContext* context, const ::monitoring::StatusUpdate* request, ::monitoring::StatusResponse* response);
   };
   template <class BaseClass>
-  class WithAsyncMethod_StreamMonitoringData : public BaseClass {
+  class WithAsyncMethod_RegisterDevice : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_StreamMonitoringData() {
+    WithAsyncMethod_RegisterDevice() {
       ::grpc::Service::MarkMethodAsync(0);
     }
-    ~WithAsyncMethod_StreamMonitoringData() override {
+    ~WithAsyncMethod_RegisterDevice() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status StreamMonitoringData(::grpc::ServerContext* /*context*/, const ::monitoring::DeviceID* /*request*/, ::grpc::ServerWriter< ::monitoring::MonitoringResponse>* /*writer*/) override {
+    ::grpc::Status RegisterDevice(::grpc::ServerContext* /*context*/, const ::monitoring::DeviceInfo* /*request*/, ::grpc::ServerWriter< ::monitoring::Alert>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestStreamMonitoringData(::grpc::ServerContext* context, ::monitoring::DeviceID* request, ::grpc::ServerAsyncWriter< ::monitoring::MonitoringResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestRegisterDevice(::grpc::ServerContext* context, ::monitoring::DeviceInfo* request, ::grpc::ServerAsyncWriter< ::monitoring::Alert>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncServerStreaming(0, context, request, writer, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_StreamMonitoringData<Service > AsyncService;
   template <class BaseClass>
-  class WithCallbackMethod_StreamMonitoringData : public BaseClass {
+  class WithAsyncMethod_SendStatusUpdate : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithCallbackMethod_StreamMonitoringData() {
-      ::grpc::Service::MarkMethodCallback(0,
-          new ::grpc::internal::CallbackServerStreamingHandler< ::monitoring::DeviceID, ::monitoring::MonitoringResponse>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::monitoring::DeviceID* request) { return this->StreamMonitoringData(context, request); }));
+    WithAsyncMethod_SendStatusUpdate() {
+      ::grpc::Service::MarkMethodAsync(1);
     }
-    ~WithCallbackMethod_StreamMonitoringData() override {
+    ~WithAsyncMethod_SendStatusUpdate() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status StreamMonitoringData(::grpc::ServerContext* /*context*/, const ::monitoring::DeviceID* /*request*/, ::grpc::ServerWriter< ::monitoring::MonitoringResponse>* /*writer*/) override {
+    ::grpc::Status SendStatusUpdate(::grpc::ServerContext* /*context*/, const ::monitoring::StatusUpdate* /*request*/, ::monitoring::StatusResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerWriteReactor< ::monitoring::MonitoringResponse>* StreamMonitoringData(
-      ::grpc::CallbackServerContext* /*context*/, const ::monitoring::DeviceID* /*request*/)  { return nullptr; }
+    void RequestSendStatusUpdate(::grpc::ServerContext* context, ::monitoring::StatusUpdate* request, ::grpc::ServerAsyncResponseWriter< ::monitoring::StatusResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
   };
-  typedef WithCallbackMethod_StreamMonitoringData<Service > CallbackService;
+  typedef WithAsyncMethod_RegisterDevice<WithAsyncMethod_SendStatusUpdate<Service > > AsyncService;
+  template <class BaseClass>
+  class WithCallbackMethod_RegisterDevice : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_RegisterDevice() {
+      ::grpc::Service::MarkMethodCallback(0,
+          new ::grpc::internal::CallbackServerStreamingHandler< ::monitoring::DeviceInfo, ::monitoring::Alert>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::monitoring::DeviceInfo* request) { return this->RegisterDevice(context, request); }));
+    }
+    ~WithCallbackMethod_RegisterDevice() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RegisterDevice(::grpc::ServerContext* /*context*/, const ::monitoring::DeviceInfo* /*request*/, ::grpc::ServerWriter< ::monitoring::Alert>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerWriteReactor< ::monitoring::Alert>* RegisterDevice(
+      ::grpc::CallbackServerContext* /*context*/, const ::monitoring::DeviceInfo* /*request*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_SendStatusUpdate : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_SendStatusUpdate() {
+      ::grpc::Service::MarkMethodCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::monitoring::StatusUpdate, ::monitoring::StatusResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::monitoring::StatusUpdate* request, ::monitoring::StatusResponse* response) { return this->SendStatusUpdate(context, request, response); }));}
+    void SetMessageAllocatorFor_SendStatusUpdate(
+        ::grpc::MessageAllocator< ::monitoring::StatusUpdate, ::monitoring::StatusResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::monitoring::StatusUpdate, ::monitoring::StatusResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_SendStatusUpdate() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SendStatusUpdate(::grpc::ServerContext* /*context*/, const ::monitoring::StatusUpdate* /*request*/, ::monitoring::StatusResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* SendStatusUpdate(
+      ::grpc::CallbackServerContext* /*context*/, const ::monitoring::StatusUpdate* /*request*/, ::monitoring::StatusResponse* /*response*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_RegisterDevice<WithCallbackMethod_SendStatusUpdate<Service > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
-  class WithGenericMethod_StreamMonitoringData : public BaseClass {
+  class WithGenericMethod_RegisterDevice : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_StreamMonitoringData() {
+    WithGenericMethod_RegisterDevice() {
       ::grpc::Service::MarkMethodGeneric(0);
     }
-    ~WithGenericMethod_StreamMonitoringData() override {
+    ~WithGenericMethod_RegisterDevice() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status StreamMonitoringData(::grpc::ServerContext* /*context*/, const ::monitoring::DeviceID* /*request*/, ::grpc::ServerWriter< ::monitoring::MonitoringResponse>* /*writer*/) override {
+    ::grpc::Status RegisterDevice(::grpc::ServerContext* /*context*/, const ::monitoring::DeviceInfo* /*request*/, ::grpc::ServerWriter< ::monitoring::Alert>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
   };
   template <class BaseClass>
-  class WithRawMethod_StreamMonitoringData : public BaseClass {
+  class WithGenericMethod_SendStatusUpdate : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_StreamMonitoringData() {
-      ::grpc::Service::MarkMethodRaw(0);
+    WithGenericMethod_SendStatusUpdate() {
+      ::grpc::Service::MarkMethodGeneric(1);
     }
-    ~WithRawMethod_StreamMonitoringData() override {
+    ~WithGenericMethod_SendStatusUpdate() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status StreamMonitoringData(::grpc::ServerContext* /*context*/, const ::monitoring::DeviceID* /*request*/, ::grpc::ServerWriter< ::monitoring::MonitoringResponse>* /*writer*/) override {
+    ::grpc::Status SendStatusUpdate(::grpc::ServerContext* /*context*/, const ::monitoring::StatusUpdate* /*request*/, ::monitoring::StatusResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestStreamMonitoringData(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+  };
+  template <class BaseClass>
+  class WithRawMethod_RegisterDevice : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_RegisterDevice() {
+      ::grpc::Service::MarkMethodRaw(0);
+    }
+    ~WithRawMethod_RegisterDevice() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RegisterDevice(::grpc::ServerContext* /*context*/, const ::monitoring::DeviceInfo* /*request*/, ::grpc::ServerWriter< ::monitoring::Alert>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestRegisterDevice(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncServerStreaming(0, context, request, writer, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithRawCallbackMethod_StreamMonitoringData : public BaseClass {
+  class WithRawMethod_SendStatusUpdate : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawCallbackMethod_StreamMonitoringData() {
+    WithRawMethod_SendStatusUpdate() {
+      ::grpc::Service::MarkMethodRaw(1);
+    }
+    ~WithRawMethod_SendStatusUpdate() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SendStatusUpdate(::grpc::ServerContext* /*context*/, const ::monitoring::StatusUpdate* /*request*/, ::monitoring::StatusResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSendStatusUpdate(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_RegisterDevice : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_RegisterDevice() {
       ::grpc::Service::MarkMethodRawCallback(0,
           new ::grpc::internal::CallbackServerStreamingHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-                   ::grpc::CallbackServerContext* context, const::grpc::ByteBuffer* request) { return this->StreamMonitoringData(context, request); }));
+                   ::grpc::CallbackServerContext* context, const::grpc::ByteBuffer* request) { return this->RegisterDevice(context, request); }));
     }
-    ~WithRawCallbackMethod_StreamMonitoringData() override {
+    ~WithRawCallbackMethod_RegisterDevice() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status StreamMonitoringData(::grpc::ServerContext* /*context*/, const ::monitoring::DeviceID* /*request*/, ::grpc::ServerWriter< ::monitoring::MonitoringResponse>* /*writer*/) override {
+    ::grpc::Status RegisterDevice(::grpc::ServerContext* /*context*/, const ::monitoring::DeviceInfo* /*request*/, ::grpc::ServerWriter< ::monitoring::Alert>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerWriteReactor< ::grpc::ByteBuffer>* StreamMonitoringData(
+    virtual ::grpc::ServerWriteReactor< ::grpc::ByteBuffer>* RegisterDevice(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/)  { return nullptr; }
   };
-  typedef Service StreamedUnaryService;
   template <class BaseClass>
-  class WithSplitStreamingMethod_StreamMonitoringData : public BaseClass {
+  class WithRawCallbackMethod_SendStatusUpdate : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithSplitStreamingMethod_StreamMonitoringData() {
-      ::grpc::Service::MarkMethodStreamed(0,
-        new ::grpc::internal::SplitServerStreamingHandler<
-          ::monitoring::DeviceID, ::monitoring::MonitoringResponse>(
+    WithRawCallbackMethod_SendStatusUpdate() {
+      ::grpc::Service::MarkMethodRawCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SendStatusUpdate(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_SendStatusUpdate() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SendStatusUpdate(::grpc::ServerContext* /*context*/, const ::monitoring::StatusUpdate* /*request*/, ::monitoring::StatusResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* SendStatusUpdate(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_SendStatusUpdate : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_SendStatusUpdate() {
+      ::grpc::Service::MarkMethodStreamed(1,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::monitoring::StatusUpdate, ::monitoring::StatusResponse>(
             [this](::grpc::ServerContext* context,
-                   ::grpc::ServerSplitStreamer<
-                     ::monitoring::DeviceID, ::monitoring::MonitoringResponse>* streamer) {
-                       return this->StreamedStreamMonitoringData(context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::monitoring::StatusUpdate, ::monitoring::StatusResponse>* streamer) {
+                       return this->StreamedSendStatusUpdate(context,
                          streamer);
                   }));
     }
-    ~WithSplitStreamingMethod_StreamMonitoringData() override {
+    ~WithStreamedUnaryMethod_SendStatusUpdate() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status StreamMonitoringData(::grpc::ServerContext* /*context*/, const ::monitoring::DeviceID* /*request*/, ::grpc::ServerWriter< ::monitoring::MonitoringResponse>* /*writer*/) override {
+    ::grpc::Status SendStatusUpdate(::grpc::ServerContext* /*context*/, const ::monitoring::StatusUpdate* /*request*/, ::monitoring::StatusResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedSendStatusUpdate(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::monitoring::StatusUpdate,::monitoring::StatusResponse>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_SendStatusUpdate<Service > StreamedUnaryService;
+  template <class BaseClass>
+  class WithSplitStreamingMethod_RegisterDevice : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithSplitStreamingMethod_RegisterDevice() {
+      ::grpc::Service::MarkMethodStreamed(0,
+        new ::grpc::internal::SplitServerStreamingHandler<
+          ::monitoring::DeviceInfo, ::monitoring::Alert>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerSplitStreamer<
+                     ::monitoring::DeviceInfo, ::monitoring::Alert>* streamer) {
+                       return this->StreamedRegisterDevice(context,
+                         streamer);
+                  }));
+    }
+    ~WithSplitStreamingMethod_RegisterDevice() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status RegisterDevice(::grpc::ServerContext* /*context*/, const ::monitoring::DeviceInfo* /*request*/, ::grpc::ServerWriter< ::monitoring::Alert>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with split streamed
-    virtual ::grpc::Status StreamedStreamMonitoringData(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::monitoring::DeviceID,::monitoring::MonitoringResponse>* server_split_streamer) = 0;
+    virtual ::grpc::Status StreamedRegisterDevice(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::monitoring::DeviceInfo,::monitoring::Alert>* server_split_streamer) = 0;
   };
-  typedef WithSplitStreamingMethod_StreamMonitoringData<Service > SplitStreamedService;
-  typedef WithSplitStreamingMethod_StreamMonitoringData<Service > StreamedService;
+  typedef WithSplitStreamingMethod_RegisterDevice<Service > SplitStreamedService;
+  typedef WithSplitStreamingMethod_RegisterDevice<WithStreamedUnaryMethod_SendStatusUpdate<Service > > StreamedService;
 };
 
 }  // namespace monitoring

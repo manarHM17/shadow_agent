@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/manar/monitoring-service/client
+CMAKE_SOURCE_DIR = /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/manar/monitoring-service/client/build
+CMAKE_BINARY_DIR = /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/manar/monitoring-service/client/build/CMakeFiles /home/manar/monitoring-service/client/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/build/CMakeFiles /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/manar/monitoring-service/client/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -117,48 +117,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named monitoring_service
+# Target rules for targets named monitoring_test
 
 # Build rule for target.
-monitoring_service: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 monitoring_service
-.PHONY : monitoring_service
+monitoring_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 monitoring_test
+.PHONY : monitoring_test
 
 # fast build rule for target.
-monitoring_service/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_service.dir/build.make CMakeFiles/monitoring_service.dir/build
-.PHONY : monitoring_service/fast
-
-monitoring-test.o: monitoring-test.cpp.o
-.PHONY : monitoring-test.o
-
-# target to build an object file
-monitoring-test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_service.dir/build.make CMakeFiles/monitoring_service.dir/monitoring-test.cpp.o
-.PHONY : monitoring-test.cpp.o
-
-monitoring-test.i: monitoring-test.cpp.i
-.PHONY : monitoring-test.i
-
-# target to preprocess a source file
-monitoring-test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_service.dir/build.make CMakeFiles/monitoring_service.dir/monitoring-test.cpp.i
-.PHONY : monitoring-test.cpp.i
-
-monitoring-test.s: monitoring-test.cpp.s
-.PHONY : monitoring-test.s
-
-# target to generate assembly for a file
-monitoring-test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_service.dir/build.make CMakeFiles/monitoring_service.dir/monitoring-test.cpp.s
-.PHONY : monitoring-test.cpp.s
+monitoring_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_test.dir/build.make CMakeFiles/monitoring_test.dir/build
+.PHONY : monitoring_test/fast
 
 monitoring.grpc.pb.o: monitoring.grpc.pb.cc.o
 .PHONY : monitoring.grpc.pb.o
 
 # target to build an object file
 monitoring.grpc.pb.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_service.dir/build.make CMakeFiles/monitoring_service.dir/monitoring.grpc.pb.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_test.dir/build.make CMakeFiles/monitoring_test.dir/monitoring.grpc.pb.cc.o
 .PHONY : monitoring.grpc.pb.cc.o
 
 monitoring.grpc.pb.i: monitoring.grpc.pb.cc.i
@@ -166,7 +142,7 @@ monitoring.grpc.pb.i: monitoring.grpc.pb.cc.i
 
 # target to preprocess a source file
 monitoring.grpc.pb.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_service.dir/build.make CMakeFiles/monitoring_service.dir/monitoring.grpc.pb.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_test.dir/build.make CMakeFiles/monitoring_test.dir/monitoring.grpc.pb.cc.i
 .PHONY : monitoring.grpc.pb.cc.i
 
 monitoring.grpc.pb.s: monitoring.grpc.pb.cc.s
@@ -174,7 +150,7 @@ monitoring.grpc.pb.s: monitoring.grpc.pb.cc.s
 
 # target to generate assembly for a file
 monitoring.grpc.pb.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_service.dir/build.make CMakeFiles/monitoring_service.dir/monitoring.grpc.pb.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_test.dir/build.make CMakeFiles/monitoring_test.dir/monitoring.grpc.pb.cc.s
 .PHONY : monitoring.grpc.pb.cc.s
 
 monitoring.pb.o: monitoring.pb.cc.o
@@ -182,7 +158,7 @@ monitoring.pb.o: monitoring.pb.cc.o
 
 # target to build an object file
 monitoring.pb.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_service.dir/build.make CMakeFiles/monitoring_service.dir/monitoring.pb.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_test.dir/build.make CMakeFiles/monitoring_test.dir/monitoring.pb.cc.o
 .PHONY : monitoring.pb.cc.o
 
 monitoring.pb.i: monitoring.pb.cc.i
@@ -190,7 +166,7 @@ monitoring.pb.i: monitoring.pb.cc.i
 
 # target to preprocess a source file
 monitoring.pb.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_service.dir/build.make CMakeFiles/monitoring_service.dir/monitoring.pb.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_test.dir/build.make CMakeFiles/monitoring_test.dir/monitoring.pb.cc.i
 .PHONY : monitoring.pb.cc.i
 
 monitoring.pb.s: monitoring.pb.cc.s
@@ -198,8 +174,80 @@ monitoring.pb.s: monitoring.pb.cc.s
 
 # target to generate assembly for a file
 monitoring.pb.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_service.dir/build.make CMakeFiles/monitoring_service.dir/monitoring.pb.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_test.dir/build.make CMakeFiles/monitoring_test.dir/monitoring.pb.cc.s
 .PHONY : monitoring.pb.cc.s
+
+src/client.o: src/client.cpp.o
+.PHONY : src/client.o
+
+# target to build an object file
+src/client.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_test.dir/build.make CMakeFiles/monitoring_test.dir/src/client.cpp.o
+.PHONY : src/client.cpp.o
+
+src/client.i: src/client.cpp.i
+.PHONY : src/client.i
+
+# target to preprocess a source file
+src/client.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_test.dir/build.make CMakeFiles/monitoring_test.dir/src/client.cpp.i
+.PHONY : src/client.cpp.i
+
+src/client.s: src/client.cpp.s
+.PHONY : src/client.s
+
+# target to generate assembly for a file
+src/client.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_test.dir/build.make CMakeFiles/monitoring_test.dir/src/client.cpp.s
+.PHONY : src/client.cpp.s
+
+src/metrics_collector.o: src/metrics_collector.cpp.o
+.PHONY : src/metrics_collector.o
+
+# target to build an object file
+src/metrics_collector.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_test.dir/build.make CMakeFiles/monitoring_test.dir/src/metrics_collector.cpp.o
+.PHONY : src/metrics_collector.cpp.o
+
+src/metrics_collector.i: src/metrics_collector.cpp.i
+.PHONY : src/metrics_collector.i
+
+# target to preprocess a source file
+src/metrics_collector.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_test.dir/build.make CMakeFiles/monitoring_test.dir/src/metrics_collector.cpp.i
+.PHONY : src/metrics_collector.cpp.i
+
+src/metrics_collector.s: src/metrics_collector.cpp.s
+.PHONY : src/metrics_collector.s
+
+# target to generate assembly for a file
+src/metrics_collector.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_test.dir/build.make CMakeFiles/monitoring_test.dir/src/metrics_collector.cpp.s
+.PHONY : src/metrics_collector.cpp.s
+
+src/rabbitmq_sender.o: src/rabbitmq_sender.cpp.o
+.PHONY : src/rabbitmq_sender.o
+
+# target to build an object file
+src/rabbitmq_sender.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_test.dir/build.make CMakeFiles/monitoring_test.dir/src/rabbitmq_sender.cpp.o
+.PHONY : src/rabbitmq_sender.cpp.o
+
+src/rabbitmq_sender.i: src/rabbitmq_sender.cpp.i
+.PHONY : src/rabbitmq_sender.i
+
+# target to preprocess a source file
+src/rabbitmq_sender.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_test.dir/build.make CMakeFiles/monitoring_test.dir/src/rabbitmq_sender.cpp.i
+.PHONY : src/rabbitmq_sender.cpp.i
+
+src/rabbitmq_sender.s: src/rabbitmq_sender.cpp.s
+.PHONY : src/rabbitmq_sender.s
+
+# target to generate assembly for a file
+src/rabbitmq_sender.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_test.dir/build.make CMakeFiles/monitoring_test.dir/src/rabbitmq_sender.cpp.s
+.PHONY : src/rabbitmq_sender.cpp.s
 
 # Help Target
 help:
@@ -209,16 +257,22 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... monitoring_service"
-	@echo "... monitoring-test.o"
-	@echo "... monitoring-test.i"
-	@echo "... monitoring-test.s"
+	@echo "... monitoring_test"
 	@echo "... monitoring.grpc.pb.o"
 	@echo "... monitoring.grpc.pb.i"
 	@echo "... monitoring.grpc.pb.s"
 	@echo "... monitoring.pb.o"
 	@echo "... monitoring.pb.i"
 	@echo "... monitoring.pb.s"
+	@echo "... src/client.o"
+	@echo "... src/client.i"
+	@echo "... src/client.s"
+	@echo "... src/metrics_collector.o"
+	@echo "... src/metrics_collector.i"
+	@echo "... src/metrics_collector.s"
+	@echo "... src/rabbitmq_sender.o"
+	@echo "... src/rabbitmq_sender.i"
+	@echo "... src/rabbitmq_sender.s"
 .PHONY : help
 
 

@@ -1,2 +1,2 @@
 # Hashes of file build rules.
-35909a36c2df61428316b21c6084ff8c monitoring.pb.cc
+fa8d9c76b7a3518de610a88376b3749f monitoring.pb.cc

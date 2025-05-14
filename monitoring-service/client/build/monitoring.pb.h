@@ -33,6 +33,10 @@
 #include "google/protobuf/message.h"
 #include "google/protobuf/repeated_field.h"  // IWYU pragma: export
 #include "google/protobuf/extension_set.h"  // IWYU pragma: export
+#include "google/protobuf/map.h"  // IWYU pragma: export
+#include "google/protobuf/map_entry.h"
+#include "google/protobuf/map_field_inl.h"
+#include "google/protobuf/generated_enum_reflection.h"
 #include "google/protobuf/unknown_field_set.h"
 // @@protoc_insertion_point(includes)
 
@@ -56,12 +60,27 @@ struct TableStruct_monitoring_2eproto {
 extern const ::google::protobuf::internal::DescriptorTable
     descriptor_table_monitoring_2eproto;
 namespace monitoring {
-class DeviceID;
-struct DeviceIDDefaultTypeInternal;
-extern DeviceIDDefaultTypeInternal _DeviceID_default_instance_;
-class MonitoringResponse;
-struct MonitoringResponseDefaultTypeInternal;
-extern MonitoringResponseDefaultTypeInternal _MonitoringResponse_default_instance_;
+class Alert;
+struct AlertDefaultTypeInternal;
+extern AlertDefaultTypeInternal _Alert_default_instance_;
+class DeviceInfo;
+struct DeviceInfoDefaultTypeInternal;
+extern DeviceInfoDefaultTypeInternal _DeviceInfo_default_instance_;
+class HardwareMetrics;
+struct HardwareMetricsDefaultTypeInternal;
+extern HardwareMetricsDefaultTypeInternal _HardwareMetrics_default_instance_;
+class SoftwareMetrics;
+struct SoftwareMetricsDefaultTypeInternal;
+extern SoftwareMetricsDefaultTypeInternal _SoftwareMetrics_default_instance_;
+class SoftwareMetrics_ServicesEntry_DoNotUse;
+struct SoftwareMetrics_ServicesEntry_DoNotUseDefaultTypeInternal;
+extern SoftwareMetrics_ServicesEntry_DoNotUseDefaultTypeInternal _SoftwareMetrics_ServicesEntry_DoNotUse_default_instance_;
+class StatusResponse;
+struct StatusResponseDefaultTypeInternal;
+extern StatusResponseDefaultTypeInternal _StatusResponse_default_instance_;
+class StatusUpdate;
+struct StatusUpdateDefaultTypeInternal;
+extern StatusUpdateDefaultTypeInternal _StatusUpdate_default_instance_;
 }  // namespace monitoring
 namespace google {
 namespace protobuf {
@@ -69,32 +88,66 @@ namespace protobuf {
 }  // namespace google
 
 namespace monitoring {
+enum Alert_Severity : int {
+  Alert_Severity_INFO = 0,
+  Alert_Severity_WARNING = 1,
+  Alert_Severity_CRITICAL = 2,
+  Alert_Severity_Alert_Severity_INT_MIN_SENTINEL_DO_NOT_USE_ =
+      std::numeric_limits<::int32_t>::min(),
+  Alert_Severity_Alert_Severity_INT_MAX_SENTINEL_DO_NOT_USE_ =
+      std::numeric_limits<::int32_t>::max(),
+};
+
+bool Alert_Severity_IsValid(int value);
+extern const uint32_t Alert_Severity_internal_data_[];
+constexpr Alert_Severity Alert_Severity_Severity_MIN = static_cast<Alert_Severity>(0);
+constexpr Alert_Severity Alert_Severity_Severity_MAX = static_cast<Alert_Severity>(2);
+constexpr int Alert_Severity_Severity_ARRAYSIZE = 2 + 1;
+const ::google::protobuf::EnumDescriptor*
+Alert_Severity_descriptor();
+template <typename T>
+const std::string& Alert_Severity_Name(T value) {
+  static_assert(std::is_same<T, Alert_Severity>::value ||
+                    std::is_integral<T>::value,
+                "Incorrect type passed to Severity_Name().");
+  return Alert_Severity_Name(static_cast<Alert_Severity>(value));
+}
+template <>
+inline const std::string& Alert_Severity_Name(Alert_Severity value) {
+  return ::google::protobuf::internal::NameOfDenseEnum<Alert_Severity_descriptor,
+                                                 0, 2>(
+      static_cast<int>(value));
+}
+inline bool Alert_Severity_Parse(absl::string_view name, Alert_Severity* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<Alert_Severity>(
+      Alert_Severity_descriptor(), name, value);
+}
 
 // ===================================================================
 
 
 // -------------------------------------------------------------------
 
-class MonitoringResponse final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:monitoring.MonitoringResponse) */ {
+class StatusUpdate final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:monitoring.StatusUpdate) */ {
  public:
-  inline MonitoringResponse() : MonitoringResponse(nullptr) {}
-  ~MonitoringResponse() override;
+  inline StatusUpdate() : StatusUpdate(nullptr) {}
+  ~StatusUpdate() override;
   template<typename = void>
-  explicit PROTOBUF_CONSTEXPR MonitoringResponse(::google::protobuf::internal::ConstantInitialized);
+  explicit PROTOBUF_CONSTEXPR StatusUpdate(::google::protobuf::internal::ConstantInitialized);
 
-  inline MonitoringResponse(const MonitoringResponse& from)
-      : MonitoringResponse(nullptr, from) {}
-  MonitoringResponse(MonitoringResponse&& from) noexcept
-    : MonitoringResponse() {
+  inline StatusUpdate(const StatusUpdate& from)
+      : StatusUpdate(nullptr, from) {}
+  StatusUpdate(StatusUpdate&& from) noexcept
+    : StatusUpdate() {
     *this = ::std::move(from);
   }
 
-  inline MonitoringResponse& operator=(const MonitoringResponse& from) {
+  inline StatusUpdate& operator=(const StatusUpdate& from) {
     CopyFrom(from);
     return *this;
   }
-  inline MonitoringResponse& operator=(MonitoringResponse&& from) noexcept {
+  inline StatusUpdate& operator=(StatusUpdate&& from) noexcept {
     if (this == &from) return *this;
     if (GetArena() == from.GetArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -126,20 +179,20 @@ class MonitoringResponse final :
   static const ::google::protobuf::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const MonitoringResponse& default_instance() {
+  static const StatusUpdate& default_instance() {
     return *internal_default_instance();
   }
-  static inline const MonitoringResponse* internal_default_instance() {
-    return reinterpret_cast<const MonitoringResponse*>(
-               &_MonitoringResponse_default_instance_);
+  static inline const StatusUpdate* internal_default_instance() {
+    return reinterpret_cast<const StatusUpdate*>(
+               &_StatusUpdate_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     1;
 
-  friend void swap(MonitoringResponse& a, MonitoringResponse& b) {
+  friend void swap(StatusUpdate& a, StatusUpdate& b) {
     a.Swap(&b);
   }
-  inline void Swap(MonitoringResponse* other) {
+  inline void Swap(StatusUpdate* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetArena() != nullptr &&
@@ -152,7 +205,7 @@ class MonitoringResponse final :
       ::google::protobuf::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(MonitoringResponse* other) {
+  void UnsafeArenaSwap(StatusUpdate* other) {
     if (other == this) return;
     ABSL_DCHECK(GetArena() == other->GetArena());
     InternalSwap(other);
@@ -160,14 +213,14 @@ class MonitoringResponse final :
 
   // implements Message ----------------------------------------------
 
-  MonitoringResponse* New(::google::protobuf::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<MonitoringResponse>(arena);
+  StatusUpdate* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<StatusUpdate>(arena);
   }
   using ::google::protobuf::Message::CopyFrom;
-  void CopyFrom(const MonitoringResponse& from);
+  void CopyFrom(const StatusUpdate& from);
   using ::google::protobuf::Message::MergeFrom;
-  void MergeFrom( const MonitoringResponse& from) {
-    MonitoringResponse::MergeImpl(*this, from);
+  void MergeFrom( const StatusUpdate& from) {
+    StatusUpdate::MergeImpl(*this, from);
   }
   private:
   static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
@@ -185,16 +238,16 @@ class MonitoringResponse final :
   ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
   void SharedCtor(::google::protobuf::Arena* arena);
   void SharedDtor();
-  void InternalSwap(MonitoringResponse* other);
+  void InternalSwap(StatusUpdate* other);
 
   private:
   friend class ::google::protobuf::internal::AnyMetadata;
   static ::absl::string_view FullMessageName() {
-    return "monitoring.MonitoringResponse";
+    return "monitoring.StatusUpdate";
   }
   protected:
-  explicit MonitoringResponse(::google::protobuf::Arena* arena);
-  MonitoringResponse(::google::protobuf::Arena* arena, const MonitoringResponse& from);
+  explicit StatusUpdate(::google::protobuf::Arena* arena);
+  StatusUpdate(::google::protobuf::Arena* arena, const StatusUpdate& from);
   public:
 
   static const ClassData _class_data_;
@@ -207,60 +260,976 @@ class MonitoringResponse final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kAlertMessageFieldNumber = 1,
-    kAlertLevelFieldNumber = 2,
-    kRecommendedActionFieldNumber = 3,
-    kTimestampFieldNumber = 4,
+    kDeviceIdFieldNumber = 1,
+    kMessageFieldNumber = 2,
   };
-  // string alert_message = 1;
-  void clear_alert_message() ;
-  const std::string& alert_message() const;
+  // string device_id = 1;
+  void clear_device_id() ;
+  const std::string& device_id() const;
   template <typename Arg_ = const std::string&, typename... Args_>
-  void set_alert_message(Arg_&& arg, Args_... args);
-  std::string* mutable_alert_message();
-  PROTOBUF_NODISCARD std::string* release_alert_message();
-  void set_allocated_alert_message(std::string* value);
+  void set_device_id(Arg_&& arg, Args_... args);
+  std::string* mutable_device_id();
+  PROTOBUF_NODISCARD std::string* release_device_id();
+  void set_allocated_device_id(std::string* value);
 
   private:
-  const std::string& _internal_alert_message() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_alert_message(
+  const std::string& _internal_device_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_device_id(
       const std::string& value);
-  std::string* _internal_mutable_alert_message();
+  std::string* _internal_mutable_device_id();
 
   public:
-  // string alert_level = 2;
-  void clear_alert_level() ;
-  const std::string& alert_level() const;
+  // string message = 2;
+  void clear_message() ;
+  const std::string& message() const;
   template <typename Arg_ = const std::string&, typename... Args_>
-  void set_alert_level(Arg_&& arg, Args_... args);
-  std::string* mutable_alert_level();
-  PROTOBUF_NODISCARD std::string* release_alert_level();
-  void set_allocated_alert_level(std::string* value);
+  void set_message(Arg_&& arg, Args_... args);
+  std::string* mutable_message();
+  PROTOBUF_NODISCARD std::string* release_message();
+  void set_allocated_message(std::string* value);
 
   private:
-  const std::string& _internal_alert_level() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_alert_level(
+  const std::string& _internal_message() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_message(
       const std::string& value);
-  std::string* _internal_mutable_alert_level();
+  std::string* _internal_mutable_message();
 
   public:
-  // string recommended_action = 3;
-  void clear_recommended_action() ;
-  const std::string& recommended_action() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_recommended_action(Arg_&& arg, Args_... args);
-  std::string* mutable_recommended_action();
-  PROTOBUF_NODISCARD std::string* release_recommended_action();
-  void set_allocated_recommended_action(std::string* value);
+  // @@protoc_insertion_point(class_scope:monitoring.StatusUpdate)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 0,
+      48, 2>
+      _table_;
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+
+        inline explicit constexpr Impl_(
+            ::google::protobuf::internal::ConstantInitialized) noexcept;
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena);
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena, const Impl_& from);
+    ::google::protobuf::internal::ArenaStringPtr device_id_;
+    ::google::protobuf::internal::ArenaStringPtr message_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_monitoring_2eproto;
+};// -------------------------------------------------------------------
+
+class StatusResponse final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:monitoring.StatusResponse) */ {
+ public:
+  inline StatusResponse() : StatusResponse(nullptr) {}
+  ~StatusResponse() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR StatusResponse(::google::protobuf::internal::ConstantInitialized);
+
+  inline StatusResponse(const StatusResponse& from)
+      : StatusResponse(nullptr, from) {}
+  StatusResponse(StatusResponse&& from) noexcept
+    : StatusResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline StatusResponse& operator=(const StatusResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline StatusResponse& operator=(StatusResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetArena() == from.GetArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const StatusResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const StatusResponse* internal_default_instance() {
+    return reinterpret_cast<const StatusResponse*>(
+               &_StatusResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(StatusResponse& a, StatusResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(StatusResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() != nullptr &&
+        GetArena() == other->GetArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() == other->GetArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(StatusResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  StatusResponse* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<StatusResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const StatusResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const StatusResponse& from) {
+    StatusResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
 
   private:
-  const std::string& _internal_recommended_action() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_recommended_action(
+  ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void InternalSwap(StatusResponse* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "monitoring.StatusResponse";
+  }
+  protected:
+  explicit StatusResponse(::google::protobuf::Arena* arena);
+  StatusResponse(::google::protobuf::Arena* arena, const StatusResponse& from);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kMessageFieldNumber = 2,
+    kSuccessFieldNumber = 1,
+  };
+  // string message = 2;
+  void clear_message() ;
+  const std::string& message() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_message(Arg_&& arg, Args_... args);
+  std::string* mutable_message();
+  PROTOBUF_NODISCARD std::string* release_message();
+  void set_allocated_message(std::string* value);
+
+  private:
+  const std::string& _internal_message() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_message(
       const std::string& value);
-  std::string* _internal_mutable_recommended_action();
+  std::string* _internal_mutable_message();
 
   public:
-  // string timestamp = 4;
+  // bool success = 1;
+  void clear_success() ;
+  bool success() const;
+  void set_success(bool value);
+
+  private:
+  bool _internal_success() const;
+  void _internal_set_success(bool value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:monitoring.StatusResponse)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 0,
+      41, 2>
+      _table_;
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+
+        inline explicit constexpr Impl_(
+            ::google::protobuf::internal::ConstantInitialized) noexcept;
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena);
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena, const Impl_& from);
+    ::google::protobuf::internal::ArenaStringPtr message_;
+    bool success_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_monitoring_2eproto;
+};// -------------------------------------------------------------------
+
+class SoftwareMetrics_ServicesEntry_DoNotUse final
+    : public ::google::protobuf::internal::MapEntry<
+          SoftwareMetrics_ServicesEntry_DoNotUse, std::string, std::string,
+          ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+          ::google::protobuf::internal::WireFormatLite::TYPE_STRING> {
+ public:
+  using SuperType = ::google::protobuf::internal::MapEntry<
+      SoftwareMetrics_ServicesEntry_DoNotUse, std::string, std::string,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING>;
+  SoftwareMetrics_ServicesEntry_DoNotUse();
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR SoftwareMetrics_ServicesEntry_DoNotUse(
+      ::google::protobuf::internal::ConstantInitialized);
+  explicit SoftwareMetrics_ServicesEntry_DoNotUse(::google::protobuf::Arena* arena);
+  static const SoftwareMetrics_ServicesEntry_DoNotUse* internal_default_instance() {
+    return reinterpret_cast<const SoftwareMetrics_ServicesEntry_DoNotUse*>(
+        &_SoftwareMetrics_ServicesEntry_DoNotUse_default_instance_);
+  }
+  static bool ValidateKey(std::string* s) {
+    return ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::google::protobuf::internal::WireFormatLite::PARSE, "monitoring.SoftwareMetrics.ServicesEntry.key");
+ }
+  static bool ValidateValue(std::string* s) {
+    return ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::google::protobuf::internal::WireFormatLite::PARSE, "monitoring.SoftwareMetrics.ServicesEntry.value");
+ }
+  ::google::protobuf::Metadata GetMetadata() const final;
+  friend struct ::TableStruct_monitoring_2eproto;
+};
+// -------------------------------------------------------------------
+
+class HardwareMetrics final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:monitoring.HardwareMetrics) */ {
+ public:
+  inline HardwareMetrics() : HardwareMetrics(nullptr) {}
+  ~HardwareMetrics() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR HardwareMetrics(::google::protobuf::internal::ConstantInitialized);
+
+  inline HardwareMetrics(const HardwareMetrics& from)
+      : HardwareMetrics(nullptr, from) {}
+  HardwareMetrics(HardwareMetrics&& from) noexcept
+    : HardwareMetrics() {
+    *this = ::std::move(from);
+  }
+
+  inline HardwareMetrics& operator=(const HardwareMetrics& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline HardwareMetrics& operator=(HardwareMetrics&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetArena() == from.GetArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const HardwareMetrics& default_instance() {
+    return *internal_default_instance();
+  }
+  enum UsbInfoCase {
+    kLastInsertTime = 6,
+    kUsbDevices = 7,
+    USB_INFO_NOT_SET = 0,
+  };
+
+  static inline const HardwareMetrics* internal_default_instance() {
+    return reinterpret_cast<const HardwareMetrics*>(
+               &_HardwareMetrics_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(HardwareMetrics& a, HardwareMetrics& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(HardwareMetrics* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() != nullptr &&
+        GetArena() == other->GetArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() == other->GetArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(HardwareMetrics* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  HardwareMetrics* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<HardwareMetrics>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const HardwareMetrics& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const HardwareMetrics& from) {
+    HardwareMetrics::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void InternalSwap(HardwareMetrics* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "monitoring.HardwareMetrics";
+  }
+  protected:
+  explicit HardwareMetrics(::google::protobuf::Arena* arena);
+  HardwareMetrics(::google::protobuf::Arena* arena, const HardwareMetrics& from);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kDeviceIdFieldNumber = 1,
+    kReadableDateFieldNumber = 2,
+    kCpuUsageFieldNumber = 3,
+    kMemoryUsageFieldNumber = 4,
+    kDiskUsageRootFieldNumber = 5,
+    kGpioStateFieldNumber = 8,
+    kLastInsertTimeFieldNumber = 6,
+    kUsbDevicesFieldNumber = 7,
+  };
+  // string device_id = 1;
+  void clear_device_id() ;
+  const std::string& device_id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_device_id(Arg_&& arg, Args_... args);
+  std::string* mutable_device_id();
+  PROTOBUF_NODISCARD std::string* release_device_id();
+  void set_allocated_device_id(std::string* value);
+
+  private:
+  const std::string& _internal_device_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_device_id(
+      const std::string& value);
+  std::string* _internal_mutable_device_id();
+
+  public:
+  // string readable_date = 2;
+  void clear_readable_date() ;
+  const std::string& readable_date() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_readable_date(Arg_&& arg, Args_... args);
+  std::string* mutable_readable_date();
+  PROTOBUF_NODISCARD std::string* release_readable_date();
+  void set_allocated_readable_date(std::string* value);
+
+  private:
+  const std::string& _internal_readable_date() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_readable_date(
+      const std::string& value);
+  std::string* _internal_mutable_readable_date();
+
+  public:
+  // string cpu_usage = 3;
+  void clear_cpu_usage() ;
+  const std::string& cpu_usage() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_cpu_usage(Arg_&& arg, Args_... args);
+  std::string* mutable_cpu_usage();
+  PROTOBUF_NODISCARD std::string* release_cpu_usage();
+  void set_allocated_cpu_usage(std::string* value);
+
+  private:
+  const std::string& _internal_cpu_usage() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_cpu_usage(
+      const std::string& value);
+  std::string* _internal_mutable_cpu_usage();
+
+  public:
+  // string memory_usage = 4;
+  void clear_memory_usage() ;
+  const std::string& memory_usage() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_memory_usage(Arg_&& arg, Args_... args);
+  std::string* mutable_memory_usage();
+  PROTOBUF_NODISCARD std::string* release_memory_usage();
+  void set_allocated_memory_usage(std::string* value);
+
+  private:
+  const std::string& _internal_memory_usage() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_memory_usage(
+      const std::string& value);
+  std::string* _internal_mutable_memory_usage();
+
+  public:
+  // string disk_usage_root = 5;
+  void clear_disk_usage_root() ;
+  const std::string& disk_usage_root() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_disk_usage_root(Arg_&& arg, Args_... args);
+  std::string* mutable_disk_usage_root();
+  PROTOBUF_NODISCARD std::string* release_disk_usage_root();
+  void set_allocated_disk_usage_root(std::string* value);
+
+  private:
+  const std::string& _internal_disk_usage_root() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_disk_usage_root(
+      const std::string& value);
+  std::string* _internal_mutable_disk_usage_root();
+
+  public:
+  // int32 gpio_state = 8;
+  void clear_gpio_state() ;
+  ::int32_t gpio_state() const;
+  void set_gpio_state(::int32_t value);
+
+  private:
+  ::int32_t _internal_gpio_state() const;
+  void _internal_set_gpio_state(::int32_t value);
+
+  public:
+  // string last_insert_time = 6;
+  bool has_last_insert_time() const;
+  void clear_last_insert_time() ;
+  const std::string& last_insert_time() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_last_insert_time(Arg_&& arg, Args_... args);
+  std::string* mutable_last_insert_time();
+  PROTOBUF_NODISCARD std::string* release_last_insert_time();
+  void set_allocated_last_insert_time(std::string* value);
+
+  private:
+  const std::string& _internal_last_insert_time() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_last_insert_time(
+      const std::string& value);
+  std::string* _internal_mutable_last_insert_time();
+
+  public:
+  // string usb_devices = 7;
+  bool has_usb_devices() const;
+  void clear_usb_devices() ;
+  const std::string& usb_devices() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_usb_devices(Arg_&& arg, Args_... args);
+  std::string* mutable_usb_devices();
+  PROTOBUF_NODISCARD std::string* release_usb_devices();
+  void set_allocated_usb_devices(std::string* value);
+
+  private:
+  const std::string& _internal_usb_devices() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_usb_devices(
+      const std::string& value);
+  std::string* _internal_mutable_usb_devices();
+
+  public:
+  void clear_usb_info();
+  UsbInfoCase usb_info_case() const;
+  // @@protoc_insertion_point(class_scope:monitoring.HardwareMetrics)
+ private:
+  class _Internal;
+  void set_has_last_insert_time();
+  void set_has_usb_devices();
+
+  inline bool has_usb_info() const;
+  inline void clear_has_usb_info();
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      3, 8, 0,
+      128, 2>
+      _table_;
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+
+        inline explicit constexpr Impl_(
+            ::google::protobuf::internal::ConstantInitialized) noexcept;
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena);
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena, const Impl_& from);
+    ::google::protobuf::internal::ArenaStringPtr device_id_;
+    ::google::protobuf::internal::ArenaStringPtr readable_date_;
+    ::google::protobuf::internal::ArenaStringPtr cpu_usage_;
+    ::google::protobuf::internal::ArenaStringPtr memory_usage_;
+    ::google::protobuf::internal::ArenaStringPtr disk_usage_root_;
+    ::int32_t gpio_state_;
+    union UsbInfoUnion {
+      constexpr UsbInfoUnion() : _constinit_{} {}
+        ::google::protobuf::internal::ConstantInitialized _constinit_;
+      ::google::protobuf::internal::ArenaStringPtr last_insert_time_;
+      ::google::protobuf::internal::ArenaStringPtr usb_devices_;
+    } usb_info_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    ::uint32_t _oneof_case_[1];
+
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_monitoring_2eproto;
+};// -------------------------------------------------------------------
+
+class DeviceInfo final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:monitoring.DeviceInfo) */ {
+ public:
+  inline DeviceInfo() : DeviceInfo(nullptr) {}
+  ~DeviceInfo() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR DeviceInfo(::google::protobuf::internal::ConstantInitialized);
+
+  inline DeviceInfo(const DeviceInfo& from)
+      : DeviceInfo(nullptr, from) {}
+  DeviceInfo(DeviceInfo&& from) noexcept
+    : DeviceInfo() {
+    *this = ::std::move(from);
+  }
+
+  inline DeviceInfo& operator=(const DeviceInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline DeviceInfo& operator=(DeviceInfo&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetArena() == from.GetArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const DeviceInfo& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const DeviceInfo* internal_default_instance() {
+    return reinterpret_cast<const DeviceInfo*>(
+               &_DeviceInfo_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    0;
+
+  friend void swap(DeviceInfo& a, DeviceInfo& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(DeviceInfo* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() != nullptr &&
+        GetArena() == other->GetArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() == other->GetArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(DeviceInfo* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  DeviceInfo* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<DeviceInfo>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const DeviceInfo& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const DeviceInfo& from) {
+    DeviceInfo::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void InternalSwap(DeviceInfo* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "monitoring.DeviceInfo";
+  }
+  protected:
+  explicit DeviceInfo(::google::protobuf::Arena* arena);
+  DeviceInfo(::google::protobuf::Arena* arena, const DeviceInfo& from);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kDeviceIdFieldNumber = 1,
+  };
+  // string device_id = 1;
+  void clear_device_id() ;
+  const std::string& device_id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_device_id(Arg_&& arg, Args_... args);
+  std::string* mutable_device_id();
+  PROTOBUF_NODISCARD std::string* release_device_id();
+  void set_allocated_device_id(std::string* value);
+
+  private:
+  const std::string& _internal_device_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_device_id(
+      const std::string& value);
+  std::string* _internal_mutable_device_id();
+
+  public:
+  // @@protoc_insertion_point(class_scope:monitoring.DeviceInfo)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 0,
+      39, 2>
+      _table_;
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+
+        inline explicit constexpr Impl_(
+            ::google::protobuf::internal::ConstantInitialized) noexcept;
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena);
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena, const Impl_& from);
+    ::google::protobuf::internal::ArenaStringPtr device_id_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_monitoring_2eproto;
+};// -------------------------------------------------------------------
+
+class Alert final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:monitoring.Alert) */ {
+ public:
+  inline Alert() : Alert(nullptr) {}
+  ~Alert() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR Alert(::google::protobuf::internal::ConstantInitialized);
+
+  inline Alert(const Alert& from)
+      : Alert(nullptr, from) {}
+  Alert(Alert&& from) noexcept
+    : Alert() {
+    *this = ::std::move(from);
+  }
+
+  inline Alert& operator=(const Alert& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Alert& operator=(Alert&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetArena() == from.GetArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Alert& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Alert* internal_default_instance() {
+    return reinterpret_cast<const Alert*>(
+               &_Alert_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(Alert& a, Alert& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Alert* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() != nullptr &&
+        GetArena() == other->GetArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() == other->GetArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Alert* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Alert* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Alert>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const Alert& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const Alert& from) {
+    Alert::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void InternalSwap(Alert* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "monitoring.Alert";
+  }
+  protected:
+  explicit Alert(::google::protobuf::Arena* arena);
+  Alert(::google::protobuf::Arena* arena, const Alert& from);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  using Severity = Alert_Severity;
+  static constexpr Severity INFO = Alert_Severity_INFO;
+  static constexpr Severity WARNING = Alert_Severity_WARNING;
+  static constexpr Severity CRITICAL = Alert_Severity_CRITICAL;
+  static inline bool Severity_IsValid(int value) {
+    return Alert_Severity_IsValid(value);
+  }
+  static constexpr Severity Severity_MIN = Alert_Severity_Severity_MIN;
+  static constexpr Severity Severity_MAX = Alert_Severity_Severity_MAX;
+  static constexpr int Severity_ARRAYSIZE = Alert_Severity_Severity_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor* Severity_descriptor() {
+    return Alert_Severity_descriptor();
+  }
+  template <typename T>
+  static inline const std::string& Severity_Name(T value) {
+    return Alert_Severity_Name(value);
+  }
+  static inline bool Severity_Parse(absl::string_view name, Severity* value) {
+    return Alert_Severity_Parse(name, value);
+  }
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kDeviceIdFieldNumber = 1,
+    kTimestampFieldNumber = 3,
+    kAlertTypeFieldNumber = 4,
+    kDescriptionFieldNumber = 5,
+    kRecommendedActionFieldNumber = 6,
+    kSeverityFieldNumber = 2,
+  };
+  // string device_id = 1;
+  void clear_device_id() ;
+  const std::string& device_id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_device_id(Arg_&& arg, Args_... args);
+  std::string* mutable_device_id();
+  PROTOBUF_NODISCARD std::string* release_device_id();
+  void set_allocated_device_id(std::string* value);
+
+  private:
+  const std::string& _internal_device_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_device_id(
+      const std::string& value);
+  std::string* _internal_mutable_device_id();
+
+  public:
+  // string timestamp = 3;
   void clear_timestamp() ;
   const std::string& timestamp() const;
   template <typename Arg_ = const std::string&, typename... Args_>
@@ -276,14 +1245,72 @@ class MonitoringResponse final :
   std::string* _internal_mutable_timestamp();
 
   public:
-  // @@protoc_insertion_point(class_scope:monitoring.MonitoringResponse)
+  // string alert_type = 4;
+  void clear_alert_type() ;
+  const std::string& alert_type() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_alert_type(Arg_&& arg, Args_... args);
+  std::string* mutable_alert_type();
+  PROTOBUF_NODISCARD std::string* release_alert_type();
+  void set_allocated_alert_type(std::string* value);
+
+  private:
+  const std::string& _internal_alert_type() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_alert_type(
+      const std::string& value);
+  std::string* _internal_mutable_alert_type();
+
+  public:
+  // string description = 5;
+  void clear_description() ;
+  const std::string& description() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_description(Arg_&& arg, Args_... args);
+  std::string* mutable_description();
+  PROTOBUF_NODISCARD std::string* release_description();
+  void set_allocated_description(std::string* value);
+
+  private:
+  const std::string& _internal_description() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_description(
+      const std::string& value);
+  std::string* _internal_mutable_description();
+
+  public:
+  // string recommended_action = 6;
+  void clear_recommended_action() ;
+  const std::string& recommended_action() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_recommended_action(Arg_&& arg, Args_... args);
+  std::string* mutable_recommended_action();
+  PROTOBUF_NODISCARD std::string* release_recommended_action();
+  void set_allocated_recommended_action(std::string* value);
+
+  private:
+  const std::string& _internal_recommended_action() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_recommended_action(
+      const std::string& value);
+  std::string* _internal_mutable_recommended_action();
+
+  public:
+  // .monitoring.Alert.Severity severity = 2;
+  void clear_severity() ;
+  ::monitoring::Alert_Severity severity() const;
+  void set_severity(::monitoring::Alert_Severity value);
+
+  private:
+  ::monitoring::Alert_Severity _internal_severity() const;
+  void _internal_set_severity(::monitoring::Alert_Severity value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:monitoring.Alert)
  private:
   class _Internal;
 
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      2, 4, 0,
-      89, 2>
+      3, 6, 0,
+      82, 2>
       _table_;
   friend class ::google::protobuf::MessageLite;
   friend class ::google::protobuf::Arena;
@@ -299,10 +1326,12 @@ class MonitoringResponse final :
                               ::google::protobuf::Arena* arena);
         inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
                               ::google::protobuf::Arena* arena, const Impl_& from);
-    ::google::protobuf::internal::ArenaStringPtr alert_message_;
-    ::google::protobuf::internal::ArenaStringPtr alert_level_;
-    ::google::protobuf::internal::ArenaStringPtr recommended_action_;
+    ::google::protobuf::internal::ArenaStringPtr device_id_;
     ::google::protobuf::internal::ArenaStringPtr timestamp_;
+    ::google::protobuf::internal::ArenaStringPtr alert_type_;
+    ::google::protobuf::internal::ArenaStringPtr description_;
+    ::google::protobuf::internal::ArenaStringPtr recommended_action_;
+    int severity_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -310,26 +1339,26 @@ class MonitoringResponse final :
   friend struct ::TableStruct_monitoring_2eproto;
 };// -------------------------------------------------------------------
 
-class DeviceID final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:monitoring.DeviceID) */ {
+class SoftwareMetrics final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:monitoring.SoftwareMetrics) */ {
  public:
-  inline DeviceID() : DeviceID(nullptr) {}
-  ~DeviceID() override;
+  inline SoftwareMetrics() : SoftwareMetrics(nullptr) {}
+  ~SoftwareMetrics() override;
   template<typename = void>
-  explicit PROTOBUF_CONSTEXPR DeviceID(::google::protobuf::internal::ConstantInitialized);
+  explicit PROTOBUF_CONSTEXPR SoftwareMetrics(::google::protobuf::internal::ConstantInitialized);
 
-  inline DeviceID(const DeviceID& from)
-      : DeviceID(nullptr, from) {}
-  DeviceID(DeviceID&& from) noexcept
-    : DeviceID() {
+  inline SoftwareMetrics(const SoftwareMetrics& from)
+      : SoftwareMetrics(nullptr, from) {}
+  SoftwareMetrics(SoftwareMetrics&& from) noexcept
+    : SoftwareMetrics() {
     *this = ::std::move(from);
   }
 
-  inline DeviceID& operator=(const DeviceID& from) {
+  inline SoftwareMetrics& operator=(const SoftwareMetrics& from) {
     CopyFrom(from);
     return *this;
   }
-  inline DeviceID& operator=(DeviceID&& from) noexcept {
+  inline SoftwareMetrics& operator=(SoftwareMetrics&& from) noexcept {
     if (this == &from) return *this;
     if (GetArena() == from.GetArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -361,20 +1390,20 @@ class DeviceID final :
   static const ::google::protobuf::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const DeviceID& default_instance() {
+  static const SoftwareMetrics& default_instance() {
     return *internal_default_instance();
   }
-  static inline const DeviceID* internal_default_instance() {
-    return reinterpret_cast<const DeviceID*>(
-               &_DeviceID_default_instance_);
+  static inline const SoftwareMetrics* internal_default_instance() {
+    return reinterpret_cast<const SoftwareMetrics*>(
+               &_SoftwareMetrics_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    0;
+    6;
 
-  friend void swap(DeviceID& a, DeviceID& b) {
+  friend void swap(SoftwareMetrics& a, SoftwareMetrics& b) {
     a.Swap(&b);
   }
-  inline void Swap(DeviceID* other) {
+  inline void Swap(SoftwareMetrics* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetArena() != nullptr &&
@@ -387,7 +1416,7 @@ class DeviceID final :
       ::google::protobuf::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(DeviceID* other) {
+  void UnsafeArenaSwap(SoftwareMetrics* other) {
     if (other == this) return;
     ABSL_DCHECK(GetArena() == other->GetArena());
     InternalSwap(other);
@@ -395,14 +1424,14 @@ class DeviceID final :
 
   // implements Message ----------------------------------------------
 
-  DeviceID* New(::google::protobuf::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<DeviceID>(arena);
+  SoftwareMetrics* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SoftwareMetrics>(arena);
   }
   using ::google::protobuf::Message::CopyFrom;
-  void CopyFrom(const DeviceID& from);
+  void CopyFrom(const SoftwareMetrics& from);
   using ::google::protobuf::Message::MergeFrom;
-  void MergeFrom( const DeviceID& from) {
-    DeviceID::MergeImpl(*this, from);
+  void MergeFrom( const SoftwareMetrics& from) {
+    SoftwareMetrics::MergeImpl(*this, from);
   }
   private:
   static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
@@ -420,16 +1449,16 @@ class DeviceID final :
   ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
   void SharedCtor(::google::protobuf::Arena* arena);
   void SharedDtor();
-  void InternalSwap(DeviceID* other);
+  void InternalSwap(SoftwareMetrics* other);
 
   private:
   friend class ::google::protobuf::internal::AnyMetadata;
   static ::absl::string_view FullMessageName() {
-    return "monitoring.DeviceID";
+    return "monitoring.SoftwareMetrics";
   }
   protected:
-  explicit DeviceID(::google::protobuf::Arena* arena);
-  DeviceID(::google::protobuf::Arena* arena, const DeviceID& from);
+  explicit SoftwareMetrics(::google::protobuf::Arena* arena);
+  SoftwareMetrics(::google::protobuf::Arena* arena, const SoftwareMetrics& from);
   public:
 
   static const ClassData _class_data_;
@@ -439,29 +1468,120 @@ class DeviceID final :
 
   // nested types ----------------------------------------------------
 
+
   // accessors -------------------------------------------------------
 
   enum : int {
+    kServicesFieldNumber = 6,
     kDeviceIdFieldNumber = 1,
+    kReadableDateFieldNumber = 2,
+    kIpAddressFieldNumber = 3,
+    kUptimeFieldNumber = 4,
+    kNetworkStatusFieldNumber = 5,
   };
-  // int32 device_id = 1;
-  void clear_device_id() ;
-  ::int32_t device_id() const;
-  void set_device_id(::int32_t value);
-
+  // map<string, string> services = 6;
+  int services_size() const;
   private:
-  ::int32_t _internal_device_id() const;
-  void _internal_set_device_id(::int32_t value);
+  int _internal_services_size() const;
 
   public:
-  // @@protoc_insertion_point(class_scope:monitoring.DeviceID)
+  void clear_services() ;
+  const ::google::protobuf::Map<std::string, std::string>& services() const;
+  ::google::protobuf::Map<std::string, std::string>* mutable_services();
+
+  private:
+  const ::google::protobuf::Map<std::string, std::string>& _internal_services() const;
+  ::google::protobuf::Map<std::string, std::string>* _internal_mutable_services();
+
+  public:
+  // string device_id = 1;
+  void clear_device_id() ;
+  const std::string& device_id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_device_id(Arg_&& arg, Args_... args);
+  std::string* mutable_device_id();
+  PROTOBUF_NODISCARD std::string* release_device_id();
+  void set_allocated_device_id(std::string* value);
+
+  private:
+  const std::string& _internal_device_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_device_id(
+      const std::string& value);
+  std::string* _internal_mutable_device_id();
+
+  public:
+  // string readable_date = 2;
+  void clear_readable_date() ;
+  const std::string& readable_date() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_readable_date(Arg_&& arg, Args_... args);
+  std::string* mutable_readable_date();
+  PROTOBUF_NODISCARD std::string* release_readable_date();
+  void set_allocated_readable_date(std::string* value);
+
+  private:
+  const std::string& _internal_readable_date() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_readable_date(
+      const std::string& value);
+  std::string* _internal_mutable_readable_date();
+
+  public:
+  // string ip_address = 3;
+  void clear_ip_address() ;
+  const std::string& ip_address() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_ip_address(Arg_&& arg, Args_... args);
+  std::string* mutable_ip_address();
+  PROTOBUF_NODISCARD std::string* release_ip_address();
+  void set_allocated_ip_address(std::string* value);
+
+  private:
+  const std::string& _internal_ip_address() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_ip_address(
+      const std::string& value);
+  std::string* _internal_mutable_ip_address();
+
+  public:
+  // string uptime = 4;
+  void clear_uptime() ;
+  const std::string& uptime() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_uptime(Arg_&& arg, Args_... args);
+  std::string* mutable_uptime();
+  PROTOBUF_NODISCARD std::string* release_uptime();
+  void set_allocated_uptime(std::string* value);
+
+  private:
+  const std::string& _internal_uptime() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_uptime(
+      const std::string& value);
+  std::string* _internal_mutable_uptime();
+
+  public:
+  // string network_status = 5;
+  void clear_network_status() ;
+  const std::string& network_status() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_network_status(Arg_&& arg, Args_... args);
+  std::string* mutable_network_status();
+  PROTOBUF_NODISCARD std::string* release_network_status();
+  void set_allocated_network_status(std::string* value);
+
+  private:
+  const std::string& _internal_network_status() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_network_status(
+      const std::string& value);
+  std::string* _internal_mutable_network_status();
+
+  public:
+  // @@protoc_insertion_point(class_scope:monitoring.SoftwareMetrics)
  private:
   class _Internal;
 
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      0, 1, 0,
-      0, 2>
+      3, 6, 1,
+      95, 2>
       _table_;
   friend class ::google::protobuf::MessageLite;
   friend class ::google::protobuf::Arena;
@@ -477,7 +1597,15 @@ class DeviceID final :
                               ::google::protobuf::Arena* arena);
         inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
                               ::google::protobuf::Arena* arena, const Impl_& from);
-    ::int32_t device_id_;
+    ::google::protobuf::internal::MapField<SoftwareMetrics_ServicesEntry_DoNotUse, std::string, std::string,
+                      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+                      ::google::protobuf::internal::WireFormatLite::TYPE_STRING>
+        services_;
+    ::google::protobuf::internal::ArenaStringPtr device_id_;
+    ::google::protobuf::internal::ArenaStringPtr readable_date_;
+    ::google::protobuf::internal::ArenaStringPtr ip_address_;
+    ::google::protobuf::internal::ArenaStringPtr uptime_;
+    ::google::protobuf::internal::ArenaStringPtr network_status_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -499,237 +1627,374 @@ class DeviceID final :
 #endif  // __GNUC__
 // -------------------------------------------------------------------
 
-// DeviceID
+// DeviceInfo
 
-// int32 device_id = 1;
-inline void DeviceID::clear_device_id() {
+// string device_id = 1;
+inline void DeviceInfo::clear_device_id() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.device_id_ = 0;
+  _impl_.device_id_.ClearToEmpty();
 }
-inline ::int32_t DeviceID::device_id() const {
-  // @@protoc_insertion_point(field_get:monitoring.DeviceID.device_id)
+inline const std::string& DeviceInfo::device_id() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:monitoring.DeviceInfo.device_id)
   return _internal_device_id();
 }
-inline void DeviceID::set_device_id(::int32_t value) {
-  _internal_set_device_id(value);
-  // @@protoc_insertion_point(field_set:monitoring.DeviceID.device_id)
-}
-inline ::int32_t DeviceID::_internal_device_id() const {
-  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
-  return _impl_.device_id_;
-}
-inline void DeviceID::_internal_set_device_id(::int32_t value) {
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void DeviceInfo::set_device_id(Arg_&& arg,
+                                                     Args_... args) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
-  _impl_.device_id_ = value;
+  _impl_.device_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:monitoring.DeviceInfo.device_id)
+}
+inline std::string* DeviceInfo::mutable_device_id() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_device_id();
+  // @@protoc_insertion_point(field_mutable:monitoring.DeviceInfo.device_id)
+  return _s;
+}
+inline const std::string& DeviceInfo::_internal_device_id() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.device_id_.Get();
+}
+inline void DeviceInfo::_internal_set_device_id(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.device_id_.Set(value, GetArena());
+}
+inline std::string* DeviceInfo::_internal_mutable_device_id() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.device_id_.Mutable( GetArena());
+}
+inline std::string* DeviceInfo::release_device_id() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:monitoring.DeviceInfo.device_id)
+  return _impl_.device_id_.Release();
+}
+inline void DeviceInfo::set_allocated_device_id(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.device_id_.SetAllocated(value, GetArena());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.device_id_.IsDefault()) {
+          _impl_.device_id_.Set("", GetArena());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:monitoring.DeviceInfo.device_id)
 }
 
 // -------------------------------------------------------------------
 
-// MonitoringResponse
+// StatusUpdate
 
-// string alert_message = 1;
-inline void MonitoringResponse::clear_alert_message() {
+// string device_id = 1;
+inline void StatusUpdate::clear_device_id() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.alert_message_.ClearToEmpty();
+  _impl_.device_id_.ClearToEmpty();
 }
-inline const std::string& MonitoringResponse::alert_message() const
+inline const std::string& StatusUpdate::device_id() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:monitoring.MonitoringResponse.alert_message)
-  return _internal_alert_message();
+  // @@protoc_insertion_point(field_get:monitoring.StatusUpdate.device_id)
+  return _internal_device_id();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void MonitoringResponse::set_alert_message(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void StatusUpdate::set_device_id(Arg_&& arg,
                                                      Args_... args) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
-  _impl_.alert_message_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:monitoring.MonitoringResponse.alert_message)
+  _impl_.device_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:monitoring.StatusUpdate.device_id)
 }
-inline std::string* MonitoringResponse::mutable_alert_message() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  std::string* _s = _internal_mutable_alert_message();
-  // @@protoc_insertion_point(field_mutable:monitoring.MonitoringResponse.alert_message)
+inline std::string* StatusUpdate::mutable_device_id() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_device_id();
+  // @@protoc_insertion_point(field_mutable:monitoring.StatusUpdate.device_id)
   return _s;
 }
-inline const std::string& MonitoringResponse::_internal_alert_message() const {
+inline const std::string& StatusUpdate::_internal_device_id() const {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
-  return _impl_.alert_message_.Get();
+  return _impl_.device_id_.Get();
 }
-inline void MonitoringResponse::_internal_set_alert_message(const std::string& value) {
+inline void StatusUpdate::_internal_set_device_id(const std::string& value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
-  _impl_.alert_message_.Set(value, GetArena());
+  _impl_.device_id_.Set(value, GetArena());
 }
-inline std::string* MonitoringResponse::_internal_mutable_alert_message() {
+inline std::string* StatusUpdate::_internal_mutable_device_id() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
-  return _impl_.alert_message_.Mutable( GetArena());
+  return _impl_.device_id_.Mutable( GetArena());
 }
-inline std::string* MonitoringResponse::release_alert_message() {
+inline std::string* StatusUpdate::release_device_id() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  // @@protoc_insertion_point(field_release:monitoring.MonitoringResponse.alert_message)
-  return _impl_.alert_message_.Release();
+  // @@protoc_insertion_point(field_release:monitoring.StatusUpdate.device_id)
+  return _impl_.device_id_.Release();
 }
-inline void MonitoringResponse::set_allocated_alert_message(std::string* value) {
+inline void StatusUpdate::set_allocated_device_id(std::string* value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.alert_message_.SetAllocated(value, GetArena());
+  _impl_.device_id_.SetAllocated(value, GetArena());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        if (_impl_.alert_message_.IsDefault()) {
-          _impl_.alert_message_.Set("", GetArena());
+        if (_impl_.device_id_.IsDefault()) {
+          _impl_.device_id_.Set("", GetArena());
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:monitoring.MonitoringResponse.alert_message)
+  // @@protoc_insertion_point(field_set_allocated:monitoring.StatusUpdate.device_id)
 }
 
-// string alert_level = 2;
-inline void MonitoringResponse::clear_alert_level() {
+// string message = 2;
+inline void StatusUpdate::clear_message() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.alert_level_.ClearToEmpty();
+  _impl_.message_.ClearToEmpty();
 }
-inline const std::string& MonitoringResponse::alert_level() const
+inline const std::string& StatusUpdate::message() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:monitoring.MonitoringResponse.alert_level)
-  return _internal_alert_level();
+  // @@protoc_insertion_point(field_get:monitoring.StatusUpdate.message)
+  return _internal_message();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void MonitoringResponse::set_alert_level(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void StatusUpdate::set_message(Arg_&& arg,
                                                      Args_... args) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
-  _impl_.alert_level_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:monitoring.MonitoringResponse.alert_level)
+  _impl_.message_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:monitoring.StatusUpdate.message)
 }
-inline std::string* MonitoringResponse::mutable_alert_level() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  std::string* _s = _internal_mutable_alert_level();
-  // @@protoc_insertion_point(field_mutable:monitoring.MonitoringResponse.alert_level)
+inline std::string* StatusUpdate::mutable_message() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_message();
+  // @@protoc_insertion_point(field_mutable:monitoring.StatusUpdate.message)
   return _s;
 }
-inline const std::string& MonitoringResponse::_internal_alert_level() const {
+inline const std::string& StatusUpdate::_internal_message() const {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
-  return _impl_.alert_level_.Get();
+  return _impl_.message_.Get();
 }
-inline void MonitoringResponse::_internal_set_alert_level(const std::string& value) {
+inline void StatusUpdate::_internal_set_message(const std::string& value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
-  _impl_.alert_level_.Set(value, GetArena());
+  _impl_.message_.Set(value, GetArena());
 }
-inline std::string* MonitoringResponse::_internal_mutable_alert_level() {
+inline std::string* StatusUpdate::_internal_mutable_message() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
-  return _impl_.alert_level_.Mutable( GetArena());
+  return _impl_.message_.Mutable( GetArena());
 }
-inline std::string* MonitoringResponse::release_alert_level() {
+inline std::string* StatusUpdate::release_message() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  // @@protoc_insertion_point(field_release:monitoring.MonitoringResponse.alert_level)
-  return _impl_.alert_level_.Release();
+  // @@protoc_insertion_point(field_release:monitoring.StatusUpdate.message)
+  return _impl_.message_.Release();
 }
-inline void MonitoringResponse::set_allocated_alert_level(std::string* value) {
+inline void StatusUpdate::set_allocated_message(std::string* value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.alert_level_.SetAllocated(value, GetArena());
+  _impl_.message_.SetAllocated(value, GetArena());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        if (_impl_.alert_level_.IsDefault()) {
-          _impl_.alert_level_.Set("", GetArena());
+        if (_impl_.message_.IsDefault()) {
+          _impl_.message_.Set("", GetArena());
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:monitoring.MonitoringResponse.alert_level)
+  // @@protoc_insertion_point(field_set_allocated:monitoring.StatusUpdate.message)
 }
 
-// string recommended_action = 3;
-inline void MonitoringResponse::clear_recommended_action() {
+// -------------------------------------------------------------------
+
+// StatusResponse
+
+// bool success = 1;
+inline void StatusResponse::clear_success() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.recommended_action_.ClearToEmpty();
+  _impl_.success_ = false;
 }
-inline const std::string& MonitoringResponse::recommended_action() const
+inline bool StatusResponse::success() const {
+  // @@protoc_insertion_point(field_get:monitoring.StatusResponse.success)
+  return _internal_success();
+}
+inline void StatusResponse::set_success(bool value) {
+  _internal_set_success(value);
+  // @@protoc_insertion_point(field_set:monitoring.StatusResponse.success)
+}
+inline bool StatusResponse::_internal_success() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.success_;
+}
+inline void StatusResponse::_internal_set_success(bool value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.success_ = value;
+}
+
+// string message = 2;
+inline void StatusResponse::clear_message() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.message_.ClearToEmpty();
+}
+inline const std::string& StatusResponse::message() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:monitoring.MonitoringResponse.recommended_action)
-  return _internal_recommended_action();
+  // @@protoc_insertion_point(field_get:monitoring.StatusResponse.message)
+  return _internal_message();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void MonitoringResponse::set_recommended_action(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void StatusResponse::set_message(Arg_&& arg,
                                                      Args_... args) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
-  _impl_.recommended_action_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:monitoring.MonitoringResponse.recommended_action)
+  _impl_.message_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:monitoring.StatusResponse.message)
 }
-inline std::string* MonitoringResponse::mutable_recommended_action() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  std::string* _s = _internal_mutable_recommended_action();
-  // @@protoc_insertion_point(field_mutable:monitoring.MonitoringResponse.recommended_action)
+inline std::string* StatusResponse::mutable_message() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_message();
+  // @@protoc_insertion_point(field_mutable:monitoring.StatusResponse.message)
   return _s;
 }
-inline const std::string& MonitoringResponse::_internal_recommended_action() const {
+inline const std::string& StatusResponse::_internal_message() const {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
-  return _impl_.recommended_action_.Get();
+  return _impl_.message_.Get();
 }
-inline void MonitoringResponse::_internal_set_recommended_action(const std::string& value) {
+inline void StatusResponse::_internal_set_message(const std::string& value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
-  _impl_.recommended_action_.Set(value, GetArena());
+  _impl_.message_.Set(value, GetArena());
 }
-inline std::string* MonitoringResponse::_internal_mutable_recommended_action() {
+inline std::string* StatusResponse::_internal_mutable_message() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
-  return _impl_.recommended_action_.Mutable( GetArena());
+  return _impl_.message_.Mutable( GetArena());
 }
-inline std::string* MonitoringResponse::release_recommended_action() {
+inline std::string* StatusResponse::release_message() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  // @@protoc_insertion_point(field_release:monitoring.MonitoringResponse.recommended_action)
-  return _impl_.recommended_action_.Release();
+  // @@protoc_insertion_point(field_release:monitoring.StatusResponse.message)
+  return _impl_.message_.Release();
 }
-inline void MonitoringResponse::set_allocated_recommended_action(std::string* value) {
+inline void StatusResponse::set_allocated_message(std::string* value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.recommended_action_.SetAllocated(value, GetArena());
+  _impl_.message_.SetAllocated(value, GetArena());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        if (_impl_.recommended_action_.IsDefault()) {
-          _impl_.recommended_action_.Set("", GetArena());
+        if (_impl_.message_.IsDefault()) {
+          _impl_.message_.Set("", GetArena());
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:monitoring.MonitoringResponse.recommended_action)
+  // @@protoc_insertion_point(field_set_allocated:monitoring.StatusResponse.message)
 }
 
-// string timestamp = 4;
-inline void MonitoringResponse::clear_timestamp() {
+// -------------------------------------------------------------------
+
+// Alert
+
+// string device_id = 1;
+inline void Alert::clear_device_id() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.device_id_.ClearToEmpty();
+}
+inline const std::string& Alert::device_id() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:monitoring.Alert.device_id)
+  return _internal_device_id();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Alert::set_device_id(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.device_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:monitoring.Alert.device_id)
+}
+inline std::string* Alert::mutable_device_id() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_device_id();
+  // @@protoc_insertion_point(field_mutable:monitoring.Alert.device_id)
+  return _s;
+}
+inline const std::string& Alert::_internal_device_id() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.device_id_.Get();
+}
+inline void Alert::_internal_set_device_id(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.device_id_.Set(value, GetArena());
+}
+inline std::string* Alert::_internal_mutable_device_id() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.device_id_.Mutable( GetArena());
+}
+inline std::string* Alert::release_device_id() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:monitoring.Alert.device_id)
+  return _impl_.device_id_.Release();
+}
+inline void Alert::set_allocated_device_id(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.device_id_.SetAllocated(value, GetArena());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.device_id_.IsDefault()) {
+          _impl_.device_id_.Set("", GetArena());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:monitoring.Alert.device_id)
+}
+
+// .monitoring.Alert.Severity severity = 2;
+inline void Alert::clear_severity() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.severity_ = 0;
+}
+inline ::monitoring::Alert_Severity Alert::severity() const {
+  // @@protoc_insertion_point(field_get:monitoring.Alert.severity)
+  return _internal_severity();
+}
+inline void Alert::set_severity(::monitoring::Alert_Severity value) {
+  _internal_set_severity(value);
+  // @@protoc_insertion_point(field_set:monitoring.Alert.severity)
+}
+inline ::monitoring::Alert_Severity Alert::_internal_severity() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return static_cast<::monitoring::Alert_Severity>(_impl_.severity_);
+}
+inline void Alert::_internal_set_severity(::monitoring::Alert_Severity value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.severity_ = value;
+}
+
+// string timestamp = 3;
+inline void Alert::clear_timestamp() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.timestamp_.ClearToEmpty();
 }
-inline const std::string& MonitoringResponse::timestamp() const
+inline const std::string& Alert::timestamp() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:monitoring.MonitoringResponse.timestamp)
+  // @@protoc_insertion_point(field_get:monitoring.Alert.timestamp)
   return _internal_timestamp();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void MonitoringResponse::set_timestamp(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void Alert::set_timestamp(Arg_&& arg,
                                                      Args_... args) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.timestamp_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:monitoring.MonitoringResponse.timestamp)
+  // @@protoc_insertion_point(field_set:monitoring.Alert.timestamp)
 }
-inline std::string* MonitoringResponse::mutable_timestamp() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+inline std::string* Alert::mutable_timestamp() ABSL_ATTRIBUTE_LIFETIME_BOUND {
   std::string* _s = _internal_mutable_timestamp();
-  // @@protoc_insertion_point(field_mutable:monitoring.MonitoringResponse.timestamp)
+  // @@protoc_insertion_point(field_mutable:monitoring.Alert.timestamp)
   return _s;
 }
-inline const std::string& MonitoringResponse::_internal_timestamp() const {
+inline const std::string& Alert::_internal_timestamp() const {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
   return _impl_.timestamp_.Get();
 }
-inline void MonitoringResponse::_internal_set_timestamp(const std::string& value) {
+inline void Alert::_internal_set_timestamp(const std::string& value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.timestamp_.Set(value, GetArena());
 }
-inline std::string* MonitoringResponse::_internal_mutable_timestamp() {
+inline std::string* Alert::_internal_mutable_timestamp() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   return _impl_.timestamp_.Mutable( GetArena());
 }
-inline std::string* MonitoringResponse::release_timestamp() {
+inline std::string* Alert::release_timestamp() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  // @@protoc_insertion_point(field_release:monitoring.MonitoringResponse.timestamp)
+  // @@protoc_insertion_point(field_release:monitoring.Alert.timestamp)
   return _impl_.timestamp_.Release();
 }
-inline void MonitoringResponse::set_allocated_timestamp(std::string* value) {
+inline void Alert::set_allocated_timestamp(std::string* value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.timestamp_.SetAllocated(value, GetArena());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -737,7 +2002,936 @@ inline void MonitoringResponse::set_allocated_timestamp(std::string* value) {
           _impl_.timestamp_.Set("", GetArena());
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:monitoring.MonitoringResponse.timestamp)
+  // @@protoc_insertion_point(field_set_allocated:monitoring.Alert.timestamp)
+}
+
+// string alert_type = 4;
+inline void Alert::clear_alert_type() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.alert_type_.ClearToEmpty();
+}
+inline const std::string& Alert::alert_type() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:monitoring.Alert.alert_type)
+  return _internal_alert_type();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Alert::set_alert_type(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.alert_type_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:monitoring.Alert.alert_type)
+}
+inline std::string* Alert::mutable_alert_type() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_alert_type();
+  // @@protoc_insertion_point(field_mutable:monitoring.Alert.alert_type)
+  return _s;
+}
+inline const std::string& Alert::_internal_alert_type() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.alert_type_.Get();
+}
+inline void Alert::_internal_set_alert_type(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.alert_type_.Set(value, GetArena());
+}
+inline std::string* Alert::_internal_mutable_alert_type() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.alert_type_.Mutable( GetArena());
+}
+inline std::string* Alert::release_alert_type() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:monitoring.Alert.alert_type)
+  return _impl_.alert_type_.Release();
+}
+inline void Alert::set_allocated_alert_type(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.alert_type_.SetAllocated(value, GetArena());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.alert_type_.IsDefault()) {
+          _impl_.alert_type_.Set("", GetArena());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:monitoring.Alert.alert_type)
+}
+
+// string description = 5;
+inline void Alert::clear_description() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.description_.ClearToEmpty();
+}
+inline const std::string& Alert::description() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:monitoring.Alert.description)
+  return _internal_description();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Alert::set_description(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.description_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:monitoring.Alert.description)
+}
+inline std::string* Alert::mutable_description() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_description();
+  // @@protoc_insertion_point(field_mutable:monitoring.Alert.description)
+  return _s;
+}
+inline const std::string& Alert::_internal_description() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.description_.Get();
+}
+inline void Alert::_internal_set_description(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.description_.Set(value, GetArena());
+}
+inline std::string* Alert::_internal_mutable_description() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.description_.Mutable( GetArena());
+}
+inline std::string* Alert::release_description() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:monitoring.Alert.description)
+  return _impl_.description_.Release();
+}
+inline void Alert::set_allocated_description(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.description_.SetAllocated(value, GetArena());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.description_.IsDefault()) {
+          _impl_.description_.Set("", GetArena());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:monitoring.Alert.description)
+}
+
+// string recommended_action = 6;
+inline void Alert::clear_recommended_action() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.recommended_action_.ClearToEmpty();
+}
+inline const std::string& Alert::recommended_action() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:monitoring.Alert.recommended_action)
+  return _internal_recommended_action();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Alert::set_recommended_action(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.recommended_action_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:monitoring.Alert.recommended_action)
+}
+inline std::string* Alert::mutable_recommended_action() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_recommended_action();
+  // @@protoc_insertion_point(field_mutable:monitoring.Alert.recommended_action)
+  return _s;
+}
+inline const std::string& Alert::_internal_recommended_action() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.recommended_action_.Get();
+}
+inline void Alert::_internal_set_recommended_action(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.recommended_action_.Set(value, GetArena());
+}
+inline std::string* Alert::_internal_mutable_recommended_action() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.recommended_action_.Mutable( GetArena());
+}
+inline std::string* Alert::release_recommended_action() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:monitoring.Alert.recommended_action)
+  return _impl_.recommended_action_.Release();
+}
+inline void Alert::set_allocated_recommended_action(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.recommended_action_.SetAllocated(value, GetArena());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.recommended_action_.IsDefault()) {
+          _impl_.recommended_action_.Set("", GetArena());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:monitoring.Alert.recommended_action)
+}
+
+// -------------------------------------------------------------------
+
+// HardwareMetrics
+
+// string device_id = 1;
+inline void HardwareMetrics::clear_device_id() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.device_id_.ClearToEmpty();
+}
+inline const std::string& HardwareMetrics::device_id() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:monitoring.HardwareMetrics.device_id)
+  return _internal_device_id();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void HardwareMetrics::set_device_id(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.device_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:monitoring.HardwareMetrics.device_id)
+}
+inline std::string* HardwareMetrics::mutable_device_id() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_device_id();
+  // @@protoc_insertion_point(field_mutable:monitoring.HardwareMetrics.device_id)
+  return _s;
+}
+inline const std::string& HardwareMetrics::_internal_device_id() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.device_id_.Get();
+}
+inline void HardwareMetrics::_internal_set_device_id(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.device_id_.Set(value, GetArena());
+}
+inline std::string* HardwareMetrics::_internal_mutable_device_id() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.device_id_.Mutable( GetArena());
+}
+inline std::string* HardwareMetrics::release_device_id() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:monitoring.HardwareMetrics.device_id)
+  return _impl_.device_id_.Release();
+}
+inline void HardwareMetrics::set_allocated_device_id(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.device_id_.SetAllocated(value, GetArena());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.device_id_.IsDefault()) {
+          _impl_.device_id_.Set("", GetArena());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:monitoring.HardwareMetrics.device_id)
+}
+
+// string readable_date = 2;
+inline void HardwareMetrics::clear_readable_date() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.readable_date_.ClearToEmpty();
+}
+inline const std::string& HardwareMetrics::readable_date() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:monitoring.HardwareMetrics.readable_date)
+  return _internal_readable_date();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void HardwareMetrics::set_readable_date(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.readable_date_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:monitoring.HardwareMetrics.readable_date)
+}
+inline std::string* HardwareMetrics::mutable_readable_date() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_readable_date();
+  // @@protoc_insertion_point(field_mutable:monitoring.HardwareMetrics.readable_date)
+  return _s;
+}
+inline const std::string& HardwareMetrics::_internal_readable_date() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.readable_date_.Get();
+}
+inline void HardwareMetrics::_internal_set_readable_date(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.readable_date_.Set(value, GetArena());
+}
+inline std::string* HardwareMetrics::_internal_mutable_readable_date() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.readable_date_.Mutable( GetArena());
+}
+inline std::string* HardwareMetrics::release_readable_date() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:monitoring.HardwareMetrics.readable_date)
+  return _impl_.readable_date_.Release();
+}
+inline void HardwareMetrics::set_allocated_readable_date(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.readable_date_.SetAllocated(value, GetArena());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.readable_date_.IsDefault()) {
+          _impl_.readable_date_.Set("", GetArena());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:monitoring.HardwareMetrics.readable_date)
+}
+
+// string cpu_usage = 3;
+inline void HardwareMetrics::clear_cpu_usage() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.cpu_usage_.ClearToEmpty();
+}
+inline const std::string& HardwareMetrics::cpu_usage() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:monitoring.HardwareMetrics.cpu_usage)
+  return _internal_cpu_usage();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void HardwareMetrics::set_cpu_usage(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.cpu_usage_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:monitoring.HardwareMetrics.cpu_usage)
+}
+inline std::string* HardwareMetrics::mutable_cpu_usage() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_cpu_usage();
+  // @@protoc_insertion_point(field_mutable:monitoring.HardwareMetrics.cpu_usage)
+  return _s;
+}
+inline const std::string& HardwareMetrics::_internal_cpu_usage() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.cpu_usage_.Get();
+}
+inline void HardwareMetrics::_internal_set_cpu_usage(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.cpu_usage_.Set(value, GetArena());
+}
+inline std::string* HardwareMetrics::_internal_mutable_cpu_usage() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.cpu_usage_.Mutable( GetArena());
+}
+inline std::string* HardwareMetrics::release_cpu_usage() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:monitoring.HardwareMetrics.cpu_usage)
+  return _impl_.cpu_usage_.Release();
+}
+inline void HardwareMetrics::set_allocated_cpu_usage(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.cpu_usage_.SetAllocated(value, GetArena());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.cpu_usage_.IsDefault()) {
+          _impl_.cpu_usage_.Set("", GetArena());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:monitoring.HardwareMetrics.cpu_usage)
+}
+
+// string memory_usage = 4;
+inline void HardwareMetrics::clear_memory_usage() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.memory_usage_.ClearToEmpty();
+}
+inline const std::string& HardwareMetrics::memory_usage() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:monitoring.HardwareMetrics.memory_usage)
+  return _internal_memory_usage();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void HardwareMetrics::set_memory_usage(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.memory_usage_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:monitoring.HardwareMetrics.memory_usage)
+}
+inline std::string* HardwareMetrics::mutable_memory_usage() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_memory_usage();
+  // @@protoc_insertion_point(field_mutable:monitoring.HardwareMetrics.memory_usage)
+  return _s;
+}
+inline const std::string& HardwareMetrics::_internal_memory_usage() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.memory_usage_.Get();
+}
+inline void HardwareMetrics::_internal_set_memory_usage(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.memory_usage_.Set(value, GetArena());
+}
+inline std::string* HardwareMetrics::_internal_mutable_memory_usage() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.memory_usage_.Mutable( GetArena());
+}
+inline std::string* HardwareMetrics::release_memory_usage() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:monitoring.HardwareMetrics.memory_usage)
+  return _impl_.memory_usage_.Release();
+}
+inline void HardwareMetrics::set_allocated_memory_usage(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.memory_usage_.SetAllocated(value, GetArena());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.memory_usage_.IsDefault()) {
+          _impl_.memory_usage_.Set("", GetArena());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:monitoring.HardwareMetrics.memory_usage)
+}
+
+// string disk_usage_root = 5;
+inline void HardwareMetrics::clear_disk_usage_root() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.disk_usage_root_.ClearToEmpty();
+}
+inline const std::string& HardwareMetrics::disk_usage_root() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:monitoring.HardwareMetrics.disk_usage_root)
+  return _internal_disk_usage_root();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void HardwareMetrics::set_disk_usage_root(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.disk_usage_root_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:monitoring.HardwareMetrics.disk_usage_root)
+}
+inline std::string* HardwareMetrics::mutable_disk_usage_root() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_disk_usage_root();
+  // @@protoc_insertion_point(field_mutable:monitoring.HardwareMetrics.disk_usage_root)
+  return _s;
+}
+inline const std::string& HardwareMetrics::_internal_disk_usage_root() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.disk_usage_root_.Get();
+}
+inline void HardwareMetrics::_internal_set_disk_usage_root(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.disk_usage_root_.Set(value, GetArena());
+}
+inline std::string* HardwareMetrics::_internal_mutable_disk_usage_root() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.disk_usage_root_.Mutable( GetArena());
+}
+inline std::string* HardwareMetrics::release_disk_usage_root() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:monitoring.HardwareMetrics.disk_usage_root)
+  return _impl_.disk_usage_root_.Release();
+}
+inline void HardwareMetrics::set_allocated_disk_usage_root(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.disk_usage_root_.SetAllocated(value, GetArena());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.disk_usage_root_.IsDefault()) {
+          _impl_.disk_usage_root_.Set("", GetArena());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:monitoring.HardwareMetrics.disk_usage_root)
+}
+
+// string last_insert_time = 6;
+inline bool HardwareMetrics::has_last_insert_time() const {
+  return usb_info_case() == kLastInsertTime;
+}
+inline void HardwareMetrics::set_has_last_insert_time() {
+  _impl_._oneof_case_[0] = kLastInsertTime;
+}
+inline void HardwareMetrics::clear_last_insert_time() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (usb_info_case() == kLastInsertTime) {
+    _impl_.usb_info_.last_insert_time_.Destroy();
+    clear_has_usb_info();
+  }
+}
+inline const std::string& HardwareMetrics::last_insert_time() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:monitoring.HardwareMetrics.last_insert_time)
+  return _internal_last_insert_time();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void HardwareMetrics::set_last_insert_time(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (usb_info_case() != kLastInsertTime) {
+    clear_usb_info();
+
+    set_has_last_insert_time();
+    _impl_.usb_info_.last_insert_time_.InitDefault();
+  }
+  _impl_.usb_info_.last_insert_time_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:monitoring.HardwareMetrics.last_insert_time)
+}
+inline std::string* HardwareMetrics::mutable_last_insert_time() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_last_insert_time();
+  // @@protoc_insertion_point(field_mutable:monitoring.HardwareMetrics.last_insert_time)
+  return _s;
+}
+inline const std::string& HardwareMetrics::_internal_last_insert_time() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  if (usb_info_case() != kLastInsertTime) {
+    return ::google::protobuf::internal::GetEmptyStringAlreadyInited();
+  }
+  return _impl_.usb_info_.last_insert_time_.Get();
+}
+inline void HardwareMetrics::_internal_set_last_insert_time(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (usb_info_case() != kLastInsertTime) {
+    clear_usb_info();
+
+    set_has_last_insert_time();
+    _impl_.usb_info_.last_insert_time_.InitDefault();
+  }
+  _impl_.usb_info_.last_insert_time_.Set(value, GetArena());
+}
+inline std::string* HardwareMetrics::_internal_mutable_last_insert_time() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (usb_info_case() != kLastInsertTime) {
+    clear_usb_info();
+
+    set_has_last_insert_time();
+    _impl_.usb_info_.last_insert_time_.InitDefault();
+  }
+  return _impl_.usb_info_.last_insert_time_.Mutable( GetArena());
+}
+inline std::string* HardwareMetrics::release_last_insert_time() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:monitoring.HardwareMetrics.last_insert_time)
+  if (usb_info_case() != kLastInsertTime) {
+    return nullptr;
+  }
+  clear_has_usb_info();
+  return _impl_.usb_info_.last_insert_time_.Release();
+}
+inline void HardwareMetrics::set_allocated_last_insert_time(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (has_usb_info()) {
+    clear_usb_info();
+  }
+  if (value != nullptr) {
+    set_has_last_insert_time();
+    _impl_.usb_info_.last_insert_time_.InitAllocated(value, GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:monitoring.HardwareMetrics.last_insert_time)
+}
+
+// string usb_devices = 7;
+inline bool HardwareMetrics::has_usb_devices() const {
+  return usb_info_case() == kUsbDevices;
+}
+inline void HardwareMetrics::set_has_usb_devices() {
+  _impl_._oneof_case_[0] = kUsbDevices;
+}
+inline void HardwareMetrics::clear_usb_devices() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (usb_info_case() == kUsbDevices) {
+    _impl_.usb_info_.usb_devices_.Destroy();
+    clear_has_usb_info();
+  }
+}
+inline const std::string& HardwareMetrics::usb_devices() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:monitoring.HardwareMetrics.usb_devices)
+  return _internal_usb_devices();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void HardwareMetrics::set_usb_devices(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (usb_info_case() != kUsbDevices) {
+    clear_usb_info();
+
+    set_has_usb_devices();
+    _impl_.usb_info_.usb_devices_.InitDefault();
+  }
+  _impl_.usb_info_.usb_devices_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:monitoring.HardwareMetrics.usb_devices)
+}
+inline std::string* HardwareMetrics::mutable_usb_devices() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_usb_devices();
+  // @@protoc_insertion_point(field_mutable:monitoring.HardwareMetrics.usb_devices)
+  return _s;
+}
+inline const std::string& HardwareMetrics::_internal_usb_devices() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  if (usb_info_case() != kUsbDevices) {
+    return ::google::protobuf::internal::GetEmptyStringAlreadyInited();
+  }
+  return _impl_.usb_info_.usb_devices_.Get();
+}
+inline void HardwareMetrics::_internal_set_usb_devices(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (usb_info_case() != kUsbDevices) {
+    clear_usb_info();
+
+    set_has_usb_devices();
+    _impl_.usb_info_.usb_devices_.InitDefault();
+  }
+  _impl_.usb_info_.usb_devices_.Set(value, GetArena());
+}
+inline std::string* HardwareMetrics::_internal_mutable_usb_devices() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (usb_info_case() != kUsbDevices) {
+    clear_usb_info();
+
+    set_has_usb_devices();
+    _impl_.usb_info_.usb_devices_.InitDefault();
+  }
+  return _impl_.usb_info_.usb_devices_.Mutable( GetArena());
+}
+inline std::string* HardwareMetrics::release_usb_devices() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:monitoring.HardwareMetrics.usb_devices)
+  if (usb_info_case() != kUsbDevices) {
+    return nullptr;
+  }
+  clear_has_usb_info();
+  return _impl_.usb_info_.usb_devices_.Release();
+}
+inline void HardwareMetrics::set_allocated_usb_devices(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (has_usb_info()) {
+    clear_usb_info();
+  }
+  if (value != nullptr) {
+    set_has_usb_devices();
+    _impl_.usb_info_.usb_devices_.InitAllocated(value, GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:monitoring.HardwareMetrics.usb_devices)
+}
+
+// int32 gpio_state = 8;
+inline void HardwareMetrics::clear_gpio_state() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.gpio_state_ = 0;
+}
+inline ::int32_t HardwareMetrics::gpio_state() const {
+  // @@protoc_insertion_point(field_get:monitoring.HardwareMetrics.gpio_state)
+  return _internal_gpio_state();
+}
+inline void HardwareMetrics::set_gpio_state(::int32_t value) {
+  _internal_set_gpio_state(value);
+  // @@protoc_insertion_point(field_set:monitoring.HardwareMetrics.gpio_state)
+}
+inline ::int32_t HardwareMetrics::_internal_gpio_state() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.gpio_state_;
+}
+inline void HardwareMetrics::_internal_set_gpio_state(::int32_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.gpio_state_ = value;
+}
+
+inline bool HardwareMetrics::has_usb_info() const {
+  return usb_info_case() != USB_INFO_NOT_SET;
+}
+inline void HardwareMetrics::clear_has_usb_info() {
+  _impl_._oneof_case_[0] = USB_INFO_NOT_SET;
+}
+inline HardwareMetrics::UsbInfoCase HardwareMetrics::usb_info_case() const {
+  return HardwareMetrics::UsbInfoCase(_impl_._oneof_case_[0]);
+}
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// SoftwareMetrics
+
+// string device_id = 1;
+inline void SoftwareMetrics::clear_device_id() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.device_id_.ClearToEmpty();
+}
+inline const std::string& SoftwareMetrics::device_id() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:monitoring.SoftwareMetrics.device_id)
+  return _internal_device_id();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void SoftwareMetrics::set_device_id(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.device_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:monitoring.SoftwareMetrics.device_id)
+}
+inline std::string* SoftwareMetrics::mutable_device_id() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_device_id();
+  // @@protoc_insertion_point(field_mutable:monitoring.SoftwareMetrics.device_id)
+  return _s;
+}
+inline const std::string& SoftwareMetrics::_internal_device_id() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.device_id_.Get();
+}
+inline void SoftwareMetrics::_internal_set_device_id(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.device_id_.Set(value, GetArena());
+}
+inline std::string* SoftwareMetrics::_internal_mutable_device_id() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.device_id_.Mutable( GetArena());
+}
+inline std::string* SoftwareMetrics::release_device_id() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:monitoring.SoftwareMetrics.device_id)
+  return _impl_.device_id_.Release();
+}
+inline void SoftwareMetrics::set_allocated_device_id(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.device_id_.SetAllocated(value, GetArena());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.device_id_.IsDefault()) {
+          _impl_.device_id_.Set("", GetArena());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:monitoring.SoftwareMetrics.device_id)
+}
+
+// string readable_date = 2;
+inline void SoftwareMetrics::clear_readable_date() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.readable_date_.ClearToEmpty();
+}
+inline const std::string& SoftwareMetrics::readable_date() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:monitoring.SoftwareMetrics.readable_date)
+  return _internal_readable_date();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void SoftwareMetrics::set_readable_date(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.readable_date_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:monitoring.SoftwareMetrics.readable_date)
+}
+inline std::string* SoftwareMetrics::mutable_readable_date() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_readable_date();
+  // @@protoc_insertion_point(field_mutable:monitoring.SoftwareMetrics.readable_date)
+  return _s;
+}
+inline const std::string& SoftwareMetrics::_internal_readable_date() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.readable_date_.Get();
+}
+inline void SoftwareMetrics::_internal_set_readable_date(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.readable_date_.Set(value, GetArena());
+}
+inline std::string* SoftwareMetrics::_internal_mutable_readable_date() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.readable_date_.Mutable( GetArena());
+}
+inline std::string* SoftwareMetrics::release_readable_date() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:monitoring.SoftwareMetrics.readable_date)
+  return _impl_.readable_date_.Release();
+}
+inline void SoftwareMetrics::set_allocated_readable_date(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.readable_date_.SetAllocated(value, GetArena());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.readable_date_.IsDefault()) {
+          _impl_.readable_date_.Set("", GetArena());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:monitoring.SoftwareMetrics.readable_date)
+}
+
+// string ip_address = 3;
+inline void SoftwareMetrics::clear_ip_address() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.ip_address_.ClearToEmpty();
+}
+inline const std::string& SoftwareMetrics::ip_address() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:monitoring.SoftwareMetrics.ip_address)
+  return _internal_ip_address();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void SoftwareMetrics::set_ip_address(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.ip_address_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:monitoring.SoftwareMetrics.ip_address)
+}
+inline std::string* SoftwareMetrics::mutable_ip_address() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_ip_address();
+  // @@protoc_insertion_point(field_mutable:monitoring.SoftwareMetrics.ip_address)
+  return _s;
+}
+inline const std::string& SoftwareMetrics::_internal_ip_address() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.ip_address_.Get();
+}
+inline void SoftwareMetrics::_internal_set_ip_address(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.ip_address_.Set(value, GetArena());
+}
+inline std::string* SoftwareMetrics::_internal_mutable_ip_address() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.ip_address_.Mutable( GetArena());
+}
+inline std::string* SoftwareMetrics::release_ip_address() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:monitoring.SoftwareMetrics.ip_address)
+  return _impl_.ip_address_.Release();
+}
+inline void SoftwareMetrics::set_allocated_ip_address(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.ip_address_.SetAllocated(value, GetArena());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.ip_address_.IsDefault()) {
+          _impl_.ip_address_.Set("", GetArena());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:monitoring.SoftwareMetrics.ip_address)
+}
+
+// string uptime = 4;
+inline void SoftwareMetrics::clear_uptime() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.uptime_.ClearToEmpty();
+}
+inline const std::string& SoftwareMetrics::uptime() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:monitoring.SoftwareMetrics.uptime)
+  return _internal_uptime();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void SoftwareMetrics::set_uptime(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.uptime_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:monitoring.SoftwareMetrics.uptime)
+}
+inline std::string* SoftwareMetrics::mutable_uptime() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_uptime();
+  // @@protoc_insertion_point(field_mutable:monitoring.SoftwareMetrics.uptime)
+  return _s;
+}
+inline const std::string& SoftwareMetrics::_internal_uptime() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.uptime_.Get();
+}
+inline void SoftwareMetrics::_internal_set_uptime(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.uptime_.Set(value, GetArena());
+}
+inline std::string* SoftwareMetrics::_internal_mutable_uptime() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.uptime_.Mutable( GetArena());
+}
+inline std::string* SoftwareMetrics::release_uptime() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:monitoring.SoftwareMetrics.uptime)
+  return _impl_.uptime_.Release();
+}
+inline void SoftwareMetrics::set_allocated_uptime(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.uptime_.SetAllocated(value, GetArena());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.uptime_.IsDefault()) {
+          _impl_.uptime_.Set("", GetArena());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:monitoring.SoftwareMetrics.uptime)
+}
+
+// string network_status = 5;
+inline void SoftwareMetrics::clear_network_status() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.network_status_.ClearToEmpty();
+}
+inline const std::string& SoftwareMetrics::network_status() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:monitoring.SoftwareMetrics.network_status)
+  return _internal_network_status();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void SoftwareMetrics::set_network_status(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.network_status_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:monitoring.SoftwareMetrics.network_status)
+}
+inline std::string* SoftwareMetrics::mutable_network_status() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_network_status();
+  // @@protoc_insertion_point(field_mutable:monitoring.SoftwareMetrics.network_status)
+  return _s;
+}
+inline const std::string& SoftwareMetrics::_internal_network_status() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.network_status_.Get();
+}
+inline void SoftwareMetrics::_internal_set_network_status(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.network_status_.Set(value, GetArena());
+}
+inline std::string* SoftwareMetrics::_internal_mutable_network_status() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.network_status_.Mutable( GetArena());
+}
+inline std::string* SoftwareMetrics::release_network_status() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:monitoring.SoftwareMetrics.network_status)
+  return _impl_.network_status_.Release();
+}
+inline void SoftwareMetrics::set_allocated_network_status(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.network_status_.SetAllocated(value, GetArena());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.network_status_.IsDefault()) {
+          _impl_.network_status_.Set("", GetArena());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:monitoring.SoftwareMetrics.network_status)
+}
+
+// map<string, string> services = 6;
+inline int SoftwareMetrics::_internal_services_size() const {
+  return _internal_services().size();
+}
+inline int SoftwareMetrics::services_size() const {
+  return _internal_services_size();
+}
+inline void SoftwareMetrics::clear_services() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.services_.Clear();
+}
+inline const ::google::protobuf::Map<std::string, std::string>& SoftwareMetrics::_internal_services() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.services_.GetMap();
+}
+inline const ::google::protobuf::Map<std::string, std::string>& SoftwareMetrics::services() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_map:monitoring.SoftwareMetrics.services)
+  return _internal_services();
+}
+inline ::google::protobuf::Map<std::string, std::string>* SoftwareMetrics::_internal_mutable_services() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  return _impl_.services_.MutableMap();
+}
+inline ::google::protobuf::Map<std::string, std::string>* SoftwareMetrics::mutable_services() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_map:monitoring.SoftwareMetrics.services)
+  return _internal_mutable_services();
 }
 
 #ifdef __GNUC__
@@ -747,6 +2941,19 @@ inline void MonitoringResponse::set_allocated_timestamp(std::string* value) {
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace monitoring
 
+
+namespace google {
+namespace protobuf {
+
+template <>
+struct is_proto_enum<::monitoring::Alert_Severity> : std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor<::monitoring::Alert_Severity>() {
+  return ::monitoring::Alert_Severity_descriptor();
+}
+
+}  // namespace protobuf
+}  // namespace google
 
 // @@protoc_insertion_point(global_scope)
 

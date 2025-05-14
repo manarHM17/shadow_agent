@@ -1,0 +1,3 @@
+/home/manar/IOTSHADOW/provision-service/client/build/CMakeFiles/provision_test.dir
+/home/manar/IOTSHADOW/provision-service/client/build/CMakeFiles/edit_cache.dir
+/home/manar/IOTSHADOW/provision-service/client/build/CMakeFiles/rebuild_cache.dir

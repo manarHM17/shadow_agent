@@ -3,20 +3,66 @@ syntax = "proto3";
 package monitoring;
 
 service MonitoringService {
-  // Stream des données de monitoring du client vers le serveur
-  rpc StreamMonitoringData(DeviceID) returns (stream MonitoringResponse);
+  // Client registers with server and receives a stream of alerts
+  rpc RegisterDevice(DeviceInfo) returns (stream Alert) {}
+  
+  // Client can send status update
+  rpc SendStatusUpdate(StatusUpdate) returns (StatusResponse) {}
 }
 
-
-message DeviceID{
-  int32 device_id =1 ;
-
+// Initial device registration information
+message DeviceInfo {
+  string device_id = 1;     
 }
 
-message MonitoringResponse {
-  string alert_message = 1;
-  string alert_level = 2; // e.g., "INFO", "WARNING", "CRITICAL"
-  string recommended_action = 3;
-  string timestamp = 4;
+// Status update if client needs to report directly via gRPC
+message StatusUpdate {
+  string device_id = 1;
+  string message = 2;
+}
 
+// Response for status updates
+message StatusResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+// Alert message sent from server to client
+message Alert {
+  enum Severity {
+    INFO = 0;
+    WARNING = 1;
+    CRITICAL = 2;
+  }
+  
+  string device_id = 1;
+  Severity severity = 2;
+  string timestamp = 3;
+  string alert_type = 4;      // "cpu", "ram", "disk", "service", "usb", "gpio"
+  string description = 5;
+  string recommended_action = 6;
+}
+
+// Hardware metrics structure (matching your JSON format)
+message HardwareMetrics {
+  string device_id = 1;
+  string readable_date = 2;
+  string cpu_usage = 3;       // "xx%"
+  string memory_usage = 4;    // "xx%"
+  string disk_usage_root = 5; // "xx%"
+  oneof usb_info {
+    string last_insert_time = 6;
+    string usb_devices = 7;   // "none" if no devices
+  }
+  int32 gpio_state = 8;       // Number of active GPIOs
+}
+
+// Software metrics structure (matching your JSON format)
+message SoftwareMetrics {
+  string device_id = 1;
+  string readable_date = 2;
+  string ip_address = 3;
+  string uptime = 4;
+  string network_status = 5;  // "reachable" or "unreachable"
+  map<string, string> services = 6;  // service_name -> status
 }

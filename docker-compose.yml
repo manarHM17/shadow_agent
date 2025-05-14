@@ -1,62 +1,36 @@
 version: '3.8'
-
 services:
   mysql:
-    image: mysql:8.0
-    container_name: mysql
+    image: mysql:8
+    restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: FreeP@lest!ne2025
+      MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: IOTSHADOW
-      MYSQL_USER: iot_user
-      MYSQL_PASSWORD: FreeP@lest!ne2025
     ports:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pFreeP@lest!ne2025"]
-      interval: 5s
-      retries: 5
-    networks:
-      backend:
-        aliases:
-          - db
 
-  provision-service:
-    build:
-      context: ./provision-service
-      dockerfile: Dockerfile
-    container_name: provision-service
-    depends_on:
-      mysql:
-        condition: service_healthy
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
     ports:
-      - "50051:50051"
+      - "8080:80"
     environment:
-      DB_HOST: db
-      DB_USER: iot_user
-      DB_PASSWORD: FreeP@lest!ne2025
-      DB_NAME: IOTSHADOW
-    command: ["./build/provision_service"]
-    networks:
-      - backend
-
-  provision-client:
-    image: provision-service:latest
-    container_name: provision-client
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: root
     depends_on:
-      - provision-service
+      - mysql
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
     environment:
-      SERVER_ADDR: provision-service:50051
-    entrypoint: ["/app/build/provision_test"]
-    networks:
-      - backend
-    stdin_open: true
-    tty: true
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
 
 volumes:
   mysql_data:
-
-networks:
-  backend:
-    driver: bridge

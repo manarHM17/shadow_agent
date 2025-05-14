@@ -1,0 +1,11 @@
+{
+  "readable_date": "2025-05-14_09-31-02",
+  "ip_address": "172.23.220.19",
+  "uptime": "up 32 minutes",
+  "network_status": "reachable",
+  "services": {
+    "mosquitto": "inactive",
+    "cron": "active",
+    "ssh": "inactive"
+  }
+}
