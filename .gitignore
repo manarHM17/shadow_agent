@@ -1,2 +1,6 @@
-/build
-.env
+provision-service/server/build
+provision-service/client/build
+monitoring-service/server/build
+monitoring-service/client/build
+provision-service/.env
+monitoring-service/.env
