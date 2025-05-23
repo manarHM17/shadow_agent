@@ -1,2 +1,0 @@
-# Hashes of file build rules.
-271c798c886891a71b83adf4ea1a6056 /home/manar/IOTSHADOW/ota-update-service/src/ota_service.pb.cc

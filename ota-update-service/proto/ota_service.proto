@@ -1,77 +1,82 @@
-// proto/ota_service.proto
 syntax = "proto3";
 
 package ota;
 
+// Service OTA - uniquement pour les mises à jour
 service OTAService {
-  // Vérifier si une mise à jour est disponible
-  rpc CheckForUpdate(CheckUpdateRequest) returns (CheckUpdateResponse);
-
-  // Télécharger une mise à jour
-  rpc DownloadUpdate(DownloadRequest) returns (stream DownloadChunk);
-
-  // Installer une mise à jour
-  rpc InstallUpdate(InstallRequest) returns (InstallResponse);
-
-  // Obtenir l'état de la mise à jour
-  rpc GetUpdateStatus(StatusRequest) returns (StatusResponse);
+  // Stream périodique pour vérifier les mises à jour disponibles
+  rpc CheckForUpdates(stream UpdateCheckRequest) returns (stream UpdateCheckResponse);
+  
+  // Télécharger une mise à jour (streaming pour les gros fichiers)
+  rpc DownloadUpdate(DownloadRequest) returns (stream DownloadResponse);
+  
+  // Stream périodique pour rapporter le statut des mises à jour
+  rpc ReportUpdateStatus(stream UpdateStatusRequest) returns (stream UpdateStatusResponse);
 }
 
-message CheckUpdateRequest {
-  int32 device_id = 1;
-  string current_version = 2;
-  string hardware_type = 3;
+// Messages pour la vérification périodique des mises à jour
+message UpdateCheckRequest {
+  int32 device_id = 1;           // Identifiant unique du device
+  string current_version = 2;     // Version actuelle du firmware
+  string hardware_model = 3;      // Modèle du matériel
+  int64 timestamp = 4;            // Timestamp de la requête
 }
 
-message CheckUpdateResponse {
-  bool update_available = 1;
-  string new_version = 2;
-  int64 update_size = 3;
-  string update_id = 4;
-  string changelog = 5;
+message UpdateCheckResponse {
+  bool update_available = 1;      // True si une mise à jour est disponible
+  FirmwareInfo firmware_info = 2; // Informations sur la mise à jour (si disponible)
+  int64 timestamp = 3;            // Timestamp de la réponse
 }
 
+// Informations sur le firmware
+message FirmwareInfo {
+  string version = 1;             // Version du firmware
+  string filename = 2;            // Nom du fichier
+  int64 file_size = 3;            // Taille du fichier en bytes
+  string checksum = 4;            // Checksum SHA256 du fichier
+  string release_notes = 5;       // Notes de version
+  bool is_critical = 6;           // Mise à jour critique
+}
+
+// Messages pour le téléchargement
 message DownloadRequest {
-  int32 device_id = 1;
-  string update_id = 2;
-  string jwt_token = 3;
+  int32 device_id = 1;           // Identifiant du device
+  string firmware_version = 2;    // Version du firmware à télécharger
+  int64 offset = 3;               // Offset pour reprise de téléchargement
 }
 
-message DownloadChunk {
-  bytes data = 1;
-  int32 chunk_id = 2;
-  bool last_chunk = 3;
+message DownloadResponse {
+  bytes data = 1;                 // Données du firmware
+  int64 offset = 2;               // Offset actuel
+  int64 total_size = 3;           // Taille totale du fichier
+  bool is_last_chunk = 4;         // True si c'est le dernier chunk
 }
 
-message InstallRequest {
-  int32 device_id = 1;
-  string update_id = 2;
-  bool allow_rollback = 3;
+// Messages pour le rapport périodique de statut
+message UpdateStatusRequest {
+  int32 device_id = 1;           // Identifiant du device
+  string firmware_version = 2;    // Version du firmware en cours
+  UpdateStatus status = 3;        // Statut actuel
+  string error_message = 4;       // Message d'erreur si applicable
+  int32 progress_percentage = 5;  // Pourcentage de progression (0-100)
+  int64 timestamp = 6;            // Timestamp du rapport
 }
 
-message InstallResponse {
-  bool success = 1;
-  string message = 2;
-  string installation_id = 3;
+message UpdateStatusResponse {
+  bool acknowledged = 1;          // Confirmation de réception
+  string message = 2;             // Message de réponse optionnel
+  int64 timestamp = 3;            // Timestamp de la réponse
 }
 
-message StatusRequest {
-  int32 device_id = 1;
-  string installation_id = 2;
-}
-
-message StatusResponse {
-  enum Status {
-    UNKNOWN = 0;
-    DOWNLOADING = 1;
-    VERIFYING = 2;
-    INSTALLING = 3;
-    REBOOTING = 4;
-    COMPLETED = 5;
-    FAILED = 6;
-    ROLLED_BACK = 7;
-  }
-  Status status = 1;
-  int32 progress = 2;
-  string message = 3;
+// Statuts de mise à jour
+enum UpdateStatus {
+  IDLE = 0;                       // En attente
+  DOWNLOADING = 1;                // Téléchargement en cours
+  DOWNLOAD_COMPLETED = 2;         // Téléchargement terminé
+  VERIFYING = 3;                  // Vérification en cours
+  INSTALLING = 4;                 // Installation en cours
+  REBOOT_REQUIRED = 5;            // Redémarrage requis
+  UPDATE_SUCCESS = 6;             // Mise à jour réussie
+  UPDATE_FAILED = 7;              // Mise à jour échouée
+  ROLLBACK_COMPLETED = 8;         // Rollback terminé
 }
