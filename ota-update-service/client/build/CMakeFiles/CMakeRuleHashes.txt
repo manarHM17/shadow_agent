@@ -1,2 +1,0 @@
-# Hashes of file build rules.
-66b51cffb1cad5da27914c2ecd96cced ota_service.pb.cc

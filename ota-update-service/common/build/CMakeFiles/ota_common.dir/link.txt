@@ -1,2 +1,0 @@
-/usr/bin/ar qc libota_common.a CMakeFiles/ota_common.dir/src/checksum.cc.o CMakeFiles/ota_common.dir/src/logging.cc.o
-/usr/bin/ranlib libota_common.a

@@ -7,14 +7,13 @@
 
 
 // Définir la clé secrète
-const std::string JWTUtils::SECRET_KEY = std::getenv("JWT_SECRET_KEY");
+const std::string JWTUtils::SECRET_KEY = "P@ssw0rd20iot25" ;
 
 
 
 //Implémentation de CreateToken
 
 std::string JWTUtils::CreateToken(const std::string& device_id) {
-    // Add expiration time (30 days from now)
     auto now = std::chrono::system_clock::now();
     auto exp = now + std::chrono::hours(24 * 256);
     

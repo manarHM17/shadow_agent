@@ -23,7 +23,7 @@ public:
                     const std::string& hardware_queue,
                     const std::string& software_queue)
         : stub_(MonitoringService::NewStub(channel)),
-          metrics_collector_(std::make_unique<MetricsCollector>("/home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/logs")), 
+          metrics_collector_(std::make_unique<MetricsCollector>("../../client/logs")), 
           rabbitmq_sender_(std::make_unique<RabbitMQSender>(
               "localhost", 5672, "guest", "guest", hardware_queue, software_queue)),
           running_(false) {

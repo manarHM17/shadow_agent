@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/ota_client.dir/src/main.cc.o CMakeFiles/ota_client.dir/src/ota_client.cc.o CMakeFiles/ota_client.dir/src/partition_manager.cc.o CMakeFiles/ota_client.dir/src/update_manager.cc.o -o ota_client  -lpthread 

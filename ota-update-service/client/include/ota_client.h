@@ -1,108 +1,43 @@
-#pragma once
+// client/ota_client.h
+#ifndef OTA_CLIENT_H
+#define OTA_CLIENT_H
 
 #include <grpcpp/grpcpp.h>
-#include <grpcpp/client_context.h>
-#include <thread>
-#include <atomic>
+#include "../common/include/ota_service.grpc.pb.h"
+#include <string>
 #include <memory>
-#include <functional>
-#include <chrono>
-#include <mutex>
-#include "ota_service.grpc.pb.h"
-#include "partition_manager.h"
-#include "update_manager.h"
+
+namespace ota {
 
 class OTAClient {
 public:
-    // Callback pour les événements OTA
-    using StatusCallback = std::function<void(const std::string& message, UpdateState state)>;
-    
-    // Configuration du client
-    struct ClientConfig {
-        std::string server_address = "localhost:50051";
-        int32_t device_id;
-        std::string hardware_model;
-        std::string temp_directory = "/tmp/ota";
-        int check_interval_seconds = 300; // 5 minutes
-        int status_report_interval_seconds = 60; // 1 minute
-        int max_retry_attempts = 3;
-        int retry_delay_seconds = 5;
-    };
-
-private:
-    // Configuration
-    ClientConfig config_;
-    
-    // gRPC
-    std::shared_ptr<grpc::Channel> channel_;
-    std::unique_ptr<ota::OTAService::Stub> stub_;
-    
-    // Managers
-    std::unique_ptr<UpdateManager> update_manager_;
-    std::unique_ptr<PartitionManager> partition_manager_;
-    
-    // Threading
-    std::thread check_updates_thread_;
-    std::thread status_report_thread_;
-    std::atomic<bool> running_;
-    std::atomic<bool> update_in_progress_;
-    
-    // State
-    std::string current_version_;
-    std::atomic<UpdateState> current_state_;
-    std::string last_error_message_;
-    std::mutex state_mutex_;
-    
-    // Callbacks
-    StatusCallback status_callback_;
-    
-    // Retry mechanism
-    int retry_count_;
-    std::chrono::steady_clock::time_point last_check_time_;
-
-public:
-    explicit OTAClient(const ClientConfig& config);
+    OTAClient(const std::string& server_address);
     ~OTAClient();
     
-    // Lifecycle
-    bool initialize();
-    void start();
-    void stop();
-    bool isRunning() const { return running_.load(); }
+    // Gestion des dispositifs
+    bool registerDevice(const std::string& device_id, const std::string& device_type,
+                       const std::string& current_version, const std::string& platform);
     
-    // Configuration
-    void setStatusCallback(StatusCallback callback);
+    // Vérification et téléchargement des mises à jour
+    bool checkForUpdates(const std::string& device_id, const std::string& current_version,
+                        int update_type, ota::UpdateResponse& update_info);
     
-    // Status
-    UpdateState getCurrentState() const { return current_state_.load(); }
-    std::string getCurrentVersion() const { return current_version_; }
-    UpdateProgress getUpdateProgress() const;
+    bool downloadUpdate(const std::string& device_id, const std::string& update_id,
+                       const std::string& local_path);
     
-    // Manual operations
-    bool checkForUpdatesNow();
-    bool cancelCurrentUpdate();
-    bool performRollback();
-
+    bool confirmInstallation(const std::string& device_id, const std::string& update_id,
+                           bool success, const std::string& error_message = "");
+    
+    // Statut du dispositif
+    bool getDeviceStatus(const std::string& device_id, ota::DeviceStatusResponse& status);
+    
 private:
-    // gRPC operations
-    bool connectToServer();
-    void checkUpdatesLoop();
-    void statusReportLoop();
+    std::unique_ptr<ota::OTAService::Stub> stub_;
+    std::shared_ptr<grpc::Channel> channel_;
     
-    // Update process
-    bool processAvailableUpdate(const ota::FirmwareInfo& firmware_info);
-    bool downloadFirmware(const ota::FirmwareInfo& firmware_info);
-    bool reportUpdateStatus(UpdateState state, const std::string& message = "", int progress = 0);
-    
-    // Utility
-    void setState(UpdateState state, const std::string& message = "");
-    void notifyStatusChange(const std::string& message, UpdateState state);
-    std::string getHardwareModel() const;
-    void handleUpdateProgress(const UpdateProgress& progress);
-    
-    // Retry logic
-    bool shouldRetry() const;
-    void incrementRetryCount();
-    void resetRetryCount();
-    void waitForRetry();
+    bool isConnected();
 };
+
+} // namespace ota
+
+#endif // OTA_CLIENT_H

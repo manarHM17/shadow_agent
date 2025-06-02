@@ -1,7 +1,7 @@
 CMakeFiles/monitoring_test.dir/src/metrics_collector.cpp.o: \
- /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/src/metrics_collector.cpp \
+ /home/manar/IOTSHADOW/monitoring-service/client/src/metrics_collector.cpp \
  /usr/include/stdc-predef.h \
- /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/src/metrics_collector.h \
+ /home/manar/IOTSHADOW/monitoring-service/client/src/metrics_collector.h \
  /usr/include/c++/13/string /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \

@@ -12,7 +12,7 @@ using namespace grpc;
 using namespace shadow_agent;
 
 // Define the absolute path for token.txt
-const string TOKEN_FILE_PATH = "/home/manar/IOTSHADOW/provision-service/token/token.txt";
+const string TOKEN_FILE_PATH = "../../client/token/token.txt";
 
 // Vérifie si un fichier existe
 bool fileExists(const std::string& path) {
@@ -357,7 +357,7 @@ int main() {
     do {
         displayMenu();
         cin >> choice;
-        cin.ignore();  // Ignore newline after numeric input
+        cin.ignore();  
 
         switch (choice) {
             case 1: client.RegisterDevice(); break;

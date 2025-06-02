@@ -1,7 +1,7 @@
 CMakeFiles/monitoring_service.dir/src/alert_manager.cpp.o: \
- /home/manar/IOTSHADOW/monitoring-service/monitoring-system/server/src/alert_manager.cpp \
+ /home/manar/IOTSHADOW/monitoring-service/server/src/alert_manager.cpp \
  /usr/include/stdc-predef.h \
- /home/manar/IOTSHADOW/monitoring-service/monitoring-system/server/src/alert_manager.h \
+ /home/manar/IOTSHADOW/monitoring-service/server/src/alert_manager.h \
  /usr/include/c++/13/string /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -156,8 +156,8 @@ CMakeFiles/monitoring_service.dir/src/alert_manager.cpp.o: \
  /usr/include/x86_64-linux-gnu/c++/13/bits/atomic_word.h \
  /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
  /usr/include/c++/13/chrono \
- /home/manar/IOTSHADOW/monitoring-service/monitoring-system/server/build/monitoring.grpc.pb.h \
- /home/manar/IOTSHADOW/monitoring-service/monitoring-system/server/build/monitoring.pb.h \
+ /home/manar/IOTSHADOW/monitoring-service/server/build/monitoring.grpc.pb.h \
+ /home/manar/IOTSHADOW/monitoring-service/server/build/monitoring.pb.h \
  /usr/include/c++/13/utility /usr/include/c++/13/bits/stl_relops.h \
  /usr/local/include/google/protobuf/port_def.inc \
  /usr/local/include/absl/base/attributes.h \

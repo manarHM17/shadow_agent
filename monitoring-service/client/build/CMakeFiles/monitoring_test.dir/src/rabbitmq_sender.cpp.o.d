@@ -1,7 +1,7 @@
 CMakeFiles/monitoring_test.dir/src/rabbitmq_sender.cpp.o: \
- /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/src/rabbitmq_sender.cpp \
+ /home/manar/IOTSHADOW/monitoring-service/client/src/rabbitmq_sender.cpp \
  /usr/include/stdc-predef.h \
- /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/src/rabbitmq_sender.h \
+ /home/manar/IOTSHADOW/monitoring-service/client/src/rabbitmq_sender.h \
  /usr/include/c++/13/string /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -246,5 +246,5 @@ CMakeFiles/monitoring_test.dir/src/rabbitmq_sender.cpp.o: \
  /usr/include/c++/13/optional /usr/include/c++/13/numeric \
  /usr/include/c++/13/bits/stl_numeric.h \
  /usr/include/c++/13/pstl/glue_numeric_defs.h /usr/include/c++/13/any \
- /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/src/metrics_collector.h \
+ /home/manar/IOTSHADOW/monitoring-service/client/src/metrics_collector.h \
  /usr/include/c++/13/iostream /usr/include/amqp_tcp_socket.h

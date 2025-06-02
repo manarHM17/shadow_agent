@@ -22,6 +22,7 @@ std::string LoadFile(const std::string& filepath) {
 }
 
 int main() {
+    std::cout << "Starting the server..." << std::endl;
     string server_address("0.0.0.0:50051");
 
     // Commenter la partie SSL pour tester une connexion insecure

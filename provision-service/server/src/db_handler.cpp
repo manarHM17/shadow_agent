@@ -3,10 +3,10 @@
 #include <iostream>
 
 DBHandler::DBHandler() {
-    const char* host = std::getenv("DB_HOST");
-    const char* user = std::getenv("DB_USER");
-    const char* pass = std::getenv("DB_PASS");
-    const char* db   = std::getenv("DB_NAME");
+    // const char* host = std::getenv("DB_HOST");
+    // const char* user = std::getenv("DB_USER");
+    // const char* pass = std::getenv("DB_PASS");
+    // const char* db   = std::getenv("DB_NAME");
     
     conn = mysql_init(nullptr);
     if (!conn) {
@@ -14,7 +14,7 @@ DBHandler::DBHandler() {
     }
     
 
-    if (!mysql_real_connect(conn, host, user, pass, db, 3306, nullptr, 0))
+    if (!mysql_real_connect(conn, "127.0.0.1", "root", "root", "IOTSHADOW", 3306, nullptr, 0))
     {
         std::string err = mysql_error(conn);
         mysql_close(conn);

@@ -15,7 +15,14 @@ using namespace grpc;
 using namespace shadow_agent;
 
 // Constructor: Initializes the database handler
-ProvisionServiceImpl::ProvisionServiceImpl() : db(make_unique<DBHandler>()) {}
+ProvisionServiceImpl::ProvisionServiceImpl() {
+    try {
+        db = make_unique<DBHandler>();
+    } catch (const std::runtime_error& e) {
+        std::cerr << "Error initializing DBHandler: " << e.what() << std::endl;
+        throw; // Re-throw the exception to prevent the service from starting
+    }
+}
 
 // Private function to get the current timestamp in "YYYY-MM-DD HH:MM:SS" format
 string ProvisionServiceImpl::getCurrentTimestamp() {

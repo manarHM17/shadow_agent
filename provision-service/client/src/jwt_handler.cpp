@@ -7,8 +7,7 @@
 
 
 // Définir la clé secrète
-const std::string JWTUtils::SECRET_KEY = std::getenv("JWT_SECRET_KEY");
-
+const std::string JWTUtils::SECRET_KEY = "P@ssw0rd20iot25" ;
 
 
 //Implémentation de CreateToken

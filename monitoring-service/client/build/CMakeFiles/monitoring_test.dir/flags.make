@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DCARES_STATICLIB
 
-CXX_INCLUDES = -I/usr/include/mysql -I/usr/local/include/jwt-cpp -I/usr/include/jsoncpp -I/home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/include -I/home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/build
+CXX_INCLUDES = -I/usr/include/mysql -I/usr/local/include/jwt-cpp -I/usr/include/jsoncpp -I/home/manar/IOTSHADOW/monitoring-service/client/include -I/home/manar/IOTSHADOW/monitoring-service/client/build
 
 CXX_FLAGS = -std=gnu++17
 

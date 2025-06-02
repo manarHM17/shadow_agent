@@ -1,7 +1,7 @@
 CMakeFiles/monitoring_service.dir/src/rabbitmq_consumer.cpp.o: \
- /home/manar/IOTSHADOW/monitoring-service/monitoring-system/server/src/rabbitmq_consumer.cpp \
+ /home/manar/IOTSHADOW/monitoring-service/server/src/rabbitmq_consumer.cpp \
  /usr/include/stdc-predef.h \
- /home/manar/IOTSHADOW/monitoring-service/monitoring-system/server/src/rabbitmq_consumer.h \
+ /home/manar/IOTSHADOW/monitoring-service/server/src/rabbitmq_consumer.h \
  /usr/include/c++/13/string /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \

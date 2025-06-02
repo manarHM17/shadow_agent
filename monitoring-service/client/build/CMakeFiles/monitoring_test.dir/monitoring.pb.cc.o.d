@@ -1,7 +1,7 @@
 CMakeFiles/monitoring_test.dir/monitoring.pb.cc.o: \
- /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/build/monitoring.pb.cc \
+ /home/manar/IOTSHADOW/monitoring-service/client/build/monitoring.pb.cc \
  /usr/include/stdc-predef.h \
- /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/build/monitoring.pb.h \
+ /home/manar/IOTSHADOW/monitoring-service/client/build/monitoring.pb.h \
  /usr/include/c++/13/limits \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \

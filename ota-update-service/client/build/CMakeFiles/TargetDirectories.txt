@@ -1,3 +1,0 @@
-/home/manar/IOTSHADOW/ota-update-service/client/build/CMakeFiles/ota_service.dir
-/home/manar/IOTSHADOW/ota-update-service/client/build/CMakeFiles/edit_cache.dir
-/home/manar/IOTSHADOW/ota-update-service/client/build/CMakeFiles/rebuild_cache.dir

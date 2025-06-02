@@ -1,7 +1,7 @@
 CMakeFiles/monitoring_service.dir/monitoring.grpc.pb.cc.o: \
- /home/manar/IOTSHADOW/monitoring-service/monitoring-system/server/build/monitoring.grpc.pb.cc \
+ /home/manar/IOTSHADOW/monitoring-service/server/build/monitoring.grpc.pb.cc \
  /usr/include/stdc-predef.h \
- /home/manar/IOTSHADOW/monitoring-service/monitoring-system/server/build/monitoring.pb.h \
+ /home/manar/IOTSHADOW/monitoring-service/server/build/monitoring.pb.h \
  /usr/include/c++/13/limits \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -449,7 +449,7 @@ CMakeFiles/monitoring_service.dir/monitoring.grpc.pb.cc.o: \
  /usr/local/include/google/protobuf/map_field_inl.h \
  /usr/local/include/google/protobuf/map_field.h \
  /usr/local/include/google/protobuf/map_field_lite.h \
- /home/manar/IOTSHADOW/monitoring-service/monitoring-system/server/build/monitoring.grpc.pb.h \
+ /home/manar/IOTSHADOW/monitoring-service/server/build/monitoring.grpc.pb.h \
  /usr/local/include/grpcpp/generic/async_generic_service.h \
  /usr/local/include/grpc/support/port_platform.h \
  /usr/include/linux/version.h \

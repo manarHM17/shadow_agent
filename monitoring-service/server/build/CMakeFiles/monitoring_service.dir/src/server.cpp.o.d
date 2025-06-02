@@ -1,5 +1,5 @@
 CMakeFiles/monitoring_service.dir/src/server.cpp.o: \
- /home/manar/IOTSHADOW/monitoring-service/monitoring-system/server/src/server.cpp \
+ /home/manar/IOTSHADOW/monitoring-service/server/src/server.cpp \
  /usr/include/stdc-predef.h /usr/local/include/grpcpp/grpcpp.h \
  /usr/local/include/grpc/grpc.h \
  /usr/local/include/grpc/support/port_platform.h /usr/include/features.h \
@@ -429,8 +429,8 @@ CMakeFiles/monitoring_service.dir/src/server.cpp.o: \
  /usr/local/include/grpcpp/security/authorization_policy_provider.h \
  /usr/local/include/grpcpp/server_posix.h \
  /usr/local/include/grpcpp/version_info.h \
- /home/manar/IOTSHADOW/monitoring-service/monitoring-system/server/build/monitoring.grpc.pb.h \
- /home/manar/IOTSHADOW/monitoring-service/monitoring-system/server/build/monitoring.pb.h \
+ /home/manar/IOTSHADOW/monitoring-service/server/build/monitoring.grpc.pb.h \
+ /home/manar/IOTSHADOW/monitoring-service/server/build/monitoring.pb.h \
  /usr/local/include/google/protobuf/port_def.inc \
  /usr/local/include/google/protobuf/port_undef.inc \
  /usr/local/include/google/protobuf/io/coded_stream.h \
@@ -568,7 +568,7 @@ CMakeFiles/monitoring_service.dir/src/server.cpp.o: \
  /usr/local/include/grpcpp/support/proto_buffer_reader.h \
  /usr/local/include/grpcpp/support/proto_buffer_writer.h \
  /usr/local/include/grpcpp/support/stub_options.h \
- /home/manar/IOTSHADOW/monitoring-service/monitoring-system/server/src/rabbitmq_consumer.h \
+ /home/manar/IOTSHADOW/monitoring-service/server/src/rabbitmq_consumer.h \
  /usr/include/c++/13/thread /usr/include/c++/13/bits/std_thread.h \
  /usr/include/c++/13/bits/this_thread_sleep.h /usr/include/amqp.h \
  /usr/include/amqp_framing.h /usr/include/amqp_tcp_socket.h \
@@ -583,5 +583,5 @@ CMakeFiles/monitoring_service.dir/src/server.cpp.o: \
  /usr/include/c++/13/bits/mask_array.h \
  /usr/include/c++/13/bits/indirect_array.h /usr/include/c++/13/version \
  /usr/include/c++/13/any \
- /home/manar/IOTSHADOW/monitoring-service/monitoring-system/server/src/metrics_analyzer.h \
- /home/manar/IOTSHADOW/monitoring-service/monitoring-system/server/src/alert_manager.h
+ /home/manar/IOTSHADOW/monitoring-service/server/src/metrics_analyzer.h \
+ /home/manar/IOTSHADOW/monitoring-service/server/src/alert_manager.h

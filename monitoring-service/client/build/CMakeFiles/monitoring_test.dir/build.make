@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client
+CMAKE_SOURCE_DIR = /home/manar/IOTSHADOW/monitoring-service/client
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/build
+CMAKE_BINARY_DIR = /home/manar/IOTSHADOW/monitoring-service/client/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/monitoring_test.dir/depend.make
@@ -69,9 +69,9 @@ include CMakeFiles/monitoring_test.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/monitoring_test.dir/flags.make
 
-monitoring.pb.cc: /home/manar/IOTSHADOW/monitoring-service/monitoring-system/proto/monitoring.proto
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating monitoring.pb.cc, monitoring.pb.h, monitoring.grpc.pb.cc, monitoring.grpc.pb.h"
-	/usr/local/bin/protoc-25.1.0 --grpc_out /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/build --cpp_out /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/build -I /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/../proto --plugin=protoc-gen-grpc="/usr/local/bin/grpc_cpp_plugin" /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/../proto/monitoring.proto
+monitoring.pb.cc: /home/manar/IOTSHADOW/monitoring-service/proto/monitoring.proto
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/manar/IOTSHADOW/monitoring-service/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating monitoring.pb.cc, monitoring.pb.h, monitoring.grpc.pb.cc, monitoring.grpc.pb.h"
+	/usr/local/bin/protoc-25.1.0 --grpc_out /home/manar/IOTSHADOW/monitoring-service/client/build --cpp_out /home/manar/IOTSHADOW/monitoring-service/client/build -I /home/manar/IOTSHADOW/monitoring-service/client/../proto --plugin=protoc-gen-grpc="/usr/local/bin/grpc_cpp_plugin" /home/manar/IOTSHADOW/monitoring-service/client/../proto/monitoring.proto
 
 monitoring.pb.h: monitoring.pb.cc
 	@$(CMAKE_COMMAND) -E touch_nocreate monitoring.pb.h
@@ -83,74 +83,74 @@ monitoring.grpc.pb.h: monitoring.pb.cc
 	@$(CMAKE_COMMAND) -E touch_nocreate monitoring.grpc.pb.h
 
 CMakeFiles/monitoring_test.dir/src/client.cpp.o: CMakeFiles/monitoring_test.dir/flags.make
-CMakeFiles/monitoring_test.dir/src/client.cpp.o: /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/src/client.cpp
+CMakeFiles/monitoring_test.dir/src/client.cpp.o: /home/manar/IOTSHADOW/monitoring-service/client/src/client.cpp
 CMakeFiles/monitoring_test.dir/src/client.cpp.o: CMakeFiles/monitoring_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/monitoring_test.dir/src/client.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/monitoring_test.dir/src/client.cpp.o -MF CMakeFiles/monitoring_test.dir/src/client.cpp.o.d -o CMakeFiles/monitoring_test.dir/src/client.cpp.o -c /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/src/client.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/manar/IOTSHADOW/monitoring-service/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/monitoring_test.dir/src/client.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/monitoring_test.dir/src/client.cpp.o -MF CMakeFiles/monitoring_test.dir/src/client.cpp.o.d -o CMakeFiles/monitoring_test.dir/src/client.cpp.o -c /home/manar/IOTSHADOW/monitoring-service/client/src/client.cpp
 
 CMakeFiles/monitoring_test.dir/src/client.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/monitoring_test.dir/src/client.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/src/client.cpp > CMakeFiles/monitoring_test.dir/src/client.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manar/IOTSHADOW/monitoring-service/client/src/client.cpp > CMakeFiles/monitoring_test.dir/src/client.cpp.i
 
 CMakeFiles/monitoring_test.dir/src/client.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/monitoring_test.dir/src/client.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/src/client.cpp -o CMakeFiles/monitoring_test.dir/src/client.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manar/IOTSHADOW/monitoring-service/client/src/client.cpp -o CMakeFiles/monitoring_test.dir/src/client.cpp.s
 
 CMakeFiles/monitoring_test.dir/src/metrics_collector.cpp.o: CMakeFiles/monitoring_test.dir/flags.make
-CMakeFiles/monitoring_test.dir/src/metrics_collector.cpp.o: /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/src/metrics_collector.cpp
+CMakeFiles/monitoring_test.dir/src/metrics_collector.cpp.o: /home/manar/IOTSHADOW/monitoring-service/client/src/metrics_collector.cpp
 CMakeFiles/monitoring_test.dir/src/metrics_collector.cpp.o: CMakeFiles/monitoring_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/monitoring_test.dir/src/metrics_collector.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/monitoring_test.dir/src/metrics_collector.cpp.o -MF CMakeFiles/monitoring_test.dir/src/metrics_collector.cpp.o.d -o CMakeFiles/monitoring_test.dir/src/metrics_collector.cpp.o -c /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/src/metrics_collector.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/manar/IOTSHADOW/monitoring-service/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/monitoring_test.dir/src/metrics_collector.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/monitoring_test.dir/src/metrics_collector.cpp.o -MF CMakeFiles/monitoring_test.dir/src/metrics_collector.cpp.o.d -o CMakeFiles/monitoring_test.dir/src/metrics_collector.cpp.o -c /home/manar/IOTSHADOW/monitoring-service/client/src/metrics_collector.cpp
 
 CMakeFiles/monitoring_test.dir/src/metrics_collector.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/monitoring_test.dir/src/metrics_collector.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/src/metrics_collector.cpp > CMakeFiles/monitoring_test.dir/src/metrics_collector.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manar/IOTSHADOW/monitoring-service/client/src/metrics_collector.cpp > CMakeFiles/monitoring_test.dir/src/metrics_collector.cpp.i
 
 CMakeFiles/monitoring_test.dir/src/metrics_collector.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/monitoring_test.dir/src/metrics_collector.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/src/metrics_collector.cpp -o CMakeFiles/monitoring_test.dir/src/metrics_collector.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manar/IOTSHADOW/monitoring-service/client/src/metrics_collector.cpp -o CMakeFiles/monitoring_test.dir/src/metrics_collector.cpp.s
 
 CMakeFiles/monitoring_test.dir/src/rabbitmq_sender.cpp.o: CMakeFiles/monitoring_test.dir/flags.make
-CMakeFiles/monitoring_test.dir/src/rabbitmq_sender.cpp.o: /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/src/rabbitmq_sender.cpp
+CMakeFiles/monitoring_test.dir/src/rabbitmq_sender.cpp.o: /home/manar/IOTSHADOW/monitoring-service/client/src/rabbitmq_sender.cpp
 CMakeFiles/monitoring_test.dir/src/rabbitmq_sender.cpp.o: CMakeFiles/monitoring_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/monitoring_test.dir/src/rabbitmq_sender.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/monitoring_test.dir/src/rabbitmq_sender.cpp.o -MF CMakeFiles/monitoring_test.dir/src/rabbitmq_sender.cpp.o.d -o CMakeFiles/monitoring_test.dir/src/rabbitmq_sender.cpp.o -c /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/src/rabbitmq_sender.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/manar/IOTSHADOW/monitoring-service/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/monitoring_test.dir/src/rabbitmq_sender.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/monitoring_test.dir/src/rabbitmq_sender.cpp.o -MF CMakeFiles/monitoring_test.dir/src/rabbitmq_sender.cpp.o.d -o CMakeFiles/monitoring_test.dir/src/rabbitmq_sender.cpp.o -c /home/manar/IOTSHADOW/monitoring-service/client/src/rabbitmq_sender.cpp
 
 CMakeFiles/monitoring_test.dir/src/rabbitmq_sender.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/monitoring_test.dir/src/rabbitmq_sender.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/src/rabbitmq_sender.cpp > CMakeFiles/monitoring_test.dir/src/rabbitmq_sender.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manar/IOTSHADOW/monitoring-service/client/src/rabbitmq_sender.cpp > CMakeFiles/monitoring_test.dir/src/rabbitmq_sender.cpp.i
 
 CMakeFiles/monitoring_test.dir/src/rabbitmq_sender.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/monitoring_test.dir/src/rabbitmq_sender.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/src/rabbitmq_sender.cpp -o CMakeFiles/monitoring_test.dir/src/rabbitmq_sender.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manar/IOTSHADOW/monitoring-service/client/src/rabbitmq_sender.cpp -o CMakeFiles/monitoring_test.dir/src/rabbitmq_sender.cpp.s
 
 CMakeFiles/monitoring_test.dir/monitoring.pb.cc.o: CMakeFiles/monitoring_test.dir/flags.make
 CMakeFiles/monitoring_test.dir/monitoring.pb.cc.o: monitoring.pb.cc
 CMakeFiles/monitoring_test.dir/monitoring.pb.cc.o: CMakeFiles/monitoring_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/monitoring_test.dir/monitoring.pb.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/monitoring_test.dir/monitoring.pb.cc.o -MF CMakeFiles/monitoring_test.dir/monitoring.pb.cc.o.d -o CMakeFiles/monitoring_test.dir/monitoring.pb.cc.o -c /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/build/monitoring.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/manar/IOTSHADOW/monitoring-service/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/monitoring_test.dir/monitoring.pb.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/monitoring_test.dir/monitoring.pb.cc.o -MF CMakeFiles/monitoring_test.dir/monitoring.pb.cc.o.d -o CMakeFiles/monitoring_test.dir/monitoring.pb.cc.o -c /home/manar/IOTSHADOW/monitoring-service/client/build/monitoring.pb.cc
 
 CMakeFiles/monitoring_test.dir/monitoring.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/monitoring_test.dir/monitoring.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/build/monitoring.pb.cc > CMakeFiles/monitoring_test.dir/monitoring.pb.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manar/IOTSHADOW/monitoring-service/client/build/monitoring.pb.cc > CMakeFiles/monitoring_test.dir/monitoring.pb.cc.i
 
 CMakeFiles/monitoring_test.dir/monitoring.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/monitoring_test.dir/monitoring.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/build/monitoring.pb.cc -o CMakeFiles/monitoring_test.dir/monitoring.pb.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manar/IOTSHADOW/monitoring-service/client/build/monitoring.pb.cc -o CMakeFiles/monitoring_test.dir/monitoring.pb.cc.s
 
 CMakeFiles/monitoring_test.dir/monitoring.grpc.pb.cc.o: CMakeFiles/monitoring_test.dir/flags.make
 CMakeFiles/monitoring_test.dir/monitoring.grpc.pb.cc.o: monitoring.grpc.pb.cc
 CMakeFiles/monitoring_test.dir/monitoring.grpc.pb.cc.o: CMakeFiles/monitoring_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/monitoring_test.dir/monitoring.grpc.pb.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/monitoring_test.dir/monitoring.grpc.pb.cc.o -MF CMakeFiles/monitoring_test.dir/monitoring.grpc.pb.cc.o.d -o CMakeFiles/monitoring_test.dir/monitoring.grpc.pb.cc.o -c /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/build/monitoring.grpc.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/manar/IOTSHADOW/monitoring-service/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/monitoring_test.dir/monitoring.grpc.pb.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/monitoring_test.dir/monitoring.grpc.pb.cc.o -MF CMakeFiles/monitoring_test.dir/monitoring.grpc.pb.cc.o.d -o CMakeFiles/monitoring_test.dir/monitoring.grpc.pb.cc.o -c /home/manar/IOTSHADOW/monitoring-service/client/build/monitoring.grpc.pb.cc
 
 CMakeFiles/monitoring_test.dir/monitoring.grpc.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/monitoring_test.dir/monitoring.grpc.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/build/monitoring.grpc.pb.cc > CMakeFiles/monitoring_test.dir/monitoring.grpc.pb.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manar/IOTSHADOW/monitoring-service/client/build/monitoring.grpc.pb.cc > CMakeFiles/monitoring_test.dir/monitoring.grpc.pb.cc.i
 
 CMakeFiles/monitoring_test.dir/monitoring.grpc.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/monitoring_test.dir/monitoring.grpc.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/build/monitoring.grpc.pb.cc -o CMakeFiles/monitoring_test.dir/monitoring.grpc.pb.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manar/IOTSHADOW/monitoring-service/client/build/monitoring.grpc.pb.cc -o CMakeFiles/monitoring_test.dir/monitoring.grpc.pb.cc.s
 
 # Object files for target monitoring_test
 monitoring_test_OBJECTS = \
@@ -268,7 +268,7 @@ monitoring_test: /usr/local/lib/libcrypto.a
 monitoring_test: /usr/local/lib/libaddress_sorting.a
 monitoring_test: /usr/local/lib/libSimpleAmqpClient.so
 monitoring_test: CMakeFiles/monitoring_test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable monitoring_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/manar/IOTSHADOW/monitoring-service/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable monitoring_test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/monitoring_test.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -283,6 +283,6 @@ CMakeFiles/monitoring_test.dir/depend: monitoring.grpc.pb.cc
 CMakeFiles/monitoring_test.dir/depend: monitoring.grpc.pb.h
 CMakeFiles/monitoring_test.dir/depend: monitoring.pb.cc
 CMakeFiles/monitoring_test.dir/depend: monitoring.pb.h
-	cd /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/build /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/build /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/build/CMakeFiles/monitoring_test.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/manar/IOTSHADOW/monitoring-service/client/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/manar/IOTSHADOW/monitoring-service/client /home/manar/IOTSHADOW/monitoring-service/client /home/manar/IOTSHADOW/monitoring-service/client/build /home/manar/IOTSHADOW/monitoring-service/client/build /home/manar/IOTSHADOW/monitoring-service/client/build/CMakeFiles/monitoring_test.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/monitoring_test.dir/depend
 

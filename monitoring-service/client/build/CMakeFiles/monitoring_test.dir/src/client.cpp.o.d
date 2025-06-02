@@ -1,5 +1,5 @@
 CMakeFiles/monitoring_test.dir/src/client.cpp.o: \
- /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/src/client.cpp \
+ /home/manar/IOTSHADOW/monitoring-service/client/src/client.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/13/iostream \
  /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
@@ -430,8 +430,8 @@ CMakeFiles/monitoring_test.dir/src/client.cpp.o: \
  /usr/local/include/grpcpp/security/authorization_policy_provider.h \
  /usr/local/include/grpcpp/server_posix.h \
  /usr/local/include/grpcpp/version_info.h \
- /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/build/monitoring.grpc.pb.h \
- /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/build/monitoring.pb.h \
+ /home/manar/IOTSHADOW/monitoring-service/client/build/monitoring.grpc.pb.h \
+ /home/manar/IOTSHADOW/monitoring-service/client/build/monitoring.pb.h \
  /usr/local/include/google/protobuf/port_def.inc \
  /usr/local/include/google/protobuf/port_undef.inc \
  /usr/local/include/google/protobuf/io/coded_stream.h \
@@ -569,7 +569,7 @@ CMakeFiles/monitoring_test.dir/src/client.cpp.o: \
  /usr/local/include/grpcpp/support/proto_buffer_reader.h \
  /usr/local/include/grpcpp/support/proto_buffer_writer.h \
  /usr/local/include/grpcpp/support/stub_options.h \
- /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/src/metrics_collector.h \
+ /home/manar/IOTSHADOW/monitoring-service/client/src/metrics_collector.h \
  /usr/include/nlohmann/json.hpp /usr/include/c++/13/valarray \
  /usr/include/c++/13/bits/valarray_array.h \
  /usr/include/c++/13/bits/valarray_array.tcc \
@@ -581,5 +581,5 @@ CMakeFiles/monitoring_test.dir/src/client.cpp.o: \
  /usr/include/c++/13/bits/mask_array.h \
  /usr/include/c++/13/bits/indirect_array.h /usr/include/c++/13/version \
  /usr/include/c++/13/any \
- /home/manar/IOTSHADOW/monitoring-service/monitoring-system/client/src/rabbitmq_sender.h \
+ /home/manar/IOTSHADOW/monitoring-service/client/src/rabbitmq_sender.h \
  /usr/include/amqp.h /usr/include/amqp_framing.h
