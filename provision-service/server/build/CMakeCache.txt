@@ -154,7 +154,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=provision_service
+CMAKE_PROJECT_NAME:STATIC=provisioning_service
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -261,13 +261,13 @@ pkgcfg_lib__OPENSSL_ssl:FILEPATH=/usr/lib/x86_64-linux-gnu/libssl.so
 protobuf_VERBOSE:BOOL=OFF
 
 //Value Computed by CMake
-provision_service_BINARY_DIR:STATIC=/home/manar/IOTSHADOW/provision-service/server/build
+provisioning_service_BINARY_DIR:STATIC=/home/manar/IOTSHADOW/provision-service/server/build
 
 //Value Computed by CMake
-provision_service_IS_TOP_LEVEL:STATIC=ON
+provisioning_service_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
-provision_service_SOURCE_DIR:STATIC=/home/manar/IOTSHADOW/provision-service/server
+provisioning_service_SOURCE_DIR:STATIC=/home/manar/IOTSHADOW/provision-service/server
 
 //The directory containing a CMake configuration file for utf8_range.
 utf8_range_DIR:PATH=/usr/local/lib/cmake/utf8_range

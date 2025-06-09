@@ -80,5 +80,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/generate_protos_client.dir/DependInfo.cmake"
   "CMakeFiles/provision_test.dir/DependInfo.cmake"
   )

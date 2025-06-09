@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
-project(provision_service)
+project(provisioning_service)
 
 # C++ Standard
 set(CMAKE_CXX_STANDARD 17)
@@ -37,45 +37,57 @@ include_directories(/usr/include/jsoncpp)
 
 # Proto file
 set(PROTO_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../proto")
+set(GENERATED_PROTO_PATH "${CMAKE_CURRENT_BINARY_DIR}")
 
-# === Provisioning Service ===
-set(PROVISION_PROTO "${PROTO_PATH}/provision.proto")
-set(provision_proto_srcs "${CMAKE_CURRENT_BINARY_DIR}/provision.pb.cc")
-set(provision_proto_hdrs "${CMAKE_CURRENT_BINARY_DIR}/provision.pb.h")
-set(provision_grpc_srcs "${CMAKE_CURRENT_BINARY_DIR}/provision.grpc.pb.cc")
-set(provision_grpc_hdrs "${CMAKE_CURRENT_BINARY_DIR}/provision.grpc.pb.h")
+# === provisioning Service ===
+set(provisioning_PROTO "${PROTO_PATH}/provisioning.proto")
+set(provisioning_proto_srcs "${GENERATED_PROTO_PATH}/provisioning.pb.cc")
+set(provisioning_proto_hdrs "${GENERATED_PROTO_PATH}/provisioning.pb.h")
+set(provisioning_grpc_srcs "${GENERATED_PROTO_PATH}/provisioning.grpc.pb.cc")
+set(provisioning_grpc_hdrs "${GENERATED_PROTO_PATH}/provisioning.grpc.pb.h")
 
+# Generate protobuf files
 add_custom_command(
-    OUTPUT ${provision_proto_srcs} ${provision_proto_hdrs} ${provision_grpc_srcs} ${provision_grpc_hdrs}
+    OUTPUT ${provisioning_proto_srcs} ${provisioning_proto_hdrs} ${provisioning_grpc_srcs} ${provisioning_grpc_hdrs}
     COMMAND ${_PROTOBUF_PROTOC}
-    ARGS --grpc_out "${CMAKE_CURRENT_BINARY_DIR}"
-         --cpp_out "${CMAKE_CURRENT_BINARY_DIR}"
+    ARGS --grpc_out "${GENERATED_PROTO_PATH}"
+         --cpp_out "${GENERATED_PROTO_PATH}"
          -I "${PROTO_PATH}"
          --plugin=protoc-gen-grpc="${_GRPC_CPP_PLUGIN_EXECUTABLE}"
-         "${PROVISION_PROTO}"
-    DEPENDS "${PROVISION_PROTO}"
+         "${provisioning_PROTO}"
+    DEPENDS "${provisioning_PROTO}"
+)
+
+# Add custom target for generated files
+add_custom_target(generate_protos
+    DEPENDS 
+        ${provisioning_proto_srcs}
+        ${provisioning_proto_hdrs}
+        ${provisioning_grpc_srcs}
+        ${provisioning_grpc_hdrs}
 )
 
 # Include directories
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../)
+include_directories(${GENERATED_PROTO_PATH})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-
-
-# Executable for Provisioning Test
-add_executable(provision_service
-    src/db_handler.cpp 
-    src/jwt_handler.cpp
+# Executable
+add_executable(provisioning_service
+    ../common/src/db_handler.cpp 
+    ../common/src/jwt_handler.cpp
     src/grpc_server.cpp
     src/ProvisionServiceImpl.cpp
-    ${provision_proto_srcs}
-    ${provision_grpc_srcs}
-    ${provision_proto_hdrs}
-    ${provision_grpc_hdrs}   
+    ${provisioning_proto_srcs}
+    ${provisioning_grpc_srcs}
 )
 
-# Link libraries for provision_test
-target_link_libraries(provision_service
+# Add dependency on proto generation
+add_dependencies(provisioning_service generate_protos)
+
+# Link libraries
+target_link_libraries(provisioning_service
     ${_GRPC_GRPCPP}
     protobuf::libprotobuf
     ${MYSQL_LIB}

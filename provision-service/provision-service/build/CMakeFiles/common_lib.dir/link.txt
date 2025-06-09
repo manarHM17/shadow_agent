@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcommon_lib.a CMakeFiles/common_lib.dir/common/src/jwt_manager.cpp.o CMakeFiles/common_lib.dir/common/src/database_manager.cpp.o
+/usr/bin/ranlib libcommon_lib.a

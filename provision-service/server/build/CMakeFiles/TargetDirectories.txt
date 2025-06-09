@@ -1,3 +1,4 @@
-/home/manar/IOTSHADOW/provision-service/server/build/CMakeFiles/provision_service.dir
+/home/manar/IOTSHADOW/provision-service/server/build/CMakeFiles/generate_protos.dir
+/home/manar/IOTSHADOW/provision-service/server/build/CMakeFiles/provisioning_service.dir
 /home/manar/IOTSHADOW/provision-service/server/build/CMakeFiles/edit_cache.dir
 /home/manar/IOTSHADOW/provision-service/server/build/CMakeFiles/rebuild_cache.dir

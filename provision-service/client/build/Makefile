@@ -117,6 +117,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named generate_protos_client
+
+# Build rule for target.
+generate_protos_client: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 generate_protos_client
+.PHONY : generate_protos_client
+
+# fast build rule for target.
+generate_protos_client/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/generate_protos_client.dir/build.make CMakeFiles/generate_protos_client.dir/build
+.PHONY : generate_protos_client/fast
+
+#=============================================================================
 # Target rules for targets named provision_test
 
 # Build rule for target.
@@ -129,77 +142,101 @@ provision_test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_test.dir/build.make CMakeFiles/provision_test.dir/build
 .PHONY : provision_test/fast
 
-provision.grpc.pb.o: provision.grpc.pb.cc.o
-.PHONY : provision.grpc.pb.o
+provisioning.grpc.pb.o: provisioning.grpc.pb.cc.o
+.PHONY : provisioning.grpc.pb.o
 
 # target to build an object file
-provision.grpc.pb.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_test.dir/build.make CMakeFiles/provision_test.dir/provision.grpc.pb.cc.o
-.PHONY : provision.grpc.pb.cc.o
+provisioning.grpc.pb.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_test.dir/build.make CMakeFiles/provision_test.dir/provisioning.grpc.pb.cc.o
+.PHONY : provisioning.grpc.pb.cc.o
 
-provision.grpc.pb.i: provision.grpc.pb.cc.i
-.PHONY : provision.grpc.pb.i
+provisioning.grpc.pb.i: provisioning.grpc.pb.cc.i
+.PHONY : provisioning.grpc.pb.i
 
 # target to preprocess a source file
-provision.grpc.pb.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_test.dir/build.make CMakeFiles/provision_test.dir/provision.grpc.pb.cc.i
-.PHONY : provision.grpc.pb.cc.i
+provisioning.grpc.pb.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_test.dir/build.make CMakeFiles/provision_test.dir/provisioning.grpc.pb.cc.i
+.PHONY : provisioning.grpc.pb.cc.i
 
-provision.grpc.pb.s: provision.grpc.pb.cc.s
-.PHONY : provision.grpc.pb.s
+provisioning.grpc.pb.s: provisioning.grpc.pb.cc.s
+.PHONY : provisioning.grpc.pb.s
 
 # target to generate assembly for a file
-provision.grpc.pb.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_test.dir/build.make CMakeFiles/provision_test.dir/provision.grpc.pb.cc.s
-.PHONY : provision.grpc.pb.cc.s
+provisioning.grpc.pb.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_test.dir/build.make CMakeFiles/provision_test.dir/provisioning.grpc.pb.cc.s
+.PHONY : provisioning.grpc.pb.cc.s
 
-provision.pb.o: provision.pb.cc.o
-.PHONY : provision.pb.o
+provisioning.pb.o: provisioning.pb.cc.o
+.PHONY : provisioning.pb.o
 
 # target to build an object file
-provision.pb.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_test.dir/build.make CMakeFiles/provision_test.dir/provision.pb.cc.o
-.PHONY : provision.pb.cc.o
+provisioning.pb.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_test.dir/build.make CMakeFiles/provision_test.dir/provisioning.pb.cc.o
+.PHONY : provisioning.pb.cc.o
 
-provision.pb.i: provision.pb.cc.i
-.PHONY : provision.pb.i
+provisioning.pb.i: provisioning.pb.cc.i
+.PHONY : provisioning.pb.i
 
 # target to preprocess a source file
-provision.pb.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_test.dir/build.make CMakeFiles/provision_test.dir/provision.pb.cc.i
-.PHONY : provision.pb.cc.i
+provisioning.pb.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_test.dir/build.make CMakeFiles/provision_test.dir/provisioning.pb.cc.i
+.PHONY : provisioning.pb.cc.i
 
-provision.pb.s: provision.pb.cc.s
-.PHONY : provision.pb.s
+provisioning.pb.s: provisioning.pb.cc.s
+.PHONY : provisioning.pb.s
 
 # target to generate assembly for a file
-provision.pb.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_test.dir/build.make CMakeFiles/provision_test.dir/provision.pb.cc.s
-.PHONY : provision.pb.cc.s
+provisioning.pb.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_test.dir/build.make CMakeFiles/provision_test.dir/provisioning.pb.cc.s
+.PHONY : provisioning.pb.cc.s
 
-src/db_handler.o: src/db_handler.cpp.o
-.PHONY : src/db_handler.o
+src/ConfigManager.o: src/ConfigManager.cpp.o
+.PHONY : src/ConfigManager.o
 
 # target to build an object file
-src/db_handler.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_test.dir/build.make CMakeFiles/provision_test.dir/src/db_handler.cpp.o
-.PHONY : src/db_handler.cpp.o
+src/ConfigManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_test.dir/build.make CMakeFiles/provision_test.dir/src/ConfigManager.cpp.o
+.PHONY : src/ConfigManager.cpp.o
 
-src/db_handler.i: src/db_handler.cpp.i
-.PHONY : src/db_handler.i
+src/ConfigManager.i: src/ConfigManager.cpp.i
+.PHONY : src/ConfigManager.i
 
 # target to preprocess a source file
-src/db_handler.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_test.dir/build.make CMakeFiles/provision_test.dir/src/db_handler.cpp.i
-.PHONY : src/db_handler.cpp.i
+src/ConfigManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_test.dir/build.make CMakeFiles/provision_test.dir/src/ConfigManager.cpp.i
+.PHONY : src/ConfigManager.cpp.i
 
-src/db_handler.s: src/db_handler.cpp.s
-.PHONY : src/db_handler.s
+src/ConfigManager.s: src/ConfigManager.cpp.s
+.PHONY : src/ConfigManager.s
 
 # target to generate assembly for a file
-src/db_handler.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_test.dir/build.make CMakeFiles/provision_test.dir/src/db_handler.cpp.s
-.PHONY : src/db_handler.cpp.s
+src/ConfigManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_test.dir/build.make CMakeFiles/provision_test.dir/src/ConfigManager.cpp.s
+.PHONY : src/ConfigManager.cpp.s
+
+src/ProvisionClientImpl.o: src/ProvisionClientImpl.cpp.o
+.PHONY : src/ProvisionClientImpl.o
+
+# target to build an object file
+src/ProvisionClientImpl.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_test.dir/build.make CMakeFiles/provision_test.dir/src/ProvisionClientImpl.cpp.o
+.PHONY : src/ProvisionClientImpl.cpp.o
+
+src/ProvisionClientImpl.i: src/ProvisionClientImpl.cpp.i
+.PHONY : src/ProvisionClientImpl.i
+
+# target to preprocess a source file
+src/ProvisionClientImpl.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_test.dir/build.make CMakeFiles/provision_test.dir/src/ProvisionClientImpl.cpp.i
+.PHONY : src/ProvisionClientImpl.cpp.i
+
+src/ProvisionClientImpl.s: src/ProvisionClientImpl.cpp.s
+.PHONY : src/ProvisionClientImpl.s
+
+# target to generate assembly for a file
+src/ProvisionClientImpl.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_test.dir/build.make CMakeFiles/provision_test.dir/src/ProvisionClientImpl.cpp.s
+.PHONY : src/ProvisionClientImpl.cpp.s
 
 src/grpc_client.o: src/grpc_client.cpp.o
 .PHONY : src/grpc_client.o
@@ -225,30 +262,6 @@ src/grpc_client.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_test.dir/build.make CMakeFiles/provision_test.dir/src/grpc_client.cpp.s
 .PHONY : src/grpc_client.cpp.s
 
-src/jwt_handler.o: src/jwt_handler.cpp.o
-.PHONY : src/jwt_handler.o
-
-# target to build an object file
-src/jwt_handler.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_test.dir/build.make CMakeFiles/provision_test.dir/src/jwt_handler.cpp.o
-.PHONY : src/jwt_handler.cpp.o
-
-src/jwt_handler.i: src/jwt_handler.cpp.i
-.PHONY : src/jwt_handler.i
-
-# target to preprocess a source file
-src/jwt_handler.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_test.dir/build.make CMakeFiles/provision_test.dir/src/jwt_handler.cpp.i
-.PHONY : src/jwt_handler.cpp.i
-
-src/jwt_handler.s: src/jwt_handler.cpp.s
-.PHONY : src/jwt_handler.s
-
-# target to generate assembly for a file
-src/jwt_handler.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_test.dir/build.make CMakeFiles/provision_test.dir/src/jwt_handler.cpp.s
-.PHONY : src/jwt_handler.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -257,22 +270,23 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... generate_protos_client"
 	@echo "... provision_test"
-	@echo "... provision.grpc.pb.o"
-	@echo "... provision.grpc.pb.i"
-	@echo "... provision.grpc.pb.s"
-	@echo "... provision.pb.o"
-	@echo "... provision.pb.i"
-	@echo "... provision.pb.s"
-	@echo "... src/db_handler.o"
-	@echo "... src/db_handler.i"
-	@echo "... src/db_handler.s"
+	@echo "... provisioning.grpc.pb.o"
+	@echo "... provisioning.grpc.pb.i"
+	@echo "... provisioning.grpc.pb.s"
+	@echo "... provisioning.pb.o"
+	@echo "... provisioning.pb.i"
+	@echo "... provisioning.pb.s"
+	@echo "... src/ConfigManager.o"
+	@echo "... src/ConfigManager.i"
+	@echo "... src/ConfigManager.s"
+	@echo "... src/ProvisionClientImpl.o"
+	@echo "... src/ProvisionClientImpl.i"
+	@echo "... src/ProvisionClientImpl.s"
 	@echo "... src/grpc_client.o"
 	@echo "... src/grpc_client.i"
 	@echo "... src/grpc_client.s"
-	@echo "... src/jwt_handler.o"
-	@echo "... src/jwt_handler.i"
-	@echo "... src/jwt_handler.s"
 .PHONY : help
 
 

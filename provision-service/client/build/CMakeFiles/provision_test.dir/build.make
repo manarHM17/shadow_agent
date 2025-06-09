@@ -69,51 +69,23 @@ include CMakeFiles/provision_test.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/provision_test.dir/flags.make
 
-provision.pb.cc: /home/manar/IOTSHADOW/provision-service/proto/provision.proto
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/manar/IOTSHADOW/provision-service/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating provision.pb.cc, provision.pb.h, provision.grpc.pb.cc, provision.grpc.pb.h"
-	/usr/local/bin/protoc-25.1.0 --grpc_out /home/manar/IOTSHADOW/provision-service/client/build --cpp_out /home/manar/IOTSHADOW/provision-service/client/build -I /home/manar/IOTSHADOW/provision-service/client/../proto --plugin=protoc-gen-grpc="/usr/local/bin/grpc_cpp_plugin" /home/manar/IOTSHADOW/provision-service/client/../proto/provision.proto
+provisioning.pb.cc: /home/manar/IOTSHADOW/provision-service/proto/provisioning.proto
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/manar/IOTSHADOW/provision-service/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating provisioning.pb.cc, provisioning.pb.h, provisioning.grpc.pb.cc, provisioning.grpc.pb.h"
+	/usr/local/bin/protoc-25.1.0 --grpc_out /home/manar/IOTSHADOW/provision-service/client/build --cpp_out /home/manar/IOTSHADOW/provision-service/client/build -I /home/manar/IOTSHADOW/provision-service/client/../proto --plugin=protoc-gen-grpc="/usr/local/bin/grpc_cpp_plugin" /home/manar/IOTSHADOW/provision-service/client/../proto/provisioning.proto
 
-provision.pb.h: provision.pb.cc
-	@$(CMAKE_COMMAND) -E touch_nocreate provision.pb.h
+provisioning.pb.h: provisioning.pb.cc
+	@$(CMAKE_COMMAND) -E touch_nocreate provisioning.pb.h
 
-provision.grpc.pb.cc: provision.pb.cc
-	@$(CMAKE_COMMAND) -E touch_nocreate provision.grpc.pb.cc
+provisioning.grpc.pb.cc: provisioning.pb.cc
+	@$(CMAKE_COMMAND) -E touch_nocreate provisioning.grpc.pb.cc
 
-provision.grpc.pb.h: provision.pb.cc
-	@$(CMAKE_COMMAND) -E touch_nocreate provision.grpc.pb.h
-
-CMakeFiles/provision_test.dir/src/db_handler.cpp.o: CMakeFiles/provision_test.dir/flags.make
-CMakeFiles/provision_test.dir/src/db_handler.cpp.o: /home/manar/IOTSHADOW/provision-service/client/src/db_handler.cpp
-CMakeFiles/provision_test.dir/src/db_handler.cpp.o: CMakeFiles/provision_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/manar/IOTSHADOW/provision-service/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/provision_test.dir/src/db_handler.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/provision_test.dir/src/db_handler.cpp.o -MF CMakeFiles/provision_test.dir/src/db_handler.cpp.o.d -o CMakeFiles/provision_test.dir/src/db_handler.cpp.o -c /home/manar/IOTSHADOW/provision-service/client/src/db_handler.cpp
-
-CMakeFiles/provision_test.dir/src/db_handler.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/provision_test.dir/src/db_handler.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manar/IOTSHADOW/provision-service/client/src/db_handler.cpp > CMakeFiles/provision_test.dir/src/db_handler.cpp.i
-
-CMakeFiles/provision_test.dir/src/db_handler.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/provision_test.dir/src/db_handler.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manar/IOTSHADOW/provision-service/client/src/db_handler.cpp -o CMakeFiles/provision_test.dir/src/db_handler.cpp.s
-
-CMakeFiles/provision_test.dir/src/jwt_handler.cpp.o: CMakeFiles/provision_test.dir/flags.make
-CMakeFiles/provision_test.dir/src/jwt_handler.cpp.o: /home/manar/IOTSHADOW/provision-service/client/src/jwt_handler.cpp
-CMakeFiles/provision_test.dir/src/jwt_handler.cpp.o: CMakeFiles/provision_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/manar/IOTSHADOW/provision-service/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/provision_test.dir/src/jwt_handler.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/provision_test.dir/src/jwt_handler.cpp.o -MF CMakeFiles/provision_test.dir/src/jwt_handler.cpp.o.d -o CMakeFiles/provision_test.dir/src/jwt_handler.cpp.o -c /home/manar/IOTSHADOW/provision-service/client/src/jwt_handler.cpp
-
-CMakeFiles/provision_test.dir/src/jwt_handler.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/provision_test.dir/src/jwt_handler.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manar/IOTSHADOW/provision-service/client/src/jwt_handler.cpp > CMakeFiles/provision_test.dir/src/jwt_handler.cpp.i
-
-CMakeFiles/provision_test.dir/src/jwt_handler.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/provision_test.dir/src/jwt_handler.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manar/IOTSHADOW/provision-service/client/src/jwt_handler.cpp -o CMakeFiles/provision_test.dir/src/jwt_handler.cpp.s
+provisioning.grpc.pb.h: provisioning.pb.cc
+	@$(CMAKE_COMMAND) -E touch_nocreate provisioning.grpc.pb.h
 
 CMakeFiles/provision_test.dir/src/grpc_client.cpp.o: CMakeFiles/provision_test.dir/flags.make
 CMakeFiles/provision_test.dir/src/grpc_client.cpp.o: /home/manar/IOTSHADOW/provision-service/client/src/grpc_client.cpp
 CMakeFiles/provision_test.dir/src/grpc_client.cpp.o: CMakeFiles/provision_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/manar/IOTSHADOW/provision-service/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/provision_test.dir/src/grpc_client.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/manar/IOTSHADOW/provision-service/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/provision_test.dir/src/grpc_client.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/provision_test.dir/src/grpc_client.cpp.o -MF CMakeFiles/provision_test.dir/src/grpc_client.cpp.o.d -o CMakeFiles/provision_test.dir/src/grpc_client.cpp.o -c /home/manar/IOTSHADOW/provision-service/client/src/grpc_client.cpp
 
 CMakeFiles/provision_test.dir/src/grpc_client.cpp.i: cmake_force
@@ -124,54 +96,81 @@ CMakeFiles/provision_test.dir/src/grpc_client.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/provision_test.dir/src/grpc_client.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manar/IOTSHADOW/provision-service/client/src/grpc_client.cpp -o CMakeFiles/provision_test.dir/src/grpc_client.cpp.s
 
-CMakeFiles/provision_test.dir/provision.pb.cc.o: CMakeFiles/provision_test.dir/flags.make
-CMakeFiles/provision_test.dir/provision.pb.cc.o: provision.pb.cc
-CMakeFiles/provision_test.dir/provision.pb.cc.o: CMakeFiles/provision_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/manar/IOTSHADOW/provision-service/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/provision_test.dir/provision.pb.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/provision_test.dir/provision.pb.cc.o -MF CMakeFiles/provision_test.dir/provision.pb.cc.o.d -o CMakeFiles/provision_test.dir/provision.pb.cc.o -c /home/manar/IOTSHADOW/provision-service/client/build/provision.pb.cc
+CMakeFiles/provision_test.dir/src/ProvisionClientImpl.cpp.o: CMakeFiles/provision_test.dir/flags.make
+CMakeFiles/provision_test.dir/src/ProvisionClientImpl.cpp.o: /home/manar/IOTSHADOW/provision-service/client/src/ProvisionClientImpl.cpp
+CMakeFiles/provision_test.dir/src/ProvisionClientImpl.cpp.o: CMakeFiles/provision_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/manar/IOTSHADOW/provision-service/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/provision_test.dir/src/ProvisionClientImpl.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/provision_test.dir/src/ProvisionClientImpl.cpp.o -MF CMakeFiles/provision_test.dir/src/ProvisionClientImpl.cpp.o.d -o CMakeFiles/provision_test.dir/src/ProvisionClientImpl.cpp.o -c /home/manar/IOTSHADOW/provision-service/client/src/ProvisionClientImpl.cpp
 
-CMakeFiles/provision_test.dir/provision.pb.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/provision_test.dir/provision.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manar/IOTSHADOW/provision-service/client/build/provision.pb.cc > CMakeFiles/provision_test.dir/provision.pb.cc.i
+CMakeFiles/provision_test.dir/src/ProvisionClientImpl.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/provision_test.dir/src/ProvisionClientImpl.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manar/IOTSHADOW/provision-service/client/src/ProvisionClientImpl.cpp > CMakeFiles/provision_test.dir/src/ProvisionClientImpl.cpp.i
 
-CMakeFiles/provision_test.dir/provision.pb.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/provision_test.dir/provision.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manar/IOTSHADOW/provision-service/client/build/provision.pb.cc -o CMakeFiles/provision_test.dir/provision.pb.cc.s
+CMakeFiles/provision_test.dir/src/ProvisionClientImpl.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/provision_test.dir/src/ProvisionClientImpl.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manar/IOTSHADOW/provision-service/client/src/ProvisionClientImpl.cpp -o CMakeFiles/provision_test.dir/src/ProvisionClientImpl.cpp.s
 
-CMakeFiles/provision_test.dir/provision.grpc.pb.cc.o: CMakeFiles/provision_test.dir/flags.make
-CMakeFiles/provision_test.dir/provision.grpc.pb.cc.o: provision.grpc.pb.cc
-CMakeFiles/provision_test.dir/provision.grpc.pb.cc.o: CMakeFiles/provision_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/manar/IOTSHADOW/provision-service/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/provision_test.dir/provision.grpc.pb.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/provision_test.dir/provision.grpc.pb.cc.o -MF CMakeFiles/provision_test.dir/provision.grpc.pb.cc.o.d -o CMakeFiles/provision_test.dir/provision.grpc.pb.cc.o -c /home/manar/IOTSHADOW/provision-service/client/build/provision.grpc.pb.cc
+CMakeFiles/provision_test.dir/src/ConfigManager.cpp.o: CMakeFiles/provision_test.dir/flags.make
+CMakeFiles/provision_test.dir/src/ConfigManager.cpp.o: /home/manar/IOTSHADOW/provision-service/client/src/ConfigManager.cpp
+CMakeFiles/provision_test.dir/src/ConfigManager.cpp.o: CMakeFiles/provision_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/manar/IOTSHADOW/provision-service/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/provision_test.dir/src/ConfigManager.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/provision_test.dir/src/ConfigManager.cpp.o -MF CMakeFiles/provision_test.dir/src/ConfigManager.cpp.o.d -o CMakeFiles/provision_test.dir/src/ConfigManager.cpp.o -c /home/manar/IOTSHADOW/provision-service/client/src/ConfigManager.cpp
 
-CMakeFiles/provision_test.dir/provision.grpc.pb.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/provision_test.dir/provision.grpc.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manar/IOTSHADOW/provision-service/client/build/provision.grpc.pb.cc > CMakeFiles/provision_test.dir/provision.grpc.pb.cc.i
+CMakeFiles/provision_test.dir/src/ConfigManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/provision_test.dir/src/ConfigManager.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manar/IOTSHADOW/provision-service/client/src/ConfigManager.cpp > CMakeFiles/provision_test.dir/src/ConfigManager.cpp.i
 
-CMakeFiles/provision_test.dir/provision.grpc.pb.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/provision_test.dir/provision.grpc.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manar/IOTSHADOW/provision-service/client/build/provision.grpc.pb.cc -o CMakeFiles/provision_test.dir/provision.grpc.pb.cc.s
+CMakeFiles/provision_test.dir/src/ConfigManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/provision_test.dir/src/ConfigManager.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manar/IOTSHADOW/provision-service/client/src/ConfigManager.cpp -o CMakeFiles/provision_test.dir/src/ConfigManager.cpp.s
+
+CMakeFiles/provision_test.dir/provisioning.pb.cc.o: CMakeFiles/provision_test.dir/flags.make
+CMakeFiles/provision_test.dir/provisioning.pb.cc.o: provisioning.pb.cc
+CMakeFiles/provision_test.dir/provisioning.pb.cc.o: CMakeFiles/provision_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/manar/IOTSHADOW/provision-service/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/provision_test.dir/provisioning.pb.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/provision_test.dir/provisioning.pb.cc.o -MF CMakeFiles/provision_test.dir/provisioning.pb.cc.o.d -o CMakeFiles/provision_test.dir/provisioning.pb.cc.o -c /home/manar/IOTSHADOW/provision-service/client/build/provisioning.pb.cc
+
+CMakeFiles/provision_test.dir/provisioning.pb.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/provision_test.dir/provisioning.pb.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manar/IOTSHADOW/provision-service/client/build/provisioning.pb.cc > CMakeFiles/provision_test.dir/provisioning.pb.cc.i
+
+CMakeFiles/provision_test.dir/provisioning.pb.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/provision_test.dir/provisioning.pb.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manar/IOTSHADOW/provision-service/client/build/provisioning.pb.cc -o CMakeFiles/provision_test.dir/provisioning.pb.cc.s
+
+CMakeFiles/provision_test.dir/provisioning.grpc.pb.cc.o: CMakeFiles/provision_test.dir/flags.make
+CMakeFiles/provision_test.dir/provisioning.grpc.pb.cc.o: provisioning.grpc.pb.cc
+CMakeFiles/provision_test.dir/provisioning.grpc.pb.cc.o: CMakeFiles/provision_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/manar/IOTSHADOW/provision-service/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/provision_test.dir/provisioning.grpc.pb.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/provision_test.dir/provisioning.grpc.pb.cc.o -MF CMakeFiles/provision_test.dir/provisioning.grpc.pb.cc.o.d -o CMakeFiles/provision_test.dir/provisioning.grpc.pb.cc.o -c /home/manar/IOTSHADOW/provision-service/client/build/provisioning.grpc.pb.cc
+
+CMakeFiles/provision_test.dir/provisioning.grpc.pb.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/provision_test.dir/provisioning.grpc.pb.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manar/IOTSHADOW/provision-service/client/build/provisioning.grpc.pb.cc > CMakeFiles/provision_test.dir/provisioning.grpc.pb.cc.i
+
+CMakeFiles/provision_test.dir/provisioning.grpc.pb.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/provision_test.dir/provisioning.grpc.pb.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manar/IOTSHADOW/provision-service/client/build/provisioning.grpc.pb.cc -o CMakeFiles/provision_test.dir/provisioning.grpc.pb.cc.s
 
 # Object files for target provision_test
 provision_test_OBJECTS = \
-"CMakeFiles/provision_test.dir/src/db_handler.cpp.o" \
-"CMakeFiles/provision_test.dir/src/jwt_handler.cpp.o" \
 "CMakeFiles/provision_test.dir/src/grpc_client.cpp.o" \
-"CMakeFiles/provision_test.dir/provision.pb.cc.o" \
-"CMakeFiles/provision_test.dir/provision.grpc.pb.cc.o"
+"CMakeFiles/provision_test.dir/src/ProvisionClientImpl.cpp.o" \
+"CMakeFiles/provision_test.dir/src/ConfigManager.cpp.o" \
+"CMakeFiles/provision_test.dir/provisioning.pb.cc.o" \
+"CMakeFiles/provision_test.dir/provisioning.grpc.pb.cc.o"
 
 # External object files for target provision_test
 provision_test_EXTERNAL_OBJECTS =
 
-provision_test: CMakeFiles/provision_test.dir/src/db_handler.cpp.o
-provision_test: CMakeFiles/provision_test.dir/src/jwt_handler.cpp.o
 provision_test: CMakeFiles/provision_test.dir/src/grpc_client.cpp.o
-provision_test: CMakeFiles/provision_test.dir/provision.pb.cc.o
-provision_test: CMakeFiles/provision_test.dir/provision.grpc.pb.cc.o
+provision_test: CMakeFiles/provision_test.dir/src/ProvisionClientImpl.cpp.o
+provision_test: CMakeFiles/provision_test.dir/src/ConfigManager.cpp.o
+provision_test: CMakeFiles/provision_test.dir/provisioning.pb.cc.o
+provision_test: CMakeFiles/provision_test.dir/provisioning.grpc.pb.cc.o
 provision_test: CMakeFiles/provision_test.dir/build.make
 provision_test: /usr/local/lib/libgrpc++.a
 provision_test: /usr/local/lib/libprotobuf.a
-provision_test: /usr/lib/x86_64-linux-gnu/libmysqlclient.so
 provision_test: /usr/local/lib/libabsl_log_internal_check_op.a
 provision_test: /usr/local/lib/libabsl_leak_check.a
 provision_test: /usr/local/lib/libabsl_die_if_null.a
@@ -275,10 +274,10 @@ CMakeFiles/provision_test.dir/clean:
 	$(CMAKE_COMMAND) -P CMakeFiles/provision_test.dir/cmake_clean.cmake
 .PHONY : CMakeFiles/provision_test.dir/clean
 
-CMakeFiles/provision_test.dir/depend: provision.grpc.pb.cc
-CMakeFiles/provision_test.dir/depend: provision.grpc.pb.h
-CMakeFiles/provision_test.dir/depend: provision.pb.cc
-CMakeFiles/provision_test.dir/depend: provision.pb.h
+CMakeFiles/provision_test.dir/depend: provisioning.grpc.pb.cc
+CMakeFiles/provision_test.dir/depend: provisioning.grpc.pb.h
+CMakeFiles/provision_test.dir/depend: provisioning.pb.cc
+CMakeFiles/provision_test.dir/depend: provisioning.pb.h
 	cd /home/manar/IOTSHADOW/provision-service/client/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/manar/IOTSHADOW/provision-service/client /home/manar/IOTSHADOW/provision-service/client /home/manar/IOTSHADOW/provision-service/client/build /home/manar/IOTSHADOW/provision-service/client/build /home/manar/IOTSHADOW/provision-service/client/build/CMakeFiles/provision_test.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/provision_test.dir/depend
 

@@ -117,72 +117,133 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named provision_service
+# Target rules for targets named generate_protos
 
 # Build rule for target.
-provision_service: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 provision_service
-.PHONY : provision_service
+generate_protos: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 generate_protos
+.PHONY : generate_protos
 
 # fast build rule for target.
-provision_service/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/build
-.PHONY : provision_service/fast
+generate_protos/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/generate_protos.dir/build.make CMakeFiles/generate_protos.dir/build
+.PHONY : generate_protos/fast
 
-provision.grpc.pb.o: provision.grpc.pb.cc.o
-.PHONY : provision.grpc.pb.o
+#=============================================================================
+# Target rules for targets named provisioning_service
 
-# target to build an object file
-provision.grpc.pb.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/provision.grpc.pb.cc.o
-.PHONY : provision.grpc.pb.cc.o
+# Build rule for target.
+provisioning_service: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 provisioning_service
+.PHONY : provisioning_service
 
-provision.grpc.pb.i: provision.grpc.pb.cc.i
-.PHONY : provision.grpc.pb.i
+# fast build rule for target.
+provisioning_service/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provisioning_service.dir/build.make CMakeFiles/provisioning_service.dir/build
+.PHONY : provisioning_service/fast
 
-# target to preprocess a source file
-provision.grpc.pb.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/provision.grpc.pb.cc.i
-.PHONY : provision.grpc.pb.cc.i
-
-provision.grpc.pb.s: provision.grpc.pb.cc.s
-.PHONY : provision.grpc.pb.s
-
-# target to generate assembly for a file
-provision.grpc.pb.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/provision.grpc.pb.cc.s
-.PHONY : provision.grpc.pb.cc.s
-
-provision.pb.o: provision.pb.cc.o
-.PHONY : provision.pb.o
+home/manar/IOTSHADOW/provision-service/common/src/db_handler.o: home/manar/IOTSHADOW/provision-service/common/src/db_handler.cpp.o
+.PHONY : home/manar/IOTSHADOW/provision-service/common/src/db_handler.o
 
 # target to build an object file
-provision.pb.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/provision.pb.cc.o
-.PHONY : provision.pb.cc.o
+home/manar/IOTSHADOW/provision-service/common/src/db_handler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provisioning_service.dir/build.make CMakeFiles/provisioning_service.dir/home/manar/IOTSHADOW/provision-service/common/src/db_handler.cpp.o
+.PHONY : home/manar/IOTSHADOW/provision-service/common/src/db_handler.cpp.o
 
-provision.pb.i: provision.pb.cc.i
-.PHONY : provision.pb.i
+home/manar/IOTSHADOW/provision-service/common/src/db_handler.i: home/manar/IOTSHADOW/provision-service/common/src/db_handler.cpp.i
+.PHONY : home/manar/IOTSHADOW/provision-service/common/src/db_handler.i
 
 # target to preprocess a source file
-provision.pb.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/provision.pb.cc.i
-.PHONY : provision.pb.cc.i
+home/manar/IOTSHADOW/provision-service/common/src/db_handler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provisioning_service.dir/build.make CMakeFiles/provisioning_service.dir/home/manar/IOTSHADOW/provision-service/common/src/db_handler.cpp.i
+.PHONY : home/manar/IOTSHADOW/provision-service/common/src/db_handler.cpp.i
 
-provision.pb.s: provision.pb.cc.s
-.PHONY : provision.pb.s
+home/manar/IOTSHADOW/provision-service/common/src/db_handler.s: home/manar/IOTSHADOW/provision-service/common/src/db_handler.cpp.s
+.PHONY : home/manar/IOTSHADOW/provision-service/common/src/db_handler.s
 
 # target to generate assembly for a file
-provision.pb.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/provision.pb.cc.s
-.PHONY : provision.pb.cc.s
+home/manar/IOTSHADOW/provision-service/common/src/db_handler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provisioning_service.dir/build.make CMakeFiles/provisioning_service.dir/home/manar/IOTSHADOW/provision-service/common/src/db_handler.cpp.s
+.PHONY : home/manar/IOTSHADOW/provision-service/common/src/db_handler.cpp.s
+
+home/manar/IOTSHADOW/provision-service/common/src/jwt_handler.o: home/manar/IOTSHADOW/provision-service/common/src/jwt_handler.cpp.o
+.PHONY : home/manar/IOTSHADOW/provision-service/common/src/jwt_handler.o
+
+# target to build an object file
+home/manar/IOTSHADOW/provision-service/common/src/jwt_handler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provisioning_service.dir/build.make CMakeFiles/provisioning_service.dir/home/manar/IOTSHADOW/provision-service/common/src/jwt_handler.cpp.o
+.PHONY : home/manar/IOTSHADOW/provision-service/common/src/jwt_handler.cpp.o
+
+home/manar/IOTSHADOW/provision-service/common/src/jwt_handler.i: home/manar/IOTSHADOW/provision-service/common/src/jwt_handler.cpp.i
+.PHONY : home/manar/IOTSHADOW/provision-service/common/src/jwt_handler.i
+
+# target to preprocess a source file
+home/manar/IOTSHADOW/provision-service/common/src/jwt_handler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provisioning_service.dir/build.make CMakeFiles/provisioning_service.dir/home/manar/IOTSHADOW/provision-service/common/src/jwt_handler.cpp.i
+.PHONY : home/manar/IOTSHADOW/provision-service/common/src/jwt_handler.cpp.i
+
+home/manar/IOTSHADOW/provision-service/common/src/jwt_handler.s: home/manar/IOTSHADOW/provision-service/common/src/jwt_handler.cpp.s
+.PHONY : home/manar/IOTSHADOW/provision-service/common/src/jwt_handler.s
+
+# target to generate assembly for a file
+home/manar/IOTSHADOW/provision-service/common/src/jwt_handler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provisioning_service.dir/build.make CMakeFiles/provisioning_service.dir/home/manar/IOTSHADOW/provision-service/common/src/jwt_handler.cpp.s
+.PHONY : home/manar/IOTSHADOW/provision-service/common/src/jwt_handler.cpp.s
+
+provisioning.grpc.pb.o: provisioning.grpc.pb.cc.o
+.PHONY : provisioning.grpc.pb.o
+
+# target to build an object file
+provisioning.grpc.pb.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provisioning_service.dir/build.make CMakeFiles/provisioning_service.dir/provisioning.grpc.pb.cc.o
+.PHONY : provisioning.grpc.pb.cc.o
+
+provisioning.grpc.pb.i: provisioning.grpc.pb.cc.i
+.PHONY : provisioning.grpc.pb.i
+
+# target to preprocess a source file
+provisioning.grpc.pb.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provisioning_service.dir/build.make CMakeFiles/provisioning_service.dir/provisioning.grpc.pb.cc.i
+.PHONY : provisioning.grpc.pb.cc.i
+
+provisioning.grpc.pb.s: provisioning.grpc.pb.cc.s
+.PHONY : provisioning.grpc.pb.s
+
+# target to generate assembly for a file
+provisioning.grpc.pb.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provisioning_service.dir/build.make CMakeFiles/provisioning_service.dir/provisioning.grpc.pb.cc.s
+.PHONY : provisioning.grpc.pb.cc.s
+
+provisioning.pb.o: provisioning.pb.cc.o
+.PHONY : provisioning.pb.o
+
+# target to build an object file
+provisioning.pb.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provisioning_service.dir/build.make CMakeFiles/provisioning_service.dir/provisioning.pb.cc.o
+.PHONY : provisioning.pb.cc.o
+
+provisioning.pb.i: provisioning.pb.cc.i
+.PHONY : provisioning.pb.i
+
+# target to preprocess a source file
+provisioning.pb.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provisioning_service.dir/build.make CMakeFiles/provisioning_service.dir/provisioning.pb.cc.i
+.PHONY : provisioning.pb.cc.i
+
+provisioning.pb.s: provisioning.pb.cc.s
+.PHONY : provisioning.pb.s
+
+# target to generate assembly for a file
+provisioning.pb.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provisioning_service.dir/build.make CMakeFiles/provisioning_service.dir/provisioning.pb.cc.s
+.PHONY : provisioning.pb.cc.s
 
 src/ProvisionServiceImpl.o: src/ProvisionServiceImpl.cpp.o
 .PHONY : src/ProvisionServiceImpl.o
 
 # target to build an object file
 src/ProvisionServiceImpl.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/src/ProvisionServiceImpl.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provisioning_service.dir/build.make CMakeFiles/provisioning_service.dir/src/ProvisionServiceImpl.cpp.o
 .PHONY : src/ProvisionServiceImpl.cpp.o
 
 src/ProvisionServiceImpl.i: src/ProvisionServiceImpl.cpp.i
@@ -190,7 +251,7 @@ src/ProvisionServiceImpl.i: src/ProvisionServiceImpl.cpp.i
 
 # target to preprocess a source file
 src/ProvisionServiceImpl.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/src/ProvisionServiceImpl.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provisioning_service.dir/build.make CMakeFiles/provisioning_service.dir/src/ProvisionServiceImpl.cpp.i
 .PHONY : src/ProvisionServiceImpl.cpp.i
 
 src/ProvisionServiceImpl.s: src/ProvisionServiceImpl.cpp.s
@@ -198,39 +259,15 @@ src/ProvisionServiceImpl.s: src/ProvisionServiceImpl.cpp.s
 
 # target to generate assembly for a file
 src/ProvisionServiceImpl.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/src/ProvisionServiceImpl.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provisioning_service.dir/build.make CMakeFiles/provisioning_service.dir/src/ProvisionServiceImpl.cpp.s
 .PHONY : src/ProvisionServiceImpl.cpp.s
-
-src/db_handler.o: src/db_handler.cpp.o
-.PHONY : src/db_handler.o
-
-# target to build an object file
-src/db_handler.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/src/db_handler.cpp.o
-.PHONY : src/db_handler.cpp.o
-
-src/db_handler.i: src/db_handler.cpp.i
-.PHONY : src/db_handler.i
-
-# target to preprocess a source file
-src/db_handler.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/src/db_handler.cpp.i
-.PHONY : src/db_handler.cpp.i
-
-src/db_handler.s: src/db_handler.cpp.s
-.PHONY : src/db_handler.s
-
-# target to generate assembly for a file
-src/db_handler.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/src/db_handler.cpp.s
-.PHONY : src/db_handler.cpp.s
 
 src/grpc_server.o: src/grpc_server.cpp.o
 .PHONY : src/grpc_server.o
 
 # target to build an object file
 src/grpc_server.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/src/grpc_server.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provisioning_service.dir/build.make CMakeFiles/provisioning_service.dir/src/grpc_server.cpp.o
 .PHONY : src/grpc_server.cpp.o
 
 src/grpc_server.i: src/grpc_server.cpp.i
@@ -238,7 +275,7 @@ src/grpc_server.i: src/grpc_server.cpp.i
 
 # target to preprocess a source file
 src/grpc_server.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/src/grpc_server.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provisioning_service.dir/build.make CMakeFiles/provisioning_service.dir/src/grpc_server.cpp.i
 .PHONY : src/grpc_server.cpp.i
 
 src/grpc_server.s: src/grpc_server.cpp.s
@@ -246,32 +283,8 @@ src/grpc_server.s: src/grpc_server.cpp.s
 
 # target to generate assembly for a file
 src/grpc_server.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/src/grpc_server.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provisioning_service.dir/build.make CMakeFiles/provisioning_service.dir/src/grpc_server.cpp.s
 .PHONY : src/grpc_server.cpp.s
-
-src/jwt_handler.o: src/jwt_handler.cpp.o
-.PHONY : src/jwt_handler.o
-
-# target to build an object file
-src/jwt_handler.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/src/jwt_handler.cpp.o
-.PHONY : src/jwt_handler.cpp.o
-
-src/jwt_handler.i: src/jwt_handler.cpp.i
-.PHONY : src/jwt_handler.i
-
-# target to preprocess a source file
-src/jwt_handler.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/src/jwt_handler.cpp.i
-.PHONY : src/jwt_handler.cpp.i
-
-src/jwt_handler.s: src/jwt_handler.cpp.s
-.PHONY : src/jwt_handler.s
-
-# target to generate assembly for a file
-src/jwt_handler.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/src/jwt_handler.cpp.s
-.PHONY : src/jwt_handler.cpp.s
 
 # Help Target
 help:
@@ -281,25 +294,26 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... provision_service"
-	@echo "... provision.grpc.pb.o"
-	@echo "... provision.grpc.pb.i"
-	@echo "... provision.grpc.pb.s"
-	@echo "... provision.pb.o"
-	@echo "... provision.pb.i"
-	@echo "... provision.pb.s"
+	@echo "... generate_protos"
+	@echo "... provisioning_service"
+	@echo "... home/manar/IOTSHADOW/provision-service/common/src/db_handler.o"
+	@echo "... home/manar/IOTSHADOW/provision-service/common/src/db_handler.i"
+	@echo "... home/manar/IOTSHADOW/provision-service/common/src/db_handler.s"
+	@echo "... home/manar/IOTSHADOW/provision-service/common/src/jwt_handler.o"
+	@echo "... home/manar/IOTSHADOW/provision-service/common/src/jwt_handler.i"
+	@echo "... home/manar/IOTSHADOW/provision-service/common/src/jwt_handler.s"
+	@echo "... provisioning.grpc.pb.o"
+	@echo "... provisioning.grpc.pb.i"
+	@echo "... provisioning.grpc.pb.s"
+	@echo "... provisioning.pb.o"
+	@echo "... provisioning.pb.i"
+	@echo "... provisioning.pb.s"
 	@echo "... src/ProvisionServiceImpl.o"
 	@echo "... src/ProvisionServiceImpl.i"
 	@echo "... src/ProvisionServiceImpl.s"
-	@echo "... src/db_handler.o"
-	@echo "... src/db_handler.i"
-	@echo "... src/db_handler.s"
 	@echo "... src/grpc_server.o"
 	@echo "... src/grpc_server.i"
 	@echo "... src/grpc_server.s"
-	@echo "... src/jwt_handler.o"
-	@echo "... src/jwt_handler.i"
-	@echo "... src/jwt_handler.s"
 .PHONY : help
 
 

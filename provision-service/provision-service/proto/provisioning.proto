@@ -1,0 +1,92 @@
+// proto/src/provisioning.proto
+syntax = "proto3";
+
+package provisioning;
+
+service ProvisioningService {
+  rpc Authenticate(AuthRequest) returns (AuthResponse);
+  rpc AddDevice(AddDeviceRequest) returns (AddDeviceResponse);
+  rpc DeleteDevice(DeleteDeviceRequest) returns (DeleteDeviceResponse);
+  rpc UpdateDevice(UpdateDeviceRequest) returns (UpdateDeviceResponse);
+  rpc GetAllDevices(GetDevicesRequest) returns (GetDevicesResponse);
+  rpc GetDeviceById(GetDeviceByIdRequest) returns (GetDeviceByIdResponse);
+}
+
+message AuthRequest {
+  string hostname = 1;
+  string password = 2;
+}
+
+message AuthResponse {
+  bool success = 1;
+  string jwt_token = 2;
+  string error_message = 3;
+}
+
+message DeviceInfo {
+  int32 id = 1;
+  string hostname = 2;
+  string user = 3;
+  string location = 4;
+  string hardware_type = 5;
+  string os_type = 6;
+  string ip_address = 7;
+  string serial_number = 8;
+  string created_at = 9;
+  string updated_at = 10;
+}
+
+message AddDeviceRequest {
+  string hostname = 1;
+  string password = 2;
+  string user = 3;
+  string location = 4;
+  string hardware_type = 5;
+  string os_type = 6;
+  string ip_address = 7;
+  string serial_number = 8;
+}
+
+message AddDeviceResponse {
+  bool success = 1;
+  int32 device_id = 2;
+  string jwt_token = 3;
+  string error_message = 4;
+}
+
+message DeleteDeviceRequest {
+  int32 device_id = 1;
+}
+
+message DeleteDeviceResponse {
+  bool success = 1;
+  string error_message = 2;
+}
+
+message UpdateDeviceRequest {
+  int32 device_id = 1;
+  DeviceInfo device_info = 2;
+}
+
+message UpdateDeviceResponse {
+  bool success = 1;
+  string error_message = 2;
+}
+
+message GetDevicesRequest {
+  // Empty pour récupérer tous les dispositifs
+}
+
+message GetDevicesResponse {
+  repeated DeviceInfo devices = 1;
+}
+
+message GetDeviceByIdRequest {
+  int32 device_id = 1;
+}
+
+message GetDeviceByIdResponse {
+  bool success = 1;
+  DeviceInfo device = 2;
+  string error_message = 3;
+}

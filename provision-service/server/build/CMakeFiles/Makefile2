@@ -63,7 +63,7 @@ CMAKE_BINARY_DIR = /home/manar/IOTSHADOW/provision-service/server/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/provision_service.dir/all
+all: CMakeFiles/provisioning_service.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -71,34 +71,61 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/provision_service.dir/clean
+clean: CMakeFiles/generate_protos.dir/clean
+clean: CMakeFiles/provisioning_service.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/provision_service.dir
+# Target rules for target CMakeFiles/generate_protos.dir
 
 # All Build rule for target.
-CMakeFiles/provision_service.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/manar/IOTSHADOW/provision-service/server/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target provision_service"
-.PHONY : CMakeFiles/provision_service.dir/all
+CMakeFiles/generate_protos.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/generate_protos.dir/build.make CMakeFiles/generate_protos.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/generate_protos.dir/build.make CMakeFiles/generate_protos.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/manar/IOTSHADOW/provision-service/server/build/CMakeFiles --progress-num=1 "Built target generate_protos"
+.PHONY : CMakeFiles/generate_protos.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/provision_service.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/manar/IOTSHADOW/provision-service/server/build/CMakeFiles 8
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/provision_service.dir/all
+CMakeFiles/generate_protos.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/manar/IOTSHADOW/provision-service/server/build/CMakeFiles 1
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/generate_protos.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/manar/IOTSHADOW/provision-service/server/build/CMakeFiles 0
-.PHONY : CMakeFiles/provision_service.dir/rule
+.PHONY : CMakeFiles/generate_protos.dir/rule
 
 # Convenience name for target.
-provision_service: CMakeFiles/provision_service.dir/rule
-.PHONY : provision_service
+generate_protos: CMakeFiles/generate_protos.dir/rule
+.PHONY : generate_protos
 
 # clean rule for target.
-CMakeFiles/provision_service.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/provision_service.dir/build.make CMakeFiles/provision_service.dir/clean
-.PHONY : CMakeFiles/provision_service.dir/clean
+CMakeFiles/generate_protos.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/generate_protos.dir/build.make CMakeFiles/generate_protos.dir/clean
+.PHONY : CMakeFiles/generate_protos.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/provisioning_service.dir
+
+# All Build rule for target.
+CMakeFiles/provisioning_service.dir/all: CMakeFiles/generate_protos.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provisioning_service.dir/build.make CMakeFiles/provisioning_service.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provisioning_service.dir/build.make CMakeFiles/provisioning_service.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/manar/IOTSHADOW/provision-service/server/build/CMakeFiles --progress-num=2,3,4,5,6,7,8,9 "Built target provisioning_service"
+.PHONY : CMakeFiles/provisioning_service.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/provisioning_service.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/manar/IOTSHADOW/provision-service/server/build/CMakeFiles 9
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/provisioning_service.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/manar/IOTSHADOW/provision-service/server/build/CMakeFiles 0
+.PHONY : CMakeFiles/provisioning_service.dir/rule
+
+# Convenience name for target.
+provisioning_service: CMakeFiles/provisioning_service.dir/rule
+.PHONY : provisioning_service
+
+# clean rule for target.
+CMakeFiles/provisioning_service.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/provisioning_service.dir/build.make CMakeFiles/provisioning_service.dir/clean
+.PHONY : CMakeFiles/provisioning_service.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

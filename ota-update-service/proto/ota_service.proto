@@ -1,112 +1,57 @@
-// common/ota_service.proto
 syntax = "proto3";
 
 package ota;
 
-// Service principal OTA
-service OTAService {
-    // Vérifier les mises à jour disponibles
-    rpc CheckUpdate(UpdateRequest) returns (UpdateResponse);
-    
-    // Télécharger un fichier de mise à jour
-    rpc DownloadUpdate(DownloadRequest) returns (stream FileChunk);
-    
-    // Confirmer l'installation
-    rpc ConfirmInstallation(InstallationRequest) returns (InstallationResponse);
-    
-    // Obtenir le statut d'un dispositif
-    rpc GetDeviceStatus(DeviceStatusRequest) returns (DeviceStatusResponse);
-    
-    // Enregistrer un dispositif
-    rpc RegisterDevice(DeviceRegistration) returns (RegistrationResponse);
+service OTAUpdateService {
+    rpc CheckForUpdates(CheckUpdatesRequest) returns (CheckUpdatesResponse);
+    rpc DownloadUpdate(DownloadRequest) returns (stream DownloadResponse);
+    rpc ReportStatus(StatusReport) returns (StatusResponse);
 }
 
-// Messages de requête
-message UpdateRequest {
+message CheckUpdatesRequest {
     int32 device_id = 1;
     string current_version = 2;
-    UpdateType update_type = 3;
+    string device_type = 3;     // e.g. "raspberry-pi"
+    string hardware_version = 4; // e.g. "pi4"
+    string os_version = 5;      // e.g. "raspbian"
+}
+
+message UpdateInfo {
+    string component_name = 1;
+    string version = 2;
+    string checksum = 3;
+    string target_path = 4;
+    string service_name = 5;
+    bool is_service = 6;
+    bool is_config = 7;
+    int64 file_size = 8;
+}
+
+message CheckUpdatesResponse {
+    repeated UpdateInfo available_updates = 1;
+    bool has_updates = 2;
 }
 
 message DownloadRequest {
     int32 device_id = 1;
-    int32 update_id = 2;
-    int64 chunk_offset = 3;
+    string component_name = 2;
 }
 
-message InstallationRequest {
-    int32 device_id = 1;
-    int32 update_id = 2;
-    UpdateStatus success = 3;
-    DeviceStatus status = 4;
-    string error_message = 5;
-}
-
-message DeviceStatusRequest {
-    int32 device_id = 1;
-}
-
-message DeviceRegistration {
-    int32 device_id = 1;
-    string device_type = 2;
-    string current_version = 3;
-    string platform = 4;
-}
-
-// Messages de réponse
-message UpdateResponse {
-    bool update_available = 1;
-    int32 update_id = 2;
-    string version = 3;
-    string description = 4;
-    int64 file_size = 5;
-    string checksum = 6;
-    UpdateType update_type = 7;
-}
-
-message FileChunk {
+message DownloadResponse {
     bytes data = 1;
-    int64 offset = 2;
-    bool is_last = 3;
+    int64 total_size = 2;
+    int64 current_size = 3;
 }
 
-message InstallationResponse {
-    UpdateStatus success = 1;
-    string message = 2;
-}
-
-message DeviceStatusResponse {
+message StatusReport {
     int32 device_id = 1;
-    string current_version = 2;
-    string last_update = 3;
-    DeviceStatus status = 4;
+    string component_name = 2;
+    string status = 3; // SUCCESS, FAILED, IN_PROGRESS
+    string error_message = 4;
+    string version = 5;
 }
 
-message RegistrationResponse {
+message StatusResponse {
     bool success = 1;
     string message = 2;
-}
-
-// Énumérations
-enum UpdateType {
-    CONFIG_FILE = 0;
-    APPLICATION = 1;
-    SYSTEMD_SERVICE = 2;
-}
-
-enum DeviceStatus {
-    ONLINE = 0;
-    OFFLINE = 1;
-    UPDATING = 2;
-    ERROR = 3;
-}
-
-enum  UpdateStatus {
-    PENDING = 0;
-    DOWNLOADING = 1 ;
-    DOWNLOADED = 2 ;
-    INSTALLING = 3;
-    SUCCESS = 4;
-    FAILED = 5;
-    ROLLBACK = 6;
 }

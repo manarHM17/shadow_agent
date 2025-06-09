@@ -1,2 +1,0 @@
-/usr/bin/ar qc libota_proto.a CMakeFiles/ota_proto.dir/ota_service.pb.cc.o CMakeFiles/ota_proto.dir/ota_service.grpc.pb.cc.o
-/usr/bin/ranlib libota_proto.a
