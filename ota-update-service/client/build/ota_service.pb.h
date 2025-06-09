@@ -222,29 +222,25 @@ class UpdateInfo final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kComponentNameFieldNumber = 1,
+    kAppNameFieldNumber = 1,
     kVersionFieldNumber = 2,
     kChecksumFieldNumber = 3,
     kTargetPathFieldNumber = 4,
-    kServiceNameFieldNumber = 5,
-    kFileSizeFieldNumber = 8,
-    kIsServiceFieldNumber = 6,
-    kIsConfigFieldNumber = 7,
   };
-  // string component_name = 1;
-  void clear_component_name() ;
-  const std::string& component_name() const;
+  // string app_name = 1;
+  void clear_app_name() ;
+  const std::string& app_name() const;
   template <typename Arg_ = const std::string&, typename... Args_>
-  void set_component_name(Arg_&& arg, Args_... args);
-  std::string* mutable_component_name();
-  PROTOBUF_NODISCARD std::string* release_component_name();
-  void set_allocated_component_name(std::string* value);
+  void set_app_name(Arg_&& arg, Args_... args);
+  std::string* mutable_app_name();
+  PROTOBUF_NODISCARD std::string* release_app_name();
+  void set_allocated_app_name(std::string* value);
 
   private:
-  const std::string& _internal_component_name() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_component_name(
+  const std::string& _internal_app_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_app_name(
       const std::string& value);
-  std::string* _internal_mutable_component_name();
+  std::string* _internal_mutable_app_name();
 
   public:
   // string version = 2;
@@ -295,60 +291,14 @@ class UpdateInfo final :
   std::string* _internal_mutable_target_path();
 
   public:
-  // string service_name = 5;
-  void clear_service_name() ;
-  const std::string& service_name() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_service_name(Arg_&& arg, Args_... args);
-  std::string* mutable_service_name();
-  PROTOBUF_NODISCARD std::string* release_service_name();
-  void set_allocated_service_name(std::string* value);
-
-  private:
-  const std::string& _internal_service_name() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_service_name(
-      const std::string& value);
-  std::string* _internal_mutable_service_name();
-
-  public:
-  // int64 file_size = 8;
-  void clear_file_size() ;
-  ::int64_t file_size() const;
-  void set_file_size(::int64_t value);
-
-  private:
-  ::int64_t _internal_file_size() const;
-  void _internal_set_file_size(::int64_t value);
-
-  public:
-  // bool is_service = 6;
-  void clear_is_service() ;
-  bool is_service() const;
-  void set_is_service(bool value);
-
-  private:
-  bool _internal_is_service() const;
-  void _internal_set_is_service(bool value);
-
-  public:
-  // bool is_config = 7;
-  void clear_is_config() ;
-  bool is_config() const;
-  void set_is_config(bool value);
-
-  private:
-  bool _internal_is_config() const;
-  void _internal_set_is_config(bool value);
-
-  public:
   // @@protoc_insertion_point(class_scope:ota.UpdateInfo)
  private:
   class _Internal;
 
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      3, 8, 0,
-      83, 2>
+      2, 4, 0,
+      57, 2>
       _table_;
   friend class ::google::protobuf::MessageLite;
   friend class ::google::protobuf::Arena;
@@ -364,14 +314,10 @@ class UpdateInfo final :
                               ::google::protobuf::Arena* arena);
         inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
                               ::google::protobuf::Arena* arena, const Impl_& from);
-    ::google::protobuf::internal::ArenaStringPtr component_name_;
+    ::google::protobuf::internal::ArenaStringPtr app_name_;
     ::google::protobuf::internal::ArenaStringPtr version_;
     ::google::protobuf::internal::ArenaStringPtr checksum_;
     ::google::protobuf::internal::ArenaStringPtr target_path_;
-    ::google::protobuf::internal::ArenaStringPtr service_name_;
-    ::int64_t file_size_;
-    bool is_service_;
-    bool is_config_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -704,26 +650,26 @@ class StatusReport final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kComponentNameFieldNumber = 2,
+    kAppNameFieldNumber = 2,
     kStatusFieldNumber = 3,
     kErrorMessageFieldNumber = 4,
     kVersionFieldNumber = 5,
     kDeviceIdFieldNumber = 1,
   };
-  // string component_name = 2;
-  void clear_component_name() ;
-  const std::string& component_name() const;
+  // string app_name = 2;
+  void clear_app_name() ;
+  const std::string& app_name() const;
   template <typename Arg_ = const std::string&, typename... Args_>
-  void set_component_name(Arg_&& arg, Args_... args);
-  std::string* mutable_component_name();
-  PROTOBUF_NODISCARD std::string* release_component_name();
-  void set_allocated_component_name(std::string* value);
+  void set_app_name(Arg_&& arg, Args_... args);
+  std::string* mutable_app_name();
+  PROTOBUF_NODISCARD std::string* release_app_name();
+  void set_allocated_app_name(std::string* value);
 
   private:
-  const std::string& _internal_component_name() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_component_name(
+  const std::string& _internal_app_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_app_name(
       const std::string& value);
-  std::string* _internal_mutable_component_name();
+  std::string* _internal_mutable_app_name();
 
   public:
   // string status = 3;
@@ -791,7 +737,7 @@ class StatusReport final :
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
       3, 5, 0,
-      65, 2>
+      59, 2>
       _table_;
   friend class ::google::protobuf::MessageLite;
   friend class ::google::protobuf::Arena;
@@ -807,7 +753,7 @@ class StatusReport final :
                               ::google::protobuf::Arena* arena);
         inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
                               ::google::protobuf::Arena* arena, const Impl_& from);
-    ::google::protobuf::internal::ArenaStringPtr component_name_;
+    ::google::protobuf::internal::ArenaStringPtr app_name_;
     ::google::protobuf::internal::ArenaStringPtr status_;
     ::google::protobuf::internal::ArenaStringPtr error_message_;
     ::google::protobuf::internal::ArenaStringPtr version_;
@@ -1156,23 +1102,23 @@ class DownloadRequest final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kComponentNameFieldNumber = 2,
+    kAppNameFieldNumber = 2,
     kDeviceIdFieldNumber = 1,
   };
-  // string component_name = 2;
-  void clear_component_name() ;
-  const std::string& component_name() const;
+  // string app_name = 2;
+  void clear_app_name() ;
+  const std::string& app_name() const;
   template <typename Arg_ = const std::string&, typename... Args_>
-  void set_component_name(Arg_&& arg, Args_... args);
-  std::string* mutable_component_name();
-  PROTOBUF_NODISCARD std::string* release_component_name();
-  void set_allocated_component_name(std::string* value);
+  void set_app_name(Arg_&& arg, Args_... args);
+  std::string* mutable_app_name();
+  PROTOBUF_NODISCARD std::string* release_app_name();
+  void set_allocated_app_name(std::string* value);
 
   private:
-  const std::string& _internal_component_name() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_component_name(
+  const std::string& _internal_app_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_app_name(
       const std::string& value);
-  std::string* _internal_mutable_component_name();
+  std::string* _internal_mutable_app_name();
 
   public:
   // int32 device_id = 1;
@@ -1192,7 +1138,7 @@ class DownloadRequest final :
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
       1, 2, 0,
-      42, 2>
+      36, 2>
       _table_;
   friend class ::google::protobuf::MessageLite;
   friend class ::google::protobuf::Arena;
@@ -1208,7 +1154,7 @@ class DownloadRequest final :
                               ::google::protobuf::Arena* arena);
         inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
                               ::google::protobuf::Arena* arena, const Impl_& from);
-    ::google::protobuf::internal::ArenaStringPtr component_name_;
+    ::google::protobuf::internal::ArenaStringPtr app_name_;
     ::int32_t device_id_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
@@ -1349,13 +1295,27 @@ class CheckUpdatesRequest final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kCurrentVersionFieldNumber = 2,
-    kDeviceTypeFieldNumber = 3,
-    kHardwareVersionFieldNumber = 4,
-    kOsVersionFieldNumber = 5,
+    kAppNameFieldNumber = 2,
+    kCurrentVersionFieldNumber = 3,
     kDeviceIdFieldNumber = 1,
   };
-  // string current_version = 2;
+  // string app_name = 2;
+  void clear_app_name() ;
+  const std::string& app_name() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_app_name(Arg_&& arg, Args_... args);
+  std::string* mutable_app_name();
+  PROTOBUF_NODISCARD std::string* release_app_name();
+  void set_allocated_app_name(std::string* value);
+
+  private:
+  const std::string& _internal_app_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_app_name(
+      const std::string& value);
+  std::string* _internal_mutable_app_name();
+
+  public:
+  // string current_version = 3;
   void clear_current_version() ;
   const std::string& current_version() const;
   template <typename Arg_ = const std::string&, typename... Args_>
@@ -1369,54 +1329,6 @@ class CheckUpdatesRequest final :
   inline PROTOBUF_ALWAYS_INLINE void _internal_set_current_version(
       const std::string& value);
   std::string* _internal_mutable_current_version();
-
-  public:
-  // string device_type = 3;
-  void clear_device_type() ;
-  const std::string& device_type() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_device_type(Arg_&& arg, Args_... args);
-  std::string* mutable_device_type();
-  PROTOBUF_NODISCARD std::string* release_device_type();
-  void set_allocated_device_type(std::string* value);
-
-  private:
-  const std::string& _internal_device_type() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_device_type(
-      const std::string& value);
-  std::string* _internal_mutable_device_type();
-
-  public:
-  // string hardware_version = 4;
-  void clear_hardware_version() ;
-  const std::string& hardware_version() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_hardware_version(Arg_&& arg, Args_... args);
-  std::string* mutable_hardware_version();
-  PROTOBUF_NODISCARD std::string* release_hardware_version();
-  void set_allocated_hardware_version(std::string* value);
-
-  private:
-  const std::string& _internal_hardware_version() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_hardware_version(
-      const std::string& value);
-  std::string* _internal_mutable_hardware_version();
-
-  public:
-  // string os_version = 5;
-  void clear_os_version() ;
-  const std::string& os_version() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_os_version(Arg_&& arg, Args_... args);
-  std::string* mutable_os_version();
-  PROTOBUF_NODISCARD std::string* release_os_version();
-  void set_allocated_os_version(std::string* value);
-
-  private:
-  const std::string& _internal_os_version() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_os_version(
-      const std::string& value);
-  std::string* _internal_mutable_os_version();
 
   public:
   // int32 device_id = 1;
@@ -1435,8 +1347,8 @@ class CheckUpdatesRequest final :
 
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      3, 5, 0,
-      84, 2>
+      2, 3, 0,
+      55, 2>
       _table_;
   friend class ::google::protobuf::MessageLite;
   friend class ::google::protobuf::Arena;
@@ -1452,10 +1364,8 @@ class CheckUpdatesRequest final :
                               ::google::protobuf::Arena* arena);
         inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
                               ::google::protobuf::Arena* arena, const Impl_& from);
+    ::google::protobuf::internal::ArenaStringPtr app_name_;
     ::google::protobuf::internal::ArenaStringPtr current_version_;
-    ::google::protobuf::internal::ArenaStringPtr device_type_;
-    ::google::protobuf::internal::ArenaStringPtr hardware_version_;
-    ::google::protobuf::internal::ArenaStringPtr os_version_;
     ::int32_t device_id_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
@@ -1698,7 +1608,60 @@ inline void CheckUpdatesRequest::_internal_set_device_id(::int32_t value) {
   _impl_.device_id_ = value;
 }
 
-// string current_version = 2;
+// string app_name = 2;
+inline void CheckUpdatesRequest::clear_app_name() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.app_name_.ClearToEmpty();
+}
+inline const std::string& CheckUpdatesRequest::app_name() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:ota.CheckUpdatesRequest.app_name)
+  return _internal_app_name();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void CheckUpdatesRequest::set_app_name(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.app_name_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:ota.CheckUpdatesRequest.app_name)
+}
+inline std::string* CheckUpdatesRequest::mutable_app_name() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_app_name();
+  // @@protoc_insertion_point(field_mutable:ota.CheckUpdatesRequest.app_name)
+  return _s;
+}
+inline const std::string& CheckUpdatesRequest::_internal_app_name() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.app_name_.Get();
+}
+inline void CheckUpdatesRequest::_internal_set_app_name(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.app_name_.Set(value, GetArena());
+}
+inline std::string* CheckUpdatesRequest::_internal_mutable_app_name() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.app_name_.Mutable( GetArena());
+}
+inline std::string* CheckUpdatesRequest::release_app_name() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:ota.CheckUpdatesRequest.app_name)
+  return _impl_.app_name_.Release();
+}
+inline void CheckUpdatesRequest::set_allocated_app_name(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.app_name_.SetAllocated(value, GetArena());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.app_name_.IsDefault()) {
+          _impl_.app_name_.Set("", GetArena());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:ota.CheckUpdatesRequest.app_name)
+}
+
+// string current_version = 3;
 inline void CheckUpdatesRequest::clear_current_version() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.current_version_.ClearToEmpty();
@@ -1751,220 +1714,61 @@ inline void CheckUpdatesRequest::set_allocated_current_version(std::string* valu
   // @@protoc_insertion_point(field_set_allocated:ota.CheckUpdatesRequest.current_version)
 }
 
-// string device_type = 3;
-inline void CheckUpdatesRequest::clear_device_type() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.device_type_.ClearToEmpty();
-}
-inline const std::string& CheckUpdatesRequest::device_type() const
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:ota.CheckUpdatesRequest.device_type)
-  return _internal_device_type();
-}
-template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void CheckUpdatesRequest::set_device_type(Arg_&& arg,
-                                                     Args_... args) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  _impl_.device_type_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:ota.CheckUpdatesRequest.device_type)
-}
-inline std::string* CheckUpdatesRequest::mutable_device_type() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  std::string* _s = _internal_mutable_device_type();
-  // @@protoc_insertion_point(field_mutable:ota.CheckUpdatesRequest.device_type)
-  return _s;
-}
-inline const std::string& CheckUpdatesRequest::_internal_device_type() const {
-  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
-  return _impl_.device_type_.Get();
-}
-inline void CheckUpdatesRequest::_internal_set_device_type(const std::string& value) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  _impl_.device_type_.Set(value, GetArena());
-}
-inline std::string* CheckUpdatesRequest::_internal_mutable_device_type() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  return _impl_.device_type_.Mutable( GetArena());
-}
-inline std::string* CheckUpdatesRequest::release_device_type() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  // @@protoc_insertion_point(field_release:ota.CheckUpdatesRequest.device_type)
-  return _impl_.device_type_.Release();
-}
-inline void CheckUpdatesRequest::set_allocated_device_type(std::string* value) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.device_type_.SetAllocated(value, GetArena());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        if (_impl_.device_type_.IsDefault()) {
-          _impl_.device_type_.Set("", GetArena());
-        }
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:ota.CheckUpdatesRequest.device_type)
-}
-
-// string hardware_version = 4;
-inline void CheckUpdatesRequest::clear_hardware_version() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.hardware_version_.ClearToEmpty();
-}
-inline const std::string& CheckUpdatesRequest::hardware_version() const
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:ota.CheckUpdatesRequest.hardware_version)
-  return _internal_hardware_version();
-}
-template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void CheckUpdatesRequest::set_hardware_version(Arg_&& arg,
-                                                     Args_... args) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  _impl_.hardware_version_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:ota.CheckUpdatesRequest.hardware_version)
-}
-inline std::string* CheckUpdatesRequest::mutable_hardware_version() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  std::string* _s = _internal_mutable_hardware_version();
-  // @@protoc_insertion_point(field_mutable:ota.CheckUpdatesRequest.hardware_version)
-  return _s;
-}
-inline const std::string& CheckUpdatesRequest::_internal_hardware_version() const {
-  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
-  return _impl_.hardware_version_.Get();
-}
-inline void CheckUpdatesRequest::_internal_set_hardware_version(const std::string& value) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  _impl_.hardware_version_.Set(value, GetArena());
-}
-inline std::string* CheckUpdatesRequest::_internal_mutable_hardware_version() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  return _impl_.hardware_version_.Mutable( GetArena());
-}
-inline std::string* CheckUpdatesRequest::release_hardware_version() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  // @@protoc_insertion_point(field_release:ota.CheckUpdatesRequest.hardware_version)
-  return _impl_.hardware_version_.Release();
-}
-inline void CheckUpdatesRequest::set_allocated_hardware_version(std::string* value) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.hardware_version_.SetAllocated(value, GetArena());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        if (_impl_.hardware_version_.IsDefault()) {
-          _impl_.hardware_version_.Set("", GetArena());
-        }
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:ota.CheckUpdatesRequest.hardware_version)
-}
-
-// string os_version = 5;
-inline void CheckUpdatesRequest::clear_os_version() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.os_version_.ClearToEmpty();
-}
-inline const std::string& CheckUpdatesRequest::os_version() const
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:ota.CheckUpdatesRequest.os_version)
-  return _internal_os_version();
-}
-template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void CheckUpdatesRequest::set_os_version(Arg_&& arg,
-                                                     Args_... args) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  _impl_.os_version_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:ota.CheckUpdatesRequest.os_version)
-}
-inline std::string* CheckUpdatesRequest::mutable_os_version() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  std::string* _s = _internal_mutable_os_version();
-  // @@protoc_insertion_point(field_mutable:ota.CheckUpdatesRequest.os_version)
-  return _s;
-}
-inline const std::string& CheckUpdatesRequest::_internal_os_version() const {
-  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
-  return _impl_.os_version_.Get();
-}
-inline void CheckUpdatesRequest::_internal_set_os_version(const std::string& value) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  _impl_.os_version_.Set(value, GetArena());
-}
-inline std::string* CheckUpdatesRequest::_internal_mutable_os_version() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  return _impl_.os_version_.Mutable( GetArena());
-}
-inline std::string* CheckUpdatesRequest::release_os_version() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  // @@protoc_insertion_point(field_release:ota.CheckUpdatesRequest.os_version)
-  return _impl_.os_version_.Release();
-}
-inline void CheckUpdatesRequest::set_allocated_os_version(std::string* value) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.os_version_.SetAllocated(value, GetArena());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        if (_impl_.os_version_.IsDefault()) {
-          _impl_.os_version_.Set("", GetArena());
-        }
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:ota.CheckUpdatesRequest.os_version)
-}
-
 // -------------------------------------------------------------------
 
 // UpdateInfo
 
-// string component_name = 1;
-inline void UpdateInfo::clear_component_name() {
+// string app_name = 1;
+inline void UpdateInfo::clear_app_name() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.component_name_.ClearToEmpty();
+  _impl_.app_name_.ClearToEmpty();
 }
-inline const std::string& UpdateInfo::component_name() const
+inline const std::string& UpdateInfo::app_name() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:ota.UpdateInfo.component_name)
-  return _internal_component_name();
+  // @@protoc_insertion_point(field_get:ota.UpdateInfo.app_name)
+  return _internal_app_name();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void UpdateInfo::set_component_name(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void UpdateInfo::set_app_name(Arg_&& arg,
                                                      Args_... args) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
-  _impl_.component_name_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:ota.UpdateInfo.component_name)
+  _impl_.app_name_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:ota.UpdateInfo.app_name)
 }
-inline std::string* UpdateInfo::mutable_component_name() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  std::string* _s = _internal_mutable_component_name();
-  // @@protoc_insertion_point(field_mutable:ota.UpdateInfo.component_name)
+inline std::string* UpdateInfo::mutable_app_name() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_app_name();
+  // @@protoc_insertion_point(field_mutable:ota.UpdateInfo.app_name)
   return _s;
 }
-inline const std::string& UpdateInfo::_internal_component_name() const {
+inline const std::string& UpdateInfo::_internal_app_name() const {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
-  return _impl_.component_name_.Get();
+  return _impl_.app_name_.Get();
 }
-inline void UpdateInfo::_internal_set_component_name(const std::string& value) {
+inline void UpdateInfo::_internal_set_app_name(const std::string& value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
-  _impl_.component_name_.Set(value, GetArena());
+  _impl_.app_name_.Set(value, GetArena());
 }
-inline std::string* UpdateInfo::_internal_mutable_component_name() {
+inline std::string* UpdateInfo::_internal_mutable_app_name() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
-  return _impl_.component_name_.Mutable( GetArena());
+  return _impl_.app_name_.Mutable( GetArena());
 }
-inline std::string* UpdateInfo::release_component_name() {
+inline std::string* UpdateInfo::release_app_name() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  // @@protoc_insertion_point(field_release:ota.UpdateInfo.component_name)
-  return _impl_.component_name_.Release();
+  // @@protoc_insertion_point(field_release:ota.UpdateInfo.app_name)
+  return _impl_.app_name_.Release();
 }
-inline void UpdateInfo::set_allocated_component_name(std::string* value) {
+inline void UpdateInfo::set_allocated_app_name(std::string* value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.component_name_.SetAllocated(value, GetArena());
+  _impl_.app_name_.SetAllocated(value, GetArena());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        if (_impl_.component_name_.IsDefault()) {
-          _impl_.component_name_.Set("", GetArena());
+        if (_impl_.app_name_.IsDefault()) {
+          _impl_.app_name_.Set("", GetArena());
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:ota.UpdateInfo.component_name)
+  // @@protoc_insertion_point(field_set_allocated:ota.UpdateInfo.app_name)
 }
 
 // string version = 2;
@@ -2126,128 +1930,6 @@ inline void UpdateInfo::set_allocated_target_path(std::string* value) {
   // @@protoc_insertion_point(field_set_allocated:ota.UpdateInfo.target_path)
 }
 
-// string service_name = 5;
-inline void UpdateInfo::clear_service_name() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.service_name_.ClearToEmpty();
-}
-inline const std::string& UpdateInfo::service_name() const
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:ota.UpdateInfo.service_name)
-  return _internal_service_name();
-}
-template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void UpdateInfo::set_service_name(Arg_&& arg,
-                                                     Args_... args) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  _impl_.service_name_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:ota.UpdateInfo.service_name)
-}
-inline std::string* UpdateInfo::mutable_service_name() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  std::string* _s = _internal_mutable_service_name();
-  // @@protoc_insertion_point(field_mutable:ota.UpdateInfo.service_name)
-  return _s;
-}
-inline const std::string& UpdateInfo::_internal_service_name() const {
-  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
-  return _impl_.service_name_.Get();
-}
-inline void UpdateInfo::_internal_set_service_name(const std::string& value) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  _impl_.service_name_.Set(value, GetArena());
-}
-inline std::string* UpdateInfo::_internal_mutable_service_name() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  return _impl_.service_name_.Mutable( GetArena());
-}
-inline std::string* UpdateInfo::release_service_name() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  // @@protoc_insertion_point(field_release:ota.UpdateInfo.service_name)
-  return _impl_.service_name_.Release();
-}
-inline void UpdateInfo::set_allocated_service_name(std::string* value) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.service_name_.SetAllocated(value, GetArena());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        if (_impl_.service_name_.IsDefault()) {
-          _impl_.service_name_.Set("", GetArena());
-        }
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:ota.UpdateInfo.service_name)
-}
-
-// bool is_service = 6;
-inline void UpdateInfo::clear_is_service() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.is_service_ = false;
-}
-inline bool UpdateInfo::is_service() const {
-  // @@protoc_insertion_point(field_get:ota.UpdateInfo.is_service)
-  return _internal_is_service();
-}
-inline void UpdateInfo::set_is_service(bool value) {
-  _internal_set_is_service(value);
-  // @@protoc_insertion_point(field_set:ota.UpdateInfo.is_service)
-}
-inline bool UpdateInfo::_internal_is_service() const {
-  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
-  return _impl_.is_service_;
-}
-inline void UpdateInfo::_internal_set_is_service(bool value) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  _impl_.is_service_ = value;
-}
-
-// bool is_config = 7;
-inline void UpdateInfo::clear_is_config() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.is_config_ = false;
-}
-inline bool UpdateInfo::is_config() const {
-  // @@protoc_insertion_point(field_get:ota.UpdateInfo.is_config)
-  return _internal_is_config();
-}
-inline void UpdateInfo::set_is_config(bool value) {
-  _internal_set_is_config(value);
-  // @@protoc_insertion_point(field_set:ota.UpdateInfo.is_config)
-}
-inline bool UpdateInfo::_internal_is_config() const {
-  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
-  return _impl_.is_config_;
-}
-inline void UpdateInfo::_internal_set_is_config(bool value) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  _impl_.is_config_ = value;
-}
-
-// int64 file_size = 8;
-inline void UpdateInfo::clear_file_size() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.file_size_ = ::int64_t{0};
-}
-inline ::int64_t UpdateInfo::file_size() const {
-  // @@protoc_insertion_point(field_get:ota.UpdateInfo.file_size)
-  return _internal_file_size();
-}
-inline void UpdateInfo::set_file_size(::int64_t value) {
-  _internal_set_file_size(value);
-  // @@protoc_insertion_point(field_set:ota.UpdateInfo.file_size)
-}
-inline ::int64_t UpdateInfo::_internal_file_size() const {
-  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
-  return _impl_.file_size_;
-}
-inline void UpdateInfo::_internal_set_file_size(::int64_t value) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  _impl_.file_size_ = value;
-}
-
 // -------------------------------------------------------------------
 
 // CheckUpdatesResponse
@@ -2351,57 +2033,57 @@ inline void DownloadRequest::_internal_set_device_id(::int32_t value) {
   _impl_.device_id_ = value;
 }
 
-// string component_name = 2;
-inline void DownloadRequest::clear_component_name() {
+// string app_name = 2;
+inline void DownloadRequest::clear_app_name() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.component_name_.ClearToEmpty();
+  _impl_.app_name_.ClearToEmpty();
 }
-inline const std::string& DownloadRequest::component_name() const
+inline const std::string& DownloadRequest::app_name() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:ota.DownloadRequest.component_name)
-  return _internal_component_name();
+  // @@protoc_insertion_point(field_get:ota.DownloadRequest.app_name)
+  return _internal_app_name();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void DownloadRequest::set_component_name(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void DownloadRequest::set_app_name(Arg_&& arg,
                                                      Args_... args) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
-  _impl_.component_name_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:ota.DownloadRequest.component_name)
+  _impl_.app_name_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:ota.DownloadRequest.app_name)
 }
-inline std::string* DownloadRequest::mutable_component_name() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  std::string* _s = _internal_mutable_component_name();
-  // @@protoc_insertion_point(field_mutable:ota.DownloadRequest.component_name)
+inline std::string* DownloadRequest::mutable_app_name() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_app_name();
+  // @@protoc_insertion_point(field_mutable:ota.DownloadRequest.app_name)
   return _s;
 }
-inline const std::string& DownloadRequest::_internal_component_name() const {
+inline const std::string& DownloadRequest::_internal_app_name() const {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
-  return _impl_.component_name_.Get();
+  return _impl_.app_name_.Get();
 }
-inline void DownloadRequest::_internal_set_component_name(const std::string& value) {
+inline void DownloadRequest::_internal_set_app_name(const std::string& value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
-  _impl_.component_name_.Set(value, GetArena());
+  _impl_.app_name_.Set(value, GetArena());
 }
-inline std::string* DownloadRequest::_internal_mutable_component_name() {
+inline std::string* DownloadRequest::_internal_mutable_app_name() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
-  return _impl_.component_name_.Mutable( GetArena());
+  return _impl_.app_name_.Mutable( GetArena());
 }
-inline std::string* DownloadRequest::release_component_name() {
+inline std::string* DownloadRequest::release_app_name() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  // @@protoc_insertion_point(field_release:ota.DownloadRequest.component_name)
-  return _impl_.component_name_.Release();
+  // @@protoc_insertion_point(field_release:ota.DownloadRequest.app_name)
+  return _impl_.app_name_.Release();
 }
-inline void DownloadRequest::set_allocated_component_name(std::string* value) {
+inline void DownloadRequest::set_allocated_app_name(std::string* value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.component_name_.SetAllocated(value, GetArena());
+  _impl_.app_name_.SetAllocated(value, GetArena());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        if (_impl_.component_name_.IsDefault()) {
-          _impl_.component_name_.Set("", GetArena());
+        if (_impl_.app_name_.IsDefault()) {
+          _impl_.app_name_.Set("", GetArena());
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:ota.DownloadRequest.component_name)
+  // @@protoc_insertion_point(field_set_allocated:ota.DownloadRequest.app_name)
 }
 
 // -------------------------------------------------------------------
@@ -2534,57 +2216,57 @@ inline void StatusReport::_internal_set_device_id(::int32_t value) {
   _impl_.device_id_ = value;
 }
 
-// string component_name = 2;
-inline void StatusReport::clear_component_name() {
+// string app_name = 2;
+inline void StatusReport::clear_app_name() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.component_name_.ClearToEmpty();
+  _impl_.app_name_.ClearToEmpty();
 }
-inline const std::string& StatusReport::component_name() const
+inline const std::string& StatusReport::app_name() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:ota.StatusReport.component_name)
-  return _internal_component_name();
+  // @@protoc_insertion_point(field_get:ota.StatusReport.app_name)
+  return _internal_app_name();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void StatusReport::set_component_name(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void StatusReport::set_app_name(Arg_&& arg,
                                                      Args_... args) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
-  _impl_.component_name_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:ota.StatusReport.component_name)
+  _impl_.app_name_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:ota.StatusReport.app_name)
 }
-inline std::string* StatusReport::mutable_component_name() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  std::string* _s = _internal_mutable_component_name();
-  // @@protoc_insertion_point(field_mutable:ota.StatusReport.component_name)
+inline std::string* StatusReport::mutable_app_name() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_app_name();
+  // @@protoc_insertion_point(field_mutable:ota.StatusReport.app_name)
   return _s;
 }
-inline const std::string& StatusReport::_internal_component_name() const {
+inline const std::string& StatusReport::_internal_app_name() const {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
-  return _impl_.component_name_.Get();
+  return _impl_.app_name_.Get();
 }
-inline void StatusReport::_internal_set_component_name(const std::string& value) {
+inline void StatusReport::_internal_set_app_name(const std::string& value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
-  _impl_.component_name_.Set(value, GetArena());
+  _impl_.app_name_.Set(value, GetArena());
 }
-inline std::string* StatusReport::_internal_mutable_component_name() {
+inline std::string* StatusReport::_internal_mutable_app_name() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
-  return _impl_.component_name_.Mutable( GetArena());
+  return _impl_.app_name_.Mutable( GetArena());
 }
-inline std::string* StatusReport::release_component_name() {
+inline std::string* StatusReport::release_app_name() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  // @@protoc_insertion_point(field_release:ota.StatusReport.component_name)
-  return _impl_.component_name_.Release();
+  // @@protoc_insertion_point(field_release:ota.StatusReport.app_name)
+  return _impl_.app_name_.Release();
 }
-inline void StatusReport::set_allocated_component_name(std::string* value) {
+inline void StatusReport::set_allocated_app_name(std::string* value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.component_name_.SetAllocated(value, GetArena());
+  _impl_.app_name_.SetAllocated(value, GetArena());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        if (_impl_.component_name_.IsDefault()) {
-          _impl_.component_name_.Set("", GetArena());
+        if (_impl_.app_name_.IsDefault()) {
+          _impl_.app_name_.Set("", GetArena());
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:ota.StatusReport.component_name)
+  // @@protoc_insertion_point(field_set_allocated:ota.StatusReport.app_name)
 }
 
 // string status = 3;

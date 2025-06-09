@@ -46,25 +46,20 @@ bool DBHandler::Connect() {
 }
 
 bool DBHandler::InitializeDatabase() {
-    // Example: create tables if not exist
     std::string updates_table = R"(
         CREATE TABLE IF NOT EXISTS updates (
             id INT AUTO_INCREMENT PRIMARY KEY,
-            component_name VARCHAR(255),
+            app_name VARCHAR(255),
             version VARCHAR(64),
             file_path VARCHAR(512),
-            checksum VARCHAR(128),
-            target_path VARCHAR(512),
-            service_name VARCHAR(255),
-            is_service BOOLEAN,
-            is_config BOOLEAN
+            checksum VARCHAR(128)
         )
     )";
     std::string status_table = R"(
         CREATE TABLE IF NOT EXISTS update_status (
             id INT AUTO_INCREMENT PRIMARY KEY,
             device_id INT,
-            component_name VARCHAR(255),
+            app_name VARCHAR(255),
             current_version VARCHAR(64),
             target_version VARCHAR(64),
             status VARCHAR(32),

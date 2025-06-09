@@ -12,31 +12,18 @@ grpc::Status OTAUpdateServiceImpl::CheckForUpdates(grpc::ServerContext* context,
         if (!ota_service) {
             return grpc::Status(grpc::StatusCode::FAILED_PRECONDITION, "OTA service not initialized");
         }
-        // Convert device_id from string to int32_t
-        int32_t device_id = 0;
-        try {
-            device_id = request->device_id();
-        } catch (...) {
-            return grpc::Status(grpc::StatusCode::INVALID_ARGUMENT, "Invalid device_id format");
-        }
-        auto updates = ota_service->GetAvailableUpdates(device_id);
+        int32_t device_id = request->device_id();
+        std::string app_name = request->app_name();
+        std::string current_version = request->current_version();
+
+        auto updates = ota_service->GetAvailableUpdates(device_id, app_name, current_version);
         response->set_has_updates(!updates.empty());
         for (const auto& update : updates) {
             auto* update_info = response->add_available_updates();
-            update_info->set_component_name(update.component_name);
+            update_info->set_app_name(update.app_name);
             update_info->set_version(update.version);
             update_info->set_checksum(update.checksum);
-            update_info->set_target_path(update.target_path);
-            update_info->set_service_name(update.service_name);
-            update_info->set_is_service(update.is_service);
-            update_info->set_is_config(update.is_config);
-
-            // File size
-            std::ifstream file(update.file_path, std::ios::binary | std::ios::ate);
-            if (file.is_open()) {
-                update_info->set_file_size(file.tellg());
-                file.close();
-            }
+            update_info->set_target_path("/opt/" + update.app_name);
         }
         return grpc::Status::OK;
     } catch (const std::exception& e) {
@@ -52,16 +39,10 @@ grpc::Status OTAUpdateServiceImpl::DownloadUpdate(grpc::ServerContext* context,
             return grpc::Status(grpc::StatusCode::FAILED_PRECONDITION, "OTA service not initialized");
         }
         std::vector<char> file_data;
-        int32_t device_id = 0;
-        try {
-            device_id = request->device_id();
-        } catch (...) {
-            return grpc::Status(grpc::StatusCode::INVALID_ARGUMENT, "Invalid device_id format");
-        }
-        if (!ota_service->DownloadUpdate(device_id, request->component_name(), file_data)) {
+        int32_t device_id = request->device_id();
+        if (!ota_service->DownloadUpdate(device_id, request->app_name(), file_data)) {
             return grpc::Status(grpc::StatusCode::NOT_FOUND, "Update not found");
         }
-        // Send file in 64KB chunks
         const size_t chunk_size = 64 * 1024;
         size_t total_size = file_data.size();
         size_t sent = 0;
@@ -90,12 +71,8 @@ grpc::Status OTAUpdateServiceImpl::ReportStatus(grpc::ServerContext* context,
             return grpc::Status(grpc::StatusCode::FAILED_PRECONDITION, "OTA service not initialized");
         }
         UpdateStatus status;
-        try {
-            status.device_id = request->device_id();
-        } catch (...) {
-            return grpc::Status(grpc::StatusCode::INVALID_ARGUMENT, "Invalid device_id format");
-        }
-        status.component_name = request->component_name();
+        status.device_id = request->device_id();
+        status.app_name = request->app_name();
         status.status = request->status();
         status.error_message = request->error_message();
         status.target_version = request->version();

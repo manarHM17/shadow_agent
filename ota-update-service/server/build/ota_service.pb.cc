@@ -24,7 +24,7 @@ namespace ota {
 
 inline constexpr UpdateInfo::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
-      : component_name_(
+      : app_name_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
         version_(
@@ -36,12 +36,6 @@ inline constexpr UpdateInfo::Impl_::Impl_(
         target_path_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
-        service_name_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        file_size_{::int64_t{0}},
-        is_service_{false},
-        is_config_{false},
         _cached_size_{0} {}
 
 template <typename>
@@ -82,7 +76,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 
 inline constexpr StatusReport::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
-      : component_name_(
+      : app_name_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
         status_(
@@ -136,7 +130,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 
 inline constexpr DownloadRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
-      : component_name_(
+      : app_name_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
         device_id_{0},
@@ -158,16 +152,10 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 
 inline constexpr CheckUpdatesRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
-      : current_version_(
+      : app_name_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
-        device_type_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        hardware_version_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        os_version_(
+        current_version_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
         device_id_{0},
@@ -223,10 +211,8 @@ const ::uint32_t TableStruct_ota_5fservice_2eproto::offsets[] PROTOBUF_SECTION_V
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
     PROTOBUF_FIELD_OFFSET(::ota::CheckUpdatesRequest, _impl_.device_id_),
+    PROTOBUF_FIELD_OFFSET(::ota::CheckUpdatesRequest, _impl_.app_name_),
     PROTOBUF_FIELD_OFFSET(::ota::CheckUpdatesRequest, _impl_.current_version_),
-    PROTOBUF_FIELD_OFFSET(::ota::CheckUpdatesRequest, _impl_.device_type_),
-    PROTOBUF_FIELD_OFFSET(::ota::CheckUpdatesRequest, _impl_.hardware_version_),
-    PROTOBUF_FIELD_OFFSET(::ota::CheckUpdatesRequest, _impl_.os_version_),
     ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::ota::UpdateInfo, _internal_metadata_),
     ~0u,  // no _extensions_
@@ -235,14 +221,10 @@ const ::uint32_t TableStruct_ota_5fservice_2eproto::offsets[] PROTOBUF_SECTION_V
     ~0u,  // no _inlined_string_donated_
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::ota::UpdateInfo, _impl_.component_name_),
+    PROTOBUF_FIELD_OFFSET(::ota::UpdateInfo, _impl_.app_name_),
     PROTOBUF_FIELD_OFFSET(::ota::UpdateInfo, _impl_.version_),
     PROTOBUF_FIELD_OFFSET(::ota::UpdateInfo, _impl_.checksum_),
     PROTOBUF_FIELD_OFFSET(::ota::UpdateInfo, _impl_.target_path_),
-    PROTOBUF_FIELD_OFFSET(::ota::UpdateInfo, _impl_.service_name_),
-    PROTOBUF_FIELD_OFFSET(::ota::UpdateInfo, _impl_.is_service_),
-    PROTOBUF_FIELD_OFFSET(::ota::UpdateInfo, _impl_.is_config_),
-    PROTOBUF_FIELD_OFFSET(::ota::UpdateInfo, _impl_.file_size_),
     ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::ota::CheckUpdatesResponse, _internal_metadata_),
     ~0u,  // no _extensions_
@@ -262,7 +244,7 @@ const ::uint32_t TableStruct_ota_5fservice_2eproto::offsets[] PROTOBUF_SECTION_V
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
     PROTOBUF_FIELD_OFFSET(::ota::DownloadRequest, _impl_.device_id_),
-    PROTOBUF_FIELD_OFFSET(::ota::DownloadRequest, _impl_.component_name_),
+    PROTOBUF_FIELD_OFFSET(::ota::DownloadRequest, _impl_.app_name_),
     ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::ota::DownloadResponse, _internal_metadata_),
     ~0u,  // no _extensions_
@@ -283,7 +265,7 @@ const ::uint32_t TableStruct_ota_5fservice_2eproto::offsets[] PROTOBUF_SECTION_V
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
     PROTOBUF_FIELD_OFFSET(::ota::StatusReport, _impl_.device_id_),
-    PROTOBUF_FIELD_OFFSET(::ota::StatusReport, _impl_.component_name_),
+    PROTOBUF_FIELD_OFFSET(::ota::StatusReport, _impl_.app_name_),
     PROTOBUF_FIELD_OFFSET(::ota::StatusReport, _impl_.status_),
     PROTOBUF_FIELD_OFFSET(::ota::StatusReport, _impl_.error_message_),
     PROTOBUF_FIELD_OFFSET(::ota::StatusReport, _impl_.version_),
@@ -302,12 +284,12 @@ const ::uint32_t TableStruct_ota_5fservice_2eproto::offsets[] PROTOBUF_SECTION_V
 static const ::_pbi::MigrationSchema
     schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
         {0, -1, -1, sizeof(::ota::CheckUpdatesRequest)},
-        {13, -1, -1, sizeof(::ota::UpdateInfo)},
-        {29, -1, -1, sizeof(::ota::CheckUpdatesResponse)},
-        {39, -1, -1, sizeof(::ota::DownloadRequest)},
-        {49, -1, -1, sizeof(::ota::DownloadResponse)},
-        {60, -1, -1, sizeof(::ota::StatusReport)},
-        {73, -1, -1, sizeof(::ota::StatusResponse)},
+        {11, -1, -1, sizeof(::ota::UpdateInfo)},
+        {23, -1, -1, sizeof(::ota::CheckUpdatesResponse)},
+        {33, -1, -1, sizeof(::ota::DownloadRequest)},
+        {43, -1, -1, sizeof(::ota::DownloadResponse)},
+        {54, -1, -1, sizeof(::ota::StatusReport)},
+        {67, -1, -1, sizeof(::ota::StatusResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -320,36 +302,33 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::ota::_StatusResponse_default_instance_._instance,
 };
 const char descriptor_table_protodef_ota_5fservice_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-    "\n\021ota_service.proto\022\003ota\"\204\001\n\023CheckUpdate"
-    "sRequest\022\021\n\tdevice_id\030\001 \001(\005\022\027\n\017current_v"
-    "ersion\030\002 \001(\t\022\023\n\013device_type\030\003 \001(\t\022\030\n\020har"
-    "dware_version\030\004 \001(\t\022\022\n\nos_version\030\005 \001(\t\""
-    "\254\001\n\nUpdateInfo\022\026\n\016component_name\030\001 \001(\t\022\017"
-    "\n\007version\030\002 \001(\t\022\020\n\010checksum\030\003 \001(\t\022\023\n\013tar"
-    "get_path\030\004 \001(\t\022\024\n\014service_name\030\005 \001(\t\022\022\n\n"
-    "is_service\030\006 \001(\010\022\021\n\tis_config\030\007 \001(\010\022\021\n\tf"
-    "ile_size\030\010 \001(\003\"W\n\024CheckUpdatesResponse\022*"
-    "\n\021available_updates\030\001 \003(\0132\017.ota.UpdateIn"
-    "fo\022\023\n\013has_updates\030\002 \001(\010\"<\n\017DownloadReque"
-    "st\022\021\n\tdevice_id\030\001 \001(\005\022\026\n\016component_name\030"
-    "\002 \001(\t\"J\n\020DownloadResponse\022\014\n\004data\030\001 \001(\014\022"
-    "\022\n\ntotal_size\030\002 \001(\003\022\024\n\014current_size\030\003 \001("
-    "\003\"q\n\014StatusReport\022\021\n\tdevice_id\030\001 \001(\005\022\026\n\016"
-    "component_name\030\002 \001(\t\022\016\n\006status\030\003 \001(\t\022\025\n\r"
-    "error_message\030\004 \001(\t\022\017\n\007version\030\005 \001(\t\"2\n\016"
-    "StatusResponse\022\017\n\007success\030\001 \001(\010\022\017\n\007messa"
-    "ge\030\002 \001(\t2\323\001\n\020OTAUpdateService\022F\n\017CheckFo"
-    "rUpdates\022\030.ota.CheckUpdatesRequest\032\031.ota"
-    ".CheckUpdatesResponse\022\?\n\016DownloadUpdate\022"
-    "\024.ota.DownloadRequest\032\025.ota.DownloadResp"
-    "onse0\001\0226\n\014ReportStatus\022\021.ota.StatusRepor"
-    "t\032\023.ota.StatusResponseb\006proto3"
+    "\n\021ota_service.proto\022\003ota\"S\n\023CheckUpdates"
+    "Request\022\021\n\tdevice_id\030\001 \001(\005\022\020\n\010app_name\030\002"
+    " \001(\t\022\027\n\017current_version\030\003 \001(\t\"V\n\nUpdateI"
+    "nfo\022\020\n\010app_name\030\001 \001(\t\022\017\n\007version\030\002 \001(\t\022\020"
+    "\n\010checksum\030\003 \001(\t\022\023\n\013target_path\030\004 \001(\t\"W\n"
+    "\024CheckUpdatesResponse\022*\n\021available_updat"
+    "es\030\001 \003(\0132\017.ota.UpdateInfo\022\023\n\013has_updates"
+    "\030\002 \001(\010\"6\n\017DownloadRequest\022\021\n\tdevice_id\030\001"
+    " \001(\005\022\020\n\010app_name\030\002 \001(\t\"J\n\020DownloadRespon"
+    "se\022\014\n\004data\030\001 \001(\014\022\022\n\ntotal_size\030\002 \001(\003\022\024\n\014"
+    "current_size\030\003 \001(\003\"k\n\014StatusReport\022\021\n\tde"
+    "vice_id\030\001 \001(\005\022\020\n\010app_name\030\002 \001(\t\022\016\n\006statu"
+    "s\030\003 \001(\t\022\025\n\rerror_message\030\004 \001(\t\022\017\n\007versio"
+    "n\030\005 \001(\t\"2\n\016StatusResponse\022\017\n\007success\030\001 \001"
+    "(\010\022\017\n\007message\030\002 \001(\t2\323\001\n\020OTAUpdateService"
+    "\022F\n\017CheckForUpdates\022\030.ota.CheckUpdatesRe"
+    "quest\032\031.ota.CheckUpdatesResponse\022\?\n\016Down"
+    "loadUpdate\022\024.ota.DownloadRequest\032\025.ota.D"
+    "ownloadResponse0\001\0226\n\014ReportStatus\022\021.ota."
+    "StatusReport\032\023.ota.StatusResponseb\006proto"
+    "3"
 };
 static ::absl::once_flag descriptor_table_ota_5fservice_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_ota_5fservice_2eproto = {
     false,
     false,
-    950,
+    801,
     descriptor_table_protodef_ota_5fservice_2eproto,
     "ota_service.proto",
     &descriptor_table_ota_5fservice_2eproto_once,
@@ -396,10 +375,8 @@ CheckUpdatesRequest::CheckUpdatesRequest(::google::protobuf::Arena* arena)
 inline PROTOBUF_NDEBUG_INLINE CheckUpdatesRequest::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
     const Impl_& from)
-      : current_version_(arena, from.current_version_),
-        device_type_(arena, from.device_type_),
-        hardware_version_(arena, from.hardware_version_),
-        os_version_(arena, from.os_version_),
+      : app_name_(arena, from.app_name_),
+        current_version_(arena, from.current_version_),
         _cached_size_{0} {}
 
 CheckUpdatesRequest::CheckUpdatesRequest(
@@ -418,10 +395,8 @@ CheckUpdatesRequest::CheckUpdatesRequest(
 inline PROTOBUF_NDEBUG_INLINE CheckUpdatesRequest::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
-      : current_version_(arena),
-        device_type_(arena),
-        hardware_version_(arena),
-        os_version_(arena),
+      : app_name_(arena),
+        current_version_(arena),
         _cached_size_{0} {}
 
 inline void CheckUpdatesRequest::SharedCtor(::_pb::Arena* arena) {
@@ -435,10 +410,8 @@ CheckUpdatesRequest::~CheckUpdatesRequest() {
 }
 inline void CheckUpdatesRequest::SharedDtor() {
   ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.app_name_.Destroy();
   _impl_.current_version_.Destroy();
-  _impl_.device_type_.Destroy();
-  _impl_.hardware_version_.Destroy();
-  _impl_.os_version_.Destroy();
   _impl_.~Impl_();
 }
 
@@ -449,10 +422,8 @@ PROTOBUF_NOINLINE void CheckUpdatesRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  _impl_.app_name_.ClearToEmpty();
   _impl_.current_version_.ClearToEmpty();
-  _impl_.device_type_.ClearToEmpty();
-  _impl_.hardware_version_.ClearToEmpty();
-  _impl_.os_version_.ClearToEmpty();
   _impl_.device_id_ = 0;
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
@@ -465,15 +436,15 @@ const char* CheckUpdatesRequest::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<3, 5, 0, 84, 2> CheckUpdatesRequest::_table_ = {
+const ::_pbi::TcParseTable<2, 3, 0, 55, 2> CheckUpdatesRequest::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    5, 56,  // max_field_number, fast_idx_mask
+    3, 24,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967264,  // skipmap
+    4294967288,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    5,  // num_field_entries
+    3,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     &_CheckUpdatesRequest_default_instance_._instance,
@@ -483,47 +454,31 @@ const ::_pbi::TcParseTable<3, 5, 0, 84, 2> CheckUpdatesRequest::_table_ = {
     // int32 device_id = 1;
     {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(CheckUpdatesRequest, _impl_.device_id_), 63>(),
      {8, 63, 0, PROTOBUF_FIELD_OFFSET(CheckUpdatesRequest, _impl_.device_id_)}},
-    // string current_version = 2;
+    // string app_name = 2;
     {::_pbi::TcParser::FastUS1,
-     {18, 63, 0, PROTOBUF_FIELD_OFFSET(CheckUpdatesRequest, _impl_.current_version_)}},
-    // string device_type = 3;
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(CheckUpdatesRequest, _impl_.app_name_)}},
+    // string current_version = 3;
     {::_pbi::TcParser::FastUS1,
-     {26, 63, 0, PROTOBUF_FIELD_OFFSET(CheckUpdatesRequest, _impl_.device_type_)}},
-    // string hardware_version = 4;
-    {::_pbi::TcParser::FastUS1,
-     {34, 63, 0, PROTOBUF_FIELD_OFFSET(CheckUpdatesRequest, _impl_.hardware_version_)}},
-    // string os_version = 5;
-    {::_pbi::TcParser::FastUS1,
-     {42, 63, 0, PROTOBUF_FIELD_OFFSET(CheckUpdatesRequest, _impl_.os_version_)}},
-    {::_pbi::TcParser::MiniParse, {}},
-    {::_pbi::TcParser::MiniParse, {}},
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(CheckUpdatesRequest, _impl_.current_version_)}},
   }}, {{
     65535, 65535
   }}, {{
     // int32 device_id = 1;
     {PROTOBUF_FIELD_OFFSET(CheckUpdatesRequest, _impl_.device_id_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
-    // string current_version = 2;
+    // string app_name = 2;
+    {PROTOBUF_FIELD_OFFSET(CheckUpdatesRequest, _impl_.app_name_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string current_version = 3;
     {PROTOBUF_FIELD_OFFSET(CheckUpdatesRequest, _impl_.current_version_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string device_type = 3;
-    {PROTOBUF_FIELD_OFFSET(CheckUpdatesRequest, _impl_.device_type_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string hardware_version = 4;
-    {PROTOBUF_FIELD_OFFSET(CheckUpdatesRequest, _impl_.hardware_version_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string os_version = 5;
-    {PROTOBUF_FIELD_OFFSET(CheckUpdatesRequest, _impl_.os_version_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
   }},
   // no aux_entries
   {{
-    "\27\0\17\13\20\12\0\0"
+    "\27\0\10\17\0\0\0\0"
     "ota.CheckUpdatesRequest"
+    "app_name"
     "current_version"
-    "device_type"
-    "hardware_version"
-    "os_version"
   }},
 };
 
@@ -541,36 +496,20 @@ const ::_pbi::TcParseTable<3, 5, 0, 84, 2> CheckUpdatesRequest::_table_ = {
             stream, this->_internal_device_id(), target);
   }
 
-  // string current_version = 2;
+  // string app_name = 2;
+  if (!this->_internal_app_name().empty()) {
+    const std::string& _s = this->_internal_app_name();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "ota.CheckUpdatesRequest.app_name");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
+  }
+
+  // string current_version = 3;
   if (!this->_internal_current_version().empty()) {
     const std::string& _s = this->_internal_current_version();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
         _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "ota.CheckUpdatesRequest.current_version");
-    target = stream->WriteStringMaybeAliased(2, _s, target);
-  }
-
-  // string device_type = 3;
-  if (!this->_internal_device_type().empty()) {
-    const std::string& _s = this->_internal_device_type();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "ota.CheckUpdatesRequest.device_type");
     target = stream->WriteStringMaybeAliased(3, _s, target);
-  }
-
-  // string hardware_version = 4;
-  if (!this->_internal_hardware_version().empty()) {
-    const std::string& _s = this->_internal_hardware_version();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "ota.CheckUpdatesRequest.hardware_version");
-    target = stream->WriteStringMaybeAliased(4, _s, target);
-  }
-
-  // string os_version = 5;
-  if (!this->_internal_os_version().empty()) {
-    const std::string& _s = this->_internal_os_version();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "ota.CheckUpdatesRequest.os_version");
-    target = stream->WriteStringMaybeAliased(5, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -590,28 +529,16 @@ const ::_pbi::TcParseTable<3, 5, 0, 84, 2> CheckUpdatesRequest::_table_ = {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string current_version = 2;
+  // string app_name = 2;
+  if (!this->_internal_app_name().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_app_name());
+  }
+
+  // string current_version = 3;
   if (!this->_internal_current_version().empty()) {
     total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_current_version());
-  }
-
-  // string device_type = 3;
-  if (!this->_internal_device_type().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_device_type());
-  }
-
-  // string hardware_version = 4;
-  if (!this->_internal_hardware_version().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_hardware_version());
-  }
-
-  // string os_version = 5;
-  if (!this->_internal_os_version().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_os_version());
   }
 
   // int32 device_id = 1;
@@ -639,17 +566,11 @@ void CheckUpdatesRequest::MergeImpl(::google::protobuf::Message& to_msg, const :
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  if (!from._internal_app_name().empty()) {
+    _this->_internal_set_app_name(from._internal_app_name());
+  }
   if (!from._internal_current_version().empty()) {
     _this->_internal_set_current_version(from._internal_current_version());
-  }
-  if (!from._internal_device_type().empty()) {
-    _this->_internal_set_device_type(from._internal_device_type());
-  }
-  if (!from._internal_hardware_version().empty()) {
-    _this->_internal_set_hardware_version(from._internal_hardware_version());
-  }
-  if (!from._internal_os_version().empty()) {
-    _this->_internal_set_os_version(from._internal_os_version());
   }
   if (from._internal_device_id() != 0) {
     _this->_internal_set_device_id(from._internal_device_id());
@@ -676,10 +597,8 @@ void CheckUpdatesRequest::InternalSwap(CheckUpdatesRequest* PROTOBUF_RESTRICT ot
   auto* arena = GetArena();
   ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.app_name_, &other->_impl_.app_name_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.current_version_, &other->_impl_.current_version_, arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_type_, &other->_impl_.device_type_, arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.hardware_version_, &other->_impl_.hardware_version_, arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.os_version_, &other->_impl_.os_version_, arena);
         swap(_impl_.device_id_, other->_impl_.device_id_);
 }
 
@@ -702,11 +621,10 @@ UpdateInfo::UpdateInfo(::google::protobuf::Arena* arena)
 inline PROTOBUF_NDEBUG_INLINE UpdateInfo::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
     const Impl_& from)
-      : component_name_(arena, from.component_name_),
+      : app_name_(arena, from.app_name_),
         version_(arena, from.version_),
         checksum_(arena, from.checksum_),
         target_path_(arena, from.target_path_),
-        service_name_(arena, from.service_name_),
         _cached_size_{0} {}
 
 UpdateInfo::UpdateInfo(
@@ -718,34 +636,20 @@ UpdateInfo::UpdateInfo(
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
-  ::memcpy(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, file_size_),
-           reinterpret_cast<const char *>(&from._impl_) +
-               offsetof(Impl_, file_size_),
-           offsetof(Impl_, is_config_) -
-               offsetof(Impl_, file_size_) +
-               sizeof(Impl_::is_config_));
 
   // @@protoc_insertion_point(copy_constructor:ota.UpdateInfo)
 }
 inline PROTOBUF_NDEBUG_INLINE UpdateInfo::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
-      : component_name_(arena),
+      : app_name_(arena),
         version_(arena),
         checksum_(arena),
         target_path_(arena),
-        service_name_(arena),
         _cached_size_{0} {}
 
 inline void UpdateInfo::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
-  ::memset(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, file_size_),
-           0,
-           offsetof(Impl_, is_config_) -
-               offsetof(Impl_, file_size_) +
-               sizeof(Impl_::is_config_));
 }
 UpdateInfo::~UpdateInfo() {
   // @@protoc_insertion_point(destructor:ota.UpdateInfo)
@@ -754,11 +658,10 @@ UpdateInfo::~UpdateInfo() {
 }
 inline void UpdateInfo::SharedDtor() {
   ABSL_DCHECK(GetArena() == nullptr);
-  _impl_.component_name_.Destroy();
+  _impl_.app_name_.Destroy();
   _impl_.version_.Destroy();
   _impl_.checksum_.Destroy();
   _impl_.target_path_.Destroy();
-  _impl_.service_name_.Destroy();
   _impl_.~Impl_();
 }
 
@@ -769,14 +672,10 @@ PROTOBUF_NOINLINE void UpdateInfo::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.component_name_.ClearToEmpty();
+  _impl_.app_name_.ClearToEmpty();
   _impl_.version_.ClearToEmpty();
   _impl_.checksum_.ClearToEmpty();
   _impl_.target_path_.ClearToEmpty();
-  _impl_.service_name_.ClearToEmpty();
-  ::memset(&_impl_.file_size_, 0, static_cast<::size_t>(
-      reinterpret_cast<char*>(&_impl_.is_config_) -
-      reinterpret_cast<char*>(&_impl_.file_size_)) + sizeof(_impl_.is_config_));
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -788,49 +687,37 @@ const char* UpdateInfo::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<3, 8, 0, 83, 2> UpdateInfo::_table_ = {
+const ::_pbi::TcParseTable<2, 4, 0, 57, 2> UpdateInfo::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    8, 56,  // max_field_number, fast_idx_mask
+    4, 24,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967040,  // skipmap
+    4294967280,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    8,  // num_field_entries
+    4,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     &_UpdateInfo_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
   }, {{
-    // int64 file_size = 8;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(UpdateInfo, _impl_.file_size_), 63>(),
-     {64, 63, 0, PROTOBUF_FIELD_OFFSET(UpdateInfo, _impl_.file_size_)}},
-    // string component_name = 1;
+    // string target_path = 4;
     {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(UpdateInfo, _impl_.component_name_)}},
+     {34, 63, 0, PROTOBUF_FIELD_OFFSET(UpdateInfo, _impl_.target_path_)}},
+    // string app_name = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(UpdateInfo, _impl_.app_name_)}},
     // string version = 2;
     {::_pbi::TcParser::FastUS1,
      {18, 63, 0, PROTOBUF_FIELD_OFFSET(UpdateInfo, _impl_.version_)}},
     // string checksum = 3;
     {::_pbi::TcParser::FastUS1,
      {26, 63, 0, PROTOBUF_FIELD_OFFSET(UpdateInfo, _impl_.checksum_)}},
-    // string target_path = 4;
-    {::_pbi::TcParser::FastUS1,
-     {34, 63, 0, PROTOBUF_FIELD_OFFSET(UpdateInfo, _impl_.target_path_)}},
-    // string service_name = 5;
-    {::_pbi::TcParser::FastUS1,
-     {42, 63, 0, PROTOBUF_FIELD_OFFSET(UpdateInfo, _impl_.service_name_)}},
-    // bool is_service = 6;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(UpdateInfo, _impl_.is_service_), 63>(),
-     {48, 63, 0, PROTOBUF_FIELD_OFFSET(UpdateInfo, _impl_.is_service_)}},
-    // bool is_config = 7;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(UpdateInfo, _impl_.is_config_), 63>(),
-     {56, 63, 0, PROTOBUF_FIELD_OFFSET(UpdateInfo, _impl_.is_config_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // string component_name = 1;
-    {PROTOBUF_FIELD_OFFSET(UpdateInfo, _impl_.component_name_), 0, 0,
+    // string app_name = 1;
+    {PROTOBUF_FIELD_OFFSET(UpdateInfo, _impl_.app_name_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // string version = 2;
     {PROTOBUF_FIELD_OFFSET(UpdateInfo, _impl_.version_), 0, 0,
@@ -841,28 +728,15 @@ const ::_pbi::TcParseTable<3, 8, 0, 83, 2> UpdateInfo::_table_ = {
     // string target_path = 4;
     {PROTOBUF_FIELD_OFFSET(UpdateInfo, _impl_.target_path_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string service_name = 5;
-    {PROTOBUF_FIELD_OFFSET(UpdateInfo, _impl_.service_name_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // bool is_service = 6;
-    {PROTOBUF_FIELD_OFFSET(UpdateInfo, _impl_.is_service_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
-    // bool is_config = 7;
-    {PROTOBUF_FIELD_OFFSET(UpdateInfo, _impl_.is_config_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
-    // int64 file_size = 8;
-    {PROTOBUF_FIELD_OFFSET(UpdateInfo, _impl_.file_size_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt64)},
   }},
   // no aux_entries
   {{
-    "\16\16\7\10\13\14\0\0\0\0\0\0\0\0\0\0"
+    "\16\10\7\10\13\0\0\0"
     "ota.UpdateInfo"
-    "component_name"
+    "app_name"
     "version"
     "checksum"
     "target_path"
-    "service_name"
   }},
 };
 
@@ -873,11 +747,11 @@ const ::_pbi::TcParseTable<3, 8, 0, 83, 2> UpdateInfo::_table_ = {
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
-  // string component_name = 1;
-  if (!this->_internal_component_name().empty()) {
-    const std::string& _s = this->_internal_component_name();
+  // string app_name = 1;
+  if (!this->_internal_app_name().empty()) {
+    const std::string& _s = this->_internal_app_name();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "ota.UpdateInfo.component_name");
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "ota.UpdateInfo.app_name");
     target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
@@ -905,35 +779,6 @@ const ::_pbi::TcParseTable<3, 8, 0, 83, 2> UpdateInfo::_table_ = {
     target = stream->WriteStringMaybeAliased(4, _s, target);
   }
 
-  // string service_name = 5;
-  if (!this->_internal_service_name().empty()) {
-    const std::string& _s = this->_internal_service_name();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "ota.UpdateInfo.service_name");
-    target = stream->WriteStringMaybeAliased(5, _s, target);
-  }
-
-  // bool is_service = 6;
-  if (this->_internal_is_service() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteBoolToArray(
-        6, this->_internal_is_service(), target);
-  }
-
-  // bool is_config = 7;
-  if (this->_internal_is_config() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteBoolToArray(
-        7, this->_internal_is_config(), target);
-  }
-
-  // int64 file_size = 8;
-  if (this->_internal_file_size() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::
-        WriteInt64ToArrayWithField<8>(
-            stream, this->_internal_file_size(), target);
-  }
-
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target =
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -951,10 +796,10 @@ const ::_pbi::TcParseTable<3, 8, 0, 83, 2> UpdateInfo::_table_ = {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string component_name = 1;
-  if (!this->_internal_component_name().empty()) {
+  // string app_name = 1;
+  if (!this->_internal_app_name().empty()) {
     total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_component_name());
+                                    this->_internal_app_name());
   }
 
   // string version = 2;
@@ -973,28 +818,6 @@ const ::_pbi::TcParseTable<3, 8, 0, 83, 2> UpdateInfo::_table_ = {
   if (!this->_internal_target_path().empty()) {
     total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_target_path());
-  }
-
-  // string service_name = 5;
-  if (!this->_internal_service_name().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_service_name());
-  }
-
-  // int64 file_size = 8;
-  if (this->_internal_file_size() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
-        this->_internal_file_size());
-  }
-
-  // bool is_service = 6;
-  if (this->_internal_is_service() != 0) {
-    total_size += 2;
-  }
-
-  // bool is_config = 7;
-  if (this->_internal_is_config() != 0) {
-    total_size += 2;
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
@@ -1016,8 +839,8 @@ void UpdateInfo::MergeImpl(::google::protobuf::Message& to_msg, const ::google::
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_component_name().empty()) {
-    _this->_internal_set_component_name(from._internal_component_name());
+  if (!from._internal_app_name().empty()) {
+    _this->_internal_set_app_name(from._internal_app_name());
   }
   if (!from._internal_version().empty()) {
     _this->_internal_set_version(from._internal_version());
@@ -1027,18 +850,6 @@ void UpdateInfo::MergeImpl(::google::protobuf::Message& to_msg, const ::google::
   }
   if (!from._internal_target_path().empty()) {
     _this->_internal_set_target_path(from._internal_target_path());
-  }
-  if (!from._internal_service_name().empty()) {
-    _this->_internal_set_service_name(from._internal_service_name());
-  }
-  if (from._internal_file_size() != 0) {
-    _this->_internal_set_file_size(from._internal_file_size());
-  }
-  if (from._internal_is_service() != 0) {
-    _this->_internal_set_is_service(from._internal_is_service());
-  }
-  if (from._internal_is_config() != 0) {
-    _this->_internal_set_is_config(from._internal_is_config());
   }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -1062,17 +873,10 @@ void UpdateInfo::InternalSwap(UpdateInfo* PROTOBUF_RESTRICT other) {
   auto* arena = GetArena();
   ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.component_name_, &other->_impl_.component_name_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.app_name_, &other->_impl_.app_name_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.version_, &other->_impl_.version_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.checksum_, &other->_impl_.checksum_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.target_path_, &other->_impl_.target_path_, arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.service_name_, &other->_impl_.service_name_, arena);
-  ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(UpdateInfo, _impl_.is_config_)
-      + sizeof(UpdateInfo::_impl_.is_config_)
-      - PROTOBUF_FIELD_OFFSET(UpdateInfo, _impl_.file_size_)>(
-          reinterpret_cast<char*>(&_impl_.file_size_),
-          reinterpret_cast<char*>(&other->_impl_.file_size_));
 }
 
 ::google::protobuf::Metadata UpdateInfo::GetMetadata() const {
@@ -1302,7 +1106,7 @@ DownloadRequest::DownloadRequest(::google::protobuf::Arena* arena)
 inline PROTOBUF_NDEBUG_INLINE DownloadRequest::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
     const Impl_& from)
-      : component_name_(arena, from.component_name_),
+      : app_name_(arena, from.app_name_),
         _cached_size_{0} {}
 
 DownloadRequest::DownloadRequest(
@@ -1321,7 +1125,7 @@ DownloadRequest::DownloadRequest(
 inline PROTOBUF_NDEBUG_INLINE DownloadRequest::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
-      : component_name_(arena),
+      : app_name_(arena),
         _cached_size_{0} {}
 
 inline void DownloadRequest::SharedCtor(::_pb::Arena* arena) {
@@ -1335,7 +1139,7 @@ DownloadRequest::~DownloadRequest() {
 }
 inline void DownloadRequest::SharedDtor() {
   ABSL_DCHECK(GetArena() == nullptr);
-  _impl_.component_name_.Destroy();
+  _impl_.app_name_.Destroy();
   _impl_.~Impl_();
 }
 
@@ -1346,7 +1150,7 @@ PROTOBUF_NOINLINE void DownloadRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.component_name_.ClearToEmpty();
+  _impl_.app_name_.ClearToEmpty();
   _impl_.device_id_ = 0;
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
@@ -1359,7 +1163,7 @@ const char* DownloadRequest::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 0, 42, 2> DownloadRequest::_table_ = {
+const ::_pbi::TcParseTable<1, 2, 0, 36, 2> DownloadRequest::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
@@ -1373,9 +1177,9 @@ const ::_pbi::TcParseTable<1, 2, 0, 42, 2> DownloadRequest::_table_ = {
     &_DownloadRequest_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
   }, {{
-    // string component_name = 2;
+    // string app_name = 2;
     {::_pbi::TcParser::FastUS1,
-     {18, 63, 0, PROTOBUF_FIELD_OFFSET(DownloadRequest, _impl_.component_name_)}},
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(DownloadRequest, _impl_.app_name_)}},
     // int32 device_id = 1;
     {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(DownloadRequest, _impl_.device_id_), 63>(),
      {8, 63, 0, PROTOBUF_FIELD_OFFSET(DownloadRequest, _impl_.device_id_)}},
@@ -1385,15 +1189,15 @@ const ::_pbi::TcParseTable<1, 2, 0, 42, 2> DownloadRequest::_table_ = {
     // int32 device_id = 1;
     {PROTOBUF_FIELD_OFFSET(DownloadRequest, _impl_.device_id_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
-    // string component_name = 2;
-    {PROTOBUF_FIELD_OFFSET(DownloadRequest, _impl_.component_name_), 0, 0,
+    // string app_name = 2;
+    {PROTOBUF_FIELD_OFFSET(DownloadRequest, _impl_.app_name_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
   }},
   // no aux_entries
   {{
-    "\23\0\16\0\0\0\0\0"
+    "\23\0\10\0\0\0\0\0"
     "ota.DownloadRequest"
-    "component_name"
+    "app_name"
   }},
 };
 
@@ -1411,11 +1215,11 @@ const ::_pbi::TcParseTable<1, 2, 0, 42, 2> DownloadRequest::_table_ = {
             stream, this->_internal_device_id(), target);
   }
 
-  // string component_name = 2;
-  if (!this->_internal_component_name().empty()) {
-    const std::string& _s = this->_internal_component_name();
+  // string app_name = 2;
+  if (!this->_internal_app_name().empty()) {
+    const std::string& _s = this->_internal_app_name();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "ota.DownloadRequest.component_name");
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "ota.DownloadRequest.app_name");
     target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
@@ -1436,10 +1240,10 @@ const ::_pbi::TcParseTable<1, 2, 0, 42, 2> DownloadRequest::_table_ = {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string component_name = 2;
-  if (!this->_internal_component_name().empty()) {
+  // string app_name = 2;
+  if (!this->_internal_app_name().empty()) {
     total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_component_name());
+                                    this->_internal_app_name());
   }
 
   // int32 device_id = 1;
@@ -1467,8 +1271,8 @@ void DownloadRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::goo
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_component_name().empty()) {
-    _this->_internal_set_component_name(from._internal_component_name());
+  if (!from._internal_app_name().empty()) {
+    _this->_internal_set_app_name(from._internal_app_name());
   }
   if (from._internal_device_id() != 0) {
     _this->_internal_set_device_id(from._internal_device_id());
@@ -1495,7 +1299,7 @@ void DownloadRequest::InternalSwap(DownloadRequest* PROTOBUF_RESTRICT other) {
   auto* arena = GetArena();
   ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.component_name_, &other->_impl_.component_name_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.app_name_, &other->_impl_.app_name_, arena);
         swap(_impl_.device_id_, other->_impl_.device_id_);
 }
 
@@ -1770,7 +1574,7 @@ StatusReport::StatusReport(::google::protobuf::Arena* arena)
 inline PROTOBUF_NDEBUG_INLINE StatusReport::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
     const Impl_& from)
-      : component_name_(arena, from.component_name_),
+      : app_name_(arena, from.app_name_),
         status_(arena, from.status_),
         error_message_(arena, from.error_message_),
         version_(arena, from.version_),
@@ -1792,7 +1596,7 @@ StatusReport::StatusReport(
 inline PROTOBUF_NDEBUG_INLINE StatusReport::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
-      : component_name_(arena),
+      : app_name_(arena),
         status_(arena),
         error_message_(arena),
         version_(arena),
@@ -1809,7 +1613,7 @@ StatusReport::~StatusReport() {
 }
 inline void StatusReport::SharedDtor() {
   ABSL_DCHECK(GetArena() == nullptr);
-  _impl_.component_name_.Destroy();
+  _impl_.app_name_.Destroy();
   _impl_.status_.Destroy();
   _impl_.error_message_.Destroy();
   _impl_.version_.Destroy();
@@ -1823,7 +1627,7 @@ PROTOBUF_NOINLINE void StatusReport::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.component_name_.ClearToEmpty();
+  _impl_.app_name_.ClearToEmpty();
   _impl_.status_.ClearToEmpty();
   _impl_.error_message_.ClearToEmpty();
   _impl_.version_.ClearToEmpty();
@@ -1839,7 +1643,7 @@ const char* StatusReport::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<3, 5, 0, 65, 2> StatusReport::_table_ = {
+const ::_pbi::TcParseTable<3, 5, 0, 59, 2> StatusReport::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
@@ -1857,9 +1661,9 @@ const ::_pbi::TcParseTable<3, 5, 0, 65, 2> StatusReport::_table_ = {
     // int32 device_id = 1;
     {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(StatusReport, _impl_.device_id_), 63>(),
      {8, 63, 0, PROTOBUF_FIELD_OFFSET(StatusReport, _impl_.device_id_)}},
-    // string component_name = 2;
+    // string app_name = 2;
     {::_pbi::TcParser::FastUS1,
-     {18, 63, 0, PROTOBUF_FIELD_OFFSET(StatusReport, _impl_.component_name_)}},
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(StatusReport, _impl_.app_name_)}},
     // string status = 3;
     {::_pbi::TcParser::FastUS1,
      {26, 63, 0, PROTOBUF_FIELD_OFFSET(StatusReport, _impl_.status_)}},
@@ -1877,8 +1681,8 @@ const ::_pbi::TcParseTable<3, 5, 0, 65, 2> StatusReport::_table_ = {
     // int32 device_id = 1;
     {PROTOBUF_FIELD_OFFSET(StatusReport, _impl_.device_id_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
-    // string component_name = 2;
-    {PROTOBUF_FIELD_OFFSET(StatusReport, _impl_.component_name_), 0, 0,
+    // string app_name = 2;
+    {PROTOBUF_FIELD_OFFSET(StatusReport, _impl_.app_name_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // string status = 3;
     {PROTOBUF_FIELD_OFFSET(StatusReport, _impl_.status_), 0, 0,
@@ -1892,9 +1696,9 @@ const ::_pbi::TcParseTable<3, 5, 0, 65, 2> StatusReport::_table_ = {
   }},
   // no aux_entries
   {{
-    "\20\0\16\6\15\7\0\0"
+    "\20\0\10\6\15\7\0\0"
     "ota.StatusReport"
-    "component_name"
+    "app_name"
     "status"
     "error_message"
     "version"
@@ -1915,11 +1719,11 @@ const ::_pbi::TcParseTable<3, 5, 0, 65, 2> StatusReport::_table_ = {
             stream, this->_internal_device_id(), target);
   }
 
-  // string component_name = 2;
-  if (!this->_internal_component_name().empty()) {
-    const std::string& _s = this->_internal_component_name();
+  // string app_name = 2;
+  if (!this->_internal_app_name().empty()) {
+    const std::string& _s = this->_internal_app_name();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "ota.StatusReport.component_name");
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "ota.StatusReport.app_name");
     target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
@@ -1964,10 +1768,10 @@ const ::_pbi::TcParseTable<3, 5, 0, 65, 2> StatusReport::_table_ = {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string component_name = 2;
-  if (!this->_internal_component_name().empty()) {
+  // string app_name = 2;
+  if (!this->_internal_app_name().empty()) {
     total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_component_name());
+                                    this->_internal_app_name());
   }
 
   // string status = 3;
@@ -2013,8 +1817,8 @@ void StatusReport::MergeImpl(::google::protobuf::Message& to_msg, const ::google
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_component_name().empty()) {
-    _this->_internal_set_component_name(from._internal_component_name());
+  if (!from._internal_app_name().empty()) {
+    _this->_internal_set_app_name(from._internal_app_name());
   }
   if (!from._internal_status().empty()) {
     _this->_internal_set_status(from._internal_status());
@@ -2050,7 +1854,7 @@ void StatusReport::InternalSwap(StatusReport* PROTOBUF_RESTRICT other) {
   auto* arena = GetArena();
   ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.component_name_, &other->_impl_.component_name_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.app_name_, &other->_impl_.app_name_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.status_, &other->_impl_.status_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.error_message_, &other->_impl_.error_message_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.version_, &other->_impl_.version_, arena);

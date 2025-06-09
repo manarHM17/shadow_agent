@@ -17,37 +17,51 @@ SimpleOTAClient::SimpleOTAClient(const std::string& server_address, int32_t user
 
 void SimpleOTAClient::CheckAndApplyUpdates() {
     try {
-        ota::CheckUpdatesRequest request;
-        request.set_device_id(device_id);
-        request.set_current_version("1.0.0");
+        for (const auto& entry : std::filesystem::directory_iterator("/opt")) {
+            if (entry.is_regular_file()) {
+                std::string filename = entry.path().filename().string();
+                // Extract app_name and version from filename like app_name_001
+                std::string app_name = filename;
+                std::string version = "0";
+                size_t last_underscore = filename.rfind('_');
+                if (last_underscore != std::string::npos && last_underscore + 1 < filename.size()) {
+                    app_name = filename.substr(0, last_underscore);
+                    version = filename.substr(last_underscore + 1);
+                }
 
-        ota::CheckUpdatesResponse response;
-        grpc::ClientContext context;
+                ota::CheckUpdatesRequest request;
+                request.set_device_id(device_id);
+                request.set_app_name(app_name);
+                request.set_current_version(version);
 
-        grpc::Status status = stub->CheckForUpdates(&context, request, &response);
+                ota::CheckUpdatesResponse response;
+                grpc::ClientContext context;
+                grpc::Status status = stub->CheckForUpdates(&context, request, &response);
 
-        if (!status.ok()) {
-            std::cerr << "Failed to check updates: " << status.error_message() << std::endl;
-            return;
-        }
+                if (!status.ok()) {
+                    std::cerr << "Failed to check updates for " << app_name << ": " << status.error_message() << std::endl;
+                    continue;
+                }
 
-        if (!response.has_updates()) {
-            std::cout << "No updates available" << std::endl;
-            return;
-        }
+                if (!response.has_updates()) {
+                    std::cout << "No updates available for " << app_name << std::endl;
+                    continue;
+                }
 
-        std::cout << "Found " << response.available_updates_size() << " updates" << std::endl;
+                std::cout << "Found " << response.available_updates_size() << " updates for " << app_name << std::endl;
 
-        for (const auto& update : response.available_updates()) {
-            std::cout << "Processing update: " << update.component_name()
-                      << " v" << update.version() << std::endl;
+                for (const auto& update : response.available_updates()) {
+                    std::cout << "Processing update: " << update.app_name()
+                              << " v" << update.version() << std::endl;
 
-            if (DownloadAndApplyUpdate(update)) {
-                ReportStatus(update.component_name(), "SUCCESS", "");
-                std::cout << "Successfully applied update for " << update.component_name() << std::endl;
-            } else {
-                ReportStatus(update.component_name(), "FAILED", "Application failed");
-                std::cerr << "Failed to apply update for " << update.component_name() << std::endl;
+                    if (DownloadAndApplyUpdate(update)) {
+                        ReportStatus(update.app_name(), "SUCCESS", "");
+                        std::cout << "Successfully applied update for " << update.app_name() << std::endl;
+                    } else {
+                        ReportStatus(update.app_name(), "FAILED", "Application failed");
+                        std::cerr << "Failed to apply update for " << update.app_name() << std::endl;
+                    }
+                }
             }
         }
     } catch (const std::exception& e) {
@@ -59,7 +73,7 @@ bool SimpleOTAClient::DownloadAndApplyUpdate(const ota::UpdateInfo& update) {
     try {
         ota::DownloadRequest dl_request;
         dl_request.set_device_id(device_id);
-        dl_request.set_component_name(update.component_name());
+        dl_request.set_app_name(update.app_name());
 
         grpc::ClientContext context;
         auto reader = stub->DownloadUpdate(&context, dl_request);
@@ -67,7 +81,7 @@ bool SimpleOTAClient::DownloadAndApplyUpdate(const ota::UpdateInfo& update) {
         std::vector<char> file_data;
         ota::DownloadResponse chunk;
 
-        std::cout << "Downloading " << update.component_name() << "..." << std::endl;
+        std::cout << "Downloading " << update.app_name() << "..." << std::endl;
 
         while (reader->Read(&chunk)) {
             const std::string& data = chunk.data();
@@ -101,49 +115,37 @@ bool SimpleOTAClient::DownloadAndApplyUpdate(const ota::UpdateInfo& update) {
 
 bool SimpleOTAClient::ApplyUpdate(const ota::UpdateInfo& update, const std::vector<char>& data) {
     try {
-        if (!update.service_name().empty()) {
-            std::string stop_cmd = "sudo systemctl stop " + update.service_name();
-            system(stop_cmd.c_str());
-        }
-
-        if (std::filesystem::exists(update.target_path())) {
-            std::string backup_path = update.target_path() + ".backup";
-            std::filesystem::copy_file(update.target_path(), backup_path,
+        std::string target_path = "/opt/" + update.app_name() + "_" + update.version();
+        if (std::filesystem::exists(target_path)) {
+            std::string backup_path = target_path + ".backup";
+            std::filesystem::copy_file(target_path, backup_path,
                                        std::filesystem::copy_options::overwrite_existing);
         }
 
-        std::ofstream outfile(update.target_path(), std::ios::binary);
+        std::ofstream outfile(target_path, std::ios::binary);
         if (!outfile.is_open()) {
-            std::cerr << "Failed to open target file: " << update.target_path() << std::endl;
+            std::cerr << "Failed to open target file: " << target_path << std::endl;
             return false;
         }
 
         outfile.write(data.data(), data.size());
         outfile.close();
 
-        if (!update.is_config()) {
-            std::string chmod_cmd = "chmod +x " + update.target_path();
-            system(chmod_cmd.c_str());
-        }
+        std::string chmod_cmd = "chmod +x " + target_path;
+        system(chmod_cmd.c_str());
 
-        if (!update.service_name().empty()) {
-            if (update.is_service()) {
-                system("sudo systemctl daemon-reload");
-                std::string enable_cmd = "sudo systemctl enable " + update.service_name();
-                system(enable_cmd.c_str());
-            }
-
-            std::string restart_cmd = "sudo systemctl restart " + update.service_name();
-            if (system(restart_cmd.c_str()) != 0) {
-                std::cerr << "Failed to restart service: " << update.service_name() << std::endl;
-                return false;
-            }
-
-            std::this_thread::sleep_for(std::chrono::seconds(2));
-            std::string status_cmd = "systemctl is-active " + update.service_name() + " > /dev/null 2>&1";
-            if (system(status_cmd.c_str()) != 0) {
-                std::cerr << "Service failed to start: " << update.service_name() << std::endl;
-                return false;
+        // Remove all other versioned binaries for this app except the current one
+        std::string prefix = update.app_name() + "_";
+        for (const auto& entry : std::filesystem::directory_iterator("/opt")) {
+            if (entry.is_regular_file()) {
+                std::string fname = entry.path().filename().string();
+                if (fname.rfind(prefix, 0) == 0 && fname != (update.app_name() + "_" + update.version())) {
+                    try {
+                        std::filesystem::remove(entry.path());
+                    } catch (...) {
+                        // Ignore errors
+                    }
+                }
             }
         }
 
@@ -154,11 +156,11 @@ bool SimpleOTAClient::ApplyUpdate(const ota::UpdateInfo& update, const std::vect
     }
 }
 
-void SimpleOTAClient::ReportStatus(const std::string& component, const std::string& status_str,
+void SimpleOTAClient::ReportStatus(const std::string& app_name, const std::string& status_str,
                                    const std::string& error_msg) {
     ota::StatusReport request;
     request.set_device_id(device_id);
-    request.set_component_name(component);
+    request.set_app_name(app_name);
     request.set_status(status_str);
     request.set_error_message(error_msg);
 

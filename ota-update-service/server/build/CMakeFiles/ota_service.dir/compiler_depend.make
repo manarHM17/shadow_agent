@@ -49,15 +49,12 @@ CMakeFiles/ota_service.dir/db_handler.cpp.o: /home/manar/IOTSHADOW/ota-update-se
   /usr/include/c++/13/bits/requires_hosted.h \
   /usr/include/c++/13/bits/std_abs.h \
   /usr/include/c++/13/bits/stl_algobase.h \
-  /usr/include/c++/13/bits/stl_bvector.h \
   /usr/include/c++/13/bits/stl_construct.h \
   /usr/include/c++/13/bits/stl_function.h \
   /usr/include/c++/13/bits/stl_iterator.h \
   /usr/include/c++/13/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/13/bits/stl_iterator_base_types.h \
   /usr/include/c++/13/bits/stl_pair.h \
-  /usr/include/c++/13/bits/stl_uninitialized.h \
-  /usr/include/c++/13/bits/stl_vector.h \
   /usr/include/c++/13/bits/streambuf.tcc \
   /usr/include/c++/13/bits/streambuf_iterator.h \
   /usr/include/c++/13/bits/string_view.tcc \
@@ -65,7 +62,6 @@ CMakeFiles/ota_service.dir/db_handler.cpp.o: /home/manar/IOTSHADOW/ota-update-se
   /usr/include/c++/13/bits/uses_allocator.h \
   /usr/include/c++/13/bits/uses_allocator_args.h \
   /usr/include/c++/13/bits/utility.h \
-  /usr/include/c++/13/bits/vector.tcc \
   /usr/include/c++/13/cctype \
   /usr/include/c++/13/cerrno \
   /usr/include/c++/13/clocale \
@@ -99,7 +95,6 @@ CMakeFiles/ota_service.dir/db_handler.cpp.o: /home/manar/IOTSHADOW/ota-update-se
   /usr/include/c++/13/tuple \
   /usr/include/c++/13/type_traits \
   /usr/include/c++/13/typeinfo \
-  /usr/include/c++/13/vector \
   /usr/include/ctype.h \
   /usr/include/endian.h \
   /usr/include/errno.h \
@@ -741,10 +736,6 @@ CMakeFiles/ota_service.dir/grpc_service_impl.cpp.o: /home/manar/IOTSHADOW/ota-up
   /usr/local/include/google/protobuf/io/zero_copy_stream_impl_lite.h \
   /usr/local/include/google/protobuf/json/json.h \
   /usr/local/include/google/protobuf/map.h \
-  /usr/local/include/google/protobuf/map_entry.h \
-  /usr/local/include/google/protobuf/map_field.h \
-  /usr/local/include/google/protobuf/map_field_inl.h \
-  /usr/local/include/google/protobuf/map_field_lite.h \
   /usr/local/include/google/protobuf/map_type_handler.h \
   /usr/local/include/google/protobuf/message.h \
   /usr/local/include/google/protobuf/message_lite.h \
@@ -1359,10 +1350,6 @@ CMakeFiles/ota_service.dir/ota_service.grpc.pb.cc.o: ota_service.grpc.pb.cc \
   /usr/local/include/google/protobuf/io/zero_copy_stream_impl_lite.h \
   /usr/local/include/google/protobuf/json/json.h \
   /usr/local/include/google/protobuf/map.h \
-  /usr/local/include/google/protobuf/map_entry.h \
-  /usr/local/include/google/protobuf/map_field.h \
-  /usr/local/include/google/protobuf/map_field_inl.h \
-  /usr/local/include/google/protobuf/map_field_lite.h \
   /usr/local/include/google/protobuf/map_type_handler.h \
   /usr/local/include/google/protobuf/message.h \
   /usr/local/include/google/protobuf/message_lite.h \
@@ -1968,10 +1955,6 @@ CMakeFiles/ota_service.dir/ota_service.pb.cc.o: ota_service.pb.cc \
   /usr/local/include/google/protobuf/io/zero_copy_stream.h \
   /usr/local/include/google/protobuf/io/zero_copy_stream_impl_lite.h \
   /usr/local/include/google/protobuf/map.h \
-  /usr/local/include/google/protobuf/map_entry.h \
-  /usr/local/include/google/protobuf/map_field.h \
-  /usr/local/include/google/protobuf/map_field_inl.h \
-  /usr/local/include/google/protobuf/map_field_lite.h \
   /usr/local/include/google/protobuf/map_type_handler.h \
   /usr/local/include/google/protobuf/message.h \
   /usr/local/include/google/protobuf/message_lite.h \
@@ -2786,10 +2769,6 @@ CMakeFiles/ota_service.dir/server_main.cpp.o: /home/manar/IOTSHADOW/ota-update-s
   /usr/local/include/google/protobuf/io/zero_copy_stream_impl_lite.h \
   /usr/local/include/google/protobuf/json/json.h \
   /usr/local/include/google/protobuf/map.h \
-  /usr/local/include/google/protobuf/map_entry.h \
-  /usr/local/include/google/protobuf/map_field.h \
-  /usr/local/include/google/protobuf/map_field_inl.h \
-  /usr/local/include/google/protobuf/map_field_lite.h \
   /usr/local/include/google/protobuf/map_type_handler.h \
   /usr/local/include/google/protobuf/message.h \
   /usr/local/include/google/protobuf/message_lite.h \
@@ -2960,6 +2939,8 @@ CMakeFiles/ota_service.dir/server_main.cpp.o: /home/manar/IOTSHADOW/ota-update-s
 
 /usr/include/openssl/sha.h:
 
+/home/manar/IOTSHADOW/ota-update-service/server/ota_update_service.cpp:
+
 /usr/local/include/google/protobuf/reflection_ops.h:
 
 /usr/local/include/google/protobuf/raw_ptr.h:
@@ -3078,10 +3059,6 @@ ota_service.pb.cc:
 
 /usr/local/include/google/protobuf/serial_arena.h:
 
-/usr/local/include/google/protobuf/repeated_field.h:
-
-/usr/local/include/google/protobuf/reflection.h:
-
 /usr/include/c++/13/bits/stl_deque.h:
 
 /usr/include/c++/13/bits/specfun.h:
@@ -3145,6 +3122,14 @@ ota_service.pb.cc:
 /usr/include/c++/13/array:
 
 /usr/local/include/absl/container/internal/layout.h:
+
+/usr/include/byteswap.h:
+
+/usr/include/c++/13/bitset:
+
+/usr/local/include/absl/container/internal/container_memory.h:
+
+/usr/local/include/google/protobuf/reflection.h:
 
 /usr/local/include/google/protobuf/stubs/port.h:
 
@@ -3276,51 +3261,13 @@ ota_service.pb.cc:
 
 /usr/include/x86_64-linux-gnu/bits/floatn-common.h:
 
-/usr/include/c++/13/bits/erase_if.h:
+/usr/include/c++/13/bits/string_view.tcc:
 
-/usr/include/x86_64-linux-gnu/gnu/stubs.h:
-
-/usr/local/include/grpcpp/support/time.h:
-
-/usr/include/x86_64-linux-gnu/bits/cpu-set.h:
-
-/usr/include/x86_64-linux-gnu/bits/byteswap.h:
-
-/usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:
-
-/usr/include/c++/13/bits/stl_heap.h:
-
-/usr/include/c++/13/bits/atomic_lockfree_defines.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
-
-/usr/include/c++/13/bits/stl_iterator.h:
-
-/usr/include/mysql/plugin_auth_common.h:
-
-/usr/include/c++/13/ext/numeric_traits.h:
-
-/usr/include/x86_64-linux-gnu/asm/errno.h:
-
-/usr/include/c++/13/bits/stl_uninitialized.h:
-
-/usr/local/include/grpcpp/impl/sync.h:
-
-/usr/include/c++/13/bits/new_allocator.h:
+/usr/local/include/absl/container/internal/btree_container.h:
 
 /usr/local/include/absl/log/log_sink.h:
 
 /usr/include/c++/13/bits/stl_construct.h:
-
-/home/manar/IOTSHADOW/ota-update-service/server/db_handler.h:
-
-/home/manar/IOTSHADOW/ota-update-service/server/grpc_service_impl.h:
-
-/usr/local/include/grpc/grpc_security.h:
-
-/usr/local/include/google/protobuf/repeated_ptr_field.h:
-
-/usr/include/c++/13/bits/stl_algobase.h:
 
 /usr/include/c++/13/bits/refwrap.h:
 
@@ -3340,15 +3287,31 @@ ota_service.pb.cc:
 
 /usr/local/include/absl/base/log_severity.h:
 
+/usr/include/c++/13/bits/stl_multiset.h:
+
+/usr/local/include/absl/base/internal/low_level_alloc.h:
+
+/usr/include/c++/13/bits/postypes.h:
+
 /usr/local/include/absl/strings/internal/str_format/bind.h:
 
 /usr/include/c++/13/bits/stl_set.h:
+
+/usr/local/include/grpcpp/support/time.h:
+
+/usr/include/x86_64-linux-gnu/bits/cpu-set.h:
 
 /usr/include/c++/13/bits/exception.h:
 
 /usr/local/include/absl/base/casts.h:
 
 /usr/local/include/absl/functional/any_invocable.h:
+
+/usr/include/c++/13/bits/locale_facets.tcc:
+
+/usr/include/c++/13/ext/atomicity.h:
+
+/usr/local/include/google/protobuf/generated_enum_reflection.h:
 
 /usr/include/c++/13/bits/locale_classes.tcc:
 
@@ -3416,8 +3379,6 @@ ota_service.pb.cc:
 
 /usr/include/c++/13/bits/basic_ios.h:
 
-/usr/local/include/google/protobuf/map_field_inl.h:
-
 /usr/include/x86_64-linux-gnu/c++/13/bits/c++locale.h:
 
 /usr/include/c++/13/bits/ostream.tcc:
@@ -3440,23 +3401,9 @@ ota_service.pb.cc:
 
 /usr/include/c++/13/bits/allocated_ptr.h:
 
-/usr/include/c++/13/bits/locale_facets.tcc:
+/home/manar/IOTSHADOW/ota-update-service/server/db_handler.h:
 
-/usr/include/c++/13/ext/atomicity.h:
-
-/usr/local/include/google/protobuf/generated_enum_reflection.h:
-
-/home/manar/IOTSHADOW/ota-update-service/server/ota_update_service.cpp:
-
-/usr/local/include/google/protobuf/map_field_lite.h:
-
-/usr/include/c++/13/bits/string_view.tcc:
-
-/usr/local/include/absl/container/internal/btree_container.h:
-
-/usr/local/include/absl/crc/internal/crc32c_inline.h:
-
-/usr/include/c++/13/backward/binders.h:
+/home/manar/IOTSHADOW/ota-update-service/server/grpc_service_impl.h:
 
 /usr/include/c++/13/bits/sstream.tcc:
 
@@ -3489,6 +3436,8 @@ ota_service.pb.cc:
 /usr/include/ctype.h:
 
 /usr/include/c++/13/bits/localefwd.h:
+
+/usr/local/include/google/protobuf/repeated_field.h:
 
 /usr/include/c++/13/bits/locale_facets.h:
 
@@ -3526,12 +3475,6 @@ ota_service.pb.cc:
 
 /usr/include/c++/13/bits/cxxabi_forced.h:
 
-/usr/include/byteswap.h:
-
-/usr/include/c++/13/bitset:
-
-/usr/local/include/absl/container/internal/container_memory.h:
-
 /usr/include/x86_64-linux-gnu/bits/waitstatus.h:
 
 /usr/include/c++/13/bits/exception_ptr.h:
@@ -3544,17 +3487,31 @@ ota_service.pb.cc:
 
 /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
 
+/usr/include/c++/13/bits/stl_iterator.h:
+
+/usr/include/mysql/plugin_auth_common.h:
+
+/usr/include/c++/13/ext/numeric_traits.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
+
 /usr/include/c++/13/bits/functexcept.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h:
 
 /usr/include/c++/13/ios:
 
+/usr/include/c++/13/bits/basic_string.h:
+
 /usr/include/stdc-predef.h:
 
-/usr/include/c++/13/bits/postypes.h:
-
 /usr/local/include/absl/strings/cord_analysis.h:
+
+/usr/local/include/grpcpp/impl/sync.h:
+
+/usr/include/c++/13/bits/new_allocator.h:
+
+/usr/include/c++/13/bits/stl_uninitialized.h:
 
 /usr/include/c++/13/bits/stl_function.h:
 
@@ -3567,10 +3524,6 @@ ota_service.pb.cc:
 /usr/include/x86_64-linux-gnu/bits/setjmp.h:
 
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
-
-/usr/include/c++/13/bits/vector.tcc:
-
-/usr/include/c++/13/optional:
 
 /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
 
@@ -3595,8 +3548,6 @@ ota_service.pb.cc:
 /usr/include/c++/13/cstddef:
 
 /usr/local/include/absl/container/flat_hash_map.h:
-
-/usr/include/c++/13/vector:
 
 /usr/include/c++/13/bits/fs_path.h:
 
@@ -3666,10 +3617,6 @@ ota_service.pb.h:
 
 /usr/include/c++/13/istream:
 
-/usr/local/include/google/protobuf/port_undef.inc:
-
-/usr/local/include/absl/base/internal/spinlock_wait.h:
-
 /usr/local/include/absl/container/inlined_vector.h:
 
 /usr/include/c++/13/string_view:
@@ -3722,9 +3669,9 @@ ota_service.grpc.pb.cc:
 
 /usr/include/stdint.h:
 
-/usr/local/include/absl/strings/internal/string_constant.h:
-
 /usr/include/mysql/errmsg.h:
+
+/usr/local/include/absl/strings/internal/string_constant.h:
 
 /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h:
 
@@ -3743,6 +3690,16 @@ ota_service.grpc.pb.cc:
 /usr/include/c++/13/tr1/exp_integral.tcc:
 
 /usr/local/include/absl/status/status.h:
+
+/usr/include/c++/13/bits/stl_heap.h:
+
+/usr/include/c++/13/bits/atomic_lockfree_defines.h:
+
+/usr/include/x86_64-linux-gnu/asm/errno.h:
+
+/usr/include/c++/13/backward/binders.h:
+
+/usr/local/include/absl/crc/internal/crc32c_inline.h:
 
 /usr/include/mysql/mysql_com.h:
 
@@ -3766,8 +3723,6 @@ ota_service.grpc.pb.cc:
 
 /usr/include/wctype.h:
 
-/usr/local/include/google/protobuf/map_entry.h:
-
 /usr/local/include/absl/strings/cord.h:
 
 /usr/include/stdlib.h:
@@ -3778,9 +3733,13 @@ ota_service.grpc.pb.cc:
 
 /usr/include/c++/13/pstl/glue_memory_defs.h:
 
-/usr/include/c++/13/bits/stl_multiset.h:
+/usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:
 
-/usr/local/include/absl/base/internal/low_level_alloc.h:
+/usr/include/x86_64-linux-gnu/bits/byteswap.h:
+
+/usr/include/c++/13/bits/erase_if.h:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs.h:
 
 /usr/include/c++/13/bits/stl_numeric.h:
 
@@ -3792,11 +3751,19 @@ ota_service.grpc.pb.cc:
 
 /usr/local/include/absl/crc/internal/crc32_x86_arm_combined_simd.h:
 
+/usr/local/include/absl/base/internal/spinlock_wait.h:
+
+/usr/local/include/google/protobuf/port_undef.inc:
+
 /usr/include/openssl/e_os2.h:
 
 /usr/include/c++/13/bits/unordered_map.h:
 
 /usr/include/c++/13/bits/unordered_set.h:
+
+/usr/include/c++/13/bits/vector.tcc:
+
+/usr/include/c++/13/optional:
 
 /usr/include/c++/13/chrono:
 
@@ -3872,9 +3839,9 @@ ota_service.grpc.pb.cc:
 
 /usr/include/strings.h:
 
-/usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
-
 /usr/include/c++/13/bits/stl_map.h:
+
+/usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
 
 /usr/include/c++/13/locale:
 
@@ -3951,6 +3918,8 @@ ota_service.grpc.pb.h:
 /usr/include/c++/13/bits/atomic_base.h:
 
 /usr/include/c++/13/variant:
+
+/usr/include/c++/13/vector:
 
 /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
 
@@ -4278,10 +4247,6 @@ ota_service.grpc.pb.h:
 
 /usr/local/include/google/protobuf/map.h:
 
-/usr/include/c++/13/bits/basic_string.h:
-
-/usr/local/include/google/protobuf/map_field.h:
-
 /usr/include/x86_64-linux-gnu/bits/endianness.h:
 
 /usr/local/include/google/protobuf/message_lite.h:
@@ -4291,3 +4256,9 @@ ota_service.grpc.pb.h:
 /usr/include/x86_64-linux-gnu/bits/typesizes.h:
 
 /usr/local/include/google/protobuf/port.h:
+
+/usr/local/include/grpc/grpc_security.h:
+
+/usr/include/c++/13/bits/stl_algobase.h:
+
+/usr/local/include/google/protobuf/repeated_ptr_field.h:

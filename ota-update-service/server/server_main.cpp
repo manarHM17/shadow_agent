@@ -9,7 +9,7 @@ void RunServer() {
     std::string server_address("0.0.0.0:50051");
 
     auto ota_service = std::make_unique<OTAUpdateService>(
-        "/home/manar/IOTSHADOW/ota-update-service/server/updates/applications"
+        "/home/manar/IOTSHADOW/ota-update-service/server/updates/app"
     );
 
     if (!ota_service->InitializeDatabase()) {

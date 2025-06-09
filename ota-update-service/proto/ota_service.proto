@@ -10,21 +10,15 @@ service OTAUpdateService {
 
 message CheckUpdatesRequest {
     int32 device_id = 1;
-    string current_version = 2;
-    string device_type = 3;     // e.g. "raspberry-pi"
-    string hardware_version = 4; // e.g. "pi4"
-    string os_version = 5;      // e.g. "raspbian"
+    string app_name = 2;       // e.g. "my_app"
+    string current_version = 3; 
 }
 
 message UpdateInfo {
-    string component_name = 1;
+    string app_name = 1;
     string version = 2;
     string checksum = 3;
     string target_path = 4;
-    string service_name = 5;
-    bool is_service = 6;
-    bool is_config = 7;
-    int64 file_size = 8;
 }
 
 message CheckUpdatesResponse {
@@ -34,7 +28,7 @@ message CheckUpdatesResponse {
 
 message DownloadRequest {
     int32 device_id = 1;
-    string component_name = 2;
+    string app_name = 2;
 }
 
 message DownloadResponse {
@@ -45,7 +39,7 @@ message DownloadResponse {
 
 message StatusReport {
     int32 device_id = 1;
-    string component_name = 2;
+    string app_name = 2;
     string status = 3; // SUCCESS, FAILED, IN_PROGRESS
     string error_message = 4;
     string version = 5;

@@ -17,6 +17,6 @@ private:
 
     bool DownloadAndApplyUpdate(const ota::UpdateInfo& update);
     bool ApplyUpdate(const ota::UpdateInfo& update, const std::vector<char>& data);
-    void ReportStatus(const std::string& component, const std::string& status_str, const std::string& error_msg);
+    void ReportStatus(const std::string& app_name, const std::string& status_str, const std::string& error_msg);
     std::string CalculateChecksum(const std::vector<char>& data);
 };

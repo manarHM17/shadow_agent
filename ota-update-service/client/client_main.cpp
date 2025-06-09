@@ -38,39 +38,51 @@ public:
     
     void CheckAndApplyUpdates() {
         try {
-            // 1. Vérifier les mises à jour
-            ota::CheckUpdatesRequest request;
-            request.set_device_id(device_id);
-            request.set_current_version("1.0.0");
-            
-            ota::CheckUpdatesResponse response;
-            grpc::ClientContext context;
-            
-            grpc::Status status = stub->CheckForUpdates(&context, request, &response);
-            
-            if (!status.ok()) {
-                std::cerr << "Failed to check updates: " << status.error_message() << std::endl;
-                return;
-            }
-            
-            if (!response.has_updates()) {
-                std::cout << "No updates available" << std::endl;
-                return;
-            }
-            
-            std::cout << "Found " << response.available_updates_size() << " updates" << std::endl;
-            
-            // 2. Télécharger et appliquer chaque mise à jour
-            for (const auto& update : response.available_updates()) {
-                std::cout << "Processing update: " << update.component_name() 
-                         << " v" << update.version() << std::endl;
-                
-                if (DownloadAndApplyUpdate(update)) {
-                    ReportStatus(update.component_name(), "SUCCESS", "");
-                    std::cout << "Successfully applied update for " << update.component_name() << std::endl;
-                } else {
-                    ReportStatus(update.component_name(), "FAILED", "Application failed");
-                    std::cerr << "Failed to apply update for " << update.component_name() << std::endl;
+            for (const auto& entry : std::filesystem::directory_iterator("/opt")) {
+                if (entry.is_regular_file()) {
+                    std::string filename = entry.path().filename().string();
+                    // Extract app_name and version from filename like app_name_001
+                    std::string app_name = filename;
+                    std::string version = "0";
+                    size_t last_underscore = filename.rfind('_');
+                    if (last_underscore != std::string::npos && last_underscore + 1 < filename.size()) {
+                        app_name = filename.substr(0, last_underscore);
+                        version = filename.substr(last_underscore + 1);
+                    }
+
+                    ota::CheckUpdatesRequest request;
+                    request.set_device_id(device_id);
+                    request.set_app_name(app_name);
+                    request.set_current_version(version);
+
+                    ota::CheckUpdatesResponse response;
+                    grpc::ClientContext context;
+                    grpc::Status status = stub->CheckForUpdates(&context, request, &response);
+
+                    if (!status.ok()) {
+                        std::cerr << "Failed to check updates for " << app_name << ": " << status.error_message() << std::endl;
+                        continue;
+                    }
+
+                    if (!response.has_updates()) {
+                        std::cout << "No updates available for " << app_name << std::endl;
+                        continue;
+                    }
+
+                    std::cout << "Found " << response.available_updates_size() << " updates for " << app_name << std::endl;
+
+                    for (const auto& update : response.available_updates()) {
+                        std::cout << "Processing update: " << update.app_name()
+                                 << " v" << update.version() << std::endl;
+
+                        if (DownloadAndApplyUpdate(update)) {
+                            ReportStatus(update.app_name(), "SUCCESS", "");
+                            std::cout << "Successfully applied update for " << update.app_name() << std::endl;
+                        } else {
+                            ReportStatus(update.app_name(), "FAILED", "Application failed");
+                            std::cerr << "Failed to apply update for " << update.app_name() << std::endl;
+                        }
+                    }
                 }
             }
         } catch (const std::exception& e) {
@@ -81,86 +93,60 @@ public:
 private:
     bool DownloadAndApplyUpdate(const ota::UpdateInfo& update) {
         try {
-            // Télécharger
             ota::DownloadRequest dl_request;
             dl_request.set_device_id(device_id);
-            dl_request.set_component_name(update.component_name());
-            
+            dl_request.set_app_name(update.app_name());
+
             grpc::ClientContext context;
             auto reader = stub->DownloadUpdate(&context, dl_request);
-            
+
             std::vector<char> file_data;
             ota::DownloadResponse chunk;
-            
-            std::cout << "Downloading " << update.component_name() << "..." << std::endl;
-            
+
+            std::cout << "Downloading " << update.app_name() << "..." << std::endl;
+
             while (reader->Read(&chunk)) {
                 const std::string& data = chunk.data();
                 file_data.insert(file_data.end(), data.begin(), data.end());
-                
-                // Afficher le progrès
+
                 double progress = (double)chunk.current_size() / chunk.total_size() * 100;
-                std::cout << "\rProgress: " << std::fixed << std::setprecision(1) 
+                std::cout << "\rProgress: " << std::fixed << std::setprecision(1)
                          << progress << "%" << std::flush;
             }
             std::cout << std::endl;
-            
+
             grpc::Status status = reader->Finish();
             if (!status.ok()) {
                 std::cerr << "Download failed: " << status.error_message() << std::endl;
                 return false;
             }
-            
-            // Vérifier le checksum
+
             std::string calculated_checksum = CalculateChecksum(file_data);
             if (calculated_checksum != update.checksum()) {
                 std::cerr << "Checksum mismatch!" << std::endl;
                 return false;
             }
-            
-            // Appliquer la mise à jour
+
             return ApplyUpdate(update, file_data);
-            
+
         } catch (const std::exception& e) {
             std::cerr << "Exception in DownloadAndApplyUpdate: " << e.what() << std::endl;
             return false;
         }
     }
-    
-    std::string GetRaspberryPiModel() {
-        std::ifstream cpuinfo("/proc/cpuinfo");
-        std::string line;
-        while (std::getline(cpuinfo, line)) {
-            if (line.find("Model") != std::string::npos) {
-                return line.substr(line.find(":") + 2);
-            }
-        }
-        return "unknown";
-    }
-
     bool ApplyUpdate(const ota::UpdateInfo& update, const std::vector<char>& data) {
         try {
-            // Backup current application
-            std::string backup_dir = "/var/backups/ota/";
-            std::filesystem::create_directories(backup_dir);
-            
-            std::string timestamp = std::to_string(std::time(nullptr));
-            std::string backup_path = backup_dir + "app_" + timestamp + ".backup";
-            
-            if (std::filesystem::exists(update.target_path())) {
+            std::string target_path = "/opt/" + update.app_name() + "_" + update.version();
+            if (std::filesystem::exists(target_path)) {
+                std::string backup_path = target_path + ".backup";
                 std::filesystem::copy_file(
-                    update.target_path(),
+                    target_path,
                     backup_path,
                     std::filesystem::copy_options::overwrite_existing
                 );
             }
 
-            // Stop service
-            std::string stop_cmd = "sudo systemctl stop " + update.service_name();
-            system(stop_cmd.c_str());
-
-            // Apply update
-            std::ofstream outfile(update.target_path(), std::ios::binary);
+            std::ofstream outfile(target_path, std::ios::binary);
             if (!outfile) {
                 std::cerr << "Failed to open target file" << std::endl;
                 return false;
@@ -168,25 +154,23 @@ private:
             outfile.write(data.data(), data.size());
             outfile.close();
 
-            // Set permissions
-            std::string chmod_cmd = "chmod +x " + update.target_path();
+            std::string chmod_cmd = "chmod +x " + target_path;
             system(chmod_cmd.c_str());
 
-            // Restart service
-            std::string start_cmd = "sudo systemctl start " + update.service_name();
-            system(start_cmd.c_str());
-
-            // Verify service is running
-            std::this_thread::sleep_for(std::chrono::seconds(2));
-            if (system(("systemctl is-active " + update.service_name()).c_str()) != 0) {
-                // Rollback if failed
-                std::filesystem::copy_file(
-                    backup_path,
-                    update.target_path(),
-                    std::filesystem::copy_options::overwrite_existing
-                );
-                system(start_cmd.c_str());
-                return false;
+            // Remove all other versioned binaries for this app except the current one
+            std::string prefix = update.app_name() + "_";
+            std::string keep = update.app_name() + "_" + update.version();
+            for (const auto& entry : std::filesystem::directory_iterator("/opt")) {
+                if (entry.is_regular_file()) {
+                    std::string fname = entry.path().filename().string();
+                    if (fname.rfind(prefix, 0) == 0 && fname != keep) {
+                        try {
+                            std::filesystem::remove(entry.path());
+                        } catch (...) {
+                            // Ignore errors
+                        }
+                    }
+                }
             }
 
             return true;
@@ -195,21 +179,19 @@ private:
             return false;
         }
     }
-    
-    void ReportStatus(const std::string& component, const std::string& status_str, 
+    void ReportStatus(const std::string& app_name, const std::string& status_str, 
                       const std::string& error_msg) {
         ota::StatusReport request;
         request.set_device_id(device_id);
-        request.set_component_name(component);
+        request.set_app_name(app_name);
         request.set_status(status_str);
         request.set_error_message(error_msg);
-        
+
         ota::StatusResponse response;
         grpc::ClientContext context;
-        
+
         stub->ReportStatus(&context, request, &response);
     }
-    
     std::string CalculateChecksum(const std::vector<char>& data) {
         // Implémentation similaire à celle du serveur
         unsigned char hash[SHA256_DIGEST_LENGTH];
