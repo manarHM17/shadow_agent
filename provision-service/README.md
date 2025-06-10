@@ -15,10 +15,13 @@ A gRPC-based service for managing IoT device provisioning, authentication, and c
 
 - C++ 17 or higher
 - gRPC 1.62.1 or higher
-- MySQL Server 8.0 or higher
+- Docker and Docker Compose
 - OpenSSL 3.0 or higher
 - CMake 3.10 or higher
 - Boost 1.83.0 or higher
+
+
+
 
 ## Project Structure
 
@@ -79,10 +82,7 @@ make
 sudo apt install mysql-server
 ```
 
-2. Create the database:
-```sql
-CREATE DATABASE IOTSHADOW;
-```
+
 
 ## Running the Service
 

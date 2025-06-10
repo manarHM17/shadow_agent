@@ -1,0 +1,15 @@
+{
+  "device_id": "3
+manar",
+  "readable_date": "2025-06-10_17-25-00",
+  "ip_address": "172.23.220.19",
+  "uptime": "up 5 hours, 53 minutes",
+  "os_version": "Ubuntu 24.04.2 LTS",
+  "network_status": "reachable",
+  "applications": {},
+  "services": {
+    "mosquitto": "inactive",
+    "cron": "active",
+    "ssh": "active"
+  }
+}
