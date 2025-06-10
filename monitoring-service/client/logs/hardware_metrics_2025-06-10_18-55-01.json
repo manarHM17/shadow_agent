@@ -1,9 +1,9 @@
 {
   "device_id": "3
 manar",
-  "readable_date": "2025-06-10_17-32-01",
-  "cpu_usage": "6.4%",
-  "memory_usage": "53.49%",
+  "readable_date": "2025-06-10_18-55-01",
+  "cpu_usage": "0%",
+  "memory_usage": "53.52%",
   "disk_usage": "4%",
   "usb_state": "Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub | Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub",
   "gpio_state": 0,
