@@ -1,11 +1,11 @@
 {
   "device_id": "3
 manar",
-  "readable_date": "2025-06-10_17-24-00",
+  "readable_date": "2025-06-10_17-35-01",
   "ip_address": "172.23.220.19",
-  "uptime": "up 5 hours, 52 minutes",
+  "uptime": "up 6 hours, 2 minutes",
   "os_version": "Ubuntu 24.04.2 LTS",
-  "network_status": "reachable",
+  "network_status": "unreachable",
   "applications": {},
   "services": {
     "mosquitto": "inactive",
