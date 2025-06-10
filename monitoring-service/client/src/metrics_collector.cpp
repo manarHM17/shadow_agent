@@ -41,8 +41,8 @@ std::pair<std::string, std::string> MetricsCollector::collectMetrics() {
     std::sort(hw_files.begin(), hw_files.end(), fileTimeComparator);
     std::sort(sw_files.begin(), sw_files.end(), fileTimeComparator);
 
-    // Vérifie qu'il y a au moins 2 fichiers de chaque type
-    if (hw_files.size() < 2 || sw_files.size() < 2) {
+    // Accept at least 1 file of each type
+    if (hw_files.empty() || sw_files.empty()) {
         std::string error = "[Error] Not enough metric files. Found " + 
                             std::to_string(hw_files.size()) + " hardware, " +
                             std::to_string(sw_files.size()) + " software.";
@@ -50,9 +50,9 @@ std::pair<std::string, std::string> MetricsCollector::collectMetrics() {
         throw std::runtime_error(error);
     }
 
-    // Récupère les 2 derniers fichiers hardware et software (on prend les DEUXIÈMES plus récents pour "périodique")
-    std::string hw_file_path = hw_files[1].path().string();
-    std::string sw_file_path = sw_files[1].path().string();
+    // Use the most recent file if only one exists, otherwise the second most recent
+    std::string hw_file_path = hw_files.size() > 1 ? hw_files[1].path().string() : hw_files[0].path().string();
+    std::string sw_file_path = sw_files.size() > 1 ? sw_files[1].path().string() : sw_files[0].path().string();
 
     std::cout << "Selected files: " << hw_file_path << " and " << sw_file_path << std::endl;
     return {hw_file_path, sw_file_path};
@@ -61,42 +61,44 @@ std::pair<std::string, std::string> MetricsCollector::collectMetrics() {
 
 MetricsCollector::HardwareMetrics MetricsCollector::parseHardwareMetrics(const std::string& file_path) {
     nlohmann::json json = readJsonFile(file_path);
-    
+
     HardwareMetrics metrics;
     metrics.device_id = device_id_;
     metrics.readable_date = json["readable_date"];
     metrics.cpu_usage = json["cpu_usage"];
     metrics.memory_usage = json["memory_usage"];
     metrics.disk_usage_root = json["disk_usage"];
-    
-    // Handle USB data (which could be in different formats)
-    if (json.contains("usb_state")) {
-        metrics.usb_data = "usb_state: " + json["usb_state"].get<std::string>();
-    } else {
-        metrics.usb_data = "usb_devices: none";
-    }
-
-    
+    metrics.usb_data = json.contains("usb_state") ? json["usb_state"].get<std::string>() : "none";
     metrics.gpio_state = json["gpio_state"];
-    
+    metrics.kernel_version = json.value("kernel_version", "");
+    metrics.hardware_model = json.value("hardware_model", "");
+    metrics.firmware_version = json.value("firmware_version", "");
     return metrics;
 }
 
 MetricsCollector::SoftwareMetrics MetricsCollector::parseSoftwareMetrics(const std::string& file_path) {
     nlohmann::json json = readJsonFile(file_path);
-    
+
     SoftwareMetrics metrics;
     metrics.device_id = device_id_;
     metrics.readable_date = json["readable_date"];
     metrics.ip_address = json["ip_address"];
     metrics.uptime = json["uptime"];
     metrics.network_status = json["network_status"];
-    
+    metrics.os_version = json.value("os_version", "");
+    // Parse applications array
+    if (json.contains("applications") && json["applications"].is_array()) {
+        for (const auto& app : json["applications"]) {
+            metrics.applications.push_back({
+                app["name"].get<std::string>(),
+                app["version"].get<std::string>()
+            });
+        }
+    }
     // Parse services
     for (auto& [service, status] : json["services"].items()) {
         metrics.services[service] = status;
     }
-    
     return metrics;
 }
 
@@ -121,30 +123,23 @@ std::string MetricsCollector::getDeviceId() const {
 }
 
 void MetricsCollector::loadDeviceId() {
-    // Try to get device ID from a configuration file
-    std::string config_file = (fs::path(log_dir_).parent_path() / "token" / "token.txt").string();
+    // Change path to config.txt
+    std::string config_file = (fs::path(log_dir_).parent_path() / "config" / "config.txt").string();
 
     if (fs::exists(config_file)) {
         std::ifstream file(config_file);
         if (file.is_open()) {
             std::string line;
             if (std::getline(file, line)) {
-                file.close();
-                size_t delim_pos = line.find(':');
-                if (delim_pos != std::string::npos) {
-                    // Save the device ID for future use
-                    device_id_ = line.substr(0, delim_pos);
-                    if (!device_id_.empty()) {
-                        std::cout << "Loaded device ID from config: " << device_id_ << std::endl;
-                        return;
-                    }
-                } else {
-                    std::cerr << "Invalid format in token.txt. Expected device_id:token" << std::endl;
+                // Use the first line as device ID
+                device_id_ = line;
+                if (!device_id_.empty()) {
+                    std::cout << "Loaded device ID from config: " << device_id_ << std::endl;
+                    return;
                 }
             }
         }
     }
-
     std::cerr << "Failed to load device ID from config file." << std::endl;
 }
 

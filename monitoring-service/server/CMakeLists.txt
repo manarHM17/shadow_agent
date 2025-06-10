@@ -77,6 +77,7 @@ add_executable(monitoring_service
     src/rabbitmq_consumer.cpp
     src/metrics_analyzer.cpp
     src/alert_manager.cpp
+    src/mysql_metrics_storage.cpp
     ${monitoring_proto_srcs}
     ${monitoring_grpc_srcs}
 

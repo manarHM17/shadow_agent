@@ -225,6 +225,30 @@ src/metrics_analyzer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_service.dir/build.make CMakeFiles/monitoring_service.dir/src/metrics_analyzer.cpp.s
 .PHONY : src/metrics_analyzer.cpp.s
 
+src/mysql_metrics_storage.o: src/mysql_metrics_storage.cpp.o
+.PHONY : src/mysql_metrics_storage.o
+
+# target to build an object file
+src/mysql_metrics_storage.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_service.dir/build.make CMakeFiles/monitoring_service.dir/src/mysql_metrics_storage.cpp.o
+.PHONY : src/mysql_metrics_storage.cpp.o
+
+src/mysql_metrics_storage.i: src/mysql_metrics_storage.cpp.i
+.PHONY : src/mysql_metrics_storage.i
+
+# target to preprocess a source file
+src/mysql_metrics_storage.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_service.dir/build.make CMakeFiles/monitoring_service.dir/src/mysql_metrics_storage.cpp.i
+.PHONY : src/mysql_metrics_storage.cpp.i
+
+src/mysql_metrics_storage.s: src/mysql_metrics_storage.cpp.s
+.PHONY : src/mysql_metrics_storage.s
+
+# target to generate assembly for a file
+src/mysql_metrics_storage.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitoring_service.dir/build.make CMakeFiles/monitoring_service.dir/src/mysql_metrics_storage.cpp.s
+.PHONY : src/mysql_metrics_storage.cpp.s
+
 src/rabbitmq_consumer.o: src/rabbitmq_consumer.cpp.o
 .PHONY : src/rabbitmq_consumer.o
 
@@ -294,6 +318,9 @@ help:
 	@echo "... src/metrics_analyzer.o"
 	@echo "... src/metrics_analyzer.i"
 	@echo "... src/metrics_analyzer.s"
+	@echo "... src/mysql_metrics_storage.o"
+	@echo "... src/mysql_metrics_storage.i"
+	@echo "... src/mysql_metrics_storage.s"
 	@echo "... src/rabbitmq_consumer.o"
 	@echo "... src/rabbitmq_consumer.i"
 	@echo "... src/rabbitmq_consumer.s"

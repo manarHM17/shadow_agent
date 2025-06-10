@@ -154,6 +154,9 @@ inline constexpr Alert::Impl_::Impl_(
         recommended_action_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
+        corrective_command_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
         severity_{static_cast< ::monitoring::Alert_Severity >(0)},
         _cached_size_{0} {}
 
@@ -254,6 +257,7 @@ const ::uint32_t TableStruct_monitoring_2eproto::offsets[] PROTOBUF_SECTION_VARI
     PROTOBUF_FIELD_OFFSET(::monitoring::Alert, _impl_.alert_type_),
     PROTOBUF_FIELD_OFFSET(::monitoring::Alert, _impl_.description_),
     PROTOBUF_FIELD_OFFSET(::monitoring::Alert, _impl_.recommended_action_),
+    PROTOBUF_FIELD_OFFSET(::monitoring::Alert, _impl_.corrective_command_),
     ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::monitoring::HardwareMetrics, _internal_metadata_),
     ~0u,  // no _extensions_
@@ -305,9 +309,9 @@ static const ::_pbi::MigrationSchema
         {9, -1, -1, sizeof(::monitoring::StatusUpdate)},
         {19, -1, -1, sizeof(::monitoring::StatusResponse)},
         {29, -1, -1, sizeof(::monitoring::Alert)},
-        {43, -1, -1, sizeof(::monitoring::HardwareMetrics)},
-        {60, 70, -1, sizeof(::monitoring::SoftwareMetrics_ServicesEntry_DoNotUse)},
-        {72, -1, -1, sizeof(::monitoring::SoftwareMetrics)},
+        {44, -1, -1, sizeof(::monitoring::HardwareMetrics)},
+        {61, 71, -1, sizeof(::monitoring::SoftwareMetrics_ServicesEntry_DoNotUse)},
+        {73, -1, -1, sizeof(::monitoring::SoftwareMetrics)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -324,33 +328,34 @@ const char descriptor_table_protodef_monitoring_2eproto[] PROTOBUF_SECTION_VARIA
     "Info\022\021\n\tdevice_id\030\001 \001(\t\"2\n\014StatusUpdate\022"
     "\021\n\tdevice_id\030\001 \001(\t\022\017\n\007message\030\002 \001(\t\"2\n\016S"
     "tatusResponse\022\017\n\007success\030\001 \001(\010\022\017\n\007messag"
-    "e\030\002 \001(\t\"\321\001\n\005Alert\022\021\n\tdevice_id\030\001 \001(\t\022,\n\010"
+    "e\030\002 \001(\t\"\355\001\n\005Alert\022\021\n\tdevice_id\030\001 \001(\t\022,\n\010"
     "severity\030\002 \001(\0162\032.monitoring.Alert.Severi"
     "ty\022\021\n\ttimestamp\030\003 \001(\t\022\022\n\nalert_type\030\004 \001("
     "\t\022\023\n\013description\030\005 \001(\t\022\032\n\022recommended_ac"
-    "tion\030\006 \001(\t\"/\n\010Severity\022\010\n\004INFO\020\000\022\013\n\007WARN"
-    "ING\020\001\022\014\n\010CRITICAL\020\002\"\320\001\n\017HardwareMetrics\022"
-    "\021\n\tdevice_id\030\001 \001(\t\022\025\n\rreadable_date\030\002 \001("
-    "\t\022\021\n\tcpu_usage\030\003 \001(\t\022\024\n\014memory_usage\030\004 \001"
-    "(\t\022\027\n\017disk_usage_root\030\005 \001(\t\022\032\n\020last_inse"
-    "rt_time\030\006 \001(\tH\000\022\025\n\013usb_devices\030\007 \001(\tH\000\022\022"
-    "\n\ngpio_state\030\010 \001(\005B\n\n\010usb_info\"\345\001\n\017Softw"
-    "areMetrics\022\021\n\tdevice_id\030\001 \001(\t\022\025\n\rreadabl"
-    "e_date\030\002 \001(\t\022\022\n\nip_address\030\003 \001(\t\022\016\n\006upti"
-    "me\030\004 \001(\t\022\026\n\016network_status\030\005 \001(\t\022;\n\010serv"
-    "ices\030\006 \003(\0132).monitoring.SoftwareMetrics."
-    "ServicesEntry\032/\n\rServicesEntry\022\013\n\003key\030\001 "
-    "\001(\t\022\r\n\005value\030\002 \001(\t:\0028\0012\240\001\n\021MonitoringSer"
-    "vice\022\?\n\016RegisterDevice\022\026.monitoring.Devi"
-    "ceInfo\032\021.monitoring.Alert\"\0000\001\022J\n\020SendSta"
-    "tusUpdate\022\030.monitoring.StatusUpdate\032\032.mo"
-    "nitoring.StatusResponse\"\000b\006proto3"
+    "tion\030\006 \001(\t\022\032\n\022corrective_command\030\007 \001(\t\"/"
+    "\n\010Severity\022\010\n\004INFO\020\000\022\013\n\007WARNING\020\001\022\014\n\010CRI"
+    "TICAL\020\002\"\320\001\n\017HardwareMetrics\022\021\n\tdevice_id"
+    "\030\001 \001(\t\022\025\n\rreadable_date\030\002 \001(\t\022\021\n\tcpu_usa"
+    "ge\030\003 \001(\t\022\024\n\014memory_usage\030\004 \001(\t\022\027\n\017disk_u"
+    "sage_root\030\005 \001(\t\022\032\n\020last_insert_time\030\006 \001("
+    "\tH\000\022\025\n\013usb_devices\030\007 \001(\tH\000\022\022\n\ngpio_state"
+    "\030\010 \001(\005B\n\n\010usb_info\"\345\001\n\017SoftwareMetrics\022\021"
+    "\n\tdevice_id\030\001 \001(\t\022\025\n\rreadable_date\030\002 \001(\t"
+    "\022\022\n\nip_address\030\003 \001(\t\022\016\n\006uptime\030\004 \001(\t\022\026\n\016"
+    "network_status\030\005 \001(\t\022;\n\010services\030\006 \003(\0132)"
+    ".monitoring.SoftwareMetrics.ServicesEntr"
+    "y\032/\n\rServicesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value"
+    "\030\002 \001(\t:\0028\0012\240\001\n\021MonitoringService\022\?\n\016Regi"
+    "sterDevice\022\026.monitoring.DeviceInfo\032\021.mon"
+    "itoring.Alert\"\0000\001\022J\n\020SendStatusUpdate\022\030."
+    "monitoring.StatusUpdate\032\032.monitoring.Sta"
+    "tusResponse\"\000b\006proto3"
 };
 static ::absl::once_flag descriptor_table_monitoring_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_monitoring_2eproto = {
     false,
     false,
-    993,
+    1021,
     descriptor_table_protodef_monitoring_2eproto,
     "monitoring.proto",
     &descriptor_table_monitoring_2eproto_once,
@@ -1047,6 +1052,7 @@ inline PROTOBUF_NDEBUG_INLINE Alert::Impl_::Impl_(
         alert_type_(arena, from.alert_type_),
         description_(arena, from.description_),
         recommended_action_(arena, from.recommended_action_),
+        corrective_command_(arena, from.corrective_command_),
         _cached_size_{0} {}
 
 Alert::Alert(
@@ -1070,6 +1076,7 @@ inline PROTOBUF_NDEBUG_INLINE Alert::Impl_::Impl_(
         alert_type_(arena),
         description_(arena),
         recommended_action_(arena),
+        corrective_command_(arena),
         _cached_size_{0} {}
 
 inline void Alert::SharedCtor(::_pb::Arena* arena) {
@@ -1088,6 +1095,7 @@ inline void Alert::SharedDtor() {
   _impl_.alert_type_.Destroy();
   _impl_.description_.Destroy();
   _impl_.recommended_action_.Destroy();
+  _impl_.corrective_command_.Destroy();
   _impl_.~Impl_();
 }
 
@@ -1103,6 +1111,7 @@ PROTOBUF_NOINLINE void Alert::Clear() {
   _impl_.alert_type_.ClearToEmpty();
   _impl_.description_.ClearToEmpty();
   _impl_.recommended_action_.ClearToEmpty();
+  _impl_.corrective_command_.ClearToEmpty();
   _impl_.severity_ = 0;
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
@@ -1115,15 +1124,15 @@ const char* Alert::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<3, 6, 0, 82, 2> Alert::_table_ = {
+const ::_pbi::TcParseTable<3, 7, 0, 100, 2> Alert::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    6, 56,  // max_field_number, fast_idx_mask
+    7, 56,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967232,  // skipmap
+    4294967168,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    6,  // num_field_entries
+    7,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     &_Alert_default_instance_._instance,
@@ -1148,7 +1157,9 @@ const ::_pbi::TcParseTable<3, 6, 0, 82, 2> Alert::_table_ = {
     // string recommended_action = 6;
     {::_pbi::TcParser::FastUS1,
      {50, 63, 0, PROTOBUF_FIELD_OFFSET(Alert, _impl_.recommended_action_)}},
-    {::_pbi::TcParser::MiniParse, {}},
+    // string corrective_command = 7;
+    {::_pbi::TcParser::FastUS1,
+     {58, 63, 0, PROTOBUF_FIELD_OFFSET(Alert, _impl_.corrective_command_)}},
   }}, {{
     65535, 65535
   }}, {{
@@ -1170,16 +1181,20 @@ const ::_pbi::TcParseTable<3, 6, 0, 82, 2> Alert::_table_ = {
     // string recommended_action = 6;
     {PROTOBUF_FIELD_OFFSET(Alert, _impl_.recommended_action_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string corrective_command = 7;
+    {PROTOBUF_FIELD_OFFSET(Alert, _impl_.corrective_command_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
   }},
   // no aux_entries
   {{
-    "\20\11\0\11\12\13\22\0"
+    "\20\11\0\11\12\13\22\22"
     "monitoring.Alert"
     "device_id"
     "timestamp"
     "alert_type"
     "description"
     "recommended_action"
+    "corrective_command"
   }},
 };
 
@@ -1237,6 +1252,14 @@ const ::_pbi::TcParseTable<3, 6, 0, 82, 2> Alert::_table_ = {
     target = stream->WriteStringMaybeAliased(6, _s, target);
   }
 
+  // string corrective_command = 7;
+  if (!this->_internal_corrective_command().empty()) {
+    const std::string& _s = this->_internal_corrective_command();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "monitoring.Alert.corrective_command");
+    target = stream->WriteStringMaybeAliased(7, _s, target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target =
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -1284,6 +1307,12 @@ const ::_pbi::TcParseTable<3, 6, 0, 82, 2> Alert::_table_ = {
                                     this->_internal_recommended_action());
   }
 
+  // string corrective_command = 7;
+  if (!this->_internal_corrective_command().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_corrective_command());
+  }
+
   // .monitoring.Alert.Severity severity = 2;
   if (this->_internal_severity() != 0) {
     total_size += 1 +
@@ -1324,6 +1353,9 @@ void Alert::MergeImpl(::google::protobuf::Message& to_msg, const ::google::proto
   if (!from._internal_recommended_action().empty()) {
     _this->_internal_set_recommended_action(from._internal_recommended_action());
   }
+  if (!from._internal_corrective_command().empty()) {
+    _this->_internal_set_corrective_command(from._internal_corrective_command());
+  }
   if (from._internal_severity() != 0) {
     _this->_internal_set_severity(from._internal_severity());
   }
@@ -1354,6 +1386,7 @@ void Alert::InternalSwap(Alert* PROTOBUF_RESTRICT other) {
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.alert_type_, &other->_impl_.alert_type_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.description_, &other->_impl_.description_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.recommended_action_, &other->_impl_.recommended_action_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.corrective_command_, &other->_impl_.corrective_command_, arena);
   swap(_impl_.severity_, other->_impl_.severity_);
 }
 

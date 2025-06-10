@@ -3,6 +3,7 @@
 #include <string>
 #include <thread>
 #include <chrono>
+#include <cstdlib> // Pour system()
 
 #include <grpcpp/grpcpp.h>
 #include "monitoring.grpc.pb.h"
@@ -113,6 +114,22 @@ private:
         }
     }
 
+    void ExecuteCorrectiveCommand(const std::string& cmds) {
+        if (!cmds.empty()) {
+            std::istringstream iss(cmds);
+            std::string cmd;
+            while (std::getline(iss, cmd, ';')) {
+                if (!cmd.empty()) {
+                    std::cout << "[INFO] Executing corrective command: " << cmd << std::endl;
+                    int ret = system(cmd.c_str());
+                    if (ret != 0) {
+                        std::cerr << "[ERROR] Command failed with code: " << ret << std::endl;
+                    }
+                }
+            }
+        }
+    }
+
     void ProcessAlert(const Alert& alert) {
         std::cout << "=== ALERT RECEIVED ===" << std::endl;
         std::cout << "Type: " << alert.alert_type() << std::endl;
@@ -120,6 +137,10 @@ private:
         std::cout << "Description: " << alert.description() << std::endl;
         std::cout << "Recommended Action: " << alert.recommended_action() << std::endl;
         std::cout << "Timestamp: " << alert.timestamp() << std::endl;
+        if (!alert.corrective_command().empty()) {
+            std::cout << "Corrective Command(s): " << alert.corrective_command() << std::endl;
+            ExecuteCorrectiveCommand(alert.corrective_command());
+        }
         std::cout << "=====================" << std::endl;
     }
 

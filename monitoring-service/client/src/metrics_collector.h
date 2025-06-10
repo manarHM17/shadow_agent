@@ -18,6 +18,9 @@ public:
         std::string disk_usage_root;
         std::string usb_data;
         int gpio_state;
+        std::string kernel_version;
+        std::string hardware_model;
+        std::string firmware_version;
     };
 
     struct SoftwareMetrics {
@@ -26,6 +29,8 @@ public:
         std::string ip_address;
         std::string uptime;
         std::string network_status;
+        std::string os_version;
+        std::vector<std::pair<std::string, std::string>> applications;
         std::map<std::string, std::string> services;
     };
     //collect metrics from the latest log files 

@@ -139,34 +139,39 @@ bool RabbitMQSender::sendMessage(const std::string& queue_name, const std::strin
 
 std::string RabbitMQSender::serializeHardwareMetrics(const MetricsCollector::HardwareMetrics& metrics) {
     nlohmann::json json;
-    
     json["device_id"] = metrics.device_id;
     json["readable_date"] = metrics.readable_date;
     json["cpu_usage"] = metrics.cpu_usage;
     json["memory_usage"] = metrics.memory_usage;
-    json["disk_usage_root"] = metrics.disk_usage_root;
-    json["usb_data"] = metrics.usb_data;
+    json["disk_usage"] = metrics.disk_usage_root;
+    json["usb_state"] = metrics.usb_data;
     json["gpio_state"] = metrics.gpio_state;
-    
+    json["kernel_version"] = metrics.kernel_version;
+    json["hardware_model"] = metrics.hardware_model;
+    json["firmware_version"] = metrics.firmware_version;
     return json.dump();
 }
 
 std::string RabbitMQSender::serializeSoftwareMetrics(const MetricsCollector::SoftwareMetrics& metrics) {
     nlohmann::json json;
-    
     json["device_id"] = metrics.device_id;
     json["readable_date"] = metrics.readable_date;
     json["ip_address"] = metrics.ip_address;
     json["uptime"] = metrics.uptime;
     json["network_status"] = metrics.network_status;
-    
+    json["os_version"] = metrics.os_version;
+    // Serialize applications
+    nlohmann::json apps = nlohmann::json::array();
+    for (const auto& [name, version] : metrics.applications) {
+        apps.push_back({{"name", name}, {"version", version}});
+    }
+    json["applications"] = apps;
     // Serialize services
     nlohmann::json services;
     for (const auto& [name, status] : metrics.services) {
         services[name] = status;
     }
     json["services"] = services;
-    
     return json.dump();
 }
 

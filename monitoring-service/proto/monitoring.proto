@@ -41,6 +41,7 @@ message Alert {
   string alert_type = 4;      // "cpu", "ram", "disk", "service", "usb", "gpio"
   string description = 5;
   string recommended_action = 6;
+  string corrective_command = 7; // <-- Ajouté pour la commande corrective
 }
 
 // Hardware metrics structure (matching your JSON format)

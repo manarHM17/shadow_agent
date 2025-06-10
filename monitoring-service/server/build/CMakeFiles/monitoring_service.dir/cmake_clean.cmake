@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/monitoring_service.dir/src/alert_manager.cpp.o.d"
   "CMakeFiles/monitoring_service.dir/src/metrics_analyzer.cpp.o"
   "CMakeFiles/monitoring_service.dir/src/metrics_analyzer.cpp.o.d"
+  "CMakeFiles/monitoring_service.dir/src/mysql_metrics_storage.cpp.o"
+  "CMakeFiles/monitoring_service.dir/src/mysql_metrics_storage.cpp.o.d"
   "CMakeFiles/monitoring_service.dir/src/rabbitmq_consumer.cpp.o"
   "CMakeFiles/monitoring_service.dir/src/rabbitmq_consumer.cpp.o.d"
   "CMakeFiles/monitoring_service.dir/src/server.cpp.o"

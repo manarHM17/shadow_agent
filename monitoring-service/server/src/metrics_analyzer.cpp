@@ -159,93 +159,99 @@ std::vector<std::string> MetricsAnalyzer::getAllDeviceIds() {
 
 void MetricsAnalyzer::analyzeCpuUsage(const std::string& device_id, const std::string& cpu_usage) {
     float usage = extractPercentage(cpu_usage);
-    
+
     if (std::isnan(usage)) {
         return;  // Invalid value, skip analysis
     }
-    
+
     float warning_threshold = thresholds_["cpu"]["warning"].get<float>();
     float critical_threshold = thresholds_["cpu"]["critical"].get<float>();
-    
+
     if (usage >= critical_threshold) {
-        // Send critical alert
+        // Send critical alert with a single simple corrective command
         alert_manager_->sendAlert(
             device_id,
             AlertManager::AlertSeverity::CRITICAL,
             "HIGH_CPU_USAGE",
             "CPU usage is critically high: " + cpu_usage,
-            "Check for runaway processes or resource leaks"
+            "Check for runaway processes or resource leaks",
+            "top -b -n 1 | head -20"
         );
     } else if (usage >= warning_threshold) {
-        // Send warning alert
+        // Send warning alert (no corrective command)
         alert_manager_->sendAlert(
             device_id,
             AlertManager::AlertSeverity::WARNING,
             "ELEVATED_CPU_USAGE",
             "CPU usage is elevated: " + cpu_usage,
             "Monitor system performance and check active processes"
+            // No corrective command
         );
     }
 }
 
 void MetricsAnalyzer::analyzeMemoryUsage(const std::string& device_id, const std::string& memory_usage) {
     float usage = extractPercentage(memory_usage);
-    
+
     if (std::isnan(usage)) {
         return;  // Invalid value, skip analysis
     }
-    
+
     float warning_threshold = thresholds_["memory"]["warning"].get<float>();
     float critical_threshold = thresholds_["memory"]["critical"].get<float>();
-    
+
     if (usage >= critical_threshold) {
-        // Send critical alert
+        // Send critical alert with a single simple corrective command
         alert_manager_->sendAlert(
             device_id,
             AlertManager::AlertSeverity::CRITICAL,
             "HIGH_MEMORY_USAGE",
             "Memory usage is critically high: " + memory_usage,
-            "Check for memory leaks or increase available memory"
+            "Check for memory leaks or increase available memory",
+            "free -m"
         );
     } else if (usage >= warning_threshold) {
-        // Send warning alert
+        // Send warning alert (no corrective command)
         alert_manager_->sendAlert(
             device_id,
             AlertManager::AlertSeverity::WARNING,
             "ELEVATED_MEMORY_USAGE",
             "Memory usage is elevated: " + memory_usage,
             "Monitor memory consumption and identify memory-intensive processes"
+            // No corrective command
         );
     }
 }
 
 void MetricsAnalyzer::analyzeDiskUsage(const std::string& device_id, const std::string& disk_usage) {
     float usage = extractPercentage(disk_usage);
-    
+
     if (std::isnan(usage)) {
         return;  // Invalid value, skip analysis
     }
-    
+
     float warning_threshold = thresholds_["disk"]["warning"].get<float>();
     float critical_threshold = thresholds_["disk"]["critical"].get<float>();
-    
+
     if (usage >= critical_threshold) {
-        // Send critical alert
+        // Send critical alert with a single simple corrective command
         alert_manager_->sendAlert(
             device_id,
             AlertManager::AlertSeverity::CRITICAL,
             "HIGH_DISK_USAGE",
             "Disk usage is critically high: " + disk_usage,
-            "Free up disk space immediately or expand storage"
+            "Free up disk space immediately or expand storage",
+            "df -h"
         );
     } else if (usage >= warning_threshold) {
-        // Send warning alert
+        // Send warning alert (no corrective command)
         alert_manager_->sendAlert(
             device_id,
             AlertManager::AlertSeverity::WARNING,
             "ELEVATED_DISK_USAGE",
             "Disk usage is elevated: " + disk_usage,
             "Cleanup unnecessary files or plan for storage expansion"
+            // No corrective command
         );
     }
 }
@@ -296,7 +302,8 @@ void MetricsAnalyzer::analyzeServices(const std::string& device_id, const std::m
                     AlertManager::AlertSeverity::CRITICAL,
                     "SERVICE_DOWN",
                     "Service " + service_name + " is inactive",
-                    "Check service logs and attempt to restart the service"
+                    "Check service logs and attempt to restart the service",
+                    "sudo systemctl restart " + service_name // <-- commande corrective
                 );
             }
         } else {
@@ -306,7 +313,8 @@ void MetricsAnalyzer::analyzeServices(const std::string& device_id, const std::m
                 AlertManager::AlertSeverity::CRITICAL,
                 "SERVICE_DOWN",
                 "Service " + service_name + " is not found",
-                "Check service configuration and ensure it is running"
+                "Check service configuration and ensure it is running",
+                "sudo systemctl restart " + service_name // <-- commande corrective
             );
         }
     }

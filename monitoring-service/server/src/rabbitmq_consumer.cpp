@@ -1,6 +1,9 @@
 #include "rabbitmq_consumer.h"
+#include "mysql_metrics_storage.h"
 #include <iostream>
 #include <amqp_framing.h>
+
+static MySQLMetricsStorage mysql_storage;
 
 RabbitMQConsumer::RabbitMQConsumer(const std::string& hostname, int port,
                                  const std::string& username, const std::string& password,
@@ -70,52 +73,52 @@ void RabbitMQConsumer::consumeHardwareMetrics() {
         std::cerr << "Failed to connect to RabbitMQ for hardware metrics" << std::endl;
         return;
     }
-    
+
     // Set up basic consume
     amqp_basic_consume(hw_conn_, hw_channel_, amqp_cstring_bytes(hw_queue_name_.c_str()),
-                     amqp_empty_bytes, 0, 0, 0, amqp_empty_table);
+                       amqp_empty_bytes, 0, 0, 0, amqp_empty_table);
     amqp_rpc_reply_t res = amqp_get_rpc_reply(hw_conn_);
     if (!checkAMQPResponse(res, "Starting hardware metrics consumer")) {
         return;
     }
-    
+
     std::cout << "Started consuming hardware metrics from queue " << hw_queue_name_ << std::endl;
-    
+
     // Consume messages
     while (running_) {
         amqp_envelope_t envelope;
-        
         struct timeval timeout;
         timeout.tv_sec = 1;
         timeout.tv_usec = 0;
-        
+
         amqp_maybe_release_buffers(hw_conn_);
         res = amqp_consume_message(hw_conn_, &envelope, &timeout, 0);
-        
+
         if (res.reply_type == AMQP_RESPONSE_NORMAL) {
             // Extract message
             std::string message(static_cast<char*>(envelope.message.body.bytes), envelope.message.body.len);
-            
+
             try {
                 // Parse JSON
                 nlohmann::json json = nlohmann::json::parse(message);
-                
+
                 // Extract device ID
                 std::string device_id = json["device_id"];
-                
+
                 // Call callback
                 hw_callback_(device_id, json);
+                mysql_storage.insertHardwareInfo(json);
             } catch (const std::exception& e) {
                 std::cerr << "Error processing hardware metrics: " << e.what() << std::endl;
             }
-            
+
             // Acknowledge message
             amqp_basic_ack(hw_conn_, hw_channel_, envelope.delivery_tag, 0);
-            
+
             // Clean up
             amqp_destroy_envelope(&envelope);
         } else if (res.reply_type == AMQP_RESPONSE_LIBRARY_EXCEPTION &&
-                  res.library_error == AMQP_STATUS_TIMEOUT) {
+                   res.library_error == AMQP_STATUS_TIMEOUT) {
             // Timeout, just continue
         } else {
             // Error
@@ -123,7 +126,7 @@ void RabbitMQConsumer::consumeHardwareMetrics() {
             break;
         }
     }
-    
+
     std::cout << "Hardware metrics consumer stopped" << std::endl;
 }
 
@@ -134,52 +137,52 @@ void RabbitMQConsumer::consumeSoftwareMetrics() {
         std::cerr << "Failed to connect to RabbitMQ for software metrics" << std::endl;
         return;
     }
-    
+
     // Set up basic consume
     amqp_basic_consume(sw_conn_, sw_channel_, amqp_cstring_bytes(sw_queue_name_.c_str()),
-                     amqp_empty_bytes, 0, 0, 0, amqp_empty_table);
+                       amqp_empty_bytes, 0, 0, 0, amqp_empty_table);
     amqp_rpc_reply_t res = amqp_get_rpc_reply(sw_conn_);
     if (!checkAMQPResponse(res, "Starting software metrics consumer")) {
         return;
     }
-    
+
     std::cout << "Started consuming software metrics from queue " << sw_queue_name_ << std::endl;
-    
+
     // Consume messages
     while (running_) {
         amqp_envelope_t envelope;
-        
         struct timeval timeout;
         timeout.tv_sec = 1;
         timeout.tv_usec = 0;
-        
+
         amqp_maybe_release_buffers(sw_conn_);
         res = amqp_consume_message(sw_conn_, &envelope, &timeout, 0);
-        
+
         if (res.reply_type == AMQP_RESPONSE_NORMAL) {
             // Extract message
             std::string message(static_cast<char*>(envelope.message.body.bytes), envelope.message.body.len);
-            
+
             try {
                 // Parse JSON
                 nlohmann::json json = nlohmann::json::parse(message);
-                
+
                 // Extract device ID
                 std::string device_id = json["device_id"];
-                
+
                 // Call callback
                 sw_callback_(device_id, json);
+                mysql_storage.insertSoftwareInfo(json);
             } catch (const std::exception& e) {
                 std::cerr << "Error processing software metrics: " << e.what() << std::endl;
             }
-            
+
             // Acknowledge message
             amqp_basic_ack(sw_conn_, sw_channel_, envelope.delivery_tag, 0);
-            
+
             // Clean up
             amqp_destroy_envelope(&envelope);
         } else if (res.reply_type == AMQP_RESPONSE_LIBRARY_EXCEPTION &&
-                  res.library_error == AMQP_STATUS_TIMEOUT) {
+                   res.library_error == AMQP_STATUS_TIMEOUT) {
             // Timeout, just continue
         } else {
             // Error
@@ -187,7 +190,7 @@ void RabbitMQConsumer::consumeSoftwareMetrics() {
             break;
         }
     }
-    
+
     std::cout << "Software metrics consumer stopped" << std::endl;
 }
 
@@ -269,7 +272,7 @@ bool RabbitMQConsumer::checkAMQPResponse(amqp_rpc_reply_t x, const char* context
                     std::cerr << context << ": server channel error " << m->reply_code << ", message: "
                               << std::string(static_cast<char*>(m->reply_text.bytes), m->reply_text.len) << std::endl;
                     break;
-                }
+                }  break;
                 default:
                     std::cerr << context << ": unknown server error, method id " << x.reply.id << std::endl;
                     break;

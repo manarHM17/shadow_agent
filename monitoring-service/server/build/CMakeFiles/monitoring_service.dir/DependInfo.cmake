@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/manar/IOTSHADOW/monitoring-service/server/build/monitoring.pb.cc" "CMakeFiles/monitoring_service.dir/monitoring.pb.cc.o" "gcc" "CMakeFiles/monitoring_service.dir/monitoring.pb.cc.o.d"
   "/home/manar/IOTSHADOW/monitoring-service/server/src/alert_manager.cpp" "CMakeFiles/monitoring_service.dir/src/alert_manager.cpp.o" "gcc" "CMakeFiles/monitoring_service.dir/src/alert_manager.cpp.o.d"
   "/home/manar/IOTSHADOW/monitoring-service/server/src/metrics_analyzer.cpp" "CMakeFiles/monitoring_service.dir/src/metrics_analyzer.cpp.o" "gcc" "CMakeFiles/monitoring_service.dir/src/metrics_analyzer.cpp.o.d"
+  "/home/manar/IOTSHADOW/monitoring-service/server/src/mysql_metrics_storage.cpp" "CMakeFiles/monitoring_service.dir/src/mysql_metrics_storage.cpp.o" "gcc" "CMakeFiles/monitoring_service.dir/src/mysql_metrics_storage.cpp.o.d"
   "/home/manar/IOTSHADOW/monitoring-service/server/src/rabbitmq_consumer.cpp" "CMakeFiles/monitoring_service.dir/src/rabbitmq_consumer.cpp.o" "gcc" "CMakeFiles/monitoring_service.dir/src/rabbitmq_consumer.cpp.o.d"
   "/home/manar/IOTSHADOW/monitoring-service/server/src/server.cpp" "CMakeFiles/monitoring_service.dir/src/server.cpp.o" "gcc" "CMakeFiles/monitoring_service.dir/src/server.cpp.o.d"
   )

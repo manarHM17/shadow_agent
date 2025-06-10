@@ -9,13 +9,17 @@ void AlertManager::sendAlert(const std::string& device_id,
                              AlertSeverity severity,
                              const std::string& alert_type,
                              const std::string& description,
-                             const std::string& recommended_action) {
+                             const std::string& recommended_action,
+                             const std::string& corrective_command) {
     monitoring::Alert alert;
     alert.set_device_id(device_id);
     alert.set_severity(convertSeverity(severity));
     alert.set_alert_type(alert_type);
     alert.set_description(description);
     alert.set_recommended_action(recommended_action);
+    if (!corrective_command.empty()) {
+        alert.set_corrective_command(corrective_command);
+    }
 
     // Set timestamp as string
     auto now = std::chrono::system_clock::now();

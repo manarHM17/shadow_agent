@@ -1211,6 +1211,7 @@ class Alert final :
     kAlertTypeFieldNumber = 4,
     kDescriptionFieldNumber = 5,
     kRecommendedActionFieldNumber = 6,
+    kCorrectiveCommandFieldNumber = 7,
     kSeverityFieldNumber = 2,
   };
   // string device_id = 1;
@@ -1293,6 +1294,22 @@ class Alert final :
   std::string* _internal_mutable_recommended_action();
 
   public:
+  // string corrective_command = 7;
+  void clear_corrective_command() ;
+  const std::string& corrective_command() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_corrective_command(Arg_&& arg, Args_... args);
+  std::string* mutable_corrective_command();
+  PROTOBUF_NODISCARD std::string* release_corrective_command();
+  void set_allocated_corrective_command(std::string* value);
+
+  private:
+  const std::string& _internal_corrective_command() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_corrective_command(
+      const std::string& value);
+  std::string* _internal_mutable_corrective_command();
+
+  public:
   // .monitoring.Alert.Severity severity = 2;
   void clear_severity() ;
   ::monitoring::Alert_Severity severity() const;
@@ -1309,8 +1326,8 @@ class Alert final :
 
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      3, 6, 0,
-      82, 2>
+      3, 7, 0,
+      100, 2>
       _table_;
   friend class ::google::protobuf::MessageLite;
   friend class ::google::protobuf::Arena;
@@ -1331,6 +1348,7 @@ class Alert final :
     ::google::protobuf::internal::ArenaStringPtr alert_type_;
     ::google::protobuf::internal::ArenaStringPtr description_;
     ::google::protobuf::internal::ArenaStringPtr recommended_action_;
+    ::google::protobuf::internal::ArenaStringPtr corrective_command_;
     int severity_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
@@ -2162,6 +2180,59 @@ inline void Alert::set_allocated_recommended_action(std::string* value) {
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:monitoring.Alert.recommended_action)
+}
+
+// string corrective_command = 7;
+inline void Alert::clear_corrective_command() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.corrective_command_.ClearToEmpty();
+}
+inline const std::string& Alert::corrective_command() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:monitoring.Alert.corrective_command)
+  return _internal_corrective_command();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Alert::set_corrective_command(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.corrective_command_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:monitoring.Alert.corrective_command)
+}
+inline std::string* Alert::mutable_corrective_command() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_corrective_command();
+  // @@protoc_insertion_point(field_mutable:monitoring.Alert.corrective_command)
+  return _s;
+}
+inline const std::string& Alert::_internal_corrective_command() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.corrective_command_.Get();
+}
+inline void Alert::_internal_set_corrective_command(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.corrective_command_.Set(value, GetArena());
+}
+inline std::string* Alert::_internal_mutable_corrective_command() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.corrective_command_.Mutable( GetArena());
+}
+inline std::string* Alert::release_corrective_command() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:monitoring.Alert.corrective_command)
+  return _impl_.corrective_command_.Release();
+}
+inline void Alert::set_allocated_corrective_command(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.corrective_command_.SetAllocated(value, GetArena());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.corrective_command_.IsDefault()) {
+          _impl_.corrective_command_.Set("", GetArena());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:monitoring.Alert.corrective_command)
 }
 
 // -------------------------------------------------------------------

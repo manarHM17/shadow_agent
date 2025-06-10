@@ -138,10 +138,24 @@ CMakeFiles/monitoring_service.dir/src/alert_manager.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/monitoring_service.dir/src/alert_manager.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manar/IOTSHADOW/monitoring-service/server/src/alert_manager.cpp -o CMakeFiles/monitoring_service.dir/src/alert_manager.cpp.s
 
+CMakeFiles/monitoring_service.dir/src/mysql_metrics_storage.cpp.o: CMakeFiles/monitoring_service.dir/flags.make
+CMakeFiles/monitoring_service.dir/src/mysql_metrics_storage.cpp.o: /home/manar/IOTSHADOW/monitoring-service/server/src/mysql_metrics_storage.cpp
+CMakeFiles/monitoring_service.dir/src/mysql_metrics_storage.cpp.o: CMakeFiles/monitoring_service.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/manar/IOTSHADOW/monitoring-service/server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/monitoring_service.dir/src/mysql_metrics_storage.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/monitoring_service.dir/src/mysql_metrics_storage.cpp.o -MF CMakeFiles/monitoring_service.dir/src/mysql_metrics_storage.cpp.o.d -o CMakeFiles/monitoring_service.dir/src/mysql_metrics_storage.cpp.o -c /home/manar/IOTSHADOW/monitoring-service/server/src/mysql_metrics_storage.cpp
+
+CMakeFiles/monitoring_service.dir/src/mysql_metrics_storage.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/monitoring_service.dir/src/mysql_metrics_storage.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manar/IOTSHADOW/monitoring-service/server/src/mysql_metrics_storage.cpp > CMakeFiles/monitoring_service.dir/src/mysql_metrics_storage.cpp.i
+
+CMakeFiles/monitoring_service.dir/src/mysql_metrics_storage.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/monitoring_service.dir/src/mysql_metrics_storage.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manar/IOTSHADOW/monitoring-service/server/src/mysql_metrics_storage.cpp -o CMakeFiles/monitoring_service.dir/src/mysql_metrics_storage.cpp.s
+
 CMakeFiles/monitoring_service.dir/monitoring.pb.cc.o: CMakeFiles/monitoring_service.dir/flags.make
 CMakeFiles/monitoring_service.dir/monitoring.pb.cc.o: monitoring.pb.cc
 CMakeFiles/monitoring_service.dir/monitoring.pb.cc.o: CMakeFiles/monitoring_service.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/manar/IOTSHADOW/monitoring-service/server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/monitoring_service.dir/monitoring.pb.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/manar/IOTSHADOW/monitoring-service/server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/monitoring_service.dir/monitoring.pb.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/monitoring_service.dir/monitoring.pb.cc.o -MF CMakeFiles/monitoring_service.dir/monitoring.pb.cc.o.d -o CMakeFiles/monitoring_service.dir/monitoring.pb.cc.o -c /home/manar/IOTSHADOW/monitoring-service/server/build/monitoring.pb.cc
 
 CMakeFiles/monitoring_service.dir/monitoring.pb.cc.i: cmake_force
@@ -155,7 +169,7 @@ CMakeFiles/monitoring_service.dir/monitoring.pb.cc.s: cmake_force
 CMakeFiles/monitoring_service.dir/monitoring.grpc.pb.cc.o: CMakeFiles/monitoring_service.dir/flags.make
 CMakeFiles/monitoring_service.dir/monitoring.grpc.pb.cc.o: monitoring.grpc.pb.cc
 CMakeFiles/monitoring_service.dir/monitoring.grpc.pb.cc.o: CMakeFiles/monitoring_service.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/manar/IOTSHADOW/monitoring-service/server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/monitoring_service.dir/monitoring.grpc.pb.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/manar/IOTSHADOW/monitoring-service/server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/monitoring_service.dir/monitoring.grpc.pb.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/monitoring_service.dir/monitoring.grpc.pb.cc.o -MF CMakeFiles/monitoring_service.dir/monitoring.grpc.pb.cc.o.d -o CMakeFiles/monitoring_service.dir/monitoring.grpc.pb.cc.o -c /home/manar/IOTSHADOW/monitoring-service/server/build/monitoring.grpc.pb.cc
 
 CMakeFiles/monitoring_service.dir/monitoring.grpc.pb.cc.i: cmake_force
@@ -172,6 +186,7 @@ monitoring_service_OBJECTS = \
 "CMakeFiles/monitoring_service.dir/src/rabbitmq_consumer.cpp.o" \
 "CMakeFiles/monitoring_service.dir/src/metrics_analyzer.cpp.o" \
 "CMakeFiles/monitoring_service.dir/src/alert_manager.cpp.o" \
+"CMakeFiles/monitoring_service.dir/src/mysql_metrics_storage.cpp.o" \
 "CMakeFiles/monitoring_service.dir/monitoring.pb.cc.o" \
 "CMakeFiles/monitoring_service.dir/monitoring.grpc.pb.cc.o"
 
@@ -182,6 +197,7 @@ monitoring_service: CMakeFiles/monitoring_service.dir/src/server.cpp.o
 monitoring_service: CMakeFiles/monitoring_service.dir/src/rabbitmq_consumer.cpp.o
 monitoring_service: CMakeFiles/monitoring_service.dir/src/metrics_analyzer.cpp.o
 monitoring_service: CMakeFiles/monitoring_service.dir/src/alert_manager.cpp.o
+monitoring_service: CMakeFiles/monitoring_service.dir/src/mysql_metrics_storage.cpp.o
 monitoring_service: CMakeFiles/monitoring_service.dir/monitoring.pb.cc.o
 monitoring_service: CMakeFiles/monitoring_service.dir/monitoring.grpc.pb.cc.o
 monitoring_service: CMakeFiles/monitoring_service.dir/build.make
@@ -284,7 +300,7 @@ monitoring_service: /usr/local/lib/libcrypto.a
 monitoring_service: /usr/local/lib/libaddress_sorting.a
 monitoring_service: /usr/local/lib/libSimpleAmqpClient.so
 monitoring_service: CMakeFiles/monitoring_service.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/manar/IOTSHADOW/monitoring-service/server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable monitoring_service"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/manar/IOTSHADOW/monitoring-service/server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable monitoring_service"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/monitoring_service.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

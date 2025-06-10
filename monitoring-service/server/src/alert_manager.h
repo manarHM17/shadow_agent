@@ -21,7 +21,8 @@ public:
                   AlertSeverity severity,
                   const std::string& alert_type,
                   const std::string& description,
-                  const std::string& recommended_action);
+                  const std::string& recommended_action,
+                  const std::string& corrective_command = "");
     
     // Change to raw pointer
     void registerDevice(const std::string& device_id, 
