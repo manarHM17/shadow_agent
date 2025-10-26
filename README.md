@@ -10,10 +10,9 @@ IOTSHADOW is a comprehensive IoT device management platform that consists of thr
 
 ## System Architecture
 
-```
-<img width="3964" height="1644" alt="image" src="https://github.com/user-attachments/assets/348cef6a-8aa6-4b0a-adbb-b4390608e158" />
+<img width="971" height="391" alt="architecture" src="https://github.com/user-attachments/assets/4e13c3f1-5ec3-4ec5-9924-d6d3336cf0fb" />
 
-```
+
 
 ## Services
 
@@ -36,7 +35,8 @@ IOTSHADOW is a comprehensive IoT device management platform that consists of thr
 - Version management
 - Update status tracking
 - [More details](./ota-update-service/README.md)
-<img width="4164" height="1044" alt="image" src="https://github.com/user-attachments/assets/5dcf4910-fbf7-4b63-aa9f-dbb234893c86" />
+<img width="4164" height="1044" alt="image" src="https://github.com/user-attachments/assets/4a8bdd14-2738-4579-b50f-0d359c22054e" />
+
 
 ## Infrastructure
 
