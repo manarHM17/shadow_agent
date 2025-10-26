@@ -11,37 +11,7 @@ IOTSHADOW is a comprehensive IoT device management platform that consists of thr
 ## System Architecture
 
 ```
-                   ┌─────────────────┐
-                   │    Device(s)    │
-                   └────────┬────────┘
-                           │
-                   ┌───────▼────────┐
-                   │   gRPC/AMQP    │
-                   └───────┬────────┘
-                           │
-         ┌─────────────────────────────────┐
-         │                                 │
-┌────────▼─────────┐   ┌─────────────────┐│
-│ Provision Service│   │Monitoring Service││
-└────────┬─────────┘   └────────┬────────┘│
-         │                      │         ││
-         │              ┌───────▼──────┐  │
-         │              │  RabbitMQ    │  │
-         │              └───────┬──────┘  │
-         │                      │         │
-         └──────────┬──────────┘         │
-                    │                     │
-            ┌───────▼─────────┐          │
-            │     MySQL       │          │
-            └───────┬─────────┘          │
-                    │                    │
-            ┌───────▼─────────┐         │
-            │   phpMyAdmin    │         │
-            └─────────────────┘         │
-                                       │
-                  ┌───────────────────┐│
-                  │  OTA Update Service│
-                  └───────────────────┘
+<img width="3964" height="1644" alt="image" src="https://github.com/user-attachments/assets/348cef6a-8aa6-4b0a-adbb-b4390608e158" />
 
 ```
 
@@ -58,12 +28,15 @@ IOTSHADOW is a comprehensive IoT device management platform that consists of thr
 - Real-time alerts
 - Performance analysis
 - [More details](./monitoring-service/README.md)
+<img width="2124" height="988" alt="image" src="https://github.com/user-attachments/assets/a1b11167-92f6-46ca-bcb6-834dc2764e3a" />
+
 
 ### 3. OTA Update Service
 - Remote software updates
 - Version management
 - Update status tracking
 - [More details](./ota-update-service/README.md)
+<img width="4164" height="1044" alt="image" src="https://github.com/user-attachments/assets/5dcf4910-fbf7-4b63-aa9f-dbb234893c86" />
 
 ## Infrastructure
 
@@ -111,8 +84,8 @@ cmake .. && make
 - Provision Service: gRPC on port 50051
 - Monitoring Service: gRPC on port 50052
 - OTA Update Service: gRPC on port 50053
-- RabbitMQ Management: http://localhost:15672
-- phpMyAdmin: http://localhost:8080
+- RabbitMQ Management
+- phpMyAdmin
 
 ## Configuration
 
